@@ -5,7 +5,8 @@ Times chain_client.verify_anchor_strict() over all scenario passports
 Run inside the operator application:
   docker compose exec -T neocyclehub-bootstrap python manage.py shell < experiments/time_strict_check.py
 Prints one JSON line: per-call times (ms), median/p95 and the number of Anchored events
-in the pinned contract (the strict check scans all of them, since dppUrl is not indexed).
+in the pinned contract (the strict check fetches those sent by the issuer, an indexed
+topic, and filters them by dppUrl client-side, since dppUrl is not indexed).
 """
 import json
 import statistics

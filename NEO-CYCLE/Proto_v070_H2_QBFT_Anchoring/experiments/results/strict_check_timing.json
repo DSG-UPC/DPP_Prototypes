@@ -1,1 +1,12 @@
-{"passports": 15, "repeat": 3, "calls": 45, "statuses": {"valid": 45}, "median_ms": 917.0, "p95_ms": 1158.5, "events_in_contract": 314, "block": 5128}
+{
+ "passports": 15,
+ "repeat": 3,
+ "calls": 45,
+ "statuses": {
+  "valid": 45
+ },
+ "median_ms": 70.0,
+ "p95_ms": 104.4,
+ "events_in_contract": 326,
+ "block": 5302
+}

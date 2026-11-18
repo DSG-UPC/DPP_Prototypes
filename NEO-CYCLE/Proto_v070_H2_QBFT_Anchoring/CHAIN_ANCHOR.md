@@ -242,11 +242,14 @@ that silently replaces a credential can therefore anchor the new hash and
 repoint its stored transaction hash, and `verify_anchor()` would accept
 the replacement. `chain_client.verify_anchor_strict(issued_credential)`
 trusts no issuer-stored pointer: it queries the pinned `DPPAnchor` contract
-for all `Anchored` events of the credential's URL, takes the **earliest**
-one, and checks both its hash and that its sender is the issuing actor's
-account. Logs are queried in 5000-block windows, Besu's default
-`--rpc-max-logs-range`. The threat tests in `experiments/` compare both
-checks.
+for the `Anchored` events sent by the issuing actor's account (`actor` is an
+indexed topic), takes the **earliest** one for the credential's URL, and
+compares its hash with the served credential. Filtering by the issuer first
+matters: taking the earliest event for the URL from any sender and checking
+the sender afterwards would let another member block a passport by anchoring
+junk under its URL first. Logs are queried in 5000-block windows, Besu's
+default `--rpc-max-logs-range`. The threat tests in `experiments/` compare
+the checks, including this squatting case.
 
 **To see the fault-tolerance property directly** (stop one validator,
 confirm the network keeps producing blocks — this is the concrete evidence

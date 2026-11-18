@@ -27,13 +27,20 @@
   "anchor_check": "valid",
   "anchor_check_strict": "invalid"
  },
+ "squat": {
+  "signature_check": "valid",
+  "anchor_check": "valid",
+  "anchor_check_strict": "valid",
+  "squatter_role": "upcycler",
+  "anchor_check_strict_any_sender_rule": "invalid"
+ },
  "deletion": {
   "credential_still_served": false,
   "anchor_events_found": 1,
   "anchor_url_matches": true
  },
  "timing": {
-  "n": 22,
+  "n": 23,
   "gap_s_min": 2.0,
   "gap_s_max": 4.0,
   "gap_s_median": 2.0
@@ -42,14 +49,15 @@
   "valid": 15
  },
  "created_uuids": [
-  "97731308-7a93-4dfe-ad7b-95ad99ac9030",
-  "40176281-ea7b-4b90-928f-3f6b01065b7f",
-  "afe2b5fa-b409-4a80-bfb6-943c7c2a856a",
-  "1f2d4ef5-25a3-486a-9594-c7d066b26928",
-  "d78756e9-9fe9-4c6e-a16f-79c78b4977cf",
-  "21b3f01e-1e7c-4f95-bd49-8969a6d55c1f",
-  "12e132a4-fcbc-4f63-8d4c-1231edf17485",
-  "fe39e74a-f07c-4838-ad0f-c66aa2ea4351",
-  "b419c146-3dc5-4bd6-8886-f79255e01420"
+  "eb71576e-89ab-4d91-98b5-5d628c206a50",
+  "928e71a7-676c-4a56-a785-4f5621899a68",
+  "b3e92be7-edaa-45c6-ae53-4799d09fb227",
+  "446273b2-5b6a-4a86-aa09-d7f3a28d5af0",
+  "3d22518c-fcd7-478f-b23d-e0657cc75add",
+  "f6939438-0e46-4c64-8eec-ca8ce7f49b46",
+  "e8886d86-ff8e-4cbf-a261-822d14d34b0b",
+  "960679e8-3c13-43ce-9168-4361d8128f80",
+  "dfffa869-45a7-4df4-88a7-d1db8a051b7d",
+  "3df3c467-3b8a-49f3-b139-149ab702fa9d"
  ]
 }

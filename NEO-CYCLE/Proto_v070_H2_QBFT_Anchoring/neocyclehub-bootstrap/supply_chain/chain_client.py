@@ -193,12 +193,17 @@ def verify_anchor_strict(issued_credential):
     real contract under the old URL, or in a contract of its own) and update
     chain_tx_hash, and verify_anchor() reports "valid". This check instead
       1. reads Anchored events only from the pinned contract address,
-      2. takes the EARLIEST event recorded for this credential's URL,
-      3. requires that event's sender to be the issuing actor's chain address,
+      2. only events SENT BY the issuing actor's registered chain address
+         (`actor` is an indexed topic, so the node filters them),
+      3. takes the EARLIEST of those recorded for this credential's URL,
       4. compares its hash with the hash of the credential being served.
-    Cost: dppUrl is not an indexed event field, so step 2 scans all events of
-    the contract in 5000-block windows (fine at prototype scale; an indexed URL
-    hash or the first anchor per URL kept in contract state would fix it).
+    Step 2 matters: taking the earliest event for the URL from ANY sender and
+    then checking the sender lets another consortium member squat a URL by
+    anchoring junk under it first, which makes the honest passport fail
+    (threat_tests 'squat' shows both rules).
+    Cost: dppUrl is not an indexed event field, so step 3 scans the issuer's
+    events in 5000-block windows; the first anchor per (issuer, URL) kept in
+    contract state would make it a single call.
     """
     try:
         actor = issued_credential.actor
@@ -206,24 +211,26 @@ def verify_anchor_strict(issued_credential):
         deployment = _load_deployment()
         contract = w3.eth.contract(address=deployment["address"], abi=deployment["abi"])
         url = f"{settings.NEOCYCLEHUB_PUBLIC_URL}/credentials/{issued_credential.uuid}/"
+        if not actor.chain_address:
+            return {"status": "invalid", "detail": "Issuer has no registered chain address"}
+        issuer = Web3.to_checksum_address(actor.chain_address)
         # Besu refuses eth_getLogs ranges over 5000 blocks by default (--rpc-max-logs-range),
         # so a single fromBlock=0 query fails once the chain is longer.
         head, logs, start = w3.eth.block_number, [], 0
         while start <= head:
             end = min(start + LOGS_RANGE - 1, head)
-            logs += [l for l in contract.events.Anchored().get_logs(fromBlock=start, toBlock=end)
+            logs += [l for l in contract.events.Anchored().get_logs(fromBlock=start, toBlock=end,
+                                                                    argument_filters={"actor": issuer})
                      if l["args"]["dppUrl"] == url and l["address"] == contract.address]
             start = end + 1
         if not logs:
-            return {"status": "not_anchored", "detail": "No anchor for this URL in the pinned contract"}
+            return {"status": "not_anchored", "detail": "No anchor by the issuer for this URL in the pinned contract"}
         first = min(logs, key=lambda l: (l["blockNumber"], l["logIndex"]))
-        if not actor.chain_address or first["args"]["actor"].lower() != actor.chain_address.lower():
-            return {"status": "invalid", "detail": "Earliest anchor for this URL was not sent by the issuer"}
         recomputed = Web3.keccak(text=json.dumps(issued_credential.credential, sort_keys=True))
         if first["args"]["dppHash"] == recomputed:
-            return {"status": "valid", "detail": f"Earliest anchor for this URL matches (block {first['blockNumber']}, "
+            return {"status": "valid", "detail": f"Earliest issuer anchor for this URL matches (block {first['blockNumber']}, "
                                                  f"{len(logs)} anchor(s) for the URL)"}
-        return {"status": "invalid", "detail": f"Served credential differs from the earliest anchor for this URL "
+        return {"status": "invalid", "detail": f"Served credential differs from the earliest issuer anchor for this URL "
                                                f"({len(logs)} anchor(s) for the URL)"}
     except Exception as e:
         return {"status": "unavailable", "detail": str(e)[:160]}

@@ -224,7 +224,7 @@ def figures(s, fig_dir):
     if gas:
         ceil = GAS_LIMIT / gas / 2
         ax.axhline(ceil, ls="--", lw=0.8, color="gray")
-        ax.text(22, ceil * 1.03, f"gas limit {ceil:.0f}/s", fontsize=6, color="gray")
+        ax.text(22, ceil - 2, f"gas limit ({int(GAS_LIMIT // gas)}/block)", fontsize=6, color="gray", va="top")
     ax.set_xlabel("offered (anchors/s)")
     ax.set_ylabel("achieved (1/s)")
     ax.legend(frameon=False, fontsize=6.5)

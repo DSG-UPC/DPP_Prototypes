@@ -9,7 +9,7 @@ Rare-Earth Upcycling Consortium".
 | Script | What it does | Result |
 |---|---|---|
 | `run_pipeline.sh [repeat] [delays...]` | E1: stage timing of DPP issuance (`bench_pipeline` command) at 0/50/100 ms one-way delay between the four Besu validators (netem on port 30303) | `results/pipeline_d*.json` |
-| `run_threats.sh` (`FOREIGN=<addr>` optional) | Threat tests T1-T4 (`threat_tests` command), pointer check vs strict check, plus the 2-of-4 outage test | `results/threats.json`, `results/outage.json` |
+| `run_threats.sh` (`FOREIGN=<addr>` optional) | Threat tests T1-T4 and URL squatting (`threat_tests` command), pointer check vs strict check, plus the 2-of-4 outage test | `results/threats.json`, `results/outage.json` |
 | `time_strict_check.py` | Times `verify_anchor_strict()` over the 15 scenario passports | `results/strict_check_timing.json` |
 
 `run_pipeline.sh` and `run_threats.sh` clean up after themselves: test credentials
@@ -63,8 +63,10 @@ block in the measurement window.
 
 - `blockchain/scripts/deploy.js` reuses an existing deployment, so earlier anchors
   stay visible to address-filtered queries after `docker compose up/start`.
-- `chain_client.verify_anchor_strict()` (both hub apps) uses the pinned contract,
-  the earliest anchor for the URL, and a sender check, and queries logs in
-  5000-block windows (Besu's default `--rpc-max-logs-range`). The simpler
+- `chain_client.verify_anchor_strict()` (both hub apps) uses the pinned contract
+  and the earliest anchor for the URL sent by the issuer, and queries logs in
+  5000-block windows (Besu's default `--rpc-max-logs-range`). Taking the earliest
+  anchor by any sender and checking the sender afterwards would let another member
+  squat a URL; the `squat` threat test shows both rules. The simpler
   `verify_anchor()` follows the issuer's stored transaction hash and is fooled
   by an issuer that re-anchors and repoints it; the threat tests show both.

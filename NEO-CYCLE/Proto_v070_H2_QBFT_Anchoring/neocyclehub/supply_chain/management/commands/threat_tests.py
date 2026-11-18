@@ -8,6 +8,11 @@ signatures + did:web + status list) detect it, and does the anchor check
                    (outsider or storage corruption)
   silent_replace   the issuer re-signs changed content and serves it under
                    the URL of the original credential
+  squat            another consortium member anchors a junk hash under the
+                   URL of a passport before its issuer does; reported for the
+                   strict check (earliest anchor BY THE ISSUER for the URL) and
+                   for the earlier rule (earliest anchor for the URL by anyone,
+                   then sender check), which the squatter defeats
   deletion         the issuer deletes a credential after issuance
   timing           gap between the issuer-asserted validFrom and the
                    consensus timestamp of the anchoring block, for every
@@ -80,6 +85,24 @@ class Command(BaseCommand):
     def _checks(self, cred):
         return {"signature_check": _verify_node(cred)["status"], "anchor_check": verify_anchor(cred)["status"],
                 "anchor_check_strict": verify_anchor_strict(cred)["status"]}
+
+    def _strict_any_sender(self, cred, url):
+        """The earlier strict rule: earliest anchor for the URL from ANY sender,
+        then require the issuer as sender. Kept only to show the squat attack."""
+        w3 = Web3(Web3.HTTPProvider(_node_rpc_url(cred.actor)))
+        dep = _load_deployment()
+        c = w3.eth.contract(address=dep["address"], abi=dep["abi"])
+        head, logs, start = w3.eth.block_number, [], 0
+        while start <= head:
+            end = min(start + LOGS_RANGE - 1, head)
+            logs += [l for l in c.events.Anchored().get_logs(fromBlock=start, toBlock=end) if l["args"]["dppUrl"] == url]
+            start = end + 1
+        if not logs:
+            return "not_anchored"
+        first = min(logs, key=lambda l: (l["blockNumber"], l["logIndex"]))
+        if first["args"]["actor"].lower() != (cred.actor.chain_address or '').lower():
+            return "invalid"
+        return "valid" if first["args"]["dppHash"] == _hash(cred.credential) else "invalid"
 
     def _anchor_as_issuer(self, actor, credential, url, contract_address=None):
         """The issuer sends its own anchor transaction (hash of `credential`, any URL),
@@ -162,6 +185,23 @@ class Command(BaseCommand):
             IssuedCredential.objects.filter(pk=s3.pk).update(credential=r3.credential, chain_tx_hash=tx)
             s3.refresh_from_db()
             res["foreign_contract"] = self._checks(s3)
+
+        # squat: another member anchors junk under the victim's URL before the issuer anchors.
+        other = ProductBatch.objects.filter(actor__idhub_token__gt='').exclude(actor=product.actor) \
+            .exclude(actor__role=product.actor.role).select_related('actor').order_by('id').first()
+        schema_name, endpoint, subject = build_dpp(product, self.public_url)
+        v = issue_credential(actor=product.actor, cred_type='DPP', endpoint=endpoint, schema_name=schema_name,
+                             credential_subject=subject, label=f"[threat-test] {product.name}", product=product,
+                             metrics_mode='benchmark')
+        self.created.append(str(v.uuid))
+        register_dpp(product.actor, product, v, self.public_url)
+        v_url = f"{self.public_url}/credentials/{v.uuid}/"
+        self._anchor_as_issuer(other.actor, {"junk": str(v.uuid)}, v_url)
+        anchor_dpp(product.actor, product, v, self.public_url)
+        v.refresh_from_db()
+        res["squat"] = self._checks(v)
+        res["squat"]["squatter_role"] = other.actor.role
+        res["squat"]["anchor_check_strict_any_sender_rule"] = self._strict_any_sender(v, v_url)
 
         # deletion: issuer deletes the credential; the anchor still proves it existed.
         z = self._issue(product)
