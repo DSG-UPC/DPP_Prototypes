@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Edit {{ claim.standard_name }} — NeoCycleHub{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2"><i class="bi bi-pencil me-2"></i>Edit conformity claim: {{ claim.standard_name }}</h1>
+  <a href="{% url 'actor_detail' claim.actor.pk %}" class="btn btn-sm btn-grey">
+    <i class="bi bi-arrow-left me-1"></i>Back
+  </a>
+</div>
+
+<div class="card shadow-sm" style="max-width:820px">
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Name</label>
+        <input name="name" value="{{ claim.name }}" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Description</label>
+        <textarea name="description" class="form-control" rows="3">{{ claim.description }}</textarea>
+      </div>
+      <div class="row">
+        <div class="col-md-8 mb-3">
+          <label class="form-label fw-semibold">Standard name</label>
+          <input name="standard_name" value="{{ claim.standard_name }}" class="form-control">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-semibold">Standard URL</label>
+          <input name="standard_id" value="{{ claim.standard_id }}" class="form-control font-monospace">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">Assessor name</label>
+          <input name="assessor_name" value="{{ claim.assessor_name }}" class="form-control">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">Assessor DID</label>
+          <input name="assessor_did" value="{{ claim.assessor_did }}" class="form-control font-monospace">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-semibold">Assessor level</label>
+          <input name="assessor_level" value="{{ claim.assessor_level }}" class="form-control">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-semibold">Assessment level</label>
+          <input name="assessment_level" value="{{ claim.assessment_level }}" class="form-control">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-semibold">Attestation type</label>
+          <input name="attestation_type" value="{{ claim.attestation_type }}" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-semibold">Valid from</label>
+          <input type="date" name="valid_from" value="{{ claim.valid_from|date:'Y-m-d' }}" class="form-control">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-semibold">Valid until</label>
+          <input type="date" name="valid_until" value="{{ claim.valid_until|date:'Y-m-d' }}" class="form-control">
+        </div>
+      </div>
+      <hr>
+      <p class="text-muted small">Assessment outcome (UNTP <code>conformityAssessment[].assessedPerformance[].score</code> / <code>.conformityTopic</code>)</p>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-semibold">Performance score code</label>
+          <input name="performance_score_code" value="{{ claim.performance_score_code }}" class="form-control"
+                 placeholder="pass (default if blank)">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-semibold">Conformity topic URI <span class="text-muted fw-normal">(<code>conformityTopic.id</code>)</span></label>
+          <input name="conformity_topic_id" value="{{ claim.conformity_topic_id }}" class="form-control font-monospace"
+                 placeholder="{{ claim.standard_id }}#topic (default if blank)">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-semibold">Conformity topic name <span class="text-muted fw-normal">(<code>.name</code>)</span></label>
+          <input name="conformity_topic_name" value="{{ claim.conformity_topic_name }}" class="form-control"
+                 placeholder="Environmental Sustainability">
+        </div>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-green-admin" type="submit">
+          <i class="bi bi-check-lg me-1"></i>Save
+        </button>
+        <a href="{% url 'actor_detail' claim.actor.pk %}" class="btn btn-grey">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "idhub/base_admin.html" %}
+{% load i18n %}
+
+{% block content %}
+<h3>
+  <i class="{{ icon }}"></i>
+  {{ subtitle }}
+</h3>
+{% load django_bootstrap5 %}
+<form role="form" method="post">
+{% csrf_token %}
+{% if form.errors %}
+<div class="alert alert-danger alert-icon alert-icon-border alert-dismissible" role="alert">
+  <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
+  <div class="message">
+    {% for field, error in form.errors.items %}
+      {{ error }}<br />
+    {% endfor %}
+    <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>
+{% endif %}
+
+<div class="row mt-4">
+  <div class="col">
+    {{ form.accept_privacy }}
+    {{ form.privacy_label|safe }}
+  </div>
+</div>
+<div class="row mt-2">
+  <div class="col">
+    {{ form.accept_legal }}
+    {{ form.legal_label|safe }}
+  </div>
+</div>
+<div class="row mt-2">
+  <div class="col">
+    {{ form.accept_cookies }}
+    {{ form.cookies_label|safe }}
+  </div>
+</div>
+<div class="form-actions-no-box mt-4">
+    <a href="javascript:accepts();" type="button" class="btn btn-green-admin">{% trans 'Confirm' %}</a>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="gdpr" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{% trans 'Data protection' %}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      {% blocktrans %}
+      <p>If you do not consent to all terms and conditons this service may not be available to
+anyone in your organization.<br /><br />
+      If you are sure to opt out of using this service please contact <a href="mailto:suport@pangea.org">suport@pangea.org</a> to unsubscribe. If you wish to continue, you must consent to all terms and conditions.</p>
+      {% endblocktrans %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans 'No' %}</button>
+        <input id="submit" class="btn btn-green-admin" type="submit" name="submit" value="{% translate 'Yes' %}" />
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+{% endblock %}
+
+{% block extrascript %}
+<script>
+$(document).ready(function() {
+});
+
+function accepts() {
+  var privacy = $("#id_accept_privacy").prop("checked");
+  var policy = $("#id_accept_legal").prop("checked");
+  var cookies = $("#id_accept_cookies").prop("checked");
+  if (privacy && policy && cookies) {
+    $("#submit").trigger("click");
+  } else {
+    $("#gdpr").modal("show");
+  }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Edit {{ actor.name }} — NeoCycleHub{% endblock %}
+{% block content %}
+<h1>Edit actor: {{ actor.name }}</h1>
+<p><a href="{% url 'actor_detail' actor.pk %}">← Back to actor</a></p>
+
+<form method="post" style="max-width:700px">
+  {% csrf_token %}
+  <table style="width:100%;border-collapse:collapse">
+    <tr>
+      <th style="text-align:left;padding:0.5rem 1rem 0.5rem 0;width:160px">DID</th>
+      <td><input name="did" value="{{ actor.did }}" style="width:100%;font-family:monospace;padding:0.4rem"></td>
+    </tr>
+    <tr>
+      <th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">idhub API URL</th>
+      <td><input name="idhub_url" value="{{ actor.idhub_url }}" style="width:100%;padding:0.4rem"></td>
+    </tr>
+    <tr>
+      <th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">idhub Token</th>
+      <td><input name="idhub_token" value="{{ actor.idhub_token }}" style="width:100%;font-family:monospace;padding:0.4rem"></td>
+    </tr>
+    <tr>
+      <th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Registered ID</th>
+      <td><input name="registered_id" value="{{ actor.registered_id }}" style="width:100%;padding:0.4rem" placeholder="e.g. SIRENE number"></td>
+    </tr>
+    <tr>
+      <th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">ID scheme URI</th>
+      <td><input name="id_scheme_id" value="{{ actor.id_scheme_id }}" style="width:100%;font-family:monospace;padding:0.4rem" placeholder="https://vocabulary.uncefact.org/identifierSchemes/GLEIF (default if blank)"></td>
+    </tr>
+    <tr>
+      <th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">ID scheme name</th>
+      <td><input name="id_scheme_name" value="{{ actor.id_scheme_name }}" style="width:100%;padding:0.4rem" placeholder="GLEIF LEI"></td>
+    </tr>
+    <tr>
+      <th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">LEI</th>
+      <td><input name="lei_id" value="{{ actor.lei_id }}" style="width:100%;padding:0.4rem"></td>
+    </tr>
+    <tr>
+      <th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Registered date</th>
+      <td><input type="date" name="registered_date" value="{{ actor.registered_date|date:'Y-m-d' }}" style="padding:0.4rem"> (default: today, if blank)</td>
+    </tr>
+    <tr>
+      <th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Website</th>
+      <td><input name="website" value="{{ actor.website }}" style="width:100%;padding:0.4rem"></td>
+    </tr>
+    <tr>
+      <th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Country code</th>
+      <td><input name="country_code" value="{{ actor.country_code }}" style="width:80px;padding:0.4rem" placeholder="FR"> (ISO 3166-1 alpha-2)</td>
+    </tr>
+    <tr>
+      <th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Country name</th>
+      <td><input name="country_name" value="{{ actor.country_name }}" style="width:100%;padding:0.4rem"></td>
+    </tr>
+  </table>
+  <div style="margin-top:1rem">
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a href="{% url 'actor_detail' actor.pk %}" style="margin-left:1rem">Cancel</a>
+  </div>
+</form>
+{% endblock %}

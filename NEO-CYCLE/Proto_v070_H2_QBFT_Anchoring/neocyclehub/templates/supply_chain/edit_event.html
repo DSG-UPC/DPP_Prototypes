@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Edit {{ event.name }} — NeoCycleHub{% endblock %}
+{% block content %}
+<h1>Edit event: {{ event.name }}</h1>
+<p><a href="{% url 'actor_detail' event.actor.pk %}">← Back to actor</a></p>
+
+<form method="post" style="max-width:900px">
+  {% csrf_token %}
+  <table style="width:100%;border-collapse:collapse">
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0;width:180px">Name</th>
+      <td><input name="name" value="{{ event.name }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Description</th>
+      <td><textarea name="description" rows="3" style="width:100%;padding:0.4rem">{{ event.description }}</textarea></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Event type</th>
+      <td>
+        <select name="event_type" style="padding:0.4rem">
+          <option value="MakeEvent" {% if event.event_type == 'MakeEvent' %}selected{% endif %}>Make / Produce</option>
+          <option value="ModifyEvent" {% if event.event_type == 'ModifyEvent' %}selected{% endif %}>Modify / Transform</option>
+          <option value="MoveEvent" {% if event.event_type == 'MoveEvent' %}selected{% endif %}>Move / Transport</option>
+        </select>
+      </td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Event date</th>
+      <td><input type="datetime-local" name="event_date" value="{{ event.event_date|date:'Y-m-d\TH:i' }}" style="padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Activity code</th>
+      <td><input name="activity_code" value="{{ event.activity_code }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Activity name</th>
+      <td><input name="activity_name" value="{{ event.activity_name }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Activity scheme URI (activityType.schemeId)</th>
+      <td><input name="activity_scheme_id" value="{{ event.activity_scheme_id }}" style="width:100%;font-family:monospace;padding:0.4rem" placeholder="https://ref.gs1.org/cbv/BizStep (default if blank)"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Activity scheme name (activityType.schemeName)</th>
+      <td><input name="activity_scheme_name" value="{{ event.activity_scheme_name }}" style="width:100%;padding:0.4rem" placeholder="GS1 CBV Business Step"></td></tr>
+    <tr><td colspan="2"><hr></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Origin facility name override<br><span style="font-weight:normal;font-size:0.85em;color:#666">madeAtFacility / modifiedAtFacility / fromFacility</span></th>
+      <td><input name="origin_facility_name_override" value="{{ event.origin_facility_name_override }}" style="width:100%;padding:0.4rem" placeholder="{{ event.actor.name }} — Main Facility (default if blank)"></td></tr>
+    <tr><td colspan="2"><hr></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Destination facility URL</th>
+      <td><input name="destination_facility_id" value="{{ event.destination_facility_id }}" style="width:100%;font-family:monospace;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Destination facility name</th>
+      <td><input name="destination_facility_name" value="{{ event.destination_facility_name }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><td colspan="2"><hr></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0;vertical-align:top">Input products</th>
+      <td>
+        <select name="input_products" multiple size="8" style="width:100%;padding:0.4rem">
+          {% for p in all_products %}
+          <option value="{{ p.pk }}" {% if p.pk in input_ids %}selected{% endif %}>{{ p.actor.name }} — {{ p.name }}</option>
+          {% endfor %}
+        </select>
+      </td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0;vertical-align:top">Output products</th>
+      <td>
+        <select name="output_products" multiple size="8" style="width:100%;padding:0.4rem">
+          {% for p in all_products %}
+          <option value="{{ p.pk }}" {% if p.pk in output_ids %}selected{% endif %}>{{ p.actor.name }} — {{ p.name }}</option>
+          {% endfor %}
+        </select>
+      </td></tr>
+  </table>
+  <div style="margin-top:1rem">
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a href="{% url 'actor_detail' event.actor.pk %}" style="margin-left:1rem">Cancel</a>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,11 @@
+{
+ "uuid": "77b162e8-0523-437f-974a-06ac37885fd7",
+ "hash": "0x92181b633aedc881374e7398a4eb936dbd71b7722a00574fd9edcf3f7316cc61",
+ "sign_s": 1.1127016119935433,
+ "anchor_call_s": 30.103493283997523,
+ "recorded_tx": null,
+ "first_block_after_restart_s": 95.4205641746521,
+ "anchor_appeared_after_restart_s": 95.44804430007935,
+ "anchor_status_in_app": "not_anchored",
+ "included_on_chain_after_recovery": 1
+}

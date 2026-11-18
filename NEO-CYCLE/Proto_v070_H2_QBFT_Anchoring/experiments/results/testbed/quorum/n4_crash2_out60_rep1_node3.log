@@ -1,0 +1,144 @@
+[m[2m2026-11-11 13:25:23.044+0000[m[2m | [m[2mEthScheduler-Workers-0[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mBlock 122 (0xab35cb4a7bbd0e11d654311df606af0e930d4b30fbf686011f8ff9fe17431fad) is already imported
+[m[2m2026-11-11 13:25:23.044+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported empty block #122 / 0 tx / 0 pending / 0 (0.0%) gas / (0xab35cb4a7bbd0e11d654311df606af0e930d4b30fbf686011f8ff9fe17431fad)
+[m[2m2026-11-11 13:25:25.044+0000[m[2m | [m[2mEthScheduler-Workers-7[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mBlock 123 (0x2879fea063070cd33a9e3ee70622b00041756e7c0349347f83c250731241841f) is already imported
+[m[2m2026-11-11 13:25:25.044+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported block       #123 / 1 tx / 0 pending / 193,057 (4.1%) gas / (0x2879fea063070cd33a9e3ee70622b00041756e7c0349347f83c250731241841f)
+[m[2m2026-11-11 13:25:27.019+0000[m[2m | [m[2mEthScheduler-Workers-1[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mImported empty block #124 / 0 tx / 0 om / 0 (0.0%) gas / (0xc7f364cfc16cebbff72e99054267dc5916f467b1a68e0886044b76170a55fb53) in 0.000s. Peers: 3
+[m[2m2026-11-11 13:25:27.023+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mProduced empty block #124 / 0 tx / 0 pending / 0 (0.0%) gas / (0xc7f364cfc16cebbff72e99054267dc5916f467b1a68e0886044b76170a55fb53)
+[m[2m2026-11-11 13:25:29.020+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported empty block #125 / 0 tx / 0 pending / 0 (0.0%) gas / (0xa20068131668e63b426225e143598a5d65c4e2fb7b3e39e6e9012969b8df07e9)
+[m[2m2026-11-11 13:25:31.045+0000[m[2m | [m[2mEthScheduler-Workers-6[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mBlock 126 (0xaf2ceaf6e4151cf24eea8651b4d674988981be5bc06faede5211e4444ffeb9b7) is already imported
+[m[2m2026-11-11 13:25:31.045+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported block       #126 / 3 tx / 0 pending / 81,597 (1.7%) gas / (0xaf2ceaf6e4151cf24eea8651b4d674988981be5bc06faede5211e4444ffeb9b7)
+[m[2m2026-11-11 13:25:33.057+0000[m[2m | [m[2mEthScheduler-Workers-5[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mImported block #127 / 5 tx / 0 om / 136,055 (2.9%) gas / (0xeeff25b0ab394fabc14a246d6a65c9948e883a1a0ec0c0b5bdd4b8f456dfe6d3) in 0.000s. Peers: 3
+[m[2m2026-11-11 13:25:35.086+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mProduced block       #128 / 5 tx / 0 pending / 136,043 (2.9%) gas / (0xbcefe7bd770ffb5fc3706355aa298e45d6f9c2834f2ce8894bb04efcf52f68ee)
+[m[2m2026-11-11 13:25:37.063+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported block       #129 / 5 tx / 0 pending / 136,055 (2.9%) gas / (0x24d5d2effd5ecc1d6aa0a8f3697cd4afbe17f62cd2314a6d94cdf4de8a726cd7)
+[m[2m2026-11-11 13:25:39.079+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported block       #130 / 4 tx / 0 pending / 108,832 (2.3%) gas / (0xc50639afc580e2751355fc457c914bad173ec63f7c8b139456fb7aff8c966377)
+[m[2m2026-11-11 13:25:39.082+0000[m[2m | [m[2mEthScheduler-Workers-1[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mBlock 130 (0xc50639afc580e2751355fc457c914bad173ec63f7c8b139456fb7aff8c966377) is already imported
+[m[2m2026-11-11 13:25:41.067+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported block       #131 / 3 tx / 0 pending / 81,633 (1.7%) gas / (0x987416bd8c2f9d2cf654e5d4f45c4c114f5604231bf8e54802d00066bd9f9046)
+[m[2m2026-11-11 13:25:43.096+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mProduced block       #132 / 10 tx / 2 pending / 272,098 (5.8%) gas / (0xb0d1165d87b82515a5f48829ae074cead62ac13720269b976775788615fc8b7e)
+[m[2m2026-11-11 13:25:43.097+0000[m[2m | [m[2mEthScheduler-Workers-0[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mBlock 132 (0xb0d1165d87b82515a5f48829ae074cead62ac13720269b976775788615fc8b7e) is already imported
+[m[2m2026-11-11 13:25:45.070+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported block       #133 / 6 tx / 0 pending / 163,266 (3.5%) gas / (0xc11aae501424bfeace3b87199be715221a6421ab4162f57c777597b9c4fdb4f2)
+[m[2m2026-11-11 13:25:45.071+0000[m[2m | [m[2mEthScheduler-Workers-3[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mBlock 133 (0xc11aae501424bfeace3b87199be715221a6421ab4162f57c777597b9c4fdb4f2) is already imported
+[m[2m2026-11-11 13:25:47.035+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported empty block #134 / 0 tx / 0 pending / 0 (0.0%) gas / (0x0f7ae836bbbf165d2113bfe3ab4f6ff5a21b10af4ca44debb34dd5541bbaf800)
+[m[2m2026-11-11 13:25:49.040+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported block       #135 / 4 tx / 0 pending / 108,844 (2.3%) gas / (0xcd0df4dcbf8c1c4a1505b8eda7c1a296aae0cf22040874915ec0f16722ec5ea6)
+[m[2m2026-11-11 13:25:51.062+0000[m[2m | [m[2mEthScheduler-Workers-6[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mBlock 136 (0xceb6d6134cee5b2fd4bf60fcff5e9faf8327a1af95c5f93b2be191ec8d703324) is already imported
+[m[2m2026-11-11 13:25:51.062+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mProduced block       #136 / 2 tx / 0 pending / 54,422 (1.2%) gas / (0xceb6d6134cee5b2fd4bf60fcff5e9faf8327a1af95c5f93b2be191ec8d703324)
+[m[2m2026-11-11 13:25:53.064+0000[m[2m | [m[2mEthScheduler-Workers-5[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mBlock 137 (0xd74b1f169bd17780ac35f51682054de687a1bc743a44c007e817abc2c0c084c5) is already imported
+[m[2m2026-11-11 13:25:53.065+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported block       #137 / 3 tx / 1 pending / 81,633 (1.7%) gas / (0xd74b1f169bd17780ac35f51682054de687a1bc743a44c007e817abc2c0c084c5)
+[m[2m2026-11-11 13:25:55.058+0000[m[2m | [m[2mEthScheduler-Workers-4[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mBlock 138 (0xb0f0ca3d0be6f630830913ad2bf32c0a9d9df87c8076edb4b40a9ca8896d11ee) is already imported
+[m[2m2026-11-11 13:25:55.060+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported block       #138 / 4 tx / 0 pending / 108,832 (2.3%) gas / (0xb0f0ca3d0be6f630830913ad2bf32c0a9d9df87c8076edb4b40a9ca8896d11ee)
+[m[2m2026-11-11 13:25:57.065+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported block       #139 / 5 tx / 0 pending / 136,055 (2.9%) gas / (0x88219a360ba5a37dfd92758527fc89c7c2dbc0d9e62eaea03a8802c7a451074c)
+[m[2m2026-11-11 13:25:59.061+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mProduced block       #140 / 5 tx / 0 pending / 136,043 (2.9%) gas / (0x31b471d891217daad91f4a13ff7a43845f5f81dd26886e01ae0515ca5316253b)
+
+Session terminated, killing shell...[m[2m2026-11-11 13:27:05.169+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBesu[m[2m | [m[32mStarting Besu
+[m[2m2026-11-11 13:27:05.972+0000[m[2m | [m[2mmain[m[2m | [m[33mWARN [m[2m | [m[2mBesu[m[2m | [m[33m--rpc-ws-host has been ignored because --rpc-ws-enabled was not defined on the command line.
+[m[2m2026-11-11 13:27:05.980+0000[m[2m | [m[2mmain[m[2m | [m[33mWARN [m[2m | [m[2mBesu[m[2m | [m[33m--graphql-http-host has been ignored because --graphql-http-enabled was not defined on the command line.
+[m[2m2026-11-11 13:27:07.558+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBesu[m[2m | [m[32mRPC HTTP JSON-RPC config: JsonRpcConfiguration{enabled=true, port=8545, host=0.0.0.0, corsAllowedDomains=[], hostsAllowlist=[*], rpcApis=[ETH, NET, QBFT, ADMIN, WEB3, TXPOOL], authenticationEnabled=false, authenticationCredentialsFile=null, authenticationPublicKeyFile=null, tlsConfiguration=Optional.empty, httpTimeoutSec=30, maxActiveConnections=80, maxBatchSize=1024}
+[m[2m2026-11-11 13:27:07.562+0000[m[2m | [m[2mmain[m[2m | [m[33mWARN [m[2m | [m[2mBesu[m[2m | [m[33mForcing --bonsai-limit-trie-logs-enabled=false, since it cannot be enabled with --sync-mode=FULL and --data-storage-format=BONSAI.
+[m[2m2026-11-11 13:27:07.612+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBesu[m[2m | [m[32mConnecting to 3 static nodes.
+[m[2m2026-11-11 13:27:07.636+0000[m[2m | [m[2mmain[m[2m | [m[33mWARN [m[2m | [m[2mBesu[m[2m | [m[33mForcing price bump for transaction replacement to 0, since min-gas-price is set to 0
+[m[2m2026-11-11 13:27:07.638+0000[m[2m | [m[2mmain[m[2m | [m[33mWARN [m[2m | [m[2mBesu[m[2m | [m[33mForcing tx-pool-min-gas-price=0, since it cannot be greater than the value of min-gas-price
+[m[2m2026-11-11 13:27:07.779+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBesu[m[2m | [m[32m
+####################################################################################################
+#                                                                                                  #
+# Besu version 26.7.1                                                                              #
+#                                                                                                  #
+# Configuration:                                                                                   #
+# Network: Custom genesis file                                                                     #
+# /config/genesis.json                                                                             #
+# Network Id: 4004                                                                                 #
+# Data storage: Bonsai                                                                             #
+# RocksDB max open files: 1024 (derived from available resources)                                  #
+# Sync mode: Full                                                                                  #
+# Sync min peers: 5                                                                                #
+# P2P Discovery: disabled                                                                          #
+# RPC HTTP APIs: ETH,NET,QBFT,ADMIN,WEB3,TXPOOL                                                    #
+# RPC HTTP port: 8545                                                                              #
+# Using LAYERED transaction pool implementation                                                    #
+# Using STACKED worldstate update mode                                                             #
+# Opcode optimizations enabled                                                                     #
+# Parallel transaction processing enabled                                                          #
+# BAL pruning enabled (retained BALs: 113056)                                                      #
+#                                                                                                  #
+# Host:                                                                                            #
+# Java: openjdk-java-25                                                                            #
+# Maximum heap size: 0.75 GB                                                                       #
+# OS: linux-x86_64                                                                                 #
+# glibc: 2.39                                                                                      #
+# jemalloc: 5.3.0-0-g54eaed1d8b56b1aa528be3bdd1877e59c56fa90c                                      #
+# Total memory: 46.70 GB                                                                           #
+# CPU cores: 8                                                                                     #
+#                                                                                                  #
+# Plugin Registration Summary:                                                                     #
+# No plugins have been registered.                                                                 #
+# TOTAL = 0 of 0 plugins successfully registered.                                                  #
+#                                                                                                  #
+####################################################################################################
+[m[2m2026-11-11 13:27:07.783+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBesu[m[2m | [m[32mSecurity Module: localfile
+[m[2m2026-11-11 13:27:07.783+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mVersionMetadata[m[2m | [m[32mLookup version metadata file in data directory: /tmp/data
+[m[2m2026-11-11 13:27:07.827+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mVersionMetadata[m[2m | [m[32mExisting version data detected. Besu version 26.7.1
+[m[2m2026-11-11 13:27:07.863+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBesu[m[2m | [m[32mUsing the native implementation of alt bn128
+[m[2m2026-11-11 13:27:07.865+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBesu[m[2m | [m[32mUsing the Java implementation of modexp
+[m[2m2026-11-11 13:27:07.900+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBesu[m[2m | [m[32mUsing the native implementation of the signature algorithm
+[m[2m2026-11-11 13:27:07.904+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBesu[m[2m | [m[32mUsing the native implementation of the blake2bf algorithm
+[m[2m2026-11-11 13:27:08.081+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBesu[m[2m | [m[32mUsing the native BoringSSL implementation of p256verify
+[m[2m2026-11-11 13:27:08.285+0000[m[2m | [m[2mmain[m[2m | [m[33mWARN [m[2m | [m[2mBesu[m[2m | [m[33mForcing price bump for transaction replacement to 0, since min-gas-price is set to 0
+[m[2m2026-11-11 13:27:08.286+0000[m[2m | [m[2mmain[m[2m | [m[33mWARN [m[2m | [m[2mBesu[m[2m | [m[33mForcing tx-pool-min-gas-price=0, since it cannot be greater than the value of min-gas-price
+[m[2m2026-11-11 13:27:08.292+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mKeyPairUtil[m[2m | [m[32mAttempting to load public key from /config/key
+[m[2m2026-11-11 13:27:08.323+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mKeyPairUtil[m[2m | [m[32mLoaded public key 0x1ddc56f2c84db9849c88431521e4666201f1232460c5ad5f16c542675cbd91af3bbfb142383e5f459a6a0eb8611f29d557d260c2f046cdb6bbdd151c551bb3ac from /config/key
+[m[2m2026-11-11 13:27:08.506+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mProtocolScheduleBuilder[m[2m | [m[32mProtocol schedule created with milestones: [Berlin:0]
+[m[2m2026-11-11 13:27:08.509+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mDatabaseMetadata[m[2m | [m[32mLookup database metadata file in data directory: /tmp/data
+[m[2m2026-11-11 13:27:08.554+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mRocksDBKeyValueStorageFactory[m[2m | [m[32mExisting database at /tmp/data. Metadata versionedStorageFormat=BaseVersionedStorageFormat{format=BONSAI, version=3}. Processing WAL...
+[m[2m2026-11-11 13:27:08.925+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mFlatDbStrategyProvider[m[2m | [m[32mFlat db mode found FULL
+[m[2m2026-11-11 13:27:08.930+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mFlatDbStrategyProvider[m[2m | [m[32mDB mode with code stored using code hash enabled = true
+[m[2m2026-11-11 13:27:08.962+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mFlatDbStrategyProvider[m[2m | [m[32mFlat db mode found FULL
+[m[2m2026-11-11 13:27:08.963+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mFlatDbStrategyProvider[m[2m | [m[32mDB mode with code stored using code hash enabled = true
+[m[2m2026-11-11 13:27:09.074+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBesuControllerBuilder[m[2m | [m[32mAdding ChainDataPruner to observe block added events
+[m[2m2026-11-11 13:27:09.078+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBesuControllerBuilder[m[2m | [m[32mBAL pruning enabled | BALs retained: 113056 | Frequency: 256
+[m[2m2026-11-11 13:27:09.117+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mTransactionPoolFactory[m[2m | [m[32mEnabling transaction pool
+[m[2m2026-11-11 13:27:09.158+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBesuControllerBuilder[m[2m | [m[32mQBFT is configured, creating initial sync for BFT
+[m[2m2026-11-11 13:27:09.160+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBFTPivotSelectorFromPeers[m[2m | [m[32mCreating pivot block selector for BFT node
+[m[2m2026-11-11 13:27:09.246+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mRunnerBuilder[m[2m | [m[32mDetecting NAT service.
+[m[2m2026-11-11 13:27:09.464+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mRunner[m[2m | [m[32mStarting external services ... 
+[m[2m2026-11-11 13:27:09.468+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mJsonRpcHttpService[m[2m | [m[32mStarting JSON-RPC service on 0.0.0.0:8545
+[m[2m2026-11-11 13:27:09.697+0000[m[2m | [m[2mvert.x-eventloop-thread-1[m[2m | [m[32mINFO [m[2m | [m[2mJsonRpcHttpService[m[2m | [m[32mJSON-RPC service started and listening on 0.0.0.0:8545
+[m[2m2026-11-11 13:27:09.705+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mAutoTransactionLogBloomCachingService[m[2m | [m[32mStarting auto transaction log bloom caching service.
+[m[2m2026-11-11 13:27:09.707+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mLogBloomCacheMetadata[m[2m | [m[32mLookup cache metadata file in data directory: /tmp/data/caches
+[m[2m2026-11-11 13:27:09.722+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mRunner[m[2m | [m[32mStarting Ethereum main loop ... 
+[m[2m2026-11-11 13:27:09.722+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mDockerNatManager[m[2m | [m[32mStarting docker NAT manager.
+[m[2m2026-11-11 13:27:09.730+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mNetworkRunner[m[2m | [m[32mStarting Network.
+[m[2m2026-11-11 13:27:09.757+0000[m[2m | [m[2mnioEventLoopGroup-2-1[m[2m | [m[32mINFO [m[2m | [m[2mRlpxAgent[m[2m | [m[32mP2P RLPx agent started and listening on /[0:0:0:0:0:0:0:0]:30303.
+[m[2m2026-11-11 13:27:09.759+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mDefaultP2PNetwork[m[2m | [m[32mEnode URL enode://1ddc56f2c84db9849c88431521e4666201f1232460c5ad5f16c542675cbd91af3bbfb142383e5f459a6a0eb8611f29d557d260c2f046cdb6bbdd151c551bb3ac@172.30.0.13:30303?discport=0
+[m[2m2026-11-11 13:27:09.763+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mDefaultP2PNetwork[m[2m | [m[32mNode address 0xab7a31eff5961f1aaf3c7beb9e6bbaec4881fba1
+[m[2m2026-11-11 13:27:09.817+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mNetworkRunner[m[2m | [m[32mSupported capabilities: [eth/68, eth/69, eth/70, eth/71], [istanbul/100], [snap/1]
+[m[2m2026-11-11 13:27:09.818+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mDefaultSynchronizer[m[2m | [m[32mStarting synchronizer.
+[m[2m2026-11-11 13:27:09.821+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mTransactionPoolFactory[m[2m | [m[32mEnabling transaction handling following initial sync
+[m[2m2026-11-11 13:27:09.824+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mBftMiningCoordinator[m[2m | [m[32mStarting BFT mining coordinator following initial sync
+[m[2m2026-11-11 13:27:09.917+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mFullSyncDownloader[m[2m | [m[32mStarting full sync.
+[m[2m2026-11-11 13:27:09.918+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mFullSyncTargetManager[m[2m | [m[32mUnable to find sync target. Waiting for 5 peers minimum. Currently checking 0 peers for usefulness
+[m[2m2026-11-11 13:27:09.929+0000[m[2m | [m[2mmain[m[2m | [m[32mINFO [m[2m | [m[2mRunner[m[2m | [m[32mEthereum main loop is up.
+[m[2m2026-11-11 13:27:11.015+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mBFT round summary (quorum = 3)
+[m[2m2026-11-11 13:27:11.015+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mAddress: 0x2544f56c3043556c5dc0abc9c643512473f73a3b  Round: 3 
+[m[2m2026-11-11 13:27:11.015+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mAddress: 0x47932e687dde61128325ba60edba4d9cd0c110be  Round: 3 
+[m[2m2026-11-11 13:27:19.634+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mBFT round summary (quorum = 3)
+[m[2m2026-11-11 13:27:19.635+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mAddress: 0x2544f56c3043556c5dc0abc9c643512473f73a3b  Round: 3 
+[m[2m2026-11-11 13:27:19.635+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mAddress: 0x47932e687dde61128325ba60edba4d9cd0c110be  Round: 3 
+[m[2m2026-11-11 13:27:19.636+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mAddress: 0x5260c220124d07f0387709a887c70181725a470d  Round: 1 
+[m[2m2026-11-11 13:27:39.944+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundTimer[m[2m | [m[32mMoved to round 2 which will expire in 40 seconds
+[m[2m2026-11-11 13:27:39.946+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mBFT round summary (quorum = 3)
+[m[2m2026-11-11 13:27:39.946+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mAddress: 0x2544f56c3043556c5dc0abc9c643512473f73a3b  Round: 3 
+[m[2m2026-11-11 13:27:39.946+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mAddress: 0x47932e687dde61128325ba60edba4d9cd0c110be  Round: 3 
+[m[2m2026-11-11 13:27:39.946+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mAddress: 0xab7a31eff5961f1aaf3c7beb9e6bbaec4881fba1  Round: 2 (Local node)
+[m[2m2026-11-11 13:27:39.946+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mAddress: 0x5260c220124d07f0387709a887c70181725a470d  Round: 2 
+[m[2m2026-11-11 13:28:19.620+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mBFT round summary (quorum = 3)
+[m[2m2026-11-11 13:28:19.621+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mAddress: 0x2544f56c3043556c5dc0abc9c643512473f73a3b  Round: 3 
+[m[2m2026-11-11 13:28:19.621+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mAddress: 0x47932e687dde61128325ba60edba4d9cd0c110be  Round: 3 
+[m[2m2026-11-11 13:28:19.621+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mAddress: 0xab7a31eff5961f1aaf3c7beb9e6bbaec4881fba1  Round: 2 (Local node)
+[m[2m2026-11-11 13:28:19.621+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundChangeManager[m[2m | [m[32mAddress: 0x5260c220124d07f0387709a887c70181725a470d  Round: 3 
+[m[2m2026-11-11 13:28:19.621+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mRoundTimer[m[2m | [m[32mMoved to round 3 which will expire in 80 seconds
+[m[2m2026-11-11 13:28:20.257+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftRound[m[2m | [m[32mImporting proposed block to chain. round=ConsensusRoundIdentifier{Sequence=141, Round=3}, hash=0xc4ab7b0899bd5a8fe08c8246dd77838d76a6be4947e5d4a327521b3ecd405c5c
+[m[2m2026-11-11 13:28:20.536+0000[m[2m | [m[2mEthScheduler-Workers-7[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mBlock 141 (0xc4ab7b0899bd5a8fe08c8246dd77838d76a6be4947e5d4a327521b3ecd405c5c) is already imported
+[m[2m2026-11-11 13:28:20.564+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mProduced block       #141 / 170 tx / 66 pending / 4,625,534 (98.4%) gas / (0xc4ab7b0899bd5a8fe08c8246dd77838d76a6be4947e5d4a327521b3ecd405c5c)
+[m[2m2026-11-11 13:28:21.249+0000[m[2m | [m[2mEthScheduler-Workers-0[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mBlock 142 (0x31189558457a6fd0ea4a2a45051d62b9874cf662a977e247a450b9de0161a900) is already imported
+[m[2m2026-11-11 13:28:21.252+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported block       #142 / 66 tx / 0 pending / 1,795,842 (38.2%) gas / (0x31189558457a6fd0ea4a2a45051d62b9874cf662a977e247a450b9de0161a900)
+[m[2m2026-11-11 13:28:23.021+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mImported empty block #143 / 0 tx / 0 pending / 0 (0.0%) gas / (0xa3f63b0dd17d74b540fc4b07010bec4bd9a2eadb95e426146c5200a4ccbb3f13)
+[m[2m2026-11-11 13:28:25.057+0000[m[2m | [m[2mEthScheduler-Workers-3[m[2m | [m[32mINFO [m[2m | [m[2mPersistBlockTask[m[2m | [m[32mImported empty block #144 / 0 tx / 0 om / 0 (0.0%) gas / (0x1c4ec4457d9b04372a1b7671d31c9391b1f897eff1db990cd6cfd0a3ec34baa0) in 0.000s. Peers: 3
+[m[2m2026-11-11 13:28:27.029+0000[m[2m | [m[2mBftProcessorExecutor-QBFT-0[m[2m | [m[32mINFO [m[2m | [m[2mQbftBesuControllerBuilder[m[2m | [m[32mProduced empty block #145 / 0 tx / 0 pending / 0 (0.0%) gas / (0x4a6051b55397752ca4fbbcb516617bdfe43b13cb4e57f6817b0ffdfb7355598a)

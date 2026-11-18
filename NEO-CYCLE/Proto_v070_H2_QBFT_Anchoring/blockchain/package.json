@@ -1,0 +1,13 @@
+{
+  "name": "neocycle-chain-anchor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DPPAnchor Solidity contract + deploy tooling for the NeoCycle blockchain-anchoring PoC, deployed to a 3-node Besu QBFT network (see besu-config/)",
+  "scripts": {
+    "deploy": "hardhat run scripts/deploy.js --network besu"
+  },
+  "devDependencies": {
+    "hardhat": "^2.22.0",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0"
+  }
+}

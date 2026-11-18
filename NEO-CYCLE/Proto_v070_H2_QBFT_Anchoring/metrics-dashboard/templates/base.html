@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Timing Metrics — NeoCycle Demonstrator{% endblock %}</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 1100px; margin: 0 auto; padding: 1rem 2rem; color: #222; }
+    h1, h2, h3 { color: #1a5276; }
+    nav { margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #1a5276; }
+    nav a { margin-right: 1.5rem; color: #1a5276; text-decoration: none; font-weight: 600; }
+    .disclaimer { background: #fdf6e3; border-left: 4px solid #d4a017; padding: 0.6rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid #eee; }
+    th { background: #f4f6f7; }
+    select { padding: 0.3rem 0.5rem; border: 1px solid #ccc; border-radius: 4px; }
+    button, .btn { padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer; border: 1px solid #1a5276; background: #1a5276; color: #fff; text-decoration: none; display: inline-block; font-size: 0.9rem; }
+    .btn-secondary { background: #fff; color: #1a5276; }
+    code { background: #f4f4f4; padding: 1px 5px; border-radius: 3px; font-size: 0.85em; }
+    .muted { color: #888; font-size: 0.85rem; }
+    .bar-track { background: #f0f0f0; border-radius: 3px; height: 14px; width: 100%; }
+    .bar-fill { background: #1a5276; border-radius: 3px; height: 14px; }
+    .filters { display: flex; gap: 0.75rem; align-items: center; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{% url 'dashboard' %}">📊 Timing Metrics</a>
+    <span class="muted">issuance and verification timing samples</span>
+  </nav>
+
+  <div class="disclaimer">
+    <strong>Order-of-magnitude evidence, not a production benchmark.</strong>
+    Every number here comes from a dev server on shared local hardware, not
+    a production deployment — treat the relative gaps (automated vs.
+    estimated manual baseline) as the defensible finding, not the absolute
+    milliseconds.
+  </div>
+
+  {% block content %}{% endblock %}
+</body>
+</html>

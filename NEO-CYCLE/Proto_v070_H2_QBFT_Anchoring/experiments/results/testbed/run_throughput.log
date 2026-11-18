@@ -1,0 +1,19 @@
+[16:27:23] throughput: network validators4_block_period2
+  warm-up 81 s
+  load warm-up done
+  n4_b2_r20.json: sent=1200 included=1200 errors=0 median=1.128s p95=1.998s
+  n4_b2_r40.json: sent=2400 included=2400 errors=0 median=1.133s p95=2.052s
+  n4_b2_r60.json: sent=3600 included=3600 errors=0 median=1.124s p95=2.056s
+  n4_b2_r80.json: sent=4800 included=4800 errors=0 median=1.234s p95=2.127s
+  n4_b2_r100.json: sent=6000 included=6000 errors=0 median=4.117s p95=23.818s
+  n4_b2_r120.json: sent=7200 included=7200 errors=0 median=8.034s p95=37.059s
+[16:43:26] throughput: network validators7_block_period2
+  warm-up 138 s
+  load warm-up done
+  n7_b2_r20.json: sent=1200 included=1200 errors=0 median=1.693s p95=3.064s
+  n7_b2_r40.json: sent=2400 included=2400 errors=0 median=1.843s p95=4.101s
+  n7_b2_r60.json: sent=3600 included=3600 errors=0 median=1.913s p95=3.289s
+  n7_b2_r80.json: sent=4800 included=4800 errors=0 median=2.602s p95=7.422s
+  n7_b2_r100.json: sent=6000 included=6000 errors=0 median=7.854s p95=27.305s
+  n7_b2_r120.json: sent=7200 included=7200 errors=0 median=16.104s p95=53.246s
+[17:01:23] all done

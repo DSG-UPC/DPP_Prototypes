@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}Edit {{ event.name }} — NeoCycleHub{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2"><i class="bi bi-pencil me-2"></i>Edit event: {{ event.name }}</h1>
+  <a href="{% url 'actor_detail' event.actor.pk %}" class="btn btn-sm btn-grey">
+    <i class="bi bi-arrow-left me-1"></i>Back
+  </a>
+</div>
+
+<div class="card shadow-sm" style="max-width:820px">
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Name</label>
+        <input name="name" value="{{ event.name }}" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Description</label>
+        <textarea name="description" class="form-control" rows="3">{{ event.description }}</textarea>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-semibold">Event type</label>
+          <select name="event_type" class="form-select">
+            <option value="MakeEvent" {% if event.event_type == 'MakeEvent' %}selected{% endif %}>Make / Produce</option>
+            <option value="ModifyEvent" {% if event.event_type == 'ModifyEvent' %}selected{% endif %}>Modify / Transform</option>
+            <option value="MoveEvent" {% if event.event_type == 'MoveEvent' %}selected{% endif %}>Move / Transport</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-semibold">Event date</label>
+          <input type="datetime-local" name="event_date" value="{{ event.event_date|date:'Y-m-d\TH:i' }}" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mb-3">
+          <label class="form-label fw-semibold">Activity code</label>
+          <input name="activity_code" value="{{ event.activity_code }}" class="form-control">
+        </div>
+        <div class="col-md-3 mb-3">
+          <label class="form-label fw-semibold">Activity name</label>
+          <input name="activity_name" value="{{ event.activity_name }}" class="form-control">
+        </div>
+        <div class="col-md-3 mb-3">
+          <label class="form-label fw-semibold">Activity scheme URI <span class="text-muted fw-normal">(<code>activityType.schemeId</code>)</span></label>
+          <input name="activity_scheme_id" value="{{ event.activity_scheme_id }}" class="form-control font-monospace"
+                 placeholder="https://ref.gs1.org/cbv/BizStep (default if blank)">
+        </div>
+        <div class="col-md-3 mb-3">
+          <label class="form-label fw-semibold">Activity scheme name <span class="text-muted fw-normal">(<code>.schemeName</code>)</span></label>
+          <input name="activity_scheme_name" value="{{ event.activity_scheme_name }}" class="form-control"
+                 placeholder="GS1 CBV Business Step">
+        </div>
+      </div>
+      <hr>
+      <p class="text-muted small">Origin facility — the issuing actor's own facility, used for <code>madeAtFacility</code> / <code>modifiedAtFacility</code> / <code>fromFacility</code></p>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Origin facility name override</label>
+        <input name="origin_facility_name_override" value="{{ event.origin_facility_name_override }}" class="form-control"
+               placeholder="{{ event.actor.name }} — Main Facility (default if blank)">
+      </div>
+      <hr>
+      <p class="text-muted small">Destination facility (used for MoveEvent's <code>toFacility</code>)</p>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">Destination facility URL</label>
+          <input name="destination_facility_id" value="{{ event.destination_facility_id }}" class="form-control font-monospace">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">Destination facility name</label>
+          <input name="destination_facility_name" value="{{ event.destination_facility_name }}" class="form-control">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">Input products</label>
+          <select name="input_products" class="form-select" multiple size="8">
+            {% for p in all_products %}
+            <option value="{{ p.pk }}" {% if p.pk in input_ids %}selected{% endif %}>{{ p.actor.name }} — {{ p.name }}</option>
+            {% endfor %}
+          </select>
+          <div class="form-text">Ctrl/Cmd-click to select multiple</div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">Output products</label>
+          <select name="output_products" class="form-select" multiple size="8">
+            {% for p in all_products %}
+            <option value="{{ p.pk }}" {% if p.pk in output_ids %}selected{% endif %}>{{ p.actor.name }} — {{ p.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-green-admin" type="submit">
+          <i class="bi bi-check-lg me-1"></i>Save
+        </button>
+        <a href="{% url 'actor_detail' event.actor.pk %}" class="btn btn-grey">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

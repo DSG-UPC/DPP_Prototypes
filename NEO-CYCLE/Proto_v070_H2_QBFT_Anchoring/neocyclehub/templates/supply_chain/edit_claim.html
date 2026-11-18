@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Edit {{ claim.standard_name }} — NeoCycleHub{% endblock %}
+{% block content %}
+<h1>Edit conformity claim: {{ claim.standard_name }}</h1>
+<p><a href="{% url 'actor_detail' claim.actor.pk %}">← Back to actor</a></p>
+
+<form method="post" style="max-width:760px">
+  {% csrf_token %}
+  <table style="width:100%;border-collapse:collapse">
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0;width:180px">Name</th>
+      <td><input name="name" value="{{ claim.name }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Description</th>
+      <td><textarea name="description" rows="3" style="width:100%;padding:0.4rem">{{ claim.description }}</textarea></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Standard name</th>
+      <td><input name="standard_name" value="{{ claim.standard_name }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Standard URL</th>
+      <td><input name="standard_id" value="{{ claim.standard_id }}" style="width:100%;font-family:monospace;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Assessor name</th>
+      <td><input name="assessor_name" value="{{ claim.assessor_name }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Assessor DID</th>
+      <td><input name="assessor_did" value="{{ claim.assessor_did }}" style="width:100%;font-family:monospace;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Assessor level</th>
+      <td><input name="assessor_level" value="{{ claim.assessor_level }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Assessment level</th>
+      <td><input name="assessment_level" value="{{ claim.assessment_level }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Attestation type</th>
+      <td><input name="attestation_type" value="{{ claim.attestation_type }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Valid from</th>
+      <td><input type="date" name="valid_from" value="{{ claim.valid_from|date:'Y-m-d' }}" style="padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Valid until</th>
+      <td><input type="date" name="valid_until" value="{{ claim.valid_until|date:'Y-m-d' }}" style="padding:0.4rem"></td></tr>
+    <tr><td colspan="2"><hr></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Performance score code</th>
+      <td><input name="performance_score_code" value="{{ claim.performance_score_code }}" style="width:160px;padding:0.4rem" placeholder="pass (default if blank)"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Conformity topic URI</th>
+      <td><input name="conformity_topic_id" value="{{ claim.conformity_topic_id }}" style="width:100%;font-family:monospace;padding:0.4rem" placeholder="{{ claim.standard_id }}#topic (default if blank)"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Conformity topic name</th>
+      <td><input name="conformity_topic_name" value="{{ claim.conformity_topic_name }}" style="width:100%;padding:0.4rem" placeholder="Environmental Sustainability"></td></tr>
+  </table>
+  <div style="margin-top:1rem">
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a href="{% url 'actor_detail' claim.actor.pk %}" style="margin-left:1rem">Cancel</a>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,132 @@
+{
+  "$id": "https://idhub.pangea.org/vc_schemas/federation-membership.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Federation membership",
+  "description": "The federation membership specifies participation of a NGO into a NGO federation, as proposed by Lafede.cat",
+  "name": [
+    {
+      "value": "NGO federation membership",
+      "lang": "en"
+    },
+    {
+      "value": "Membre de federació ONGs",
+      "lang": "ca_ES"
+    },
+    {
+      "value": "Miembro de federación de ONGs",
+      "lang": "es"
+    }
+  ],
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://idhub.pangea.org/vc_schemas/ebsi/attestation.json"
+    },
+    {
+      "properties": {
+        "credentialSubject": {
+          "description": "Defines additional properties on credentialSubject",
+          "type": "object",
+          "properties": {
+            "id": {
+              "description": "Defines a unique identifier of the credential subject",
+              "type": "string",
+              "minLength":  1
+            },
+            "federation": {
+              "description": "Federation the credential subject is affiliated with",
+              "type": "string",
+              "minLength":  1
+            },
+            "legalName": {
+              "description": "Legal name of the affiliated organisation",
+              "type": "string",
+              "minLength":  1
+            },
+            "shortName": {
+              "description": "Short name of the organisation of the affiliated organisation",
+              "type": "string"
+            },
+            "registrationIdentifier": {
+              "description": "Registration identifier of the affiliated organisation",
+              "type": "string"
+            },
+            "publicRegistry": {
+              "description": "Registry where the affiliated organisation is registered: 'Generalitat de Catalunya', 'Ministerio del interior de España'",
+              "type": "string"
+            },
+            "streetAddress": {
+              "description": "Postal address of the member organisation: legal address",
+              "type": "string"
+            },
+            "postCode": {
+              "description": "Postal code of the member organisation",
+              "type": "string",
+              "minLength":  1
+            },
+            "city": {
+              "description": "City of the member organisation",
+              "type": "string",
+              "minLength":  1
+            },
+            "taxReference": {
+              "description": "Tax reference as VAT registration of the member organisation",
+              "type": "string"
+            },
+            "membershipType": {
+              "description": "Type of membership: full / observer",
+              "type": "string",
+              "minLength":  1
+            },
+            "membershipStatus": {
+              "description": "Type of membership: active / suspended, etc.",
+              "type": "string"
+            },
+            "membershipId": {
+              "description": "Membership identifier: an internal unique number or code",
+              "type": "string"
+            },
+            "membershipSince": {
+              "type": "string",
+              "format": "date",
+              "minLength":  1
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "pattern": "^\\S+@\\S+\\.\\S+$"
+            },
+            "phone": {
+              "type": "string"
+            },
+            "website": {
+              "type": "string",
+              "format": "uri"
+            },
+            "evidence": {
+              "description": "Type of evidence used for attestation",
+              "type": "string"
+            },
+            "certificationDate": {
+              "type": "string",
+              "format": "date",
+              "minLength":  1
+            }
+          },
+          "required": [
+            "id",
+            "legalName",
+            "postCode",
+            "city",
+            "membershipType",
+            "membershipStatus",
+            "federation",
+            "membershipSince",
+            "email",
+            "certificationDate"
+          ]
+        }
+      }
+    }
+  ]
+}

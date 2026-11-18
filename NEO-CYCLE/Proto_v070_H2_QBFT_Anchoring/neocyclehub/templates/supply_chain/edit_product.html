@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Edit {{ product.name }} — NeoCycleHub{% endblock %}
+{% block content %}
+<h1>Edit product: {{ product.name }}</h1>
+<p><a href="{% url 'actor_detail' product.actor.pk %}">← Back to actor</a></p>
+
+<form method="post" style="max-width:760px">
+  {% csrf_token %}
+  <table style="width:100%;border-collapse:collapse">
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0;width:180px">Name</th>
+      <td><input name="name" value="{{ product.name }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Description</th>
+      <td><textarea name="description" rows="3" style="width:100%;padding:0.4rem">{{ product.description }}</textarea></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">GTIN</th>
+      <td><input name="gtin" value="{{ product.gtin }}" style="width:100%;font-family:monospace;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">ID scheme URI (idScheme.id)</th>
+      <td><input name="id_scheme_id" value="{{ product.id_scheme_id }}" style="width:100%;font-family:monospace;padding:0.4rem" placeholder="https://id.gs1.org/01/ (default if blank)"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">ID scheme name (idScheme.name)</th>
+      <td><input name="id_scheme_name" value="{{ product.id_scheme_name }}" style="width:100%;padding:0.4rem" placeholder="Global Trade Identification Number (GTIN)"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Model number</th>
+      <td><input name="model_number" value="{{ product.model_number }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Batch number</th>
+      <td><input name="batch_number" value="{{ product.batch_number }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">ID granularity</th>
+      <td><input name="id_granularity" value="{{ product.id_granularity }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">CPC code</th>
+      <td><input name="cpc_code" value="{{ product.cpc_code }}" style="width:160px;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">CPC name</th>
+      <td><input name="cpc_name" value="{{ product.cpc_name }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Facility name override (producedAtFacility.name)</th>
+      <td><input name="facility_name_override" value="{{ product.facility_name_override }}" style="width:100%;padding:0.4rem" placeholder="{{ product.actor.name }} — Main Facility (default if blank)"></td></tr>
+    <tr><td colspan="2"><hr></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Upstream process type</th>
+      <td>
+        <select name="upstream_process_type" style="padding:0.4rem">
+          <option value="" {% if not product.upstream_process_type %}selected{% endif %}>—</option>
+          <option value="SSC" {% if product.upstream_process_type == 'SSC' %}selected{% endif %}>SSC</option>
+          <option value="SENE" {% if product.upstream_process_type == 'SENE' %}selected{% endif %}>SENE</option>
+        </select>
+      </td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Source material</th>
+      <td><input name="upstream_source_material" value="{{ product.upstream_source_material }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Source batch</th>
+      <td><input name="upstream_source_batch" value="{{ product.upstream_source_batch }}" style="width:100%;padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Process date</th>
+      <td><input type="date" name="upstream_process_date" value="{{ product.upstream_process_date|date:'Y-m-d' }}" style="padding:0.4rem"></td></tr>
+    <tr><th style="text-align:left;padding:0.5rem 1rem 0.5rem 0">Recycled mass fraction</th>
+      <td><input type="number" step="0.01" min="0" max="1" name="recycled_mass_fraction" value="{{ product.recycled_mass_fraction|default_if_none:'' }}" style="width:120px;padding:0.4rem"> (0.0–1.0)</td></tr>
+  </table>
+  <div style="margin-top:1rem">
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a href="{% url 'actor_detail' product.actor.pk %}" style="margin-left:1rem">Cancel</a>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,369 @@
+services:
+
+  idhub:
+    container_name: idhub
+    build:
+      context: ./idhub
+      dockerfile: docker/idhub.Dockerfile
+    environment:
+      - DOMAIN=localhost
+      - ALLOWED_HOSTS=localhost,idhub
+      - DEBUG=true
+      - DEMO=true
+      - DEMO_AUTODECRYPT=true
+      - DEMO_CREATE_SCHEMAS=false
+      - REMOVE_DATA=false
+      - DB_TYPE=sqlite
+      - CREATE_TEST_USERS=true
+      - INIT_ADMIN_EMAIL=admin@neocycle.local
+      - INIT_ADMIN_PASSWORD=admin1234
+      - INIT_ORG=NeoCycle IdHub
+      - ENABLE_EMAIL=false
+      - ENABLE_2FACTOR_AUTH=false
+      - ENABLE_DOMAIN_CHECKER=false
+      - SECRET_KEY=idhub-dev-secret-change-me
+      - PORT=8000
+      - DPP=false
+      - MEDIA_ROOT=/opt/idhub/media/
+      - STATIC_ROOT=/opt/idhub/static/
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./idhub:/opt/idhub
+      - idhub-media:/opt/idhub/media
+      - idhub-static:/opt/idhub/static
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/login/"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  eu-registry:
+    container_name: eu-registry
+    build:
+      context: ./eu-registry
+      dockerfile: Dockerfile
+    environment:
+      - DJANGO_SETTINGS_MODULE=eu_registry.settings
+      - DEBUG=true
+      - ALLOWED_HOSTS=localhost,eu-registry
+      - CSRF_TRUSTED_ORIGINS=http://localhost:9100
+    ports:
+      - "9100:9100"
+    volumes:
+      - ./eu-registry:/app
+      - eu-registry-db:/app/db
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9100/')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:9100"
+
+  # Separate service, deliberately, not a view bolted onto neocyclehub — its
+  # own volume survives `docker compose down -v` wiping neocyclehub's, so
+  # timing history accumulates across resets instead of being erased with
+  # it.
+  metrics-dashboard:
+    container_name: metrics-dashboard
+    build:
+      context: ./metrics-dashboard
+      dockerfile: Dockerfile
+    environment:
+      - DJANGO_SETTINGS_MODULE=metrics_dashboard.settings
+      - DEBUG=true
+      - ALLOWED_HOSTS=localhost,metrics-dashboard
+      - CSRF_TRUSTED_ORIGINS=http://localhost:9200
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./metrics-dashboard:/app
+      - metrics-dashboard-db:/app/db
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9200/')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:9200"
+
+  # 4-node Besu QBFT permissioned network (see CHAIN_ANCHOR.md). Three
+  # validators are shared per issuing role (supplier/upcycler/manufacturer);
+  # the fourth (besu-upc, below) is UPC's own dedicated node, which brings
+  # the network to the N>=3f+1 Byzantine-fault-tolerance threshold for f=1.
+  # Fixed IPs are required: Besu's static-nodes.json parser rejects DNS
+  # hostnames (verified empirically), so peers must reference each other by
+  # literal address — hence the custom `default` network with a fixed
+  # subnet below. genesis.json / node keys / static-nodes.json are
+  # pre-generated, committed files under blockchain/besu-config/ (generated
+  # once via Besu's own `operator generate-blockchain-config` tool — never
+  # hand-crafted, since extraData is RLP-encoded).
+  besu-supplier:
+    container_name: besu-supplier
+    image: hyperledger/besu:26.7.1
+    networks:
+      default:
+        ipv4_address: 172.28.0.11
+    ports:
+      # Host-side convenience only, for poking at the network directly with
+      # Postman/MetaMask/a block explorer — internal container-to-container
+      # RPC calls (chain_client.py, chain-deploy) always use besu-supplier:8545
+      # regardless of this mapping. Only this one node is exposed; the other
+      # two are equally part of the same shared ledger and reachable the
+      # same way from inside any other container (see CHAIN_ANCHOR.md).
+      - "8546:8545"
+    volumes:
+      - ./blockchain/besu-config/supplier:/config
+      - besu-supplier-data:/data
+    command: >
+      --data-path=/data
+      --genesis-file=/config/genesis.json
+      --node-private-key-file=/config/key
+      --static-nodes-file=/config/static-nodes.json
+      --network-id=4004
+      --discovery-enabled=false
+      --p2p-enabled=true --p2p-host=172.28.0.11 --p2p-port=30303
+      --rpc-http-enabled --rpc-http-host=0.0.0.0 --rpc-http-port=8545
+      --rpc-http-api=ETH,NET,QBFT,ADMIN,WEB3
+      --host-allowlist=* --rpc-http-cors-origins=*
+      --min-gas-price=0
+    # Overrides the base image's own HEALTHCHECK (same test — [ -f /tmp/pid ]
+    # — the image's `besu-entry.sh` writes it once Besu is actually up) but
+    # with a much longer budget: the default's start_period=5s/retries=10 at
+    # a 5s interval (~55s total) got outrun by CPU contention from the other
+    # 6 images building/starting in parallel on `docker compose up --build`,
+    # flagging this container unhealthy once — which permanently failed
+    # chain-deploy's `service_healthy` dependency check for that `up`
+    # invocation — even though Besu itself recovered seconds later. Found by
+    # hitting it directly, not anticipated in advance.
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c \"[ -f /tmp/pid ]\""]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 60s
+
+  besu-upcycler:
+    container_name: besu-upcycler
+    image: hyperledger/besu:26.7.1
+    networks:
+      default:
+        ipv4_address: 172.28.0.12
+    volumes:
+      - ./blockchain/besu-config/upcycler:/config
+      - besu-upcycler-data:/data
+    command: >
+      --data-path=/data
+      --genesis-file=/config/genesis.json
+      --node-private-key-file=/config/key
+      --static-nodes-file=/config/static-nodes.json
+      --network-id=4004
+      --discovery-enabled=false
+      --p2p-enabled=true --p2p-host=172.28.0.12 --p2p-port=30303
+      --rpc-http-enabled --rpc-http-host=0.0.0.0 --rpc-http-port=8545
+      --rpc-http-api=ETH,NET,QBFT,ADMIN,WEB3
+      --host-allowlist=* --rpc-http-cors-origins=*
+      --min-gas-price=0
+    # See besu-supplier's healthcheck override above for why.
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c \"[ -f /tmp/pid ]\""]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 60s
+
+  besu-manufacturer:
+    container_name: besu-manufacturer
+    image: hyperledger/besu:26.7.1
+    networks:
+      default:
+        ipv4_address: 172.28.0.13
+    volumes:
+      - ./blockchain/besu-config/manufacturer:/config
+      - besu-manufacturer-data:/data
+    command: >
+      --data-path=/data
+      --genesis-file=/config/genesis.json
+      --node-private-key-file=/config/key
+      --static-nodes-file=/config/static-nodes.json
+      --network-id=4004
+      --discovery-enabled=false
+      --p2p-enabled=true --p2p-host=172.28.0.13 --p2p-port=30303
+      --rpc-http-enabled --rpc-http-host=0.0.0.0 --rpc-http-port=8545
+      --rpc-http-api=ETH,NET,QBFT,ADMIN,WEB3
+      --host-allowlist=* --rpc-http-cors-origins=*
+      --min-gas-price=0
+    # See besu-supplier's healthcheck override above for why.
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c \"[ -f /tmp/pid ]\""]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 60s
+
+  # UPC's own dedicated validator node -- a per-company split off a shared
+  # role node, needed for the QBFT N>=3f+1 threshold for f=1 (3 validators
+  # tolerate zero Byzantine faults; 4 tolerate one). See chain_client.py's
+  # _node_rpc_url(). Same config pattern as the three role nodes above,
+  # just keyed by company instead of role.
+  besu-upc:
+    container_name: besu-upc
+    image: hyperledger/besu:26.7.1
+    networks:
+      default:
+        ipv4_address: 172.28.0.14
+    volumes:
+      - ./blockchain/besu-config/upc:/config
+      - besu-upc-data:/data
+    command: >
+      --data-path=/data
+      --genesis-file=/config/genesis.json
+      --node-private-key-file=/config/key
+      --static-nodes-file=/config/static-nodes.json
+      --network-id=4004
+      --discovery-enabled=false
+      --p2p-enabled=true --p2p-host=172.28.0.14 --p2p-port=30303
+      --rpc-http-enabled --rpc-http-host=0.0.0.0 --rpc-http-port=8545
+      --rpc-http-api=ETH,NET,QBFT,ADMIN,WEB3
+      --host-allowlist=* --rpc-http-cors-origins=*
+      --min-gas-price=0
+    # See besu-supplier's healthcheck override above for why.
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c \"[ -f /tmp/pid ]\""]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 60s
+
+  chain-deploy:
+    container_name: chain-deploy
+    build:
+      context: ./blockchain
+      dockerfile: Dockerfile
+    environment:
+      - BESU_RPC_URL=http://besu-supplier:8545
+      - DEPLOYMENT_OUTPUT_PATH=/deployed/DPPAnchor.json
+    volumes:
+      - chain-deployment:/deployed
+    depends_on:
+      besu-supplier:
+        condition: service_healthy
+      besu-upcycler:
+        condition: service_healthy
+      besu-manufacturer:
+        condition: service_healthy
+      besu-upc:
+        condition: service_healthy
+    command: npm run deploy
+
+  neocyclehub:
+    container_name: neocyclehub
+    build:
+      context: ./neocyclehub
+      dockerfile: Dockerfile
+    environment:
+      - DJANGO_SETTINGS_MODULE=neocyclehub.settings
+      - DEBUG=true
+      # Without this, ALLOWED_HOSTS defaults to localhost,127.0.0.1
+      # (settings.py) and any request addressed to this container by its
+      # docker-network hostname gets a 400. Kept for the measurement
+      # harness, which may call in by container hostname.
+      - ALLOWED_HOSTS=localhost,neocyclehub
+      - NEOCYCLEHUB_PUBLIC_URL=http://localhost:9000
+      - EU_REGISTRY_URL=http://eu-registry:9100
+      - METRICS_DASHBOARD_URL=http://metrics-dashboard:9200
+      - METRICS_SOURCE_NAME=neocyclehub
+      - CHAIN_RPC_URL=http://besu-supplier:8545
+      - CHAIN_DEPLOYMENT_FILE=/app/chain_deployment/DPPAnchor.json
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_PASSWORD=admin1234
+      - DJANGO_SUPERUSER_EMAIL=admin@neocycle.local
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./neocyclehub:/app
+      - neocyclehub-db:/app/db
+      - chain-deployment:/app/chain_deployment:ro
+    depends_on:
+      idhub:
+        condition: service_healthy
+      eu-registry:
+        condition: service_healthy
+      metrics-dashboard:
+        condition: service_healthy
+      chain-deploy:
+        condition: service_completed_successfully
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py createsuperuser --noinput --username $$DJANGO_SUPERUSER_USERNAME --email $$DJANGO_SUPERUSER_EMAIL 2>/dev/null || true &&
+             python manage.py shell -c \"from supply_chain.models import Actor; exit(0 if Actor.objects.exists() else 1)\" ||
+             python manage.py loaddata supply_chain/fixtures/neocycle_initial.json ;
+             python manage.py runserver 0.0.0.0:9000"
+
+  neocyclehub-bootstrap:
+    container_name: neocyclehub-bootstrap
+    build:
+      context: ./neocyclehub-bootstrap
+      dockerfile: Dockerfile
+    environment:
+      - DJANGO_SETTINGS_MODULE=neocyclehub.settings
+      - DEBUG=true
+      - ALLOWED_HOSTS=localhost,neocyclehub-bootstrap
+      - NEOCYCLEHUB_PUBLIC_URL=http://localhost:9001
+      - EU_REGISTRY_URL=http://eu-registry:9100
+      - METRICS_DASHBOARD_URL=http://metrics-dashboard:9200
+      - METRICS_SOURCE_NAME=neocyclehub-bootstrap
+      - CHAIN_RPC_URL=http://besu-supplier:8545
+      - CHAIN_DEPLOYMENT_FILE=/app/chain_deployment/DPPAnchor.json
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_PASSWORD=admin1234
+      - DJANGO_SUPERUSER_EMAIL=admin@neocycle.local
+    ports:
+      - "9001:9001"
+    volumes:
+      - ./neocyclehub-bootstrap:/app
+      - neocyclehub-bootstrap-db:/app/db
+      - chain-deployment:/app/chain_deployment:ro
+    depends_on:
+      idhub:
+        condition: service_healthy
+      eu-registry:
+        condition: service_healthy
+      metrics-dashboard:
+        condition: service_healthy
+      chain-deploy:
+        condition: service_completed_successfully
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py createsuperuser --noinput --username $$DJANGO_SUPERUSER_USERNAME --email $$DJANGO_SUPERUSER_EMAIL 2>/dev/null || true &&
+             python manage.py shell -c \"from supply_chain.models import Actor; exit(0 if Actor.objects.exists() else 1)\" ||
+             python manage.py loaddata supply_chain/fixtures/neocycle_initial.json ;
+             python manage.py runserver 0.0.0.0:9001"
+
+
+volumes:
+  idhub-media:
+  idhub-static:
+  neocyclehub-db:
+  neocyclehub-bootstrap-db:
+  eu-registry-db:
+  metrics-dashboard-db:
+  chain-deployment:
+  besu-supplier-data:
+  besu-upcycler-data:
+  besu-manufacturer-data:
+  besu-upc-data:
+
+networks:
+  # Fixed subnet so the 4 Besu nodes can be given static IPs, required by
+  # their static-nodes.json peer lists (see comment above besu-supplier).
+  default:
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16

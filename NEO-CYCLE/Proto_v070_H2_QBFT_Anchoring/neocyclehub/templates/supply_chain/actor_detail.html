@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% block title %}{{ actor.name }} — NeoCycleHub{% endblock %}
+{% block content %}
+<h1>{{ actor.name }} <span class="badge badge-{{ actor.role }}">{{ actor.get_role_display }}</span></h1>
+<p>DID: <code>{{ actor.did }}</code></p>
+<p>
+  <a href="/">← Dashboard</a>
+  &nbsp;&nbsp;
+  <a class="btn btn-primary" href="{% url 'edit_actor' actor.pk %}">Edit actor</a>
+</p>
+
+{% if credentials %}
+<h2>Issued credentials</h2>
+<table>
+  <thead><tr><th>Type</th><th>Label</th><th>Issued</th><th>UUID</th><th></th></tr></thead>
+  <tbody>
+  {% for cred in credentials %}
+  <tr>
+    <td><span class="badge badge-{{ cred.cred_type|lower }}">{{ cred.cred_type }}</span></td>
+    <td>{{ cred.label }}</td>
+    <td>{{ cred.issued_at|date:"Y-m-d H:i" }}</td>
+    <td><a href="{{ public_url }}/credentials/{{ cred.uuid }}/" target="_blank"><code>{{ cred.uuid }}</code></a></td>
+    <td style="white-space:nowrap">
+      <a class="btn btn-secondary" href="{% url 'credential_chain' cred.uuid %}">View chain</a>
+      <a class="btn btn-secondary" href="{% url 'decode_credential' cred.uuid %}">Decoded</a>
+      {% if actor.role != 'auditor' %}
+      <form method="post" action="{% url 'delete_credential' cred.uuid %}" style="display:inline"
+            onsubmit="return confirm('Delete {{ cred.cred_type }} {{ cred.label|escapejs }}?\n\nThis removes it from neocyclehub and idhub.')">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger" style="padding:2px 10px">Delete</button>
+      </form>
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% if actor.role == 'auditor' %}
+<hr>
+<h2>Credential Chain Analysis</h2>
+<p style="color:#555;font-size:0.9em">
+  All DPP credentials in the system. Click <em>View chain</em> to trace provenance back through linked DTEs and upstream DPPs.
+</p>
+{% if all_dpps %}
+<table>
+  <thead><tr><th>Product</th><th>Actor</th><th>Issued</th><th>UUID</th><th></th></tr></thead>
+  <tbody>
+  {% for c in all_dpps %}
+  <tr>
+    <td><span class="badge badge-dpp">DPP</span> {{ c.label }}</td>
+    <td>{{ c.actor.name }}</td>
+    <td>{{ c.issued_at|date:"Y-m-d H:i" }}</td>
+    <td><a href="{{ public_url }}/credentials/{{ c.uuid }}/" target="_blank"><code style="font-size:0.75em">{{ c.uuid }}</code></a></td>
+    <td>
+      <a class="btn btn-primary" href="{% url 'credential_chain' c.uuid %}">View chain</a>
+      <a class="btn btn-secondary" href="{% url 'decode_credential' c.uuid %}">Decoded</a>
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No DPP credentials issued yet. Visit each actor's page to issue credentials first.</p>
+{% endif %}
+{% else %}
+
+<hr>
+<h2>Products / batches</h2>
+{% if products %}
+<table>
+  <thead><tr><th>Name</th><th>Batch</th><th>GTIN</th><th>Action</th></tr></thead>
+  <tbody>
+  {% for p in products %}
+  <tr>
+    <td>{{ p.name }}</td>
+    <td><code>{{ p.batch_number }}</code></td>
+    <td><code>{{ p.gtin }}</code></td>
+    <td>
+      <a class="btn btn-secondary" href="{% url 'edit_product' p.pk %}">Edit</a>
+      <form class="inline" method="post" action="{% url 'issue_dpp' p.pk %}" style="display:inline">
+        {% csrf_token %}
+        <button class="btn btn-primary" type="submit">Issue DPP</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No products. <a href="/admin/supply_chain/productbatch/add/">Add one</a>.</p>
+{% endif %}
+
+<hr>
+<h2>Processing events</h2>
+{% if events %}
+<table>
+  <thead><tr><th>Name</th><th>Type</th><th>Date</th><th>Action</th></tr></thead>
+  <tbody>
+  {% for ev in events %}
+  <tr>
+    <td>{{ ev.name }}</td>
+    <td>{{ ev.event_type }}</td>
+    <td>{{ ev.event_date|date:"Y-m-d" }}</td>
+    <td>
+      <a class="btn btn-secondary" href="{% url 'edit_event' ev.pk %}">Edit</a>
+      <form class="inline" method="post" action="{% url 'issue_dte' ev.pk %}" style="display:inline">
+        {% csrf_token %}
+        <button class="btn btn-primary" type="submit">Issue DTE</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No events. <a href="/admin/supply_chain/processingevent/add/">Add one</a>.</p>
+{% endif %}
+
+<hr>
+<h2>Conformity claims</h2>
+{% if claims %}
+<table>
+  <thead><tr><th>Standard</th><th>Assessor</th><th>Valid until</th><th>Action</th></tr></thead>
+  <tbody>
+  {% for c in claims %}
+  <tr>
+    <td>{{ c.standard_name }}</td>
+    <td>{{ c.assessor_name }}</td>
+    <td>{{ c.valid_until }}</td>
+    <td>
+      <a class="btn btn-secondary" href="{% url 'edit_claim' c.pk %}">Edit</a>
+      <form class="inline" method="post" action="{% url 'issue_dcc' c.pk %}" style="display:inline">
+        {% csrf_token %}
+        <button class="btn btn-primary" type="submit">Issue DCC</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No conformity claims. <a href="/admin/supply_chain/conformityclaim/add/">Add one</a>.</p>
+{% endif %}
+
+<hr>
+<h2>Facility record (DFR)</h2>
+<form method="post" action="{% url 'issue_dfr' actor.pk %}">
+  {% csrf_token %}
+  <table>
+    <tr><th>Facility ID (URL)</th><td><input name="facility_id" size="60" placeholder="{{ actor.did }}/facility"></td></tr>
+    <tr><th>Facility name</th><td><input name="facility_name" size="60" placeholder="{{ actor.name }} — Main Facility"></td></tr>
+    <tr><th>Description</th><td><input name="facility_description" size="60"></td></tr>
+    <tr><th>Street address</th><td><input name="street_address" size="60" placeholder="1 Rue de la Récupération"></td></tr>
+    <tr><th>Postal code</th><td><input name="postal_code" size="10" placeholder="75001"></td></tr>
+    <tr><th>City</th><td><input name="city" size="30" placeholder="Paris"></td></tr>
+    <tr><th>Region</th><td><input name="region" size="30" placeholder="Île-de-France"></td></tr>
+    <tr><th>Process code (NACE)</th><td><input name="process_code" size="10" placeholder="E38.3"> <input name="process_name" size="40" placeholder="Material recovery"></td></tr>
+    <tr><th>Process scheme URI</th><td><input name="process_scheme_id" size="60" placeholder="https://ec.europa.eu/eurostat/ramon/nomenclatures/NACE_REV2 (default if blank)"></td></tr>
+    <tr><th>Process scheme name</th><td><input name="process_scheme_name" size="30" placeholder="NACE Rev.2"></td></tr>
+    <tr><th>Latitude / Longitude</th><td><input name="latitude" size="12" placeholder="48.8566"> <input name="longitude" size="12" placeholder="2.3522"></td></tr>
+  </table>
+  <button class="btn btn-primary" style="margin-top:0.5rem">Issue DFR</button>
+</form>
+
+<hr>
+<h2>Identity anchor (DIA)</h2>
+<form method="post" action="{% url 'issue_dia' actor.pk %}">
+  {% csrf_token %}
+  <table>
+    <tr><th>Registrar DID</th><td><input name="registrar_did" size="60" placeholder="did:web:insee.fr"></td></tr>
+    <tr><th>Registrar name</th><td><input name="registrar_name" size="60" placeholder="INSEE"></td></tr>
+    <tr><th>Registrar URL</th><td><input name="registrar_url" size="60" placeholder="https://www.insee.fr"></td></tr>
+    <tr><th>Register type</th><td>
+      <select name="register_type">
+        <option value="business" selected>business</option>
+        <option value="product">product</option>
+        <option value="facility">facility</option>
+        <option value="trademark">trademark</option>
+        <option value="land">land</option>
+        <option value="accreditation">accreditation</option>
+      </select>
+    </td></tr>
+  </table>
+  <button class="btn btn-primary" style="margin-top:0.5rem">Issue DIA</button>
+</form>
+
+{% endif %}{# end if actor.role != 'auditor' #}
+{% endblock %}

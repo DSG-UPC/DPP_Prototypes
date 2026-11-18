@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Timing samples</h1>
+
+<div class="disclaimer" style="margin-top:0">
+  <strong>What <code>verify_chain</code> actually measures:</strong> a live
+  idhub signature check for <em>every</em> node walked (DPP and DTE alike),
+  plus — for DPP nodes only — a live on-chain Besu re-verification that the
+  anchored hash still matches (DTE/DCC/DFR/DIA are never anchored). Total
+  cost scales entirely with how many nodes get walked, which depends on
+  <strong>which credential you start from</strong>: a root credential with no
+  upstream (<code>chain_position=root</code>) does one signature check and
+  stops; the deepest end-of-chain credential
+  (<code>chain_position=end</code>) walks every node behind it. The three
+  rows are never averaged together below — see
+  <code>CHAIN_ANCHOR.md</code> for what the anchor check itself does.
+</div>
+
+<p class="muted">{{ total }} sample{{ total|pluralize }} recorded.
+  <a class="btn btn-secondary" href="{% url 'export_csv' %}?operation={{ selected_operation }}&mode={{ selected_mode }}&source={{ selected_source }}&chain_position={{ selected_chain_position }}">⬇ Download CSV</a>
+</p>
+
+<form class="filters" method="get">
+  <label>Operation
+    <select name="operation" onchange="this.form.submit()">
+      <option value="">all</option>
+      {% for value, display in operation_choices %}
+      <option value="{{ value }}" {% if value == selected_operation %}selected{% endif %}>{{ display }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <label>Mode
+    <select name="mode" onchange="this.form.submit()">
+      <option value="">all</option>
+      {% for value, display in mode_choices %}
+      <option value="{{ value }}" {% if value == selected_mode %}selected{% endif %}>{{ display }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <label>Chain position
+    <select name="chain_position" onchange="this.form.submit()">
+      <option value="">all</option>
+      {% for value, display in chain_position_choices %}
+      <option value="{{ value }}" {% if value == selected_chain_position %}selected{% endif %}>{{ display }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <label>Source
+    <input type="text" name="source" value="{{ selected_source }}" placeholder="neocyclehub" style="padding:0.3rem 0.5rem;border:1px solid #ccc;border-radius:4px">
+  </label>
+  <button type="submit">Filter</button>
+</form>
+
+<h2>Aggregates</h2>
+{% if aggregates %}
+<table>
+  <thead><tr><th>Operation</th><th>Mode</th><th>Chain position</th><th>Count</th><th>Mean</th><th>Median</th><th>Min</th><th>Max</th><th style="width:200px">Relative mean</th></tr></thead>
+  <tbody>
+  {% for row in aggregates %}
+  <tr>
+    <td>{{ row.operation }}</td>
+    <td>{{ row.mode }}</td>
+    <td>{{ row.chain_position|default:"—" }}</td>
+    <td>{{ row.count }}</td>
+    <td>{{ row.mean|floatformat:1 }} ms</td>
+    <td>{{ row.median|floatformat:1 }} ms</td>
+    <td>{{ row.lo|floatformat:1 }} ms</td>
+    <td>{{ row.hi|floatformat:1 }} ms</td>
+    <td>
+      <div class="bar-track"><div class="bar-fill" style="width:{{ row.bar_pct }}%"></div></div>
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="muted">No samples yet. Issue some credentials, walk a chain, or run <code>manage.py benchmark_issuance</code> in neocyclehub.</p>
+{% endif %}
+
+<h2>Recent samples</h2>
+{% if recent %}
+<table>
+  <thead><tr><th>When</th><th>Operation</th><th>Mode</th><th>Source</th><th>Cred type</th><th>Actor</th><th>Label</th><th>Depth</th><th>Companies</th><th>Position</th><th>Duration</th></tr></thead>
+  <tbody>
+  {% for s in recent %}
+  <tr>
+    <td class="muted">{{ s.recorded_at|date:"Y-m-d H:i:s" }}</td>
+    <td>{{ s.operation }}</td>
+    <td>{{ s.mode }}</td>
+    <td>{{ s.source }}</td>
+    <td>{{ s.cred_type }}</td>
+    <td>{{ s.actor_name }}</td>
+    <td>{{ s.label }}</td>
+    <td>{{ s.chain_depth|default:"—" }}</td>
+    <td>{{ s.company_count|default:"—" }}</td>
+    <td>{{ s.chain_position|default:"—" }}</td>
+    <td>{{ s.duration_ms|floatformat:1 }} ms</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="muted">Nothing recorded yet.</p>
+{% endif %}
+
+{% endblock %}

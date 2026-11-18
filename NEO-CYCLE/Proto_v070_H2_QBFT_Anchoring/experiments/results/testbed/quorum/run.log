@@ -1,0 +1,22 @@
+[14:16:23] quorum: network validators4_block_period2
+  warm-up 44 s
+  n4_crash2_out30_rep1.json: sent=240 included=240 errors=0 median=68.732s p95=117.579s
+  n4_crash2_out30_rep2.json: sent=240 included=240 errors=0 median=11.458s p95=63.401s
+  n4_crash2_out30_rep3.json: sent=240 included=240 errors=0 median=10.256s p95=61.860s
+  n4_crash2_out60_rep1.json: sent=300 included=300 errors=0 median=69.105s p95=134.627s
+  n4_crash2_out60_rep2.json: sent=300 included=300 errors=0 median=71.388s p95=132.635s
+  n4_crash2_out60_rep3.json: sent=300 included=300 errors=0 median=65.595s p95=129.654s
+  n4_crash2_out120_rep1.json: sent=420 included=420 errors=0 median=179.490s p95=271.233s
+  n4_crash2_out120_rep2.json: sent=420 included=420 errors=0 median=184.796s p95=269.645s
+  n4_crash2_out120_rep3.json: sent=420 included=420 errors=0 median=179.373s p95=268.993s
+  n4_crash2_restartall_rep2.json: sent=300 included=45 errors=61 median=1.049s p95=1.854s
+  n4_crash2_restartall_rep3.json: sent=300 included=54 errors=39 median=1.120s p95=2.045s
+[15:07:00] quorum: network validators7_block_period2
+  warm-up 118 s
+  n7_crash3_out60_rep2.json: sent=300 included=300 errors=0 median=81.305s p95=142.929s
+  n7_crash3_out60_rep3.json: sent=300 included=300 errors=0 median=160.728s p95=227.006s
+[15:18:06] quorum: network validators10_block_period2
+  warm-up 168 s
+  n10_crash4_out60_rep2.json: sent=300 included=300 errors=0 median=178.182s p95=239.071s
+  n10_crash4_out60_rep3.json: sent=300 included=300 errors=0 median=168.019s p95=234.323s
+[15:32:19] all done

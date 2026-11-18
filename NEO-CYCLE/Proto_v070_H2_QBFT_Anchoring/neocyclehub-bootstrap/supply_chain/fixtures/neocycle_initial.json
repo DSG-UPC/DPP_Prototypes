@@ -1,0 +1,996 @@
+[
+  {
+    "model": "supply_chain.actor",
+    "pk": 1,
+    "fields": {
+      "name": "Supplier S1",
+      "role": "supplier",
+      "did": "did:web:s1.example:supplier-001",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "REPLACE_WITH_S1_TOKEN",
+      "registered_id": "GR-GEMI-123456000",
+      "id_scheme_id": "https://gemi.gr",
+      "id_scheme_name": "GEMI (General Commercial Registry, Greece)",
+      "lei_id": "",
+      "website": "https://s1.example",
+      "country_code": "GR",
+      "country_name": "Greece"
+    }
+  },
+  {
+    "model": "supply_chain.actor",
+    "pk": 2,
+    "fields": {
+      "name": "Supplier S2",
+      "role": "supplier",
+      "did": "did:web:s2.example:supplier-002",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "REPLACE_WITH_S2_TOKEN",
+      "registered_id": "IT-RI-00000000001",
+      "id_scheme_id": "https://www.registroimprese.it",
+      "id_scheme_name": "Registro Imprese (Italy)",
+      "lei_id": "",
+      "website": "https://s2.example",
+      "country_code": "IT",
+      "country_name": "Italy"
+    }
+  },
+  {
+    "model": "supply_chain.actor",
+    "pk": 3,
+    "fields": {
+      "name": "Upcycler U1",
+      "role": "upcycler",
+      "did": "did:web:u1.example:upcycler-001",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "REPLACE_WITH_U1_TOKEN",
+      "registered_id": "DE-HRB-000000",
+      "id_scheme_id": "https://www.handelsregister.de",
+      "id_scheme_name": "Handelsregister (Germany)",
+      "lei_id": "",
+      "website": "https://u1.example",
+      "country_code": "DE",
+      "country_name": "Germany"
+    }
+  },
+  {
+    "model": "supply_chain.actor",
+    "pk": 4,
+    "fields": {
+      "name": "Upcycler U2",
+      "role": "upcycler",
+      "did": "did:web:u2.example:upcycler-002",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "REPLACE_WITH_U2_TOKEN",
+      "registered_id": "DE-HRB-000001",
+      "id_scheme_id": "https://www.handelsregister.de",
+      "id_scheme_name": "Handelsregister (Germany)",
+      "lei_id": "",
+      "website": "https://u2.example",
+      "country_code": "DE",
+      "country_name": "Germany"
+    }
+  },
+  {
+    "model": "supply_chain.actor",
+    "pk": 5,
+    "fields": {
+      "name": "Upcycler U3",
+      "role": "upcycler",
+      "did": "did:web:u3.example:separator-001",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "REPLACE_WITH_U3_TOKEN",
+      "registered_id": "DE-HRB-000002",
+      "id_scheme_id": "https://www.handelsregister.de",
+      "id_scheme_name": "Handelsregister (Germany)",
+      "lei_id": "",
+      "website": "https://u3.example",
+      "country_code": "DE",
+      "country_name": "Germany"
+    }
+  },
+  {
+    "model": "supply_chain.actor",
+    "pk": 6,
+    "fields": {
+      "name": "Universitat Politecnica de Catalunya (UPC)",
+      "role": "upcycler",
+      "did": "did:web:upc.edu:processor-001",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "REPLACE_WITH_UPC_TOKEN",
+      "registered_id": "ES-RM-00000000",
+      "id_scheme_id": "https://www.registradores.org",
+      "id_scheme_name": "Registro Mercantil (Spain)",
+      "lei_id": "",
+      "website": "https://upc.edu",
+      "country_code": "ES",
+      "country_name": "Spain"
+    }
+  },
+  {
+    "model": "supply_chain.actor",
+    "pk": 7,
+    "fields": {
+      "name": "Upcycler U4",
+      "role": "upcycler",
+      "did": "did:web:u4.example:processor-001",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "REPLACE_WITH_U4_TOKEN",
+      "registered_id": "IT-RI-00000000002",
+      "id_scheme_id": "https://www.registroimprese.it",
+      "id_scheme_name": "Registro Imprese (Italy)",
+      "lei_id": "",
+      "website": "https://u4.example",
+      "country_code": "IT",
+      "country_name": "Italy"
+    }
+  },
+  {
+    "model": "supply_chain.actor",
+    "pk": 8,
+    "fields": {
+      "name": "Upcycler U5",
+      "role": "upcycler",
+      "did": "did:web:u5.example:processor-001",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "REPLACE_WITH_U5_TOKEN",
+      "registered_id": "ES-RM-00000001",
+      "id_scheme_id": "https://www.registradores.org",
+      "id_scheme_name": "Registro Mercantil (Spain)",
+      "lei_id": "",
+      "website": "https://u5.example",
+      "country_code": "ES",
+      "country_name": "Spain"
+    }
+  },
+  {
+    "model": "supply_chain.actor",
+    "pk": 9,
+    "fields": {
+      "name": "Manufacturer M1",
+      "role": "manufacturer",
+      "did": "did:web:m1.example:manufacturer-catalyst-001",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "REPLACE_WITH_M1_TOKEN",
+      "registered_id": "PL-KRS-0000000000",
+      "id_scheme_id": "https://ekrs.ms.gov.pl",
+      "id_scheme_name": "KRS (National Court Register, Poland)",
+      "lei_id": "",
+      "website": "https://m1.example",
+      "country_code": "PL",
+      "country_name": "Poland"
+    }
+  },
+  {
+    "model": "supply_chain.actor",
+    "pk": 10,
+    "fields": {
+      "name": "Manufacturer M2",
+      "role": "manufacturer",
+      "did": "did:web:m2.example:manufacturer-api-001",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "REPLACE_WITH_M2_TOKEN",
+      "registered_id": "IT-RI-00000000000",
+      "id_scheme_id": "https://www.registroimprese.it",
+      "id_scheme_name": "Registro Imprese (Italy)",
+      "lei_id": "",
+      "website": "https://m2.example",
+      "country_code": "IT",
+      "country_name": "Italy"
+    }
+  },
+  {
+    "model": "supply_chain.actor",
+    "pk": 11,
+    "fields": {
+      "name": "NeoCycle Auditor",
+      "role": "auditor",
+      "did": "did:web:neocycle-audit.eu:aud-001",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "",
+      "registered_id": "BE0123456789",
+      "id_scheme_id": "https://vocabulary.uncefact.org/identifierSchemes/CBE",
+      "id_scheme_name": "Crossroads Bank for Enterprises (CBE)",
+      "lei_id": "",
+      "website": "https://neocycle-audit.eu",
+      "country_code": "BE",
+      "country_name": "Belgium"
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 1,
+    "fields": {
+      "actor": 1,
+      "name": "Crushed NdFeB Granulate for Solid-State Chlorination",
+      "description": "Crushed and milled NdFeB permanent magnets recovered from end-of-life WEEE (hard disk drives) by Supplier S1. Processed via magnetic extraction, demagnetization and crushing. Ready for solid-state chlorination (SSC). Batch mass: 1.48 KGM.",
+      "gtin": "https://id.gs1.org/01/03760123456781",
+      "model_number": "ECR-NDFEB-GRAN-01",
+      "batch_number": "NDFEB-GRAN-2025-02-001",
+      "id_granularity": "batch",
+      "cpc_code": "42940",
+      "cpc_name": "Permanent magnets and articles intended to become permanent magnets",
+      "upstream_process_type": "",
+      "upstream_source_material": "",
+      "upstream_source_batch": "",
+      "upstream_process_date": null,
+      "recycled_mass_fraction": 1.0
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 2,
+    "fields": {
+      "actor": 2,
+      "name": "Whole NdFeB Magnets for Electrochemical Extraction (SENE)",
+      "description": "Whole NdFeB permanent magnets extracted and demagnetized from end-of-life WEEE by Supplier S2. Supplied as intact magnet units for non-selective electrochemical leaching (SENE). Batch mass: 1.20 KGM.",
+      "gtin": "https://id.gs1.org/01/03760123456782",
+      "model_number": "STE-NDFEB-MAG-01",
+      "batch_number": "NDFEB-MAG-2025-05-001",
+      "id_granularity": "batch",
+      "cpc_code": "42940",
+      "cpc_name": "Permanent magnets and articles intended to become permanent magnets",
+      "upstream_process_type": "",
+      "upstream_source_material": "",
+      "upstream_source_batch": "",
+      "upstream_process_date": null,
+      "recycled_mass_fraction": 1.0
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 3,
+    "fields": {
+      "actor": 3,
+      "name": "SSC Chlorinated Leachate",
+      "description": "Chlorinated leachate from NH4Cl-based solid-state chlorination of NdFeB granulate at U1 (lab scale). Contains Nd, Fe and B in solution, forwarded for metal separation. Batch mass: 1.40 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543201",
+      "model_number": "U1-SSC-LEACH-01",
+      "batch_number": "SSC-LEACH-2025-03-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "Crushed NdFeB Granulate for Solid-State Chlorination",
+      "upstream_source_batch": "NDFEB-GRAN-2025-02-001",
+      "upstream_process_date": "2025-03-05",
+      "recycled_mass_fraction": 0.95
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 4,
+    "fields": {
+      "actor": 3,
+      "name": "High-Purity Ammonia (NH3) Stream (SSC Byproduct)",
+      "description": "Ammonia-containing stream from NH4Cl separation during solid-state chlorination at U1. Not modeled as a marketed product; no conformity claim is associated with it. Batch mass: 0.05 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543202",
+      "model_number": "U1-NH3-SSC-01",
+      "batch_number": "SSC-NH3-2025-03-001",
+      "id_granularity": "batch",
+      "cpc_code": "34110",
+      "cpc_name": "Ammonia",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "Crushed NdFeB Granulate for Solid-State Chlorination",
+      "upstream_source_batch": "NDFEB-GRAN-2025-02-001",
+      "upstream_process_date": "2025-03-05",
+      "recycled_mass_fraction": 0.0
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 5,
+    "fields": {
+      "actor": 4,
+      "name": "SENE Dissolved Fraction (Upscaling Trial)",
+      "description": "Dissolved magnet material from non-selective electrochemical leaching at U2 (pilot scale). Batch mass: 0.41 KGM (illustrative).",
+      "gtin": "https://id.gs1.org/01/03760876543203",
+      "model_number": "U2-SENE-DISS-01",
+      "batch_number": "SENE-DISS-2025-06-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "SENE",
+      "upstream_source_material": "Whole NdFeB Magnets for Electrochemical Extraction (SENE)",
+      "upstream_source_batch": "NDFEB-MAG-2025-05-001",
+      "upstream_process_date": "2025-06-05",
+      "recycled_mass_fraction": 0.86
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 6,
+    "fields": {
+      "actor": 4,
+      "name": "SENE Undissolved Magnet Residue",
+      "description": "Undissolved magnet residue from electrochemical leaching at U2. Not forwarded downstream in this scenario; tracked for mass-balance completeness only. Batch mass: 0.79 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543204",
+      "model_number": "U2-SENE-RESIDUE-01",
+      "batch_number": "SENE-RESIDUE-2025-06-001",
+      "id_granularity": "batch",
+      "cpc_code": "42940",
+      "cpc_name": "Permanent magnets and articles intended to become permanent magnets",
+      "upstream_process_type": "SENE",
+      "upstream_source_material": "Whole NdFeB Magnets for Electrochemical Extraction (SENE)",
+      "upstream_source_batch": "NDFEB-MAG-2025-05-001",
+      "upstream_process_date": "2025-06-05",
+      "recycled_mass_fraction": 1.0
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 7,
+    "fields": {
+      "actor": 5,
+      "name": "Nd-Rich Separated Stream",
+      "description": "Neodymium-rich stream separated at Upcycler U3 from combined SSC (U1) and SENE (U2) leachate via liquid-liquid extraction. Forwarded to U4 for Nd catalyst and API chemistry. Batch mass: 0.62 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543205",
+      "model_number": "U3-ND-RICH-01",
+      "batch_number": "U3-NDRICH-2025-03-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "SSC Chlorinated Leachate",
+      "upstream_source_batch": "SSC-LEACH-2025-03-001",
+      "upstream_process_date": "2025-03-20",
+      "recycled_mass_fraction": 0.9
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 8,
+    "fields": {
+      "actor": 5,
+      "name": "Fe/B Leachate (Separated)",
+      "description": "Iron/boron-bearing leachate separated at Upcycler U3 after Nd removal. Forwarded to U5 for Fe nanoparticle production. Batch mass: 0.71 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543206",
+      "model_number": "U3-FEB-LEACH-01",
+      "batch_number": "U3-FEBLEACH-2025-03-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "SSC Chlorinated Leachate",
+      "upstream_source_batch": "SSC-LEACH-2025-03-001",
+      "upstream_process_date": "2025-03-20",
+      "recycled_mass_fraction": 0.9
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 9,
+    "fields": {
+      "actor": 5,
+      "name": "Boron-Rich Stream (Separated)",
+      "description": "Boron-rich stream separated at Upcycler U3. Forwarded to UPC for concentration and H3BO3 crystallisation. Batch mass: 0.48 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543207",
+      "model_number": "U3-B-RICH-01",
+      "batch_number": "U3-BRICH-2025-03-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "SSC Chlorinated Leachate",
+      "upstream_source_batch": "SSC-LEACH-2025-03-001",
+      "upstream_process_date": "2025-03-20",
+      "recycled_mass_fraction": 0.9
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 10,
+    "fields": {
+      "actor": 6,
+      "name": "Boric Acid (H3BO3) Concentrate",
+      "description": "Crystallised H3BO3 produced at UPC from U3's boron-rich stream via ion-exchange resin adsorption and evaporation/electrodialysis. Forwarded to U4 as a boronic-ester precursor. Batch mass: 0.09 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543208",
+      "model_number": "UPC-H3BO3-01",
+      "batch_number": "UPC-H3BO3-2025-03-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "Boron-Rich Stream (Separated)",
+      "upstream_source_batch": "U3-BRICH-2025-03-001",
+      "upstream_process_date": "2025-03-28",
+      "recycled_mass_fraction": 0.9
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 11,
+    "fields": {
+      "actor": 7,
+      "name": "Nd(OTf)3 Catalyst / Nd Salts",
+      "description": "Neodymium triflate (Nd(OTf)3) and related Nd salts produced at U4 from U3's Nd-rich stream. Forwarded to M1 as a Nd precursor for Fe-Nd ammonia catalyst formulation. Batch mass: 0.35 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543209",
+      "model_number": "U4-NDOTF3-01",
+      "batch_number": "U4-NDOTF3-2025-04-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "Nd-Rich Separated Stream",
+      "upstream_source_batch": "U3-NDRICH-2025-03-001",
+      "upstream_process_date": "2025-04-05",
+      "recycled_mass_fraction": 0.9
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 12,
+    "fields": {
+      "actor": 7,
+      "name": "Suzuki API Intermediate (Boronic Ester Route)",
+      "description": "Pharmaceutical API intermediate produced at U4 via Suzuki-Miyaura coupling, using UPC's H3BO3-derived boronic esters and U4's Nd-catalysed chemistry. Forwarded to M2 for validation. Batch mass: 0.04 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543210",
+      "model_number": "U4-API-INT-01",
+      "batch_number": "U4-API-2025-04-001",
+      "id_granularity": "batch",
+      "cpc_code": "35190",
+      "cpc_name": "Other basic pharmaceutical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "Boric Acid (H3BO3) Concentrate",
+      "upstream_source_batch": "UPC-H3BO3-2025-03-001",
+      "upstream_process_date": "2025-04-05",
+      "recycled_mass_fraction": 0.9
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 13,
+    "fields": {
+      "actor": 8,
+      "name": "Fe Nanoparticles (Flame Spray Pyrolysis)",
+      "description": "Fe2O3/Fe3O4 nanoparticles produced at U5 from U3's Fe/B leachate via flame spray pyrolysis. Forwarded to M1 as a Fe precursor for Fe-Nd ammonia catalyst formulation. Batch mass: 0.55 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543211",
+      "model_number": "U5-FENANO-01",
+      "batch_number": "U5-FENANO-2025-04-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "Fe/B Leachate (Separated)",
+      "upstream_source_batch": "U3-FEBLEACH-2025-03-001",
+      "upstream_process_date": "2025-04-02",
+      "recycled_mass_fraction": 0.9
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 14,
+    "fields": {
+      "actor": 9,
+      "name": "Fe-Nd Ammonia Synthesis Catalyst (Industrial Grade)",
+      "description": "Bulk/supported Fe-Nd catalyst for ammonia synthesis and decomposition, formulated at M1 from U5's Fe nanoparticles and U4's Nd salts. Batch mass: 0.42 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543212",
+      "model_number": "M1-FENDCAT-01",
+      "batch_number": "M1-FENDCAT-2025-04-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "Fe Nanoparticles (Flame Spray Pyrolysis)",
+      "upstream_source_batch": "U5-FENANO-2025-04-001",
+      "upstream_process_date": "2025-04-15",
+      "recycled_mass_fraction": 0.9
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 15,
+    "fields": {
+      "actor": 10,
+      "name": "Validated API Batch (Suzuki/Nd(OTf)3 Route)",
+      "description": "Pharmaceutical API batch validated at Manufacturer M2 from U4's Suzuki-coupling intermediate. Batch mass: 0.03 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543213",
+      "model_number": "FLM-API-VAL-01",
+      "batch_number": "M2-API-2025-04-001",
+      "id_granularity": "batch",
+      "cpc_code": "35190",
+      "cpc_name": "Other basic pharmaceutical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "Suzuki API Intermediate (Boronic Ester Route)",
+      "upstream_source_batch": "U4-API-2025-04-001",
+      "upstream_process_date": "2025-04-15",
+      "recycled_mass_fraction": 0.9
+    }
+  },
+  {
+    "model": "supply_chain.conformityclaim",
+    "pk": 1,
+    "fields": {
+      "actor": 1,
+      "name": "WEEE treatment conformity assessment",
+      "description": "Third-party conformity assessment of Supplier S1 against the WEEELABEX standard for responsible collection, de-pollution and material recovery of end-of-life electronics (WEEE Directive 2012/19/EU implementation).",
+      "standard_name": "WEEELABEX Standard for Treatment of WEEE",
+      "standard_id": "https://www.weeelabex.org",
+      "assessor_name": "Bureau Veritas Certification",
+      "assessor_did": "did:web:bureauveritas.com:certification",
+      "assessor_level": "3rdParty",
+      "assessment_level": "scheme-cab",
+      "attestation_type": "certification",
+      "valid_from": "2025-01-10",
+      "valid_until": "2035-01-10"
+    }
+  },
+  {
+    "model": "supply_chain.conformityclaim",
+    "pk": 2,
+    "fields": {
+      "actor": 2,
+      "name": "WEEE treatment conformity assessment",
+      "description": "Third-party conformity assessment of Supplier S2 against the WEEELABEX standard for responsible collection, de-pollution and material recovery of end-of-life electronics (WEEE Directive 2012/19/EU implementation).",
+      "standard_name": "WEEELABEX Standard for Treatment of WEEE",
+      "standard_id": "https://www.weeelabex.org",
+      "assessor_name": "Bureau Veritas Certification",
+      "assessor_did": "did:web:bureauveritas.com:certification",
+      "assessor_level": "3rdParty",
+      "assessment_level": "scheme-cab",
+      "attestation_type": "certification",
+      "valid_from": "2025-01-10",
+      "valid_until": "2035-01-10"
+    }
+  },
+  {
+    "model": "supply_chain.conformityclaim",
+    "pk": 3,
+    "fields": {
+      "actor": 3,
+      "name": "Rare earth upcycling environmental management assessment",
+      "description": "Third-party conformity assessment of U1's upcycling operations against the ISO 14001:2015 Environmental Management Systems standard, covering both SSC and SENE processing lines.",
+      "standard_name": "ISO 14001:2015 Environmental Management Systems",
+      "standard_id": "https://www.iso.org/standard/60857.html",
+      "assessor_name": "Bureau Veritas Certification",
+      "assessor_did": "did:web:bureauveritas.com:certification",
+      "assessor_level": "3rdParty",
+      "assessment_level": "scheme-cab",
+      "attestation_type": "certification",
+      "valid_from": "2025-02-01",
+      "valid_until": "2035-02-01"
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 1,
+    "fields": {
+      "actor": 1,
+      "name": "WEEE Collection, Extraction and Processing — SSC Path",
+      "description": "Collection of end-of-life WEEE hard disk drives, magnetic separation and extraction of NdFeB magnets, demagnetization and crushing to produce crushed NdFeB granulate (1.48 KGM) for solid-state chlorination.",
+      "event_type": "MakeEvent",
+      "event_date": "2025-02-10T08:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [],
+      "output_products": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 2,
+    "fields": {
+      "actor": 1,
+      "name": "Shipment of Crushed NdFeB Granulate to U1",
+      "description": "Shipment of 1.45 KGM crushed NdFeB granulate (batch NDFEB-GRAN-2025-02-001) to U1 for SSC processing. Quality control sample (0.03 KGM) retained at origin.",
+      "event_type": "MoveEvent",
+      "event_date": "2025-02-14T08:00:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://u1.example",
+      "destination_facility_name": "Upcycler U1 — Facility",
+      "input_products": [
+        1
+      ],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 3,
+    "fields": {
+      "actor": 2,
+      "name": "WEEE Collection, Extraction and Processing — SENE Path",
+      "description": "Collection of end-of-life WEEE hard disk drives, magnetic separation and extraction of NdFeB magnets, demagnetization to produce whole NdFeB magnets (1.20 KGM) for electrochemical extraction.",
+      "event_type": "MakeEvent",
+      "event_date": "2025-05-10T08:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [],
+      "output_products": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 4,
+    "fields": {
+      "actor": 2,
+      "name": "Shipment of Whole NdFeB Magnets to U1",
+      "description": "Shipment of 1.20 KGM whole NdFeB magnets (batch NDFEB-MAG-2025-05-001) to U1 for SENE processing. Quality control sample (0.02 KGM) retained at origin.",
+      "event_type": "MoveEvent",
+      "event_date": "2025-05-14T08:00:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://u1.example",
+      "destination_facility_name": "Upcycler U1 — Facility",
+      "input_products": [
+        2
+      ],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 5,
+    "fields": {
+      "actor": 3,
+      "name": "SSC Chlorination (~350C)",
+      "description": "NH4Cl-based solid-state chlorination of 1.45 KGM crushed NdFeB granulate at U1. Produces chlorinated leachate (1.40 KGM) and an ammonia-containing byproduct stream (0.05 KGM).",
+      "event_type": "ModifyEvent",
+      "event_date": "2025-03-05T08:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [
+        1
+      ],
+      "output_products": [
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 6,
+    "fields": {
+      "actor": 3,
+      "name": "Hand-off of Whole Magnets to U2 for SENE Upscaling",
+      "description": "U1 hands off 1.20 KGM of whole NdFeB magnets to Upcycler U2 for pilot-scale electrochemical leaching.",
+      "event_type": "MoveEvent",
+      "event_date": "2025-05-16T08:00:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://u2.example",
+      "destination_facility_name": "Upcycler U2 — Facility",
+      "input_products": [
+        2
+      ],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 7,
+    "fields": {
+      "actor": 4,
+      "name": "SENE Electrochemical Dissolution (Upscaling Trial)",
+      "description": "Non-selective electrochemical leaching at U2 (pilot scale, Na2SO4 electrolyte, constant current, room temperature).",
+      "event_type": "ModifyEvent",
+      "event_date": "2025-06-05T08:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [
+        2
+      ],
+      "output_products": [
+        5,
+        6
+      ]
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 8,
+    "fields": {
+      "actor": 3,
+      "name": "Shipment of SSC Leachate to U3",
+      "description": "Shipment of SSC chlorinated leachate from U1 to Upcycler U3 for Nd/Fe/B separation.",
+      "event_type": "MoveEvent",
+      "event_date": "2025-03-10T09:00:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://u3.example",
+      "destination_facility_name": "Upcycler U3 — Facility",
+      "input_products": [
+        3
+      ],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 9,
+    "fields": {
+      "actor": 4,
+      "name": "Shipment of SENE Dissolved Fraction to U3",
+      "description": "Shipment of U2's SENE dissolution products to Upcycler U3 for metal separation.",
+      "event_type": "MoveEvent",
+      "event_date": "2025-06-10T09:00:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://u3.example",
+      "destination_facility_name": "Upcycler U3 — Facility",
+      "input_products": [
+        5
+      ],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 10,
+    "fields": {
+      "actor": 5,
+      "name": "Nd/Fe/B Separation and Conditioning",
+      "description": "Separation of combined SSC and SENE leachate at Upcycler U3 via liquid-liquid extraction and oxalate precipitation, producing three conditioned streams: Nd-rich (0.62 KGM), Fe/B leachate (0.71 KGM), and boron-rich (0.48 KGM).",
+      "event_type": "ModifyEvent",
+      "event_date": "2025-03-20T09:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [
+        3,
+        5
+      ],
+      "output_products": [
+        7,
+        8,
+        9
+      ]
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 11,
+    "fields": {
+      "actor": 5,
+      "name": "Shipment of Boron-Rich Stream to UPC",
+      "description": "Shipment of the boron-rich separated stream from Upcycler U3 to UPC for concentration and H3BO3 crystallisation.",
+      "event_type": "MoveEvent",
+      "event_date": "2025-03-22T09:00:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://upc.edu",
+      "destination_facility_name": "Universitat Politecnica de Catalunya",
+      "input_products": [
+        9
+      ],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 12,
+    "fields": {
+      "actor": 5,
+      "name": "Shipment of Nd-Rich Stream to U4",
+      "description": "Shipment of the Nd-rich separated stream from Upcycler U3 to U4 for Nd catalyst and API chemistry.",
+      "event_type": "MoveEvent",
+      "event_date": "2025-03-22T09:05:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://u4.example",
+      "destination_facility_name": "Upcycler U4 — Facility",
+      "input_products": [
+        7
+      ],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 13,
+    "fields": {
+      "actor": 5,
+      "name": "Shipment of Fe/B Leachate to U5",
+      "description": "Shipment of the Fe/B leachate from Upcycler U3 to U5 for Fe nanoparticle production.",
+      "event_type": "MoveEvent",
+      "event_date": "2025-03-22T09:10:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://u5.example",
+      "destination_facility_name": "Upcycler U5 — Facility",
+      "input_products": [
+        8
+      ],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 14,
+    "fields": {
+      "actor": 6,
+      "name": "Boron Concentration and H3BO3 Crystallisation",
+      "description": "Concentration of U3's boron-rich stream at UPC via ion-exchange resin adsorption and evaporation/electrodialysis, crystallising H3BO3 (0.09 KGM).",
+      "event_type": "ModifyEvent",
+      "event_date": "2025-03-28T09:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [
+        9
+      ],
+      "output_products": [
+        10
+      ]
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 15,
+    "fields": {
+      "actor": 6,
+      "name": "Shipment of H3BO3 Concentrate to U4",
+      "description": "Shipment of UPC's H3BO3 concentrate to U4 as a boronic-ester precursor.",
+      "event_type": "MoveEvent",
+      "event_date": "2025-03-30T09:00:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://u4.example",
+      "destination_facility_name": "Upcycler U4 — Facility",
+      "input_products": [
+        10
+      ],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 16,
+    "fields": {
+      "actor": 7,
+      "name": "Nd(OTf)3 Catalyst and Suzuki API Synthesis",
+      "description": "Synthesis at U4 of Nd(OTf)3/Nd salts from U3's Nd-rich stream (0.35 KGM), and a Suzuki-coupling API intermediate (0.04 KGM) using UPC's H3BO3-derived boronic esters.",
+      "event_type": "ModifyEvent",
+      "event_date": "2025-04-05T10:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [
+        7,
+        10
+      ],
+      "output_products": [
+        11,
+        12
+      ]
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 17,
+    "fields": {
+      "actor": 7,
+      "name": "Shipment of Nd(OTf)3/Nd Salts to M1",
+      "description": "Shipment of U4's Nd(OTf)3/Nd salts to M1 as a Nd precursor for Fe-Nd ammonia catalyst formulation.",
+      "event_type": "MoveEvent",
+      "event_date": "2025-04-08T10:00:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://m1.example",
+      "destination_facility_name": "Manufacturer M1 — Facility",
+      "input_products": [
+        11
+      ],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 18,
+    "fields": {
+      "actor": 7,
+      "name": "Shipment of Suzuki API Intermediate to M2",
+      "description": "Shipment of U4's Suzuki-coupling API intermediate to Manufacturer M2 for validation.",
+      "event_type": "MoveEvent",
+      "event_date": "2025-04-08T10:05:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://m2.example",
+      "destination_facility_name": "Manufacturer M2 — Facility",
+      "input_products": [
+        12
+      ],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 19,
+    "fields": {
+      "actor": 8,
+      "name": "Fe Nanoparticle Production (Flame Spray Pyrolysis)",
+      "description": "Production of Fe2O3/Fe3O4 nanoparticles at U5 from U3's Fe/B leachate via flame spray pyrolysis. Batch mass: 0.55 KGM.",
+      "event_type": "ModifyEvent",
+      "event_date": "2025-04-02T10:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [
+        8
+      ],
+      "output_products": [
+        13
+      ]
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 20,
+    "fields": {
+      "actor": 8,
+      "name": "Shipment of Fe Nanoparticles to M1",
+      "description": "Shipment of U5's Fe nanoparticles to M1 as a Fe precursor for Fe-Nd ammonia catalyst formulation.",
+      "event_type": "MoveEvent",
+      "event_date": "2025-04-05T10:00:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://m1.example",
+      "destination_facility_name": "Manufacturer M1 — Facility",
+      "input_products": [
+        13
+      ],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 21,
+    "fields": {
+      "actor": 9,
+      "name": "Fe-Nd Ammonia Synthesis Catalyst Formulation",
+      "description": "Formulation of a Fe-Nd ammonia synthesis/decomposition catalyst at M1, combining U5's Fe nanoparticles and U4's Nd salts.",
+      "event_type": "ModifyEvent",
+      "event_date": "2025-04-15T10:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [
+        13,
+        11
+      ],
+      "output_products": [
+        14
+      ]
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 22,
+    "fields": {
+      "actor": 10,
+      "name": "API Validation — Suzuki/Nd(OTf)3 Route",
+      "description": "Validation at Manufacturer M2 of the pharmaceutical API batch derived from U4's Suzuki-coupling intermediate.",
+      "event_type": "ModifyEvent",
+      "event_date": "2025-04-15T10:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [
+        12
+      ],
+      "output_products": [
+        15
+      ]
+    }
+  }
+]

@@ -1,0 +1,74 @@
+[13:57:52] latency: network validators4_block_period1
+  warm-up 79 s
+  n4_b1_d0.json: sent=240 included=240 errors=0 median=0.606s p95=1.032s
+  n4_b1_d25.json: sent=240 included=240 errors=0 median=0.606s p95=1.081s
+  n4_b1_d50.json: sent=240 included=240 errors=0 median=0.722s p95=1.197s
+  n4_b1_d100.json: sent=240 included=240 errors=0 median=0.945s p95=1.430s
+  n4_b1_d200.json: sent=240 included=240 errors=0 median=1.323s p95=1.883s
+[14:10:55] latency: network validators4_block_period2
+  warm-up 55 s
+  n4_b2_d0.json: sent=240 included=240 errors=0 median=1.114s p95=2.004s
+  n4_b2_d25.json: sent=240 included=240 errors=0 median=1.193s p95=2.089s
+  n4_b2_d50.json: sent=240 included=240 errors=0 median=1.305s p95=2.193s
+  n4_b2_d100.json: sent=240 included=240 errors=0 median=1.540s p95=2.377s
+  n4_b2_d200.json: sent=240 included=240 errors=0 median=1.869s p95=2.757s
+[14:23:40] latency: network validators4_block_period5
+  warm-up 66 s
+  n4_b5_d0.json: sent=240 included=240 errors=0 median=2.645s p95=4.985s
+  n4_b5_d25.json: sent=240 included=240 errors=0 median=2.823s p95=4.980s
+  n4_b5_d50.json: sent=240 included=240 errors=0 median=2.978s p95=5.051s
+  n4_b5_d100.json: sent=240 included=240 errors=0 median=3.143s p95=5.326s
+  n4_b5_d200.json: sent=240 included=240 errors=0 median=3.562s p95=5.648s
+[14:37:09] scale: network validators4_block_period2
+  warm-up 69 s
+  n4_b2_d0.json: sent=240 included=240 errors=0 median=1.113s p95=2.008s
+  n4_b2_d50.json: sent=240 included=240 errors=0 median=1.306s p95=2.173s
+[14:43:29] scale: network validators7_block_period2
+  warm-up 126 s
+  n7_b2_d0.json: sent=240 included=240 errors=0 median=1.108s p95=2.062s
+  n7_b2_d50.json: sent=240 included=240 errors=0 median=1.366s p95=2.215s
+[14:50:55] scale: network validators10_block_period2
+  warm-up 142 s
+  n10_b2_d0.json: sent=240 included=240 errors=0 median=1.164s p95=2.136s
+  n10_b2_d50.json: sent=240 included=240 errors=0 median=1.280s p95=2.235s
+[14:59:05] throughput: network validators4_block_period2
+  warm-up 90 s
+  n4_b2_r20.json: sent=1200 included=1200 errors=0 median=1.367s p95=2.643s
+  n4_b2_r40.json: sent=2400 included=2400 errors=0 median=1.169s p95=2.057s
+  n4_b2_r60.json: sent=3600 included=3600 errors=0 median=1.145s p95=2.064s
+  n4_b2_r80.json: sent=4800 included=4800 errors=0 median=1.545s p95=2.813s
+  n4_b2_r100.json: sent=6000 included=6000 errors=0 median=4.397s p95=20.908s
+  n4_b2_r120.json: sent=7200 included=7200 errors=0 median=7.537s p95=35.677s
+[15:14:10] throughput: network validators7_block_period2
+  warm-up 156 s
+  n7_b2_r20.json: sent=1200 included=1200 errors=0 median=7.774s p95=25.777s
+  n7_b2_r40.json: sent=2400 included=2400 errors=0 median=7.012s p95=21.417s
+  n7_b2_r60.json: sent=3600 included=3600 errors=0 median=13.920s p95=39.885s
+  n7_b2_r80.json: sent=4800 included=4800 errors=0 median=12.835s p95=37.600s
+  n7_b2_r100.json: sent=6000 included=6000 errors=0 median=12.846s p95=41.295s
+  n7_b2_r120.json: sent=7200 included=7200 errors=0 median=17.954s p95=57.198s
+[15:33:37] faults: network validators3_block_period2
+  warm-up 65 s
+  n3_crash1.json: sent=300 included=300 errors=0 median=1.666s p95=10.786s
+[15:38:09] faults: network validators4_block_period2
+  warm-up 91 s
+  n4_crash1.json: sent=300 included=300 errors=0 median=1.542s p95=10.554s
+  n4_crash2.json: sent=300 included=300 errors=0 median=158.776s p95=221.836s
+[15:47:47] faults: network validators7_block_period2
+  warm-up 128 s
+  n7_crash2.json: sent=300 included=300 errors=0 median=2.329s p95=27.997s
+  n7_crash3.json: sent=300 included=300 errors=0 median=177.179s p95=243.988s
+[15:59:08] faults: network validators10_block_period2
+  warm-up 194 s
+  n10_crash3.json: sent=300 included=300 errors=0 median=18.615s p95=69.015s
+  n10_crash4.json: sent=300 included=300 errors=0 median=199.610s p95=263.284s
+[16:12:51] timeout: network validators4_block_period2_request_timeout2
+  warm-up 80 s
+  n4_crash1_rt2.json: sent=300 included=300 errors=0 median=1.187s p95=3.269s
+[16:17:37] timeout: network validators4_block_period2_request_timeout5
+  warm-up 81 s
+  n4_crash1_rt5.json: sent=300 included=300 errors=0 median=1.496s p95=6.460s
+[16:22:29] timeout: network validators4_block_period2_request_timeout10
+  warm-up 69 s
+  n4_crash1_rt10.json: sent=300 included=300 errors=0 median=1.394s p95=9.997s
+[16:27:12] all done

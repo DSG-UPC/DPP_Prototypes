@@ -1,0 +1,944 @@
+import json
+import base64
+import logging
+import requests
+import jsonschema
+import pandas as pd
+
+from nacl.exceptions import CryptoError
+from openpyxl import load_workbook
+from urllib.parse import urlparse, urljoin
+from django.conf import settings
+from django.urls import reverse
+from django import forms
+from django.core.validators import URLValidator
+from django.core.cache import cache
+from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ValidationError
+from utils import certs, credtools
+from utils.sanitize_did import sanitize_didweb
+from idhub.models import (
+    DID,
+    Schemas,
+    ContextFile,
+    File_datas,
+    Membership,
+    Schemas,
+    UserRol,
+    VerificableCredential,
+    VCTemplatePdf,
+)
+from idhub_auth.models import User
+
+
+logger = logging.getLogger(__name__)
+
+
+class TermsConditionsForm2(forms.Form):
+    accept = forms.BooleanField(
+        label=_("Accept terms and conditions of the service"),
+        required=False
+    )
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        data = self.cleaned_data
+        if data.get("accept"):
+            self.user.accept_gdpr = True
+        else:
+            self.user.accept_gdpr = False
+        return data
+
+    def save(self, commit=True):
+
+        if commit:
+            self.user.save()
+            return self.user
+
+        return
+
+
+class EncryptionKeyForm(forms.Form):
+    key = forms.CharField(
+        label=_("Key for encrypt the secrets of all system"),
+        required=True
+    )
+
+    def clean(self):
+        data = self.cleaned_data
+        self._key = data["key"]
+        if not DID.objects.exists():
+            return data
+
+        did = DID.objects.first()
+        cache.set("KEY_DIDS", self._key, None)
+        try:
+            did.get_key_material()
+        except CryptoError:
+            cache.set("KEY_DIDS", None)
+            txt = _("Key no valid!")
+            raise ValidationError(txt)
+
+        cache.set("KEY_DIDS", None)
+        return data
+
+    def save(self, commit=True):
+
+        if commit:
+            cache.set("KEY_DIDS", self._key, None)
+            if not DID.objects.exists():
+                did = DID.objects.create(label='Default', type=DID.Types.WEB)
+                did.set_did()
+                did.save()
+
+        return
+
+
+class TermsConditionsForm(forms.Form):
+    accept_privacy = forms.BooleanField(
+        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+        required=False
+    )
+    accept_legal = forms.BooleanField(
+        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+        required=False
+    )
+    accept_cookies = forms.BooleanField(
+        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+        required=False
+    )
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+
+    def get_label(self, url, read):
+        label = _('I read and accepted the')
+        label += f' <a class="btn btn-green-admin" target="_blank" href="{url}" '
+        label += f'title="{read}">{read}</a>'
+        return label
+
+    def privacy_label(self):
+        url = settings.POLICY_PRIVACY
+        read = _("Privacy policy")
+        return self.get_label(url, read)
+
+    def legal_label(self):
+        url = settings.POLICY_LEGAL
+        read = _("Legal policy")
+        return self.get_label(url, read)
+
+    def cookies_label(self):
+        url = settings.POLICY_COOKIES
+        read = _("Cookies policy")
+        return self.get_label(url, read)
+
+    def clean(self):
+        data = self.cleaned_data
+        privacy = data.get("accept_privacy")
+        legal = data.get("accept_legal")
+        cookies = data.get("accept_cookies")
+        if privacy and legal and cookies:
+            self.user.accept_gdpr = True
+        else:
+            self.user.accept_gdpr = False
+        return data
+
+    def save(self, commit=True):
+
+        if commit:
+            self.user.save()
+            return self.user
+
+        return
+
+
+class ImportSchemaForm(forms.Form):
+    schema_import = forms.FileField(label=_("Schema to import"))
+    context_import = forms.FileField(label=_("Context to import (optional)"), required=False)
+
+    def clean(self):
+        data = self.cleaned_data["schema_import"]
+        context = self.cleaned_data["context_import"]
+        self.context = {}
+        self.context_instance = {}
+
+        try:
+            self.file_name = data.name
+            self.schema = json.loads(data.read())
+        except Exception:
+             raise ValidationError(_("This schema not is a json file"))
+
+        #TODO: multiple schemas can have same context.
+        if context:
+            exists = ContextFile.objects.filter(file_name=context.name).first()
+            if exists:
+                self.context_instance = exists
+                logger.info(_("Context already exists"))
+            else:
+                try:
+                    self.context["file_name"] = context.name
+                    self.context["data"] = context.read()
+                except Exception:
+                    pass
+                try:
+                    self.context["data"] = json.dumps(json.loads(self.context["data"]))
+                except Exception:
+                    raise ValidationError(_("This context is no a valid jsonld"))
+
+        try:
+            assert credtools.validate_schema(self.schema)
+            assert self.schema.get('name')
+            assert self.schema.get('title')
+        except Exception:
+            raise ValidationError(_("This is not a valid schema!"))
+
+        if Schemas.objects.filter(file_schema=self.file_name).exists():
+            raise ValidationError(_("Schema exist!"))
+
+        return data
+
+    def save(self, domain=None, commit=True):
+        _name = json.dumps(self.schema.get("name"))
+        _description = json.dumps(self.schema.get("description"))
+        data = json.dumps(self.schema)
+        url_context = None
+
+        if (self.context or self.context_instance) and domain:
+            file_name = (
+                self.context_instance.file_name
+                if self.context_instance
+                else self.context["file_name"]
+            )
+
+            url_context = urljoin(domain, reverse("idhub:context_file", args=[file_name]))
+        schema = Schemas(
+            file_schema=self.file_name,
+            data=data,
+            _name=_name,
+            _description=_description,
+            template_description=_description,
+            context=url_context
+        )
+        schema.type = schema.get_type
+        schema.save()
+
+        if url_context:
+            ContextFile.objects.create(schema=schema, **self.context)
+
+        return schema
+
+
+class ImportSchemaUrlForm(forms.Form):
+    schema_url = forms.URLField(label=_("Schema URL reference"))
+    context_url = forms.URLField(label=_("Context URL reference"), required=False)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        schema_url = cleaned_data.get("schema_url")
+        context_url = cleaned_data.get("context_url")
+
+        if not schema_url:
+            return cleaned_data
+
+        try:
+            path = urlparse(schema_url).path
+            file_name = path.split("/")[-1]
+            if not file_name.endswith(".json"):
+                file_name += ".json"
+            cleaned_data["file_name"] = file_name
+        except Exception:
+            raise ValidationError(_("This schema not is a json file"))
+
+        if Schemas.objects.filter(file_schema=file_name).exists():
+            raise ValidationError(_("Schema exist!"))
+
+        try:
+            res = requests.get(schema_url, timeout=10)
+            res.raise_for_status()
+            schema_data = res.json()
+            cleaned_data["schema_data"] = json.dumps(schema_data)
+        except Exception:
+            raise ValidationError(_("Could not download or parse the schema as a valid JSON file."))
+
+        if context_url:
+            try:
+                res = requests.get(context_url, timeout=10)
+                res.raise_for_status()
+                res.json()
+            except Exception:
+                raise ValidationError(_("The context URL is not accessible or is not valid JSON."))
+
+        try:
+            assert credtools.validate_schema(schema_data)
+        except Exception:
+            raise ValidationError(_("This is not a valid schema!"))
+
+
+        return self.cleaned_data
+
+    def save(self):
+        schema_url = self.cleaned_data["schema_url"]
+        context_url = self.cleaned_data.get("context_url", "")
+        schema_dict = json.loads(self.cleaned_data["schema_data"])
+        file_name = self.cleaned_data["file_name"]
+
+
+        raw_name = schema_dict.get("title") or schema_dict.get("name")
+        if not raw_name:
+            vc_types = schema_dict.get("properties", {}).get("type", {}).get("default", [])
+
+            if isinstance(vc_types, list) and vc_types:
+                if "VerifiableCredential" in vc_types:
+                    vc_types = ["VerifiableCredential"] + [t for t in vc_types if t != "VerifiableCredential"]
+
+                raw_name = " - ".join(vc_types)
+            else:
+                raw_name = file_name
+
+        raw_desc = schema_dict.get("description", "")
+        _description = raw_desc[:250] if raw_desc else None
+        _name = json.dumps([{"value": raw_name, "lang": "en"}])
+
+        schema = Schemas.objects.create(
+            file_schema=file_name,
+            data=self.cleaned_data["schema_data"],
+            _name=_name,
+            _description=_description,
+            template_description=raw_desc,
+            context=context_url
+        )
+        schema.validation_url = schema_url if schema_url else ""
+        schema.type = schema.get_type
+        schema.save()
+
+        return schema
+
+
+class ImportForm(forms.Form):
+    did = forms.ChoiceField(label=_("Did"), choices=[])
+    eidas1 = forms.ChoiceField(
+        label=_("Signature with Eidas1"),
+        choices=[],
+        required=False
+    )
+    template_pdf = forms.ChoiceField(
+        label=_("Select one template for render to Pdf"),
+        choices=[],
+        required=False
+    )
+    schema = forms.ChoiceField(label=_("Schema"), choices=[])
+    file_import = forms.FileField(label=_("File to import"))
+
+    def __init__(self, *args, **kwargs):
+        self._schema = None
+        self._did = None
+        self._eidas1 = None
+        self.rows = {}
+        self.properties = {}
+        self.users = []
+        super().__init__(*args, **kwargs)
+        dids = DID.objects.filter(user__isnull=True, available=True)
+        self.fields['did'].choices = [
+            (x.did, x.label) for x in dids.filter(eidas1=False)
+        ]
+        txt_select_one = _("Please choose a data schema ...")
+        self.fields['schema'].choices = [(0,txt_select_one)] + [
+            (x.id, x.name) for x in Schemas.objects.filter()
+        ]
+
+        if dids.filter(eidas1=True).exists():
+            choices = [("", "")]
+            choices.extend([
+                (x.did, x.label) for x in dids.filter(eidas1=True)
+            ])
+            self.fields['eidas1'].choices = choices
+        else:
+          self.fields.pop('eidas1')
+
+        if VCTemplatePdf.objects.filter().exists():
+            choices = [("", "")]
+            choices.extend([
+                (x.id, x.name) for x in VCTemplatePdf.objects.all()
+            ])
+            self.fields['template_pdf'].choices = choices
+        else:
+          self.fields.pop('template_pdf')
+
+    def clean(self):
+        data = self.cleaned_data["did"]
+        did = DID.objects.filter(
+            user__isnull=True,
+            did=data
+        )
+
+        if not did.exists():
+            raise ValidationError(_("Did not valid!"))
+
+        self._did = did.first()
+
+        eidas1 = self.cleaned_data.get('eidas1')
+        if eidas1:
+            self._eidas1 = DID.objects.filter(
+                user__isnull=True,
+                eidas1=True,
+                did=eidas1
+            ).first()
+
+        template_pdf = self.cleaned_data.get('template_pdf')
+        self._template_pdf = None
+        if template_pdf:
+            self._template_pdf = VCTemplatePdf.objects.filter(
+                id=template_pdf
+            ).first()
+
+        return data
+
+    def clean_schema(self):
+        data = self.cleaned_data["schema"]
+        schema = Schemas.objects.filter(
+            id=data
+        )
+        if not schema.exists():
+            raise ValidationError(_("Schema is not valid!"))
+
+        self._schema = schema.first()
+        try:
+            self.json_schema = self._schema.get_credential_subject_schema()
+        except Exception:
+            raise ValidationError(_("Schema not valid!"))
+
+        return data
+
+    def clean_file_import(self):
+        data = self.cleaned_data["file_import"]
+        if not self._schema:
+            return data
+
+        self.file_name = data.name
+        props = self.json_schema.get("properties", {})
+
+        # Forze than pandas read one column as string
+        dtype_dict = {
+            "phoneNumber": str,
+            "phone": str,
+            'postCode': str
+        }
+        try:
+            df = pd.read_excel(data, dtype=dtype_dict)
+            df.fillna('', inplace=True)
+        except Exception:
+            txt = _("This file does not a excel valid!")
+            raise ValidationError(txt)
+
+        try:
+            workbook = load_workbook(data)
+            # if no there are schema meen than is a excel costum and you
+            # don't have control abour that
+            if 'Schema' in workbook.custom_doc_props.names:
+                excel_schema = workbook.custom_doc_props['Schema'].value
+                file_schema = self._schema.file_schema.split('.json')[0]
+                assert file_schema in excel_schema
+        except Exception:
+            txt = _("This File does not correspond to this scheme!")
+            raise ValidationError(txt)
+
+        # convert dates to iso 8601
+        for col in df.select_dtypes(include='datetime').columns:
+            df[col] = df[col].dt.strftime("%Y-%m-%d")
+        df.fillna('', inplace=True)
+
+        # convert numbers to strings if this is indicate in schema
+        for col in props.keys():
+            if col not in df.columns:
+                continue
+
+            if "string" in props[col]["type"]:
+                df[col] = df[col].astype(str)
+
+            # TODO @cayop if there are a cel with nan then now is ''
+            # for this raison crash with df[col].astype(int)
+            # elif "integer" in props[col]["type"]:
+            #     df[col] = df[col].astype(int)
+
+            # elif "number" in props[col]["type"]:
+            #     df[col] = df[col].astype(float)
+
+        data_pd = df.to_dict(orient='index')
+
+        if not data_pd or df.last_valid_index() is None:
+            self.exception(_("The file you try to import is empty!"))
+
+        for n in data_pd.keys():
+            row = {}
+            d = data_pd[n]
+            for k, v in d.items():
+                if d[k] or d[k] == 0:
+                    row[k] = d[k]
+
+            if row:
+                user = self.validate_jsonld(n+2, row)
+                if user:
+                    self.rows[user] = row
+
+        return data
+
+    def save(self, commit=True):
+        table = []
+        for k, v in self.rows.items():
+            table.append(self.create_credential(k, v))
+
+        if commit:
+            for cred in table:
+              cred.save()
+            File_datas.objects.create(file_name=self.file_name)
+            return table
+
+        return
+
+    def validate_jsonld(self, line, row):
+
+        try:
+            jsonschema.validate(
+                instance=row,
+                schema=self.json_schema,
+                format_checker=jsonschema.Draft202012Validator.FORMAT_CHECKER
+            )
+        except jsonschema.exceptions.ValidationError as err:
+            msg = "line {}: {}".format(line, err.message)
+            self.exception(msg)
+
+        user, new = User.objects.get_or_create(email=row.get('email'))
+        if new:
+            self.users.append(user)
+            user.set_encrypted_sensitive_data()
+            user.save()
+            self.create_defaults_dids(user)
+
+        return user
+
+    def create_defaults_dids(self, user):
+        if settings.DPP:
+            did = DID(label="dpp", user=user, type=DID.Types.WEBETH)
+        else:
+            did = DID(label="Default", user=user, type=DID.Types.WEB)
+        did.set_did()
+        did.save()
+
+    def create_credential(self, user, row):
+        bcred = VerificableCredential.objects.filter(
+            user=user,
+            schema=self._schema,
+            issuer_did=self._did,
+            status=VerificableCredential.Status.ENABLED
+        )
+        if bcred.exists():
+            cred = bcred.first()
+            cred.csv_data = json.dumps(row, default=str)
+            cred.eidas1_did = self._eidas1
+            cred.template_pdf = self._template_pdf
+            return cred
+
+        cred = VerificableCredential(
+            verified=False,
+            user=user,
+            csv_data=json.dumps(row, default=str),
+            issuer_did=self._did,
+            schema=self._schema,
+            eidas1_did=self._eidas1,
+            template_pdf=self._template_pdf
+        )
+        cred.set_type()
+        return cred
+
+    def exception(self, msg):
+        File_datas.objects.create(file_name=self.file_name, success=False)
+        raise ValidationError(msg)
+
+
+class SchemaForm(forms.Form):
+    file_template = forms.FileField(label=_("File template"))
+
+
+class MembershipForm(forms.ModelForm):
+
+    class Meta:
+        model = Membership
+        fields = ['type', 'start_date', 'end_date']
+
+    def clean_end_date(self):
+        data = super().clean()
+        start_date = data['start_date']
+        end_date = data.get('end_date')
+        members = Membership.objects.filter(
+            type=data['type'],
+            user=self.instance.user
+        )
+        if self.instance.id:
+            members = members.exclude(id=self.instance.id)
+
+        if members.filter(start_date__lte=start_date, end_date=None).exists():
+            msg = _("This membership already exists!")
+            raise forms.ValidationError(msg)
+
+        if (start_date and end_date):
+            if start_date > end_date:
+                msg = _("The end date is less than the start date")
+                raise forms.ValidationError(msg)
+
+            members = members.filter(
+                start_date__lte=end_date,
+                end_date__gte=start_date,
+            )
+
+            if members.exists():
+                msg = _("This membership already exists!")
+                raise forms.ValidationError(msg)
+
+        if not end_date:
+            members = members.filter(
+                start_date__gte=start_date,
+            )
+
+            if members.exists():
+                msg = _("This membership already exists!")
+                raise forms.ValidationError(msg)
+
+
+        return end_date
+
+
+class UserRolForm(forms.ModelForm):
+
+    class Meta:
+        model = UserRol
+        fields = ['service']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not self.instance.id:
+            user = self.instance.user
+            choices = self.fields['service'].choices
+            choices.queryset = choices.queryset.exclude(users__user=user)
+            self.fields['service'].choices = choices
+
+    def clean_service(self):
+        data = super().clean()
+        service = UserRol.objects.filter(
+            service=data['service'],
+            user=self.instance.user
+        )
+
+        if service.exists():
+            msg = _("Is not possible to have a duplicate role")
+            raise forms.ValidationError(msg)
+
+        return data['service']
+
+
+class ImportCertificateForm(forms.Form):
+    label = forms.CharField(label=_("Label"))
+    password = forms.CharField(
+        label=_("Password of certificate"),
+        widget=forms.PasswordInput
+    )
+    file_import = forms.FileField(label=_("File import"))
+
+    def __init__(self, *args, **kwargs):
+        self._did = None
+        self._s = None
+        self._label = None
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        data = super().clean()
+        file_import = data.get('file_import')
+        self.pfx_file = file_import.read()
+        self.file_name = file_import.name
+        self._pss = data.get('password')
+        self._label = data.get('label')
+        if not self.pfx_file or not self._pss:
+            msg = _("Is not a valid certificate")
+            raise forms.ValidationError(msg)
+
+        self.signer_init()
+        if not self._s:
+            msg = _("Is not a valid certificate")
+            raise forms.ValidationError(msg)
+
+        self.new_did()
+        return data
+
+    def new_did(self):
+        keys = {
+            "cert": base64.b64encode(self.pfx_file).decode('utf-8'),
+            "passphrase": self._pss
+        }
+        key_material = json.dumps(keys)
+        self._did = DID(
+            key_material=key_material,
+            did=self.file_name,
+            label=self._label,
+            eidas1=True,
+            type=DID.Types.KEY
+        )
+
+        self._did.set_key_material(key_material)
+
+    def save(self, commit=True):
+
+        if commit:
+            self._did.save()
+            return self._did
+
+        return
+
+    def signer_init(self):
+        self._s = certs.load_cert(
+            self.pfx_file, self._pss.encode('utf-8')
+        )
+
+class DIDForm(forms.ModelForm):
+    class Meta:
+        model = DID
+        fields = ['label', 'type', 'did']
+
+    def clean(self):
+        data = self.cleaned_data
+        label = data.get("label")
+        typ = DID.Types(int(data.get("type")))
+        self._did = data.get("did")
+
+        if typ in [DID.Types.WEB, DID.Types.WEBETH]:
+            self._did = sanitize_didweb(self._did)
+
+        if DID.objects.filter(did=self._did).first():
+            raise ValidationError(_("This DID exist already"))
+
+        if DID.objects.filter(label=label, user__isnull=True).first():
+            raise ValidationError(_("This Label exist already"))
+
+        if not self.instance.is_web:
+            self.instance = DID(
+                type=typ,
+                label=label
+            )
+            return data
+
+        self.instance.label = label
+        if self.instance.did != self._did:
+            self.instance.did = self._did
+            if self.instance.key_material:
+                self.instance.get_did_document()
+            if settings.DOMAIN != self._did.split(":")[2]:
+                self.instance.available = False
+
+        return data
+
+    def save(self, commit=True):
+
+        self.instance.did = self._did
+        if not self.instance.is_web:
+           self.instance.set_did()
+
+        if commit:
+            self.instance.save()
+            return self.instance
+
+        return
+
+
+logger = logging.getLogger(__name__)
+
+class ObjectDidImportForm(forms.Form):
+    create_did = forms.BooleanField(
+        label=_("Create object DID?"),
+        required=False,
+        help_text=_("Check this if a new DID should be generated for the object.")
+    )
+    did_method = forms.ChoiceField(
+        choices=DID.Types.choices,
+        label=_("Select DID method"),
+        required=False, # Not required if not creating a new DID
+        help_text=_("Choose the DID method to be used when creating new object DIDs.")
+    )
+    service_endpoint = forms.CharField(
+        label=_("Service Endpoint"),
+        required=False,
+        help_text=_("Enter a valid URI for the DPP service endpoint (optional).")
+    )
+    issuer = forms.ModelChoiceField(
+        queryset=DID.objects.filter(user__isnull=True, is_product=False),
+        empty_label=_("Select one"),
+        label=_("Issuer DID"),
+        help_text=_("Select the DID that will sign the Digital Product Passport (DPP).")
+    )
+    schema = forms.ModelChoiceField(
+        queryset=Schemas.objects.filter(
+            type__in=[
+                "DigitalConformityCredential",
+                "DigitalProductPassport",
+                "DigitalFacilityRecord",
+                "DigitalTraceabilityEvent",
+            ]
+        ),
+        empty_label=_("Select one"),
+        label=_("UNTP schema"),
+        help_text=_("Select which UNTP schema this credential must comply with.")
+    )
+    file_import = forms.FileField(
+        label=_("Upload object DIDs file"),
+        help_text=_("Upload a JSON file containing the object DIDs to be imported.")
+    )
+
+    def clean_service_endpoint(self):
+        value = self.cleaned_data.get('service_endpoint')
+        if value:
+            validator = URLValidator()
+            try:
+                validator(value)
+            except ValidationError:
+                raise ValidationError(_("Please enter a valid URI."))
+        return value
+
+    def clean_file_import(self):
+        uploaded_file = self.cleaned_data.get("file_import")
+        if not uploaded_file:
+            return None
+
+        try:
+            file_content = uploaded_file.read().decode('utf-8')
+            return json.loads(file_content)
+        except json.JSONDecodeError:
+            raise ValidationError(_("Invalid JSON file. Please ensure the file is correctly formatted."))
+        except UnicodeDecodeError:
+            raise ValidationError(_("File is not UTF-8 encoded. Please save the file as UTF-8."))
+
+
+    def clean(self):
+        cleaned_data = super().clean()
+        file_data = cleaned_data.get('file_import')
+        schema = cleaned_data.get('schema')
+        issuer = cleaned_data.get('issuer')
+        create_did = cleaned_data.get('create_did')
+
+        if not file_data or not schema or not issuer:
+            return cleaned_data
+
+        cred_subject = file_data.get("credentialSubject")
+        if not cred_subject:
+             raise ValidationError(_("The uploaded JSON must contain a 'credentialSubject'."))
+
+        if isinstance(cred_subject, dict):
+            subjects = [cred_subject]
+        elif isinstance(cred_subject, list):
+            subjects = cred_subject
+        else:
+             raise ValidationError(_("'credentialSubject' must be an object or an array of objects."))
+
+        subject_ids = [sub.get("id") for sub in subjects if isinstance(sub, dict) and sub.get("id")]
+
+        if not subject_ids:
+             raise ValidationError(_("The 'credentialSubject' must contain at least one 'id'."))
+
+        exists = VerificableCredential.objects.filter(
+            schema=schema,
+            issuer_did=issuer,
+            status=VerificableCredential.Status.ISSUED,
+            subject_id__in=subject_ids
+        ).exists()
+
+        if exists and not create_did:
+            raise ValidationError(_("A credential for one or more of these subjects already exists."))
+
+        if create_did and not cleaned_data.get('did_method'):
+            self.add_error('did_method', _("This field is required when creating a new DID."))
+
+        cleaned_data['extracted_subject_ids'] = subject_ids
+
+        return cleaned_data
+
+    def _create_did_if_needed(self):
+        if not self.cleaned_data.get("create_did"):
+            return None
+
+        file_data = self.cleaned_data["file_import"]
+        label = file_data.get("id") or file_data.get("name") or "object-did"
+
+        obj_did = DID(
+            label=label,
+            type=DID.Types(int(self.cleaned_data["did_method"])),
+            is_product=True,
+            service_endpoint=self.cleaned_data["service_endpoint"]
+        )
+        obj_did.set_did()
+        obj_did.save()
+
+        return obj_did
+
+
+    def _create_credential(self, user, file_data, subject_did, issuer_did, schema, domain):
+        subject_id = subject_did.did if subject_did else file_data["credentialSubject"]["id"]
+        credential_subject = file_data.get('credentialSubject', file_data)
+
+        cred = VerificableCredential(
+            verified=True,
+            user=user,
+            json_data=credential_subject,
+            subject_id=subject_id,
+            issuer_did=issuer_did,
+            schema=schema,
+        )
+        cred.set_type()
+
+        # Validate Credential against schema once it is fully formed, and then save
+        try:
+            rendered_json = cred.render(domain)
+            instance_to_validate = json.loads(rendered_json)
+            jsonschema.validate(
+                instance=instance_to_validate,
+                schema=json.loads(schema.data),
+                format_checker=jsonschema.Draft202012Validator.FORMAT_CHECKER
+            )
+        except jsonschema.exceptions.ValidationError as err:
+            raise ValidationError(
+                _("JSON validation failed for the generated credential: %(error)s on path '%(path)s'"),
+                params={"error": err.message, "path": "/".join(map(str, err.path))}
+            )
+        except Exception as e:
+            logger.error(f"An unexpected error occurred during validation: {e}")
+            raise ValidationError(_("An unexpected error occurred during credential validation."))
+
+        return cred
+
+    def save(self, user):
+        obj_did = self._create_did_if_needed()
+
+        file_data = self.cleaned_data["file_import"]
+        issuer_did = self.cleaned_data["issuer"]
+        schema = self.cleaned_data["schema"]
+
+        if obj_did:
+            cred_subject = file_data.get("credentialSubject", {})
+
+            if isinstance(cred_subject, dict):
+                cred_subject["id"] = obj_did.did
+
+            elif isinstance(cred_subject, list):
+                raise ValidationError(
+                    _("Cannot assign a single new DID to a credential containing multiple subjects. Please ensure the uploaded JSON already contains the correct IDs for each item, or upload them individually.")
+                )
+
+        domain = f"https://{settings.DOMAIN}/"
+        cred = self._create_credential(user, file_data, obj_did, issuer_did, schema, domain)
+
+
+        issue_target_did = obj_did if obj_did else issuer_did
+        cred.issue(issue_target_did, domain)
+
+        cred.save()
+
+        return cred

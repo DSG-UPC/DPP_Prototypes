@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Edit {{ actor.name }} — NeoCycleHub{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2"><i class="bi bi-pencil me-2"></i>Edit actor: {{ actor.name }}</h1>
+  <a href="{% url 'actor_detail' actor.pk %}" class="btn btn-sm btn-grey">
+    <i class="bi bi-arrow-left me-1"></i>Back
+  </a>
+</div>
+
+<div class="card shadow-sm" style="max-width:700px">
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label class="form-label fw-semibold">DID</label>
+        <input name="did" value="{{ actor.did }}" class="form-control font-monospace">
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">idhub API URL</label>
+        <input name="idhub_url" value="{{ actor.idhub_url }}" class="form-control"
+               placeholder="http://idhub:8000/api/v1">
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">idhub Bearer token</label>
+        <input name="idhub_token" value="{{ actor.idhub_token }}" class="form-control font-monospace">
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Registered ID</label>
+        <input name="registered_id" value="{{ actor.registered_id }}" class="form-control"
+               placeholder="e.g. SIRENE number">
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">ID scheme URI <span class="text-muted fw-normal">(UNTP <code>idScheme.id</code>, used in DIA)</span></label>
+          <input name="id_scheme_id" value="{{ actor.id_scheme_id }}" class="form-control font-monospace"
+                 placeholder="https://vocabulary.uncefact.org/identifierSchemes/GLEIF (default if blank)">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">ID scheme name <span class="text-muted fw-normal">(<code>.name</code>)</span></label>
+          <input name="id_scheme_name" value="{{ actor.id_scheme_name }}" class="form-control" placeholder="GLEIF LEI">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">LEI</label>
+        <input name="lei_id" value="{{ actor.lei_id }}" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Registered date <span class="text-muted fw-normal">(UNTP <code>registeredDate</code>, used in DIA)</span></label>
+        <input type="date" name="registered_date" value="{{ actor.registered_date|date:'Y-m-d' }}" class="form-control" style="max-width:220px">
+        <div class="form-text">Defaults to today's date if left blank.</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Website</label>
+        <input name="website" value="{{ actor.website }}" class="form-control">
+      </div>
+      <div class="row">
+        <div class="col-md-3 mb-3">
+          <label class="form-label fw-semibold">Country code</label>
+          <input name="country_code" value="{{ actor.country_code }}" class="form-control"
+                 placeholder="FR" maxlength="2">
+          <div class="form-text">ISO 3166-1 alpha-2</div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-semibold">Country name</label>
+          <input name="country_name" value="{{ actor.country_name }}" class="form-control">
+        </div>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-green-admin" type="submit">
+          <i class="bi bi-check-lg me-1"></i>Save
+        </button>
+        <a href="{% url 'actor_detail' actor.pk %}" class="btn btn-grey">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

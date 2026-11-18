@@ -1,0 +1,10 @@
+2026-10-03 11:53:05.366+0000 | main | WARN  | Besu | --rpc-ws-host has been ignored because --rpc-ws-enabled was not defined on the command line.
+2026-10-03 11:53:05.550+0000 | main | WARN  | Besu | --graphql-http-host has been ignored because --graphql-http-enabled was not defined on the command line.
+2026-10-03 11:53:22.876+0000 | main | WARN  | Besu | Forcing --bonsai-limit-trie-logs-enabled=false, since it cannot be enabled with --sync-mode=FULL and --data-storage-format=BONSAI.
+2026-10-03 11:53:23.653+0000 | main | WARN  | Besu | Forcing price bump for transaction replacement to 0, since min-gas-price is set to 0
+2026-10-03 11:53:23.761+0000 | main | WARN  | Besu | Forcing tx-pool-min-gas-price=0, since it cannot be greater than the value of min-gas-price
+2026-10-03 11:53:29.797+0000 | main | WARN  | Besu | Forcing price bump for transaction replacement to 0, since min-gas-price is set to 0
+2026-10-03 11:53:29.805+0000 | main | WARN  | Besu | Forcing tx-pool-min-gas-price=0, since it cannot be greater than the value of min-gas-price
+2026-10-03 11:56:30.893+0000 | EthScheduler-Transactions-2 | WARN  | SenderBalanceChecker | Failed to get balance for 0xa7fc212fca22516c353415a2d6cf5b86dfaabd9a at chain header 68 (0x18212b16996027e0144fa373dfbbcd423d90a2c61cb9438c40c4804ab6a18101)
+2026-10-03 11:56:38.514+0000 | EthScheduler-Transactions-1 | WARN  | SenderBalanceChecker | Failed to get balance for 0xac1a7f332b0a0e854fac94ab0c3a54e6486d40da at chain header 69 (0x51ab91cc920ea8069118f8b12744ca0d0cefc882a3c2d119b4761a420a970879)
+2026-10-03 11:56:40.304+0000 | BftProcessorExecutor-QBFT-0 | WARN  | BlockTransactionSelector | Interrupting the internal selection of transactions for block inclusion as it exceeds the allowed max duration of 1485ms

@@ -1,0 +1,55 @@
+{
+ "product_actor_role": "supplier",
+ "baseline": {
+  "signature_check": "valid",
+  "anchor_check": "valid",
+  "anchor_check_strict": "valid"
+ },
+ "storage_tamper": {
+  "signature_check": "invalid",
+  "anchor_check": "invalid",
+  "anchor_check_strict": "invalid"
+ },
+ "silent_replace": {
+  "signature_check": "valid",
+  "anchor_check": "invalid",
+  "anchor_check_strict": "invalid",
+  "anchors_for_original_hash": 1,
+  "note": "the replacement was itself anchored under its own URL; a verifier that looks up the URL of the original finds the original hash, not the served one"
+ },
+ "smart_replace": {
+  "signature_check": "valid",
+  "anchor_check": "valid",
+  "anchor_check_strict": "invalid"
+ },
+ "foreign_contract": {
+  "signature_check": "valid",
+  "anchor_check": "valid",
+  "anchor_check_strict": "invalid"
+ },
+ "deletion": {
+  "credential_still_served": false,
+  "anchor_events_found": 1,
+  "anchor_url_matches": true
+ },
+ "timing": {
+  "n": 22,
+  "gap_s_min": 2.0,
+  "gap_s_max": 4.0,
+  "gap_s_median": 2.0
+ },
+ "scenario_strict": {
+  "valid": 15
+ },
+ "created_uuids": [
+  "97731308-7a93-4dfe-ad7b-95ad99ac9030",
+  "40176281-ea7b-4b90-928f-3f6b01065b7f",
+  "afe2b5fa-b409-4a80-bfb6-943c7c2a856a",
+  "1f2d4ef5-25a3-486a-9594-c7d066b26928",
+  "d78756e9-9fe9-4c6e-a16f-79c78b4977cf",
+  "21b3f01e-1e7c-4f95-bd49-8969a6d55c1f",
+  "12e132a4-fcbc-4f63-8d4c-1231edf17485",
+  "fe39e74a-f07c-4838-ad0f-c66aa2ea4351",
+  "b419c146-3dc5-4bd6-8886-f79255e01420"
+ ]
+}
