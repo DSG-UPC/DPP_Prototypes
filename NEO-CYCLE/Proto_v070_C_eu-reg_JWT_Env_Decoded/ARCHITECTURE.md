@@ -78,7 +78,6 @@ all — it's architecturally incapable of forging a credential.
 | `idhub/` | Django 5.2 + django-ninja + `pyvckit` (fork) + PyJWT + `cryptography` | 8000 | DID/VC signing authority. Owns all private keys. Issues and verifies credentials. Serves `did:web` documents and status lists. |
 | `neocyclehub/` | Django 5.2, no crypto deps | 9000 | Demo app, no login. Holds the fixture supply chain. Calls idhub's API to get credentials signed; stores and serves the results. |
 | `neocyclehub-bootstrap/` | Same code, Bootstrap-styled UI, login required | 9001 | Independent second instance of the same app — separate database, same fixture data, own DIDs reused by label, own tokens. |
-| `devicehub-django/` | eReuse's device-inventory platform | — | Kept as a reference only; **not part of this demonstrator** — not in `docker-compose.yml`, no code path calls into it. Evaluated and rejected as a base because it models individual devices, not material batches (see `what_was_done_and_instructions.txt`). |
 
 All three active services are plain Django dev servers (`runserver`) behind
 Docker Compose, with `idhub`'s SQLite database bind-mounted from the host
@@ -442,9 +441,6 @@ Worth knowing before treating this as a production reference:
   used to compare the wrong field and silently allow duplicate `Schemas`
   rows on a second run); nothing else in this list depends on that having
   been broken.
-- **`devicehub-django/` is present but inert** — don't assume anything
-  reachable from this demonstrator calls into it; it's a kept-for-reference
-  evaluation artifact.
 - **DIDs and schemas are not reset by `docker compose down -v`** — that only
   clears `neocyclehub`'s named volumes. idhub's SQLite file is a host bind
   mount; see `HOWTO.md`'s troubleshooting section for how to reset it too.
