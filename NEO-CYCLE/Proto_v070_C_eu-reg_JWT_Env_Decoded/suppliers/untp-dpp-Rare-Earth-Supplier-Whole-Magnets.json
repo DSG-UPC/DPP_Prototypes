@@ -1,0 +1,269 @@
+{
+  "type": [
+    "DigitalProductPassport",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://rare-earth-recycling.com/credentials/5d8e4f5g-6b7c-8d9e-0f1a-2b3c4d5e6f7g",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:rare-earth-recycling.com:rec-001",
+    "name": "Rare Earth Recycling Ltd.",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://rare-earth-recycling.com",
+        "name": "Rare Earth Recycling Ltd.",
+        "registeredId": "FR123456789",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+          "name": "SIRENE"
+        }
+      },
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://search.gleif.org/#/record/549300RERC123456789",
+        "name": "Rare Earth Recycling Ltd.",
+        "registeredId": "549300RERC123456789",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://www.gleif.org/en/about-lei/iso-17442-the-lei-code-structure",
+          "name": "Legal Entity Identifier (LEI)"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-08-10T08:00:00Z",
+  "validUntil": "2034-08-10T08:00:00Z",
+  "name": "Digital Product Passport — Whole NdFeB Magnets for ECEX",
+  "credentialSubject": {
+    "type": [
+      "Product"
+    ],
+    "id": "https://id.gs1.org/01/09520123456788/42/0046004",
+    "name": "Whole NdFeB Magnets for Electrochemical Extraction",
+    "description": "Whole NdFeB magnets extracted and cleaned from end-of-life WEEE (Waste Electrical and Electronic Equipment). High-purity rare earth permanent magnets supplied to Rare Earth Upcycling Ltd. for electrochemical extraction (ECEX) processing.",
+    "idScheme": {
+      "type": [
+        "IdentifierScheme"
+      ],
+      "id": "https://id.gs1.org/01/",
+      "name": "Global Trade Identification Number (GTIN)"
+    },
+    "modelNumber": "RER-NDFEB-MAG-01",
+    "batchNumber": "NDFEB-MAG-2024-08-004",
+    "idGranularity": "batch",
+    "productCategory": [
+      {
+        "code": "31300",
+        "name": "Whole NdFeB Magnets",
+        "definition": "Rare earth permanent magnets obtained from recycling end-of-life electronic equipment, maintained in whole form.",
+        "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+        "schemeName": "UN Central Product Classification (CPC)"
+      }
+    ],
+    "relatedDocument": [
+      {
+        "linkURL": "https://sustainableelectronics.org/credentials/4bc9d3e4f-5a6b-7c8d-9e0f-1a2b3c4d5e6f",
+        "linkName": "SERI R2 Certification — Rare Earth Recycling Ltd.",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dcc"
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "manufacturer",
+        "party": {
+          "type": [
+            "Party"
+          ],
+          "id": "did:web:rare-earth-recycling.com:rec-001",
+          "name": "Rare Earth Recycling Ltd.",
+          "registeredId": "FR123456789",
+          "idScheme": {
+            "type": [
+              "IdentifierScheme"
+            ],
+            "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+            "name": "SIRENE"
+          },
+          "registrationCountry": {
+            "countryCode": "FR",
+            "countryName": "France"
+          }
+        }
+      }
+    ],
+    "producedAtFacility": {
+      "type": [
+        "Facility"
+      ],
+      "id": "https://id.gs1.org/414/9520123456788",
+      "name": "Rare Earth Recycling Ltd. - Main Facility",
+      "registeredId": "9520123456788",
+      "idScheme": {
+        "type": [
+          "IdentifierScheme"
+        ],
+        "id": "https://id.gs1.org/414/",
+        "name": "GS1 Global Location Number (GLN)"
+      }
+    },
+    "productionDate": "2024-08-17",
+    "countryOfProduction": {
+      "countryCode": "FR",
+      "countryName": "France"
+    },
+    "dimensions": {
+      "weight": {
+        "value": 6.7,
+        "unit": "KGM"
+      }
+    },
+    "materialProvenance": [
+      {
+        "name": "End-of-Life WEEE (PCs and Laptops)",
+        "originCountry": {
+          "countryCode": "FR",
+          "countryName": "France"
+        },
+        "materialType": {
+          "code": "38323",
+          "name": "Waste electrical and electronic equipment",
+          "definition": "Electronic waste containing rare earth permanent magnets.",
+          "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+          "schemeName": "UN Central Product Classification (CPC)"
+        },
+        "massFraction": 0.0067,
+        "mass": {
+          "value": 6.7,
+          "unit": "KGM"
+        },
+        "recycledMassFraction": 1.0,
+        "hazardous": false
+      }
+    ],
+    "performanceClaim": [
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://rare-earth-recycling.com/claims/ghg-2024-whole",
+        "name": "Carbon Footprint — Whole NdFeB Magnets",
+        "description": "Cradle-to-gate carbon footprint per kilogram of whole NdFeB magnets produced through recycling of end-of-life WEEE.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+            "name": "Greenhouse Gas Emissions",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+                "name": "Greenhouse Gas Emissions",
+                "definition": "Assessment of direct and indirect greenhouse gas emissions across scopes 1, 2, and 3."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2024-08-17",
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/product-carbon-footprint",
+              "name": "Product Carbon Footprint"
+            },
+            "measure": {
+              "value": 1.5,
+              "unit": "KGM"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+            "name": "Greenhouse Gas Emissions",
+            "definition": "Assessment of direct and indirect greenhouse gas emissions across scopes 1, 2, and 3."
+          }
+        ]
+      },
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://rare-earth-recycling.com/claims/recycled-content-2024-whole",
+        "name": "Recycled Content — Whole NdFeB Magnets",
+        "description": "100% of the NdFeB material is sourced from recycled end-of-life WEEE, representing a fully circular material flow.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/circular-design",
+            "name": "Circular Design",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/circular-design",
+                "name": "Circular Design",
+                "definition": "Design for durability, repairability, recyclability, and integration of recycled or renewable materials."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2024-08-17",
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/recycled-content",
+              "name": "Recycled Content"
+            },
+            "measure": {
+              "value": 100,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/circular-design",
+            "name": "Circular Design",
+            "definition": "Design for durability, repairability, recyclability, and integration of recycled or renewable materials."
+          }
+        ]
+      }
+    ]
+  }
+}

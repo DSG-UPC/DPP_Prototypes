@@ -1,0 +1,405 @@
+{
+  "type": [
+    "DigitalFacilityRecord",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://rare-earth-recycling.com/credentials/3c9d3e4f-5a6b-7c8d-9e0f-1a2b3c4d5e6f",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:rare-earth-recycling.com:rec-001",
+    "name": "Rare Earth Recycling Ltd.",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://rare-earth-recycling.com",
+        "name": "Rare Earth Recycling Ltd.",
+        "registeredId": "FR123456789",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+          "name": "SIRENE"
+        }
+      },
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://search.gleif.org/#/record/549300RERC123456789",
+        "name": "Rare Earth Recycling Ltd.",
+        "registeredId": "549300RERC123456789",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://www.gleif.org/en/about-lei/iso-17442-the-lei-code-structure",
+          "name": "Legal Entity Identifier (LEI)"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-07-10T08:00:00Z",
+  "validUntil": "2034-07-10T08:00:00Z",
+  "name": "Digital Facility Record — Rare Earth Recycling Ltd. - Main Facility",
+  "credentialSubject": {
+    "type": [
+      "Facility"
+    ],
+    "id": "https://id.gs1.org/414/9520123456788",
+    "name": "Rare Earth Recycling Ltd. - Main Facility",
+    "description": "Main recycling facility for EOL WEEE, specialising in the recovery of rare earth materials, like NdFeB. Facility processes end-of-life electronic waste to extract valuable rare earth elements for reuse in manufacturing.",
+    "registeredId": "9520123456788",
+    "idScheme": {
+      "type": [
+        "IdentifierScheme"
+      ],
+      "id": "https://id.gs1.org/414/",
+      "name": "GS1 Global Location Number (GLN)"
+    },
+    "countryOfOperation": {
+      "countryCode": "FR",
+      "countryName": "France"
+    },
+    "processCategory": [
+      {
+        "code": "36320",
+        "name": "Recycling of EOL WEEE",
+        "definition": "Recycling services for end-of-life waste electrical and electronic equipment, specialising in recovery of rare earth materials.",
+        "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+        "schemeName": "UN Central Product Classification (CPC)"
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "owner",
+        "party": {
+          "type": [
+            "Party"
+          ],
+          "id": "did:web:rare-earth-recycling.com:rec-001",
+          "name": "Rare Earth Recycling Ltd.",
+          "registeredId": "FR123456789",
+          "idScheme": {
+            "type": [
+              "IdentifierScheme"
+            ],
+            "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+            "name": "SIRENE"
+          },
+          "registrationCountry": {
+            "countryCode": "FR",
+            "countryName": "France"
+          },
+          "partyAddress": {
+            "streetAddress": "23 rue de la Recyclage",
+            "postalCode": "2112",
+            "addressLocality": "Marseille",
+            "addressRegion": "Provence-Alpes-Côte d'Azur",
+            "addressCountry": {
+              "countryCode": "FR",
+              "countryName": "France"
+            }
+          },
+          "organisationWebsite": "https://rare-earth-recycling.com",
+          "industryCategory": [
+            {
+              "code": "36320",
+              "name": "Recycling of EOL WEEE",
+              "definition": "Recycling services for end-of-life waste electrical and electronic equipment.",
+              "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+              "schemeName": "UN Central Product Classification (CPC)"
+            }
+          ]
+        }
+      }
+    ],
+    "relatedDocument": [
+      {
+        "linkURL": "https://sustainableelectronics.org/credentials/4bc9d3e4f-5a6b-7c8d-9e0f-1a2b3c4d5e6f",
+        "linkName": "SERI R2 Certification — Rare Earth Recycling Ltd",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dcc"
+      }
+    ],
+    "facilityAlsoKnownAs": [
+      {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://rare-earth-recycling.com/facilities/1234567",
+        "name": "Rare Earth Recycling Facility for EOL WEEE",
+        "registeredId": "1234567",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+          "name": "SIRENE"
+        }
+      }
+    ],
+    "locationInformation": {
+      "plusCode": "https://plus.codes/8CGRC78W+MM",
+      "geoLocation": {
+        "latitude": 43.296482,
+        "longitude": 5.36978
+      },
+      "geoBoundary": [
+        {
+          "latitude": 43.296,
+          "longitude": 5.369
+        },
+        {
+          "latitude": 43.297,
+          "longitude": 5.37
+        }
+      ]
+    },
+    "address": {
+      "streetAddress": "23 rue de la Recyclage",
+      "postalCode": "2112",
+      "addressLocality": "Marseille",
+      "addressRegion": "Provence-Alpes-Côte d'Azur",
+      "addressCountry": {
+        "countryCode": "FR",
+        "countryName": "France"
+      }
+    },
+    "materialUsage": {
+      "applicablePeriod": {
+        "startDate": "2024-01-01",
+        "endDate": "2024-12-31",
+        "periodInformation": "Calendar year 2024 reporting period."
+      },
+      "materialConsumed": [
+        {
+          "name": "EOL WEEE (End-of-Life Waste Electrical and Electronic Equipment)",
+          "originCountry": {
+            "countryCode": "FR",
+            "countryName": "France"
+          },
+          "materialType": {
+            "code": "38180",
+            "name": "Electronic waste",
+            "definition": "Waste electrical and electronic equipment for recycling and recovery.",
+            "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+            "schemeName": "UN Central Product Classification (CPC)"
+          },
+          "massFraction": 0.85,
+          "mass": {
+            "value": 1250000,
+            "unit": "KGM"
+          },
+          "recycledMassFraction": 0,
+          "hazardous": true
+        },
+        {
+          "name": "Rare earth magnets (NdFeB)",
+          "originCountry": {
+            "countryCode": "FR",
+            "countryName": "France"
+          },
+          "materialType": {
+            "code": "14290",
+            "name": "Other non-ferrous metal ores and concentrates",
+            "definition": "Rare earth elements and concentrates from EOL WEEE.",
+            "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+            "schemeName": "UN Central Product Classification (CPC)"
+          },
+          "massFraction": 0.15,
+          "mass": {
+            "value": 220000,
+            "unit": "KGM"
+          },
+          "recycledMassFraction": 1.0,
+          "hazardous": false
+        }
+      ]
+    },
+    "performanceClaim": [
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://rare-earth-recycling.com/claims/ghg-2024",
+        "name": "GHG Emissions — Facility Operations",
+        "description": "Total greenhouse gas emissions from the Rare Earth Recycling Facility for the 2024 reporting year, covering direct and indirect emissions from recycling operations.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+            "name": "Greenhouse Gas Emissions",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+                "name": "Greenhouse Gas Emissions",
+                "definition": "Assessment of direct and indirect greenhouse gas emissions across scopes 1, 2, and 3, including measurement, reporting, and reduction targets aligned with climate science."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2025-02-15",
+        "applicablePeriod": {
+          "startDate": "2024-01-01",
+          "endDate": "2024-12-31",
+          "periodInformation": "Calendar year 2024 reporting period."
+        },
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/total-ghg-emissions",
+              "name": "Total GHG Emissions"
+            },
+            "measure": {
+              "value": 2400,
+              "unit": "TNE"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+            "name": "Greenhouse Gas Emissions",
+            "definition": "Assessment of direct and indirect greenhouse gas emissions across scopes 1, 2, and 3, including measurement, reporting, and reduction targets aligned with climate science."
+          }
+        ]
+      },
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://rare-earth-recycling.com/claims/recovery-rate-2024",
+        "name": "Rare Earth Recovery Rate",
+        "description": "Percentage of rare earth materials successfully recovered from EOL WEEE at the facility for 2024.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/waste-minimization",
+            "name": "Waste Minimization",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/waste-minimization",
+                "name": "Waste Minimization",
+                "definition": "Strategies and practices to reduce waste generation, promote reuse and recycling, and minimize the environmental impact of waste disposal across the product lifecycle."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2025-02-15",
+        "applicablePeriod": {
+          "startDate": "2024-01-01",
+          "endDate": "2024-12-31",
+          "periodInformation": "Calendar year 2024 reporting period."
+        },
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/material-recovery-rate",
+              "name": "Material Recovery Rate"
+            },
+            "measure": {
+              "value": 87,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/waste-minimization",
+            "name": "Waste Minimization",
+            "definition": "Strategies and practices to reduce waste generation, promote reuse and recycling, and minimize the environmental impact of waste disposal across the product lifecycle."
+          }
+        ]
+      },
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://rare-earth-recycling.com/claims/energy-efficiency-2024",
+        "name": "Energy Efficiency",
+        "description": "Energy consumption efficiency at the Rare Earth Recycling Facility for 2024, measured in kWh per tonne of material processed.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/renewable-energy-use",
+            "name": "Renewable Energy Use",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/renewable-energy-use",
+                "name": "Renewable Energy Use",
+                "definition": "Adoption and integration of renewable energy sources to reduce reliance on fossil fuels and lower the carbon footprint of operations and products."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2025-02-15",
+        "applicablePeriod": {
+          "startDate": "2024-01-01",
+          "endDate": "2024-12-31",
+          "periodInformation": "Calendar year 2024 reporting period."
+        },
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/renewable-energy-percentage",
+              "name": "Renewable Energy Percentage"
+            },
+            "measure": {
+              "value": 65,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/renewable-energy-use",
+            "name": "Renewable Energy Use",
+            "definition": "Adoption and integration of renewable energy sources to reduce reliance on fossil fuels and lower the carbon footprint of operations and products."
+          }
+        ]
+      }
+    ]
+  }
+}

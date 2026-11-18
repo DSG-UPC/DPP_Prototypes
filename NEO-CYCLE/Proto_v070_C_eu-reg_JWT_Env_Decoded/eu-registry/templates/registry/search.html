@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Search registered Digital Product Passports</h1>
+<p class="muted">{{ total }} product{{ total|pluralize }} registered.</p>
+
+<form method="get">
+  <input type="text" name="q" value="{{ query }}" placeholder="Search by GTIN, product name, or company...">
+  <button type="submit">Search</button>
+</form>
+
+{% if query %}
+  <h2>Results for "{{ query }}"</h2>
+  {% if results %}
+  <table>
+    <tr>
+      <th>GTIN</th>
+      <th>Product</th>
+      <th>Economic operator</th>
+      <th>Valid from → until</th>
+      <th>Registered</th>
+      <th>DPP</th>
+    </tr>
+    {% for r in results %}
+    <tr>
+      <td><code>{{ r.gtin }}</code></td>
+      <td>{{ r.product_name }}</td>
+      <td>{{ r.issuer_name }}<br><span class="muted">{{ r.issuer_did }}</span></td>
+      <td class="muted">{{ r.valid_from }} → {{ r.valid_until }}</td>
+      <td class="muted">{{ r.registered_at }}</td>
+      <td><a href="{{ r.dpp_url }}" target="_blank">view full DPP →</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <p class="muted">
+    Note: this Registry only stores the metadata shown above. The signed
+    credential itself lives with the economic operator — following "view
+    full DPP" leaves this site.
+  </p>
+  {% else %}
+  <p>No matching products found.</p>
+  {% endif %}
+{% endif %}
+{% endblock %}

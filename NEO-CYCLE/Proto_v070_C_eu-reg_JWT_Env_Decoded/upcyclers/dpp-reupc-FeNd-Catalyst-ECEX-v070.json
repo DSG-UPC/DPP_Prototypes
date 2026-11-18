@@ -1,0 +1,307 @@
+{
+  "type": [
+    "DigitalProductPassport",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://catalyst-innovations.com/credentials/fend-cat-ecex-2024-001",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:catalyst-innovations.com:cat-001",
+    "name": "Catalyst Innovations Inc.",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://catalyst-innovations.com",
+        "name": "Catalyst Innovations Inc.",
+        "registeredId": "US0987654321",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/US-EIN",
+          "name": "US Employer Identification Number"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-08-01T08:00:00Z",
+  "validUntil": "2034-08-01T08:00:00Z",
+  "name": "Digital Product Passport — FeNd Catalyst for Ammonia Synthesis (ECEX Path)",
+  "credentialSubject": {
+    "type": [
+      "Product"
+    ],
+    "id": "https://id.gs1.org/01/09520876543210/10/FEND-CAT-ECEX-001",
+    "name": "FeNd Bimetallic Catalyst for Ammonia Synthesis (ECEX Path)",
+    "description": "High-performance iron-neodymium bimetallic catalyst optimized for ammonia synthesis via the Haber-Bosch process. Produced from recycled rare earth materials sourced via electrochemical extraction (ECEX) of whole NdFeB magnets for enhanced sustainability.",
+    "idScheme": {
+      "type": [
+        "IdentifierScheme"
+      ],
+      "id": "https://id.gs1.org/01/",
+      "name": "Global Trade Identification Number (GTIN)"
+    },
+    "modelNumber": "CAT-FEND-NH3-ECEX-100",
+    "batchNumber": "FEND-CAT-ECEX-2024-08-001",
+    "idGranularity": "batch",
+    "productCategory": [
+      {
+        "code": "35220",
+        "name": "Catalysts",
+        "definition": "Chemical substances that increase the rate of chemical reactions without being consumed.",
+        "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+        "schemeName": "UN Central Product Classification (CPC)"
+      }
+    ],
+    "relatedDocument": [
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/ship-fend-catalyst-2024-08-25",
+        "linkName": "Digital Traceability Event — Shipment of FeNd Materials (ECEX Path)",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      },
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/separation-2024-08-23",
+        "linkName": "Digital Traceability Event — Fe/Nd Separation (ECEX Path)",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      },
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/electrochemical-2024-08-22",
+        "linkName": "Digital Traceability Event — Electrochemical Extraction",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "manufacturer",
+        "party": {
+          "type": [
+            "Party"
+          ],
+          "id": "did:web:catalyst-innovations.com:cat-001",
+          "name": "Catalyst Innovations Inc.",
+          "registeredId": "US0987654321",
+          "idScheme": {
+            "type": [
+              "IdentifierScheme"
+            ],
+            "id": "https://vocabulary.uncefact.org/identifierSchemes/US-EIN",
+            "name": "US Employer Identification Number"
+          },
+          "registrationCountry": {
+            "countryCode": "US",
+            "countryName": "United States"
+          }
+        }
+      }
+    ],
+    "producedAtFacility": {
+      "type": [
+        "Facility"
+      ],
+      "id": "https://catalyst-innovations.com/facility",
+      "name": "Catalyst Innovations Inc. - Catalyst Production Facility",
+      "idScheme": {
+        "type": [
+          "IdentifierScheme"
+        ],
+        "id": "https://id.gs1.org/414/",
+        "name": "GS1 Global Location Number (GLN)"
+      }
+    },
+    "productionDate": "2024-08-25",
+    "countryOfProduction": {
+      "countryCode": "US",
+      "countryName": "United States"
+    },
+    "dimensions": {
+      "weight": {
+        "value": 1.37,
+        "unit": "KGM"
+      }
+    },
+    "materialProvenance": [
+      {
+        "name": "Neodymium Concentrate from Recycled Magnets (ECEX Process)",
+        "originCountry": {
+          "countryCode": "FR",
+          "countryName": "France"
+        },
+        "materialType": {
+          "code": "41420",
+          "name": "Rare earth metals",
+          "definition": "Neodymium concentrate recovered from end-of-life NdFeB magnets via ECEX process.",
+          "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+          "schemeName": "UN Central Product Classification (CPC)"
+        },
+        "massFraction": 0.34,
+        "mass": {
+          "value": 0.46,
+          "unit": "KGM"
+        },
+        "recycledMassFraction": 1.0,
+        "hazardous": false
+      },
+      {
+        "name": "Iron Concentrate from Recycled Magnets (ECEX Process)",
+        "originCountry": {
+          "countryCode": "FR",
+          "countryName": "France"
+        },
+        "materialType": {
+          "code": "41120",
+          "name": "Iron and steel",
+          "definition": "Iron concentrate recovered from end-of-life NdFeB magnets via ECEX process.",
+          "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+          "schemeName": "UN Central Product Classification (CPC)"
+        },
+        "massFraction": 0.66,
+        "mass": {
+          "value": 0.91,
+          "unit": "KGM"
+        },
+        "recycledMassFraction": 1.0,
+        "hazardous": false
+      },
+      {
+        "name": "Support Materials and Binders",
+        "originCountry": {
+          "countryCode": "US",
+          "countryName": "United States"
+        },
+        "materialType": {
+          "code": "35100",
+          "name": "Chemical products",
+          "definition": "Alumina and other support materials for catalyst production.",
+          "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+          "schemeName": "UN Central Product Classification (CPC)"
+        },
+        "massFraction": 0.2,
+        "mass": {
+          "value": 0.3,
+          "unit": "KGM"
+        },
+        "recycledMassFraction": 0.0,
+        "hazardous": false
+      }
+    ],
+    "performanceClaim": [
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://catalyst-innovations.com/claims/recycled-content-ecex-2024",
+        "name": "Recycled Content — FeNd Catalyst (ECEX Path)",
+        "description": "Percentage of recycled content by mass in the FeNd catalyst, sourced from end-of-life rare earth magnets via electrochemical extraction process.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+            "name": "Recycled Content",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+                "name": "Recycled Content",
+                "definition": "Proportion of material from recycled sources in the final product."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2024-08-05",
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/recycled-content",
+              "name": "Recycled Content Percentage"
+            },
+            "measure": {
+              "value": 80,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+            "name": "Recycled Content",
+            "definition": "Proportion of material from recycled sources in the final product."
+          }
+        ]
+      },
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://catalyst-innovations.com/claims/catalyst-activity-ecex-2024",
+        "name": "Catalytic Activity — Ammonia Synthesis",
+        "description": "Catalytic activity performance for ammonia synthesis measured in moles NH3 per gram catalyst per hour.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/product-performance",
+            "name": "Product Performance",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/product-performance",
+                "name": "Product Performance",
+                "definition": "Functional performance characteristics of the product."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2024-08-05",
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://catalyst-innovations.com/metrics/ammonia-synthesis-rate",
+              "name": "Ammonia Synthesis Rate"
+            },
+            "measure": {
+              "value": 0.45,
+              "unit": "MOL"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/product-performance",
+            "name": "Product Performance",
+            "definition": "Functional performance characteristics of the product."
+          }
+        ]
+      }
+    ]
+  }
+}

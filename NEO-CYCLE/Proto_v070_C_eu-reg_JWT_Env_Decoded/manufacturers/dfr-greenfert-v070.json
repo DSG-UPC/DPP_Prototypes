@@ -1,0 +1,348 @@
+{
+  "type": [
+    "DigitalFacilityRecord",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://greenfert-innovations.eu/credentials/02b3c4d5-e6f7-4081-9b0c-2d3e4f5a6b7c",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:greenfert-innovations.eu:mfg-001",
+    "name": "GreenFert Innovations SAS",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://greenfert-innovations.eu",
+        "name": "GreenFert Innovations SAS",
+        "registeredId": "FR887654321",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+          "name": "SIRENE"
+        }
+      },
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://search.gleif.org/#/record/579300GREFEREU123321",
+        "name": "GreenFert Innovations SAS",
+        "registeredId": "579300GREFEREU123321",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://www.gleif.org/en/about-lei/iso-17442-the-lei-code-structure",
+          "name": "Legal Entity Identifier (LEI)"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-07-10T08:00:00Z",
+  "validUntil": "2034-07-10T08:00:00Z",
+  "name": "Digital Facility Record — GreenFert Innovations - Production Facility",
+  "credentialSubject": {
+    "type": [
+      "Facility"
+    ],
+    "id": "https://id.gs1.org/414/9521122334455",
+    "name": "GreenFert Innovations - Production Facility",
+    "description": "Fertilizer blending and production facility that accepts recovered ammonia (NH3) from rare earth upcycling operations as a nitrogen feedstock, combining it with mineral and compost additives to produce nitrogen-based fertilizer. Operates as a black-box downstream receiver within the UNTP Neocycle value chain, accepting DPP-tagged NH3 regardless of upstream extraction path (SSC or ECEX).",
+    "registeredId": "9521122334455",
+    "idScheme": {
+      "type": [
+        "IdentifierScheme"
+      ],
+      "id": "https://id.gs1.org/414/",
+      "name": "GS1 Global Location Number (GLN)"
+    },
+    "countryOfOperation": {
+      "countryCode": "FR",
+      "countryName": "France"
+    },
+    "processCategory": [
+      {
+        "code": "34620",
+        "name": "Nitrogenous fertilizers",
+        "definition": "Production of nitrogen-based fertilizers from recovered and mineral nitrogen feedstocks.",
+        "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+        "schemeName": "UN Central Product Classification (CPC)"
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "owner",
+        "party": {
+          "type": [
+            "Party"
+          ],
+          "id": "did:web:greenfert-innovations.eu:mfg-001",
+          "name": "GreenFert Innovations SAS",
+          "description": "French fertilizer manufacturer producing nitrogen-based fertilizer from recovered ammonia byproducts of rare earth upcycling.",
+          "registeredId": "FR887654321",
+          "idScheme": {
+            "type": [
+              "IdentifierScheme"
+            ],
+            "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+            "name": "SIRENE"
+          },
+          "registrationCountry": {
+            "countryCode": "FR",
+            "countryName": "France"
+          },
+          "partyAddress": {
+            "streetAddress": "18 rue des Engrais Verts",
+            "postalCode": "69007",
+            "addressLocality": "Lyon",
+            "addressRegion": "Auvergne-Rhône-Alpes",
+            "addressCountry": {
+              "countryCode": "FR",
+              "countryName": "France"
+            }
+          },
+          "organisationWebsite": "https://greenfert-innovations.eu",
+          "industryCategory": [
+            {
+              "code": "34620",
+              "name": "Nitrogenous fertilizers",
+              "definition": "Manufacture of nitrogen-based fertilizer products.",
+              "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+              "schemeName": "UN Central Product Classification (CPC)"
+            }
+          ]
+        }
+      }
+    ],
+    "relatedDocument": [
+      {
+        "linkURL": "https://greenfert-innovations.eu/credentials/03c4d5e6-f708-4192-ac1d-3e4f5a6b7c8d",
+        "linkName": "EU Fertilising Products Regulation (FPR) 2019/1009 CE Conformity — GreenFert Innovations SAS",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dcc"
+      }
+    ],
+    "facilityAlsoKnownAs": [
+      {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://greenfert-innovations.eu/facility",
+        "name": "GreenFert Innovations - Production Facility",
+        "registeredId": "9521122334455",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+          "name": "SIRENE"
+        }
+      }
+    ],
+    "locationInformation": {
+      "plusCode": "https://plus.codes/8FQ7X8XR+MM",
+      "geoLocation": {
+        "latitude": 45.764,
+        "longitude": 4.836
+      },
+      "geoBoundary": [
+        {
+          "latitude": 45.763,
+          "longitude": 4.835
+        },
+        {
+          "latitude": 45.765,
+          "longitude": 4.837
+        }
+      ]
+    },
+    "address": {
+      "streetAddress": "18 rue des Engrais Verts",
+      "postalCode": "69007",
+      "addressLocality": "Lyon",
+      "addressRegion": "Auvergne-Rhône-Alpes",
+      "addressCountry": {
+        "countryCode": "FR",
+        "countryName": "France"
+      }
+    },
+    "materialUsage": {
+      "applicablePeriod": {
+        "startDate": "2024-01-01",
+        "endDate": "2024-12-31",
+        "periodInformation": "Calendar year 2024 reporting period."
+      },
+      "materialConsumed": [
+        {
+          "name": "Recovered ammonia gas (NH3) from rare earth upcycling",
+          "originCountry": {
+            "countryCode": "FR",
+            "countryName": "France"
+          },
+          "materialType": {
+            "code": "34220",
+            "name": "Ammonia, anhydrous or in aqueous solution",
+            "definition": "Ammonia gas recovered as a byproduct of rare earth upcycling processes.",
+            "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+            "schemeName": "UN Central Product Classification (CPC)"
+          },
+          "massFraction": 0.11,
+          "mass": {
+            "value": 900,
+            "unit": "KGM"
+          },
+          "recycledMassFraction": 1.0,
+          "hazardous": false
+        },
+        {
+          "name": "Mineral and compost fertilizer additives",
+          "originCountry": {
+            "countryCode": "FR",
+            "countryName": "France"
+          },
+          "materialType": {
+            "code": "16220",
+            "name": "Mineral and organic soil additives",
+            "definition": "Virgin mineral and compost-based bulking additives blended into fertilizer products.",
+            "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+            "schemeName": "UN Central Product Classification (CPC)"
+          },
+          "massFraction": 0.89,
+          "mass": {
+            "value": 7200,
+            "unit": "KGM"
+          },
+          "recycledMassFraction": 0,
+          "hazardous": false
+        }
+      ]
+    },
+    "performanceClaim": [
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://greenfert-innovations.eu/claims/ghg-2024",
+        "name": "GHG Emissions — Facility Operations",
+        "description": "Total greenhouse gas emissions from the GreenFert Innovations production facility for the 2024 reporting year.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+            "name": "Greenhouse Gas Emissions",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+                "name": "Greenhouse Gas Emissions",
+                "definition": "Assessment of direct and indirect greenhouse gas emissions across scopes 1, 2, and 3, including measurement, reporting, and reduction targets aligned with climate science."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2025-02-15",
+        "applicablePeriod": {
+          "startDate": "2024-01-01",
+          "endDate": "2024-12-31",
+          "periodInformation": "Calendar year 2024 reporting period."
+        },
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/total-ghg-emissions",
+              "name": "Total GHG Emissions"
+            },
+            "measure": {
+              "value": 210,
+              "unit": "TNE"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+            "name": "Greenhouse Gas Emissions",
+            "definition": "Assessment of direct and indirect greenhouse gas emissions across scopes 1, 2, and 3, including measurement, reporting, and reduction targets aligned with climate science."
+          }
+        ]
+      },
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://greenfert-innovations.eu/claims/recovered-nitrogen-2024",
+        "name": "Recovered Nitrogen Feedstock Share",
+        "description": "Percentage of nitrogen feedstock mass sourced from recovered ammonia (NH3) byproducts of rare earth upcycling, rather than virgin synthetic ammonia (Haber-Bosch).",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+            "name": "Recycled Content",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+                "name": "Recycled Content",
+                "definition": "Percentage of recycled or recovered materials incorporated into products, supporting circular economy principles and reducing reliance on virgin resources."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2025-02-15",
+        "applicablePeriod": {
+          "startDate": "2024-01-01",
+          "endDate": "2024-12-31",
+          "periodInformation": "Calendar year 2024 reporting period."
+        },
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/recycled-content",
+              "name": "Recycled Content"
+            },
+            "measure": {
+              "value": 11,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+            "name": "Recycled Content",
+            "definition": "Percentage of recycled or recovered materials incorporated into products, supporting circular economy principles and reducing reliance on virgin resources."
+          }
+        ]
+      }
+    ]
+  }
+}

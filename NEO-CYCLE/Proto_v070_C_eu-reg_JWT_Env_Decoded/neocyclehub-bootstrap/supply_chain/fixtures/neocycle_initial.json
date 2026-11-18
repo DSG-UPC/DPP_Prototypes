@@ -1,0 +1,512 @@
+[
+  {
+    "model": "supply_chain.actor",
+    "pk": 1,
+    "fields": {
+      "name": "Rare Earth Recycling Ltd.",
+      "role": "supplier",
+      "did": "did:web:rare-earth-recycling.com:rec-001",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "REPLACE_WITH_SUPPLIER_TOKEN",
+      "registered_id": "FR123456789",
+      "id_scheme_id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+      "id_scheme_name": "SIRENE",
+      "lei_id": "549300RERC123456789",
+      "website": "https://rare-earth-recycling.com",
+      "country_code": "FR",
+      "country_name": "France"
+    }
+  },
+  {
+    "model": "supply_chain.actor",
+    "pk": 2,
+    "fields": {
+      "name": "Rare Earth Upcycling Ltd.",
+      "role": "upcycler",
+      "did": "did:web:rare-earth-upcycling.com:reu-001",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "REPLACE_WITH_UPCYCLER_TOKEN",
+      "registered_id": "FR987654321",
+      "id_scheme_id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+      "id_scheme_name": "SIRENE",
+      "lei_id": "549300REUP123456789",
+      "website": "https://rare-earth-upcycling.com",
+      "country_code": "FR",
+      "country_name": "France"
+    }
+  },
+
+  {
+    "model": "supply_chain.actor",
+    "pk": 3,
+    "fields": {
+      "name": "NeoCycle Auditor",
+      "role": "auditor",
+      "did": "did:web:neocycle-audit.eu:aud-001",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "",
+      "registered_id": "BE0123456789",
+      "id_scheme_id": "https://vocabulary.uncefact.org/identifierSchemes/CBE",
+      "id_scheme_name": "Crossroads Bank for Enterprises (CBE)",
+      "lei_id": "",
+      "website": "https://neocycle-audit.eu",
+      "country_code": "BE",
+      "country_name": "Belgium"
+    }
+  },
+
+  {
+    "model": "supply_chain.actor",
+    "pk": 4,
+    "fields": {
+      "name": "GreenFert Innovations SAS",
+      "role": "manufacturer",
+      "did": "did:web:greenfert-innovations.eu:mfg-001",
+      "idhub_url": "http://idhub:8000/api/v1",
+      "idhub_token": "REPLACE_WITH_MANUFACTURER_TOKEN",
+      "registered_id": "FR887654321",
+      "id_scheme_id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+      "id_scheme_name": "SIRENE",
+      "lei_id": "579300GREFEREU123321",
+      "website": "https://greenfert-innovations.eu",
+      "country_code": "FR",
+      "country_name": "France"
+    }
+  },
+
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 1,
+    "fields": {
+      "actor": 1,
+      "name": "Crushed NdFeB Granulate for Solid-State Chlorination",
+      "description": "Crushed and milled NdFeB permanent magnets recovered from end-of-life WEEE. Processed via magnetic extraction, demagnetization and crushing. Ready for SSC rare earth extraction. Batch mass: 6.75 KGM.",
+      "gtin": "https://id.gs1.org/01/03760123456781",
+      "model_number": "RER-NDFEB-GRAN-01",
+      "batch_number": "NDFEB-GRAN-2024-07-003",
+      "id_granularity": "batch",
+      "cpc_code": "42940",
+      "cpc_name": "Permanent magnets and articles intended to become permanent magnets",
+      "upstream_process_type": "",
+      "upstream_source_material": "",
+      "upstream_source_batch": "",
+      "upstream_process_date": null,
+      "recycled_mass_fraction": 1.0
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 2,
+    "fields": {
+      "actor": 1,
+      "name": "Whole NdFeB Magnets for Electrochemical Extraction",
+      "description": "Whole NdFeB permanent magnets extracted and demagnetized from end-of-life WEEE. Supplied as intact magnet units for electrochemical extraction (ECEX) processing. Batch mass: 6.75 KGM.",
+      "gtin": "https://id.gs1.org/01/03760123456782",
+      "model_number": "RER-NDFEB-MAG-01",
+      "batch_number": "NDFEB-MAG-2024-08-004",
+      "id_granularity": "batch",
+      "cpc_code": "42940",
+      "cpc_name": "Permanent magnets and articles intended to become permanent magnets",
+      "upstream_process_type": "",
+      "upstream_source_material": "",
+      "upstream_source_batch": "",
+      "upstream_process_date": null,
+      "recycled_mass_fraction": 1.0
+    }
+  },
+
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 3,
+    "fields": {
+      "actor": 2,
+      "name": "FeNd Bimetallic Catalyst for Ammonia Synthesis (SSC Path)",
+      "description": "Iron-neodymium bimetallic catalyst for Haber-Bosch ammonia synthesis, produced via solid-state chlorination from recycled NdFeB magnets. Batch mass: 1.42 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543213",
+      "model_number": "REU-FEND-CAT-SSC-01",
+      "batch_number": "SSC-FEND-CAT-2024-07-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "Crushed NdFeB Granulate for Solid-State Chlorination",
+      "upstream_source_batch": "NDFEB-GRAN-2024-07-003",
+      "upstream_process_date": "2024-07-22",
+      "recycled_mass_fraction": 0.86
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 4,
+    "fields": {
+      "actor": 2,
+      "name": "Nd Polymerization Catalyst (SSC Path)",
+      "description": "Neodymium-based polymerization catalyst for coordinated polymerisation reactions, produced via SSC separation from recycled NdFeB magnets. Batch mass: 0.50 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543214",
+      "model_number": "REU-NDPOLY-CAT-SSC-01",
+      "batch_number": "SSC-NDPOLY-CAT-2024-07-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "Crushed NdFeB Granulate for Solid-State Chlorination",
+      "upstream_source_batch": "NDFEB-GRAN-2024-07-003",
+      "upstream_process_date": "2024-07-22",
+      "recycled_mass_fraction": 0.86
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 5,
+    "fields": {
+      "actor": 2,
+      "name": "Nd API Synthesis Catalyst (SSC Path)",
+      "description": "Neodymium catalyst for pharmaceutical API synthesis via coupling reactions, produced via SSC separation from recycled NdFeB magnets. Batch mass: 0.030 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543215",
+      "model_number": "REU-NDAPI-CAT-SSC-01",
+      "batch_number": "SSC-NDAPI-CAT-2024-07-001",
+      "id_granularity": "batch",
+      "cpc_code": "35190",
+      "cpc_name": "Other basic pharmaceutical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "Crushed NdFeB Granulate for Solid-State Chlorination",
+      "upstream_source_batch": "NDFEB-GRAN-2024-07-003",
+      "upstream_process_date": "2024-07-22",
+      "recycled_mass_fraction": 0.86
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 6,
+    "fields": {
+      "actor": 2,
+      "name": "Nd Suzuki Reaction Catalyst (SSC Path)",
+      "description": "Neodymium catalyst for Suzuki-Miyaura cross-coupling reactions in organic synthesis, produced via SSC separation from recycled NdFeB magnets. Batch mass: 0.020 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543216",
+      "model_number": "REU-NDSUZUKI-CAT-SSC-01",
+      "batch_number": "SSC-NDSUZUKI-CAT-2024-07-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "Crushed NdFeB Granulate for Solid-State Chlorination",
+      "upstream_source_batch": "NDFEB-GRAN-2024-07-003",
+      "upstream_process_date": "2024-07-22",
+      "recycled_mass_fraction": 0.86
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 7,
+    "fields": {
+      "actor": 2,
+      "name": "FeNd Alloy for Ammonia Fertilizer Production (SSC Path)",
+      "description": "Iron-neodymium alloy intermediate for catalytic ammonia production (Haber-Bosch process) targeting fertilizer applications, derived from SSC separation of recycled NdFeB magnets. Batch mass: 2.5 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543217",
+      "model_number": "REU-FEND-NH3-SSC-01",
+      "batch_number": "SSC-NH3-FERT-2024-07-001",
+      "id_granularity": "batch",
+      "cpc_code": "34110",
+      "cpc_name": "Ammonia",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "Crushed NdFeB Granulate for Solid-State Chlorination",
+      "upstream_source_batch": "NDFEB-GRAN-2024-07-003",
+      "upstream_process_date": "2024-07-22",
+      "recycled_mass_fraction": 0.86
+    }
+  },
+
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 8,
+    "fields": {
+      "actor": 2,
+      "name": "FeNd Bimetallic Catalyst for Ammonia Synthesis (ECEX Path)",
+      "description": "Iron-neodymium bimetallic catalyst for Haber-Bosch ammonia synthesis, produced via electrochemical extraction from recycled NdFeB magnets. Batch mass: 1.37 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543218",
+      "model_number": "REU-FEND-CAT-ECEX-01",
+      "batch_number": "ECEX-FEND-CAT-2024-08-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "ECEX",
+      "upstream_source_material": "Whole NdFeB Magnets for Electrochemical Extraction",
+      "upstream_source_batch": "NDFEB-MAG-2024-08-004",
+      "upstream_process_date": "2024-08-23",
+      "recycled_mass_fraction": 0.85
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 9,
+    "fields": {
+      "actor": 2,
+      "name": "Nd Polymerization Catalyst (ECEX Path)",
+      "description": "Neodymium-based polymerization catalyst for coordinated polymerisation reactions, produced via electrochemical extraction from recycled NdFeB magnets. Batch mass: 0.46 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543219",
+      "model_number": "REU-NDPOLY-CAT-ECEX-01",
+      "batch_number": "ECEX-NDPOLY-CAT-2024-08-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "ECEX",
+      "upstream_source_material": "Whole NdFeB Magnets for Electrochemical Extraction",
+      "upstream_source_batch": "NDFEB-MAG-2024-08-004",
+      "upstream_process_date": "2024-08-23",
+      "recycled_mass_fraction": 0.85
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 10,
+    "fields": {
+      "actor": 2,
+      "name": "Nd API Synthesis Catalyst (ECEX Path)",
+      "description": "Neodymium catalyst for pharmaceutical API synthesis via coupling reactions, produced via electrochemical extraction from recycled NdFeB magnets. Batch mass: 0.029 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543220",
+      "model_number": "REU-NDAPI-CAT-ECEX-01",
+      "batch_number": "ECEX-NDAPI-CAT-2024-08-001",
+      "id_granularity": "batch",
+      "cpc_code": "35190",
+      "cpc_name": "Other basic pharmaceutical products",
+      "upstream_process_type": "ECEX",
+      "upstream_source_material": "Whole NdFeB Magnets for Electrochemical Extraction",
+      "upstream_source_batch": "NDFEB-MAG-2024-08-004",
+      "upstream_process_date": "2024-08-23",
+      "recycled_mass_fraction": 0.85
+    }
+  },
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 11,
+    "fields": {
+      "actor": 2,
+      "name": "Nd Suzuki Reaction Catalyst (ECEX Path)",
+      "description": "Neodymium catalyst for Suzuki-Miyaura cross-coupling reactions in organic synthesis, produced via electrochemical extraction from recycled NdFeB magnets. Batch mass: 0.028 KGM.",
+      "gtin": "https://id.gs1.org/01/03760876543221",
+      "model_number": "REU-NDSUZUKI-CAT-ECEX-01",
+      "batch_number": "ECEX-NDSUZUKI-CAT-2024-08-001",
+      "id_granularity": "batch",
+      "cpc_code": "34690",
+      "cpc_name": "Other inorganic chemical products",
+      "upstream_process_type": "ECEX",
+      "upstream_source_material": "Whole NdFeB Magnets for Electrochemical Extraction",
+      "upstream_source_batch": "NDFEB-MAG-2024-08-004",
+      "upstream_process_date": "2024-08-23",
+      "recycled_mass_fraction": 0.85
+    }
+  },
+
+  {
+    "model": "supply_chain.productbatch",
+    "pk": 12,
+    "fields": {
+      "actor": 4,
+      "name": "Green Fertilizer (Nitrogen, NH3-derived)",
+      "description": "Nitrogen-based fertilizer produced by blending the FeNd/ammonia alloy recovered from SSC upcycling with mineral and compost bulking additives. Batch mass: 20 KGM (2.5 KGM recovered feedstock + 20 KGM additives, with process loss from moisture off-gassing during blending).",
+      "gtin": "https://id.gs1.org/01/03760876543222",
+      "model_number": "GFI-NFERT-01",
+      "batch_number": "GRNFERT-2024-07-001",
+      "id_granularity": "batch",
+      "cpc_code": "34620",
+      "cpc_name": "Nitrogenous fertilizers",
+      "upstream_process_type": "SSC",
+      "upstream_source_material": "FeNd Alloy for Ammonia Fertilizer Production (SSC Path)",
+      "upstream_source_batch": "SSC-NH3-FERT-2024-07-001",
+      "upstream_process_date": "2024-07-22",
+      "recycled_mass_fraction": 0.11
+    }
+  },
+
+  {
+    "model": "supply_chain.conformityclaim",
+    "pk": 1,
+    "fields": {
+      "actor": 1,
+      "name": "Rare earth extraction from EOL WEEE assessment",
+      "description": "Third-party conformity assessment of Rare Earth Recycling Ltd. against R2:2013 Responsible Recycling Standard for responsible collection, recovery and recycling of end-of-life electronics.",
+      "standard_name": "R2:2013 Responsible Recycling Standard",
+      "standard_id": "https://sustainableelectronics.org/r2-standard",
+      "assessor_name": "Sustainable Electronics Recycling International (SERI)",
+      "assessor_did": "did:web:sustainableelectronics.org:seri-r2",
+      "assessor_level": "3rdParty",
+      "assessment_level": "scheme-cab",
+      "attestation_type": "certification",
+      "valid_from": "2024-07-10",
+      "valid_until": "2034-07-10"
+    }
+  },
+  {
+    "model": "supply_chain.conformityclaim",
+    "pk": 2,
+    "fields": {
+      "actor": 2,
+      "name": "Rare earth upcycling environmental management assessment",
+      "description": "Third-party conformity assessment of Rare Earth Upcycling Ltd. against ISO 14001:2015 Environmental Management Systems standard, covering both SSC and ECEX processing lines.",
+      "standard_name": "ISO 14001:2015 Environmental Management Systems",
+      "standard_id": "https://www.iso.org/standard/60857.html",
+      "assessor_name": "Bureau Veritas Certification",
+      "assessor_did": "did:web:bureauveritas.com:certification",
+      "assessor_level": "3rdParty",
+      "assessment_level": "scheme-cab",
+      "attestation_type": "certification",
+      "valid_from": "2024-08-01",
+      "valid_until": "2034-08-01"
+    }
+  },
+  {
+    "model": "supply_chain.conformityclaim",
+    "pk": 3,
+    "fields": {
+      "actor": 4,
+      "name": "Green fertilizer CE conformity assessment",
+      "description": "Third-party conformity assessment of GreenFert Innovations SAS fertilizer production against Regulation (EU) 2019/1009 (Fertilising Products Regulation), covering nutrient content declaration, contaminant limits and recovered-material input verification for nitrogen fertilizer derived from recovered ammonia.",
+      "standard_name": "Regulation (EU) 2019/1009 Fertilising Products Regulation (FPR)",
+      "standard_id": "https://eur-lex.europa.eu/eli/reg/2019/1009",
+      "assessor_name": "Bureau Veritas Certification",
+      "assessor_did": "did:web:bureauveritas.com:certification",
+      "assessor_level": "3rdParty",
+      "assessment_level": "scheme-cab",
+      "attestation_type": "certification",
+      "valid_from": "2024-07-25",
+      "valid_until": "2034-07-25"
+    }
+  },
+
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 1,
+    "fields": {
+      "actor": 1,
+      "name": "WEEE Collection, Extraction and Processing — SSC Path",
+      "description": "Collection of 1000 kg end-of-life WEEE (Jul 15), magnetic separation and extraction of NdFeB magnets (6.81 KGM, Jul 17), demagnetization and crushing to produce crushed NdFeB granulate (6.75 KGM) for solid-state chlorination.",
+      "event_type": "MakeEvent",
+      "event_date": "2024-07-15T08:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [],
+      "output_products": [1]
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 2,
+    "fields": {
+      "actor": 1,
+      "name": "Shipment of Crushed NdFeB Granulate to Upcycler — SSC Path",
+      "description": "Shipment of 6.7 KGM crushed NdFeB granulate (batch NDFEB-GRAN-2024-07-003) to Rare Earth Upcycling Ltd. for SSC processing. Quality control sample (0.05 KGM) retained at origin.",
+      "event_type": "MoveEvent",
+      "event_date": "2024-07-19T08:00:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://rare-earth-upcycling.com",
+      "destination_facility_name": "Rare Earth Upcycling Ltd. — Main Facility",
+      "input_products": [1],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 3,
+    "fields": {
+      "actor": 1,
+      "name": "WEEE Collection, Extraction and Processing — ECEX Path",
+      "description": "Collection of 1000 kg end-of-life WEEE (Aug 15), magnetic separation and extraction of NdFeB magnets (6.81 KGM, Aug 17), demagnetization to produce whole NdFeB magnets (6.75 KGM) for electrochemical extraction.",
+      "event_type": "MakeEvent",
+      "event_date": "2024-08-15T08:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [],
+      "output_products": [2]
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 4,
+    "fields": {
+      "actor": 1,
+      "name": "Shipment of Whole NdFeB Magnets to Upcycler — ECEX Path",
+      "description": "Shipment of 6.7 KGM whole NdFeB magnets (batch NDFEB-MAG-2024-08-004) to Rare Earth Upcycling Ltd. for ECEX processing. Quality control sample (0.05 KGM) retained at origin.",
+      "event_type": "MoveEvent",
+      "event_date": "2024-08-19T08:00:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://rare-earth-upcycling.com",
+      "destination_facility_name": "Rare Earth Upcycling Ltd. — Main Facility",
+      "input_products": [2],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 5,
+    "fields": {
+      "actor": 2,
+      "name": "SSC Chlorination, Separation and Downstream Production",
+      "description": "Rare earth separation via solid-state chlorination (SSC): chlorination reaction (Jul 21) and chromatographic separation (Jul 22), producing 5 output streams from 6.7 KGM crushed NdFeB input: FeNd catalyst (1.42 KGM), Nd polymerization catalyst (0.50 KGM), Nd API synthesis catalyst (0.030 KGM), Nd Suzuki catalyst (0.020 KGM), FeNd alloy for ammonia/fertilizer production (2.5 KGM).",
+      "event_type": "ModifyEvent",
+      "event_date": "2024-07-21T08:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [1],
+      "output_products": [3, 4, 5, 6, 7]
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 6,
+    "fields": {
+      "actor": 2,
+      "name": "ECEX Electrochemical Extraction, Separation and Downstream Production",
+      "description": "Rare earth separation via electrochemical extraction: electrochemical dissolution of whole magnets (Aug 22) and separation (Aug 23), producing 4 output streams from 6.7 KGM whole NdFeB input: FeNd catalyst (1.37 KGM), Nd polymerization catalyst (0.46 KGM), Nd API synthesis catalyst (0.029 KGM), Nd Suzuki catalyst (0.028 KGM).",
+      "event_type": "ModifyEvent",
+      "event_date": "2024-08-22T08:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [2],
+      "output_products": [8, 9, 10, 11]
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 7,
+    "fields": {
+      "actor": 2,
+      "name": "Shipment of FeNd/Ammonia Alloy to GreenFert — SSC Path",
+      "description": "Shipment of 2.5 KGM FeNd alloy for ammonia fertilizer production (batch SSC-NH3-FERT-2024-07-001) from Rare Earth Upcycling Ltd. to GreenFert Innovations SAS for fertilizer production.",
+      "event_type": "MoveEvent",
+      "event_date": "2024-07-29T09:00:00Z",
+      "activity_code": "shipping",
+      "activity_name": "Shipping",
+      "destination_facility_id": "https://greenfert-innovations.eu",
+      "destination_facility_name": "GreenFert Innovations SAS — Main Facility",
+      "input_products": [7],
+      "output_products": []
+    }
+  },
+  {
+    "model": "supply_chain.processingevent",
+    "pk": 8,
+    "fields": {
+      "actor": 4,
+      "name": "Fertilizer Blending Process — Green Fertilizer Production",
+      "description": "Blending of 2.5 KGM FeNd/ammonia alloy recovered from SSC upcycling with mineral and compost bulking additives to produce 20 KGM of Green Fertilizer at GreenFert Innovations SAS.",
+      "event_type": "ModifyEvent",
+      "event_date": "2024-07-29T13:00:00Z",
+      "activity_code": "manufacturing",
+      "activity_name": "Manufacturing",
+      "destination_facility_id": "",
+      "destination_facility_name": "",
+      "input_products": [7],
+      "output_products": [12]
+    }
+  }
+]

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}NeoCycleHub — Supply Chain Dashboard{% endblock %}
+{% block content %}
+<h1>NeoCycle Supply Chain Dashboard</h1>
+<p>UNTP v0.7.0 credentials for the rare earth recycling value chain.</p>
+
+{% for actor in actors %}
+<div class="card">
+  <h2>
+    <a href="{% url 'actor_detail' actor.pk %}">{{ actor.name }}</a>
+    <span class="badge badge-{{ actor.role }}">{{ actor.get_role_display }}</span>
+  </h2>
+  <p><code>{{ actor.did }}</code></p>
+  <p>
+    {% with creds=actor.credentials.all %}
+    {% for type_code, type_label in actor.credentials.model.CredType.choices %}
+      {% with count=actor.credentials.filter.cred_type %}
+      {% endwith %}
+    {% endfor %}
+    <strong>{{ creds.count }}</strong> credential{{ creds.count|pluralize }} issued —
+    {% for ct in creds.values_list.cred_type %}{% endfor %}
+    {% regroup creds by cred_type as by_type %}
+    {% for grp in by_type %}
+      <span class="badge badge-{{ grp.grouper|lower }}">{{ grp.grouper }} ×{{ grp.list|length }}</span>
+    {% endfor %}
+    {% endwith %}
+  </p>
+  <a href="{% url 'actor_detail' actor.pk %}" class="btn btn-primary">Manage credentials →</a>
+</div>
+{% empty %}
+<p>No actors configured. <a href="/admin/supply_chain/actor/add/">Add one in the admin</a>.</p>
+{% endfor %}
+
+<hr>
+<h2>Cross-actor credential links</h2>
+<p>Credentials issued by the Supplier that are referenced in Upcycler DPPs:</p>
+<table>
+  <thead><tr><th>Supplier credential</th><th>Type</th><th>URL</th></tr></thead>
+  <tbody>
+  {% for actor in actors %}
+    {% if actor.role == 'supplier' %}
+      {% for cred in actor.credentials.all %}
+      <tr>
+        <td>{{ cred.label }}</td>
+        <td><span class="badge badge-{{ cred.cred_type|lower }}">{{ cred.cred_type }}</span></td>
+        <td><a href="/credentials/{{ cred.uuid }}/" target="_blank"><code>/credentials/{{ cred.uuid }}/</code></a></td>
+      </tr>
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

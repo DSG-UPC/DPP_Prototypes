@@ -1,0 +1,605 @@
+{
+  "type": [
+    "DigitalTraceabilityEvent",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://rare-earth-recycling.com/credentials/3c9d3e4f-5a6b-7c8d-9e0f-1a2b3c4d5e6f",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:rare-earth-recycling.com:rec-001",
+    "name": "Rare Earth Recycling Ltd.",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://rare-earth-recycling.com",
+        "name": "Rare Earth Recycling Ltd.",
+        "registeredId": "FR123456789",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+          "name": "SIRENE"
+        }
+      },
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://search.gleif.org/#/record/549300RERC123456789",
+        "name": "Rare Earth Recycling Ltd.",
+        "registeredId": "549300RERC123456789",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://www.gleif.org/en/about-lei/iso-17442-the-lei-code-structure",
+          "name": "Legal Entity Identifier (LEI)"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-07-10T08:00:00Z",
+  "validUntil": "2025-07-10T08:00:00Z",
+  "name": "WEEE Collection and Rare Earth Extraction — Rare Earth Recycling Ltd.",
+  "credentialSubject": [
+    {
+      "type": [
+        "MakeEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-recycling.com/collection",
+      "name": "WEEE collection and aggregation",
+      "description": "Collection and aggregation of 1000 kg of end-of-life WEEE (PCs and Laptops) from multiple collection points for rare earth magnet extraction.",
+      "eventDate": "2024-07-15T08:00:00Z",
+      "activityType": {
+        "code": "commissioning",
+        "name": "Commissioning",
+        "definition": "The process of collecting and aggregating materials for processing.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "manufacturer",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-recycling.com:rec-001",
+            "name": "Rare Earth Recycling Ltd.",
+            "registeredId": "FR123456789",
+            "idScheme": {
+              "type": [
+                "IdentifierScheme"
+              ],
+              "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+              "name": "SIRENE"
+            }
+          }
+        }
+      ],
+      "inputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.sample.org/01/09520123456788/01/001",
+            "name": "PCs from collection point A.",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 240,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.sample.org/01/09520123456788/01/002",
+            "name": "Laptops from collection point A.",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 260,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.sample.org/01/09520123456788/02/001",
+            "name": "PCs from collection point B.",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 200,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.sample.org/01/09520123456788/02/002",
+            "name": "Laptops from collection point B.",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 100,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.sample.org/01/09520123456788/03/001",
+            "name": "PCs from collection point C.",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 100,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.sample.org/01/09520123456788/03/002",
+            "name": "Laptops from collection point C.",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 100,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        }
+      ],
+      "outputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/30/005",
+            "name": "Collected EOL WEEE",
+            "batchNumber": "WEEE-2024-07-005",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 1000,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        }
+      ],
+      "madeAtFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520123456788",
+        "name": "Rare Earth Recycling Ltd. - Main Facility",
+        "registeredId": "9520123456788"
+      }
+    },
+    {
+      "type": [
+        "MakeEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-recycling.com/s781df10-c682-454a-b11b-d0b9374c01bd",
+      "name": "Extraction of NdFeB magnets from WEEEs",
+      "description": "Processing of 1000 kg of collected EOL WEEE through extraction to produce 6.81 kg of NdFeB magnets (extracted whole) at Rare Earth Recycling Ltd.",
+      "eventDate": "2024-07-17T09:00:00Z",
+      "activityType": {
+        "code": "commissioning",
+        "name": "Commissioning",
+        "definition": "The process of extracting valuable materials from collected waste.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "manufacturer",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-recycling.com:rec-001",
+            "name": "Rare Earth Recycling Ltd.",
+            "registeredId": "FR123456789",
+            "idScheme": {
+              "type": [
+                "IdentifierScheme"
+              ],
+              "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+              "name": "SIRENE"
+            }
+          }
+        }
+      ],
+      "inputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/30/005",
+            "name": "Collected EOL WEEE",
+            "batchNumber": "WEEE-2024-07-005",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 1000,
+            "unit": "KGM"
+          },
+          "disposition": "consumed"
+        }
+      ],
+      "outputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/332515778518/42/004152",
+            "name": "NdFeB magnets (extracted whole)",
+            "batchNumber": "NDFEB-2024-07-152",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 6.81,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        }
+      ],
+      "madeAtFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520123456788",
+        "name": "Rare Earth Recycling Ltd. - Main Facility",
+        "registeredId": "9520123456788"
+      }
+    },
+    {
+      "type": [
+        "MakeEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-recycling.com/demagnetization-2024-07-17",
+      "name": "Demagnetization of extracted NdFeB magnets",
+      "description": "Processing of 6.81 kg of NdFeB magnets (extracted whole) through demagnetization to produce 6.78 kg of demagnetized whole NdFeB magnets at Rare Earth Recycling Ltd. Demagnetization is performed by heating above Curie temperature to remove magnetic properties before crushing.",
+      "eventDate": "2024-07-17T14:00:00Z",
+      "activityType": {
+        "code": "commissioning",
+        "name": "Commissioning",
+        "definition": "The process of demagnetizing extracted magnets before crushing.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "manufacturer",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-recycling.com:rec-001",
+            "name": "Rare Earth Recycling Ltd.",
+            "registeredId": "FR123456789",
+            "idScheme": {
+              "type": [
+                "IdentifierScheme"
+              ],
+              "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+              "name": "SIRENE"
+            }
+          }
+        }
+      ],
+      "inputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/42/004152",
+            "name": "NdFeB magnets (extracted whole)",
+            "batchNumber": "NDFEB-2024-07-152",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 6.81,
+            "unit": "KGM"
+          },
+          "disposition": "consumed"
+        }
+      ],
+      "outputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/42/004152D",
+            "name": "NdFeB magnets (demagnetized whole)",
+            "batchNumber": "NDFEB-DEMAG-2024-07-152",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 6.78,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        }
+      ],
+      "madeAtFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520123456788",
+        "name": "Rare Earth Recycling Ltd. - Main Facility",
+        "registeredId": "9520123456788"
+      }
+    },
+    {
+      "type": [
+        "MakeEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-recycling.com/crushing-2024-07-17",
+      "name": "Crushing of demagnetized NdFeB magnets",
+      "description": "Processing of 6.78 kg of NdFeB magnets (demagnetized whole) through crushing to produce 6.75 kg of Crushed NdFeB Granulate at Rare Earth Recycling Ltd.",
+      "eventDate": "2024-07-17T16:00:00Z",
+      "activityType": {
+        "code": "commissioning",
+        "name": "Commissioning",
+        "definition": "The process of crushing demagnetized magnets into granulate form.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "manufacturer",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-recycling.com:rec-001",
+            "name": "Rare Earth Recycling Ltd.",
+            "registeredId": "FR123456789",
+            "idScheme": {
+              "type": [
+                "IdentifierScheme"
+              ],
+              "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+              "name": "SIRENE"
+            }
+          }
+        }
+      ],
+      "inputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/42/004152D",
+            "name": "NdFeB magnets (demagnetized whole)",
+            "batchNumber": "NDFEB-DEMAG-2024-07-152",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 6.78,
+            "unit": "KGM"
+          },
+          "disposition": "consumed"
+        }
+      ],
+      "outputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/42/0046003",
+            "name": "Crushed NdFeB Granulate",
+            "batchNumber": "NDFEB-GRAN-2024-07-003",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 6.75,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        }
+      ],
+      "madeAtFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520123456788",
+        "name": "Rare Earth Recycling Ltd. - Main Facility",
+        "registeredId": "9520123456788"
+      }
+    },
+    {
+      "type": [
+        "MoveEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-recycling.com/b681df10-c682-454a-b11b-d0b9374c01bd",
+      "name": "Shipping of Crushed NdFeB Granulate to Rare Earth Upcycler",
+      "description": "Shipment of 6.7 kg of Crushed NdFeB Granulate from Rare Earth Recycling Ltd. to Rare Earth Upcycler for further processing.",
+      "eventDate": "2024-07-19T09:00:00Z",
+      "activityType": {
+        "code": "shipping",
+        "name": "Shipping",
+        "definition": "The movement of goods from one location to another.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "consignor",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-recycling.com:rec-001",
+            "name": "Rare Earth Recycling Ltd.",
+            "registeredId": "FR123456789",
+            "idScheme": {
+              "type": [
+                "IdentifierScheme"
+              ],
+              "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+              "name": "SIRENE"
+            }
+          }
+        },
+        {
+          "role": "consignee",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-upcycler.com",
+            "name": "Rare Earth Upcycler",
+            "registeredId": "UPC-001"
+          }
+        }
+      ],
+      "movedProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/42/0046003",
+            "name": "Crushed NdFeB Granulate",
+            "batchNumber": "NDFEB-GRAN-2024-07-003",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 6.7,
+            "unit": "KGM"
+          },
+          "disposition": "inTransit"
+        }
+      ],
+      "fromFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520123456788",
+        "name": "Rare Earth Recycling Ltd. - Main Facility",
+        "registeredId": "9520123456788"
+      },
+      "toFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://rare-earth-upcycler.com",
+        "name": "Rare Earth Upcycler Facility"
+      },
+      "consignmentId": "https://transaction.example.com/po/PO-2024-07-0789",
+      "relatedDocument": [
+        {
+          "linkURL": "https://credentials.rare-earth-recycling.com/dpp/ndfeb-granulate-2024",
+          "linkName": "Digital Product Passport — Crushed NdFeB Granulate",
+          "mediaType": "application/ld+json",
+          "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dpp"
+        }
+      ]
+    },
+    {
+      "type": [
+        "ModifyEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-recycling.com/retention-qc-2024-07-19",
+      "name": "Quality Control Sample Retention",
+      "description": "Retention of 0.05 kg of Crushed NdFeB Granulate from batch NDFEB-GRAN-2024-07-003 for quality control testing and archival purposes.",
+      "eventDate": "2024-07-19T10:00:00Z",
+      "activityType": {
+        "code": "holding",
+        "name": "Holding",
+        "definition": "The process of retaining materials for quality control or inventory purposes.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "manufacturer",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-recycling.com:rec-001",
+            "name": "Rare Earth Recycling Ltd.",
+            "registeredId": "FR123456789",
+            "idScheme": {
+              "type": [
+                "IdentifierScheme"
+              ],
+              "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+              "name": "SIRENE"
+            }
+          }
+        }
+      ],
+      "modifiedProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/42/0046003",
+            "name": "Crushed NdFeB Granulate",
+            "batchNumber": "NDFEB-GRAN-2024-07-003",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 0.05,
+            "unit": "KGM"
+          }
+        }
+      ],
+      "modifiedAtFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520123456788",
+        "name": "Rare Earth Recycling Ltd. - Main Facility",
+        "registeredId": "9520123456788"
+      }
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "type": [
+    "DigitalProductPassport",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://pharmatech-industries.com/credentials/nd-api-ecex-2024-001",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:pharmatech-industries.com:api-001",
+    "name": "PharmaTech Industries",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://pharmatech-industries.com",
+        "name": "PharmaTech Industries",
+        "registeredId": "GB987654321",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/GB-CRN",
+          "name": "UK Company Registration Number"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-08-15T08:00:00Z",
+  "validUntil": "2027-08-15T08:00:00Z",
+  "name": "Digital Product Passport — Nd-catalyzed Pharmaceutical Intermediate (ECEX Path)",
+  "credentialSubject": {
+    "type": [
+      "Product"
+    ],
+    "id": "https://id.gs1.org/01/09520654321098/10/ND-API-ECEX-001",
+    "name": "Nd-catalyzed Pharmaceutical Intermediate (API Precursor, ECEX Path)",
+    "description": "High-purity pharmaceutical intermediate synthesized using neodymium-based Lewis acid catalysts. Produced via sustainable catalysis using recycled rare earth materials from electrochemical extraction (ECEX) process for enhanced green chemistry credentials.",
+    "idScheme": {
+      "type": [
+        "IdentifierScheme"
+      ],
+      "id": "https://id.gs1.org/01/",
+      "name": "Global Trade Identification Number (GTIN)"
+    },
+    "modelNumber": "API-ND-INT-ECEX-300",
+    "batchNumber": "ND-API-ECEX-2024-08-015",
+    "idGranularity": "batch",
+    "productCategory": [
+      {
+        "code": "35410",
+        "name": "Pharmaceutical products",
+        "definition": "Pharmaceutical intermediates and active ingredients.",
+        "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+        "schemeName": "UN Central Product Classification (CPC)"
+      }
+    ],
+    "relatedDocument": [
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/ship-nd-api-2024-08-27",
+        "linkName": "Digital Traceability Event — Shipment of Nd Precursors (ECEX Path)",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      },
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/separation-2024-08-23",
+        "linkName": "Digital Traceability Event — Fe/Nd Separation (ECEX Path)",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      },
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/electrochemical-2024-08-22",
+        "linkName": "Digital Traceability Event — Electrochemical Extraction",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "manufacturer",
+        "party": {
+          "type": [
+            "Party"
+          ],
+          "id": "did:web:pharmatech-industries.com:api-001",
+          "name": "PharmaTech Industries",
+          "registeredId": "GB987654321",
+          "idScheme": {
+            "type": [
+              "IdentifierScheme"
+            ],
+            "id": "https://vocabulary.uncefact.org/identifierSchemes/GB-CRN",
+            "name": "UK Company Registration Number"
+          },
+          "registrationCountry": {
+            "countryCode": "GB",
+            "countryName": "United Kingdom"
+          }
+        }
+      }
+    ],
+    "producedAtFacility": {
+      "type": [
+        "Facility"
+      ],
+      "id": "https://pharmatech-industries.com/facility",
+      "name": "PharmaTech Industries - API Synthesis Facility",
+      "idScheme": {
+        "type": [
+          "IdentifierScheme"
+        ],
+        "id": "https://id.gs1.org/414/",
+        "name": "GS1 Global Location Number (GLN)"
+      }
+    },
+    "productionDate": "2024-08-28",
+    "countryOfProduction": {
+      "countryCode": "GB",
+      "countryName": "United Kingdom"
+    },
+    "dimensions": {
+      "weight": {
+        "value": 0.029,
+        "unit": "KGM"
+      }
+    },
+    "materialProvenance": [
+      {
+        "name": "Neodymium Concentrate Catalyst from Recycled Magnets (ECEX Process)",
+        "originCountry": {
+          "countryCode": "FR",
+          "countryName": "France"
+        },
+        "materialType": {
+          "code": "41420",
+          "name": "Rare earth metals",
+          "definition": "Neodymium catalyst derived from recycled NdFeB magnets via ECEX process.",
+          "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+          "schemeName": "UN Central Product Classification (CPC)"
+        },
+        "massFraction": 0.01,
+        "mass": {
+          "value": 0.029,
+          "unit": "KGM"
+        },
+        "recycledMassFraction": 1.0,
+        "hazardous": false
+      },
+      {
+        "name": "Organic Starting Materials and Reagents",
+        "originCountry": {
+          "countryCode": "GB",
+          "countryName": "United Kingdom"
+        },
+        "materialType": {
+          "code": "35100",
+          "name": "Chemical products",
+          "definition": "Pharmaceutical-grade organic compounds and reagents.",
+          "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+          "schemeName": "UN Central Product Classification (CPC)"
+        },
+        "massFraction": 0.99,
+        "mass": {
+          "value": 2.475,
+          "unit": "KGM"
+        },
+        "recycledMassFraction": 0.0,
+        "hazardous": false
+      }
+    ],
+    "performanceClaim": [
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://pharmatech-industries.com/claims/green-chemistry-ecex-2024",
+        "name": "Green Chemistry — Sustainable Catalyst Use (ECEX Path)",
+        "description": "Use of recycled rare earth catalyst from ECEX process reduces environmental impact compared to virgin rare earth materials.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/green-chemistry",
+            "name": "Green Chemistry Principles",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/green-chemistry",
+                "name": "Green Chemistry",
+                "definition": "Application of chemical processes that reduce or eliminate hazardous substances."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2024-08-28",
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/recycled-catalyst",
+              "name": "Recycled Catalyst Content"
+            },
+            "measure": {
+              "value": 100,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/green-chemistry",
+            "name": "Green Chemistry",
+            "definition": "Application of chemical processes that reduce or eliminate hazardous substances."
+          }
+        ]
+      },
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://pharmatech-industries.com/claims/purity-ecex-2024",
+        "name": "Product Purity",
+        "description": "Purity of pharmaceutical intermediate meeting GMP standards.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/product-quality",
+            "name": "Product Quality"
+          }
+        ],
+        "claimDate": "2024-08-28",
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://pharmatech-industries.com/metrics/chemical-purity",
+              "name": "Chemical Purity"
+            },
+            "measure": {
+              "value": 99.7,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/product-quality",
+            "name": "Product Quality"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,369 @@
+{
+  "type": [
+    "DigitalConformityCredential",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://greenfert-innovations.eu/credentials/03c4d5e6-f708-4192-ac1d-3e4f5a6b7c8d",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:bureauveritas.com:fpr",
+    "name": "Bureau Veritas",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://annuaire-entreprises.data.gouv.fr/entreprise/775690621",
+        "name": "Bureau Veritas",
+        "registeredId": "775690621",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+          "name": "SIRENE"
+        }
+      },
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://search.gleif.org/#/record/969500BUREAUVER123456",
+        "name": "Bureau Veritas",
+        "registeredId": "969500BUREAUVER123456",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://www.gleif.org/en/about-lei/iso-17442-the-lei-code-structure",
+          "name": "Legal Entity Identifier (LEI)"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-07-10T08:00:00Z",
+  "validUntil": "2034-07-10T08:00:00Z",
+  "name": "EU Fertilising Products Regulation (FPR) 2019/1009 CE Conformity — GreenFert Innovations SAS",
+  "credentialSubject": {
+    "type": [
+      "ConformityAttestation"
+    ],
+    "id": "https://bureauveritas.com/attestations/GFI-2024-FPR-001",
+    "name": "Nitrogen fertilizer (NH3-derived) CE conformity assessment GFI-2024-FPR-001",
+    "assessorLevel": "3rdParty",
+    "assessmentLevel": "scheme-cab",
+    "attestationType": "certification",
+    "description": "Third-party conformity assessment of GreenFert Innovations SAS fertilizer production against Regulation (EU) 2019/1009 (Fertilising Products Regulation), covering nutrient content declaration, contaminant limits (heavy metals), and recovered-material input verification for nitrogen fertilizer derived from recovered ammonia (NH3).",
+    "issuedToParty": {
+      "type": [
+        "Party"
+      ],
+      "id": "https://greenfert-innovations.eu",
+      "name": "GreenFert Innovations SAS",
+      "registeredId": "FR887654321",
+      "idScheme": {
+        "type": [
+          "IdentifierScheme"
+        ],
+        "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+        "name": "SIRENE"
+      }
+    },
+    "authorisation": [
+      {
+        "name": "Notified Body accreditation of Bureau Veritas under Regulation (EU) 2019/1009.",
+        "trustmark": {
+          "name": "EU Fertilising Products Regulation Notified Body",
+          "description": "Trust mark issued to accredited Notified Bodies for CE marking assessments under the EU Fertilising Products Regulation.",
+          "imageData": "aVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUQ=",
+          "mediaType": "image/png"
+        },
+        "issuingAuthority": {
+          "type": [
+            "Party"
+          ],
+          "id": "https://ec.europa.eu/growth/tools-databases/nando/",
+          "name": "European Commission NANDO Database",
+          "registeredId": "NANDO-FPR-001",
+          "idScheme": {
+            "type": [
+              "IdentifierScheme"
+            ],
+            "id": "https://ec.europa.eu/growth/tools-databases/nando/",
+            "name": "NANDO Notified Body Registry"
+          }
+        },
+        "endorsementEvidence": {
+          "linkURL": "https://ec.europa.eu/growth/tools-databases/nando/",
+          "linkName": "NANDO Notified Bodies List",
+          "mediaType": "text/html",
+          "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dcc"
+        }
+      }
+    ],
+    "referenceScheme": {
+      "type": [
+        "ConformityScheme"
+      ],
+      "id": "https://eur-lex.europa.eu/eli/reg/2019/1009",
+      "name": "EU Fertilising Products Regulation (FPR)"
+    },
+    "referenceProfile": {
+      "type": [
+        "ConformityProfile"
+      ],
+      "id": "https://eur-lex.europa.eu/eli/reg/2019/1009/PFC1",
+      "name": "Regulation (EU) 2019/1009, Product Function Category 1 (Fertilisers) — CMC 11 Nitrification Inhibitors and Component Material Category 1 Nitrogen Compounds"
+    },
+    "profileScore": {
+      "code": "fully-meets",
+      "rank": 3,
+      "definition": "The product fully meets all applicable FPR criteria with no significant non-conformances."
+    },
+    "conformityCertificate": {
+      "linkURL": "https://bureauveritas.com/certificates/greenfert-innovations",
+      "linkName": "CE Conformity Certificate — GreenFert Innovations SAS",
+      "mediaType": "text/html",
+      "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dcc"
+    },
+    "auditableEvidence": {
+      "linkURL": "https://files.bureauveritas.com/greenfert-innovations-fpr-assessment-report.pdf",
+      "linkName": "Full FPR Assessment Report (Restricted)",
+      "mediaType": "application/pdf",
+      "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dcc"
+    },
+    "trustMark": {
+      "name": "CE Marked — EU Fertilising Products Regulation",
+      "description": "CE marking under Regulation (EU) 2019/1009 for nitrogen fertilizer products derived in part from recovered ammonia.",
+      "imageData": "aVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUE=",
+      "mediaType": "image/png"
+    },
+    "conformityAssessment": [
+      {
+        "type": [
+          "ConformityAssessment"
+        ],
+        "id": "https://bureauveritas.com/assessment/GFI-2024-NUT",
+        "name": "Nutrient Content Declaration Assessment (FPR Core Requirement)",
+        "description": "Assessment of declared nitrogen content and labelling accuracy for GreenFert Innovations fertilizer product against FPR Annex III requirements.",
+        "assessmentCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://eur-lex.europa.eu/eli/reg/2019/1009/annex-iii",
+            "name": "Labelling Requirements — FPR Annex III",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/product-safety",
+                "name": "Product Safety",
+                "definition": "Assessment of product safety, labelling accuracy, and compliance with declared performance characteristics."
+              }
+            ]
+          }
+        ],
+        "assessmentDate": "2024-06-10",
+        "assessedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/declared-nitrogen-content",
+              "name": "Declared Total Nitrogen Content (N)"
+            },
+            "measure": {
+              "value": 11,
+              "unit": "P1"
+            }
+          }
+        ],
+        "assessedFacility": [
+          {
+            "facility": {
+              "type": [
+                "Facility"
+              ],
+              "id": "https://id.gs1.org/414/9521122334455",
+              "name": "GreenFert Innovations - Production Facility",
+              "registeredId": "9521122334455"
+            },
+            "idVerifiedByCAB": true
+          }
+        ],
+        "assessedOrganisation": {
+          "type": [
+            "Party"
+          ],
+          "id": "https://greenfert-innovations.eu",
+          "name": "GreenFert Innovations SAS"
+        },
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/product-safety",
+            "name": "Product Safety"
+          }
+        ],
+        "conformance": true
+      },
+      {
+        "type": [
+          "ConformityAssessment"
+        ],
+        "id": "https://bureauveritas.com/assessment/GFI-2024-CONTAM",
+        "name": "Contaminant Limits Assessment (FPR Core Requirement)",
+        "description": "Assessment of heavy metal and contaminant concentration limits for GreenFert Innovations fertilizer product against FPR Component Material Category limits.",
+        "assessmentCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://eur-lex.europa.eu/eli/reg/2019/1009/annex-i",
+            "name": "Contaminant Limits — FPR Annex I",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/hazardous-substances",
+                "name": "Hazardous Substances",
+                "definition": "Assessment of restricted or hazardous substance content against applicable regulatory limits."
+              }
+            ]
+          }
+        ],
+        "assessmentDate": "2024-06-10",
+        "assessedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/cadmium-content",
+              "name": "Cadmium Content (Cd)"
+            },
+            "measure": {
+              "value": 0.8,
+              "unit": "MGK"
+            }
+          }
+        ],
+        "assessedFacility": [
+          {
+            "facility": {
+              "type": [
+                "Facility"
+              ],
+              "id": "https://id.gs1.org/414/9521122334455",
+              "name": "GreenFert Innovations - Production Facility",
+              "registeredId": "9521122334455"
+            },
+            "idVerifiedByCAB": true
+          }
+        ],
+        "assessedOrganisation": {
+          "type": [
+            "Party"
+          ],
+          "id": "https://greenfert-innovations.eu",
+          "name": "GreenFert Innovations SAS"
+        },
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/hazardous-substances",
+            "name": "Hazardous Substances"
+          }
+        ],
+        "conformance": true
+      },
+      {
+        "type": [
+          "ConformityAssessment"
+        ],
+        "id": "https://bureauveritas.com/assessment/GFI-2024-RECOV",
+        "name": "Recovered Material Input Verification",
+        "description": "Verification of the recovered ammonia (NH3) input share and its traceable origin from certified rare earth upcycling operations, supporting circular economy claims for the fertilizer product.",
+        "assessmentCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+            "name": "Recycled Content Verification",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+                "name": "Recycled Content",
+                "definition": "Percentage of recycled or recovered materials incorporated into products, supporting circular economy principles and reducing reliance on virgin resources."
+              }
+            ]
+          }
+        ],
+        "assessmentDate": "2024-06-10",
+        "assessedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/recycled-content",
+              "name": "Recycled Content"
+            },
+            "measure": {
+              "value": 11,
+              "unit": "P1"
+            }
+          }
+        ],
+        "assessedFacility": [
+          {
+            "facility": {
+              "type": [
+                "Facility"
+              ],
+              "id": "https://id.gs1.org/414/9521122334455",
+              "name": "GreenFert Innovations - Production Facility",
+              "registeredId": "9521122334455"
+            },
+            "idVerifiedByCAB": true
+          }
+        ],
+        "assessedOrganisation": {
+          "type": [
+            "Party"
+          ],
+          "id": "https://greenfert-innovations.eu",
+          "name": "GreenFert Innovations SAS"
+        },
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+            "name": "Recycled Content"
+          }
+        ],
+        "conformance": true
+      }
+    ]
+  }
+}

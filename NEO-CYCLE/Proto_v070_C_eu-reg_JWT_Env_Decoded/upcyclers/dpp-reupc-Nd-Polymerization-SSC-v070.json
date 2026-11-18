@@ -1,0 +1,275 @@
+{
+  "type": [
+    "DigitalProductPassport",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://polymer-solutions.de/credentials/nd-cat-poly-ssc-2024-001",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:polymer-solutions.de:poly-001",
+    "name": "Polymer Solutions GmbH",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://polymer-solutions.de",
+        "name": "Polymer Solutions GmbH",
+        "registeredId": "DE123456789",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/DE-TAX",
+          "name": "German Tax ID"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-08-01T08:00:00Z",
+  "validUntil": "2034-08-01T08:00:00Z",
+  "name": "Digital Product Passport — Nd-based Polymerization Catalyst (SSC Path)",
+  "credentialSubject": {
+    "type": [
+      "Product"
+    ],
+    "id": "https://id.gs1.org/01/09520765432109/10/ND-POLY-SSC-001",
+    "name": "Neodymium-based Polymerization Catalyst (SSC Path)",
+    "description": "High-performance neodymium catalyst for stereospecific polymerization of butadiene and isoprene. Produced from recycled rare earth materials sourced via solid-state chlorination (SSC) of crushed NdFeB granulate, enabling sustainable production of synthetic rubber and specialty polymers.",
+    "idScheme": {
+      "type": [
+        "IdentifierScheme"
+      ],
+      "id": "https://id.gs1.org/01/",
+      "name": "Global Trade Identification Number (GTIN)"
+    },
+    "modelNumber": "CAT-ND-POLY-SSC-200",
+    "batchNumber": "ND-POLY-SSC-2024-08-001",
+    "idGranularity": "batch",
+    "productCategory": [
+      {
+        "code": "35220",
+        "name": "Catalysts",
+        "definition": "Neodymium-based catalysts for polymerization reactions.",
+        "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+        "schemeName": "UN Central Product Classification (CPC)"
+      }
+    ],
+    "relatedDocument": [
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/ship-nd-polymerization-2024-07-24",
+        "linkName": "Digital Traceability Event — Shipment of Nd Precursors (SSC Path)",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      },
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/separation-2024-07-22",
+        "linkName": "Digital Traceability Event — Fe/Nd Separation (SSC Path)",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      },
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/chlorination-2024-07-21",
+        "linkName": "Digital Traceability Event — Solid State Chlorination",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "manufacturer",
+        "party": {
+          "type": [
+            "Party"
+          ],
+          "id": "did:web:polymer-solutions.de:poly-001",
+          "name": "Polymer Solutions GmbH",
+          "registeredId": "DE123456789",
+          "idScheme": {
+            "type": [
+              "IdentifierScheme"
+            ],
+            "id": "https://vocabulary.uncefact.org/identifierSchemes/DE-TAX",
+            "name": "German Tax ID"
+          },
+          "registrationCountry": {
+            "countryCode": "DE",
+            "countryName": "Germany"
+          }
+        }
+      }
+    ],
+    "producedAtFacility": {
+      "type": [
+        "Facility"
+      ],
+      "id": "https://polymer-solutions.de/facility",
+      "name": "Polymer Solutions GmbH - Polymerization Facility",
+      "idScheme": {
+        "type": [
+          "IdentifierScheme"
+        ],
+        "id": "https://id.gs1.org/414/",
+        "name": "GS1 Global Location Number (GLN)"
+      }
+    },
+    "productionDate": "2024-07-25",
+    "countryOfProduction": {
+      "countryCode": "DE",
+      "countryName": "Germany"
+    },
+    "dimensions": {
+      "weight": {
+        "value": 0.5,
+        "unit": "KGM"
+      }
+    },
+    "materialProvenance": [
+      {
+        "name": "Neodymium Concentrate from Recycled Magnets (SSC Process)",
+        "originCountry": {
+          "countryCode": "FR",
+          "countryName": "France"
+        },
+        "materialType": {
+          "code": "41420",
+          "name": "Rare earth metals",
+          "definition": "Neodymium concentrate recovered from end-of-life NdFeB magnets via SSC process.",
+          "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+          "schemeName": "UN Central Product Classification (CPC)"
+        },
+        "massFraction": 0.86,
+        "mass": {
+          "value": 0.5,
+          "unit": "KGM"
+        },
+        "recycledMassFraction": 1.0,
+        "hazardous": false
+      },
+      {
+        "name": "Ligands and Support Materials",
+        "originCountry": {
+          "countryCode": "DE",
+          "countryName": "Germany"
+        },
+        "materialType": {
+          "code": "35100",
+          "name": "Chemical products",
+          "definition": "Organic ligands and support materials for catalyst formulation.",
+          "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+          "schemeName": "UN Central Product Classification (CPC)"
+        },
+        "massFraction": 0.14,
+        "mass": {
+          "value": 0.1,
+          "unit": "KGM"
+        },
+        "recycledMassFraction": 0.0,
+        "hazardous": false
+      }
+    ],
+    "performanceClaim": [
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://polymer-solutions.de/claims/recycled-content-ssc-2024",
+        "name": "Recycled Content — Nd Polymerization Catalyst (SSC Path)",
+        "description": "Percentage of recycled neodymium content by mass in the polymerization catalyst sourced via SSC process.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+            "name": "Recycled Content",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+                "name": "Recycled Content",
+                "definition": "Proportion of material from recycled sources in the final product."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2024-08-05",
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/recycled-content",
+              "name": "Recycled Content Percentage"
+            },
+            "measure": {
+              "value": 100,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+            "name": "Recycled Content",
+            "definition": "Proportion of material from recycled sources in the final product."
+          }
+        ]
+      },
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://polymer-solutions.de/claims/stereospecificity-ssc-2024",
+        "name": "Catalytic Stereospecificity",
+        "description": "Stereospecificity performance for butadiene polymerization (cis-1,4 content).",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/product-performance",
+            "name": "Product Performance"
+          }
+        ],
+        "claimDate": "2024-08-05",
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://polymer-solutions.de/metrics/cis-1-4-content",
+              "name": "Cis-1,4 Content"
+            },
+            "measure": {
+              "value": 98.5,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/product-performance",
+            "name": "Product Performance"
+          }
+        ]
+      }
+    ]
+  }
+}

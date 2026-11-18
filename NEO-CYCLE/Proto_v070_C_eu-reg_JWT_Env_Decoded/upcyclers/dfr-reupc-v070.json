@@ -1,0 +1,406 @@
+{
+  "type": [
+    "DigitalFacilityRecord",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://rare-earth-upcycling.com/credentials/8bc9d3e4f-5a6b-7c8d-9e0f-1a2b3c4d5e6f",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:rare-earth-upcycling.com:up-001",
+    "name": "Rare Earth Upcycling Ltd",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://rare-earth-upcycling.com",
+        "name": "Rare Earth Upcycling Ltd",
+        "registeredId": "FR0021454321",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+          "name": "SIRENE"
+        }
+      },
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://search.gleif.org/#/record/549300UPCYCLER123456789",
+        "name": "Rare Earth Upcycling Ltd",
+        "registeredId": "549300UPCYCLER123456789",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://www.gleif.org/en/about-lei/iso-17442-the-lei-code-structure",
+          "name": "Legal Entity Identifier (LEI)"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-07-10T08:00:00Z",
+  "validUntil": "2034-07-10T08:00:00Z",
+  "name": "Digital Facility Record — Rare Earth Upcycling Ltd. - Processing Facility",
+  "credentialSubject": {
+    "type": [
+      "Facility"
+    ],
+    "id": "https://id.gs1.org/414/9520987654321",
+    "name": "Rare Earth Upcycling Ltd. - Processing Facility",
+    "description": "Main upcycling facility processing recycled rare earth materials, specially NdFeB magnets, sourced from end-of-life waste electrical and electronic equipment (WEEE). Facility specializes in transforming recovered rare earth materials into high-value products through solid state chlorination.",
+    "registeredId": "9520987654321",
+    "idScheme": {
+      "type": [
+        "IdentifierScheme"
+      ],
+      "id": "https://id.gs1.org/414/",
+      "name": "GS1 Global Location Number (GLN)"
+    },
+    "countryOfOperation": {
+      "countryCode": "FR",
+      "countryName": "France"
+    },
+    "processCategory": [
+      {
+        "code": "22514",
+        "name": "Rare earth upcycling",
+        "definition": "Upcycling and transformation services for rare earth materials recovered from EOL WEEE into high-value products.",
+        "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+        "schemeName": "UN Central Product Classification (CPC)"
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "owner",
+        "party": {
+          "type": [
+            "Party"
+          ],
+          "id": "did:web:rare-earth-upcycling.com:up-001",
+          "name": "Rare Earth Upcycling Ltd",
+          "description": "French rare earth upcycling company specializing in transforming EOL WEEE rare earth materials into high-value products.",
+          "registeredId": "FR0021454321",
+          "idScheme": {
+            "type": [
+              "IdentifierScheme"
+            ],
+            "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+            "name": "SIRENE"
+          },
+          "registrationCountry": {
+            "countryCode": "FR",
+            "countryName": "France"
+          },
+          "partyAddress": {
+            "streetAddress": "42 rue de l'Upcycling",
+            "postalCode": "4240",
+            "addressLocality": "Nice",
+            "addressRegion": "Provence-Alpes-Côte d'Azur",
+            "addressCountry": {
+              "countryCode": "FR",
+              "countryName": "France"
+            }
+          },
+          "organisationWebsite": "https://rare-earth-upcycling.com",
+          "industryCategory": [
+            {
+              "code": "22514",
+              "name": "Rare earth upcycling",
+              "definition": "Upcycling and transformation services for rare earth materials.",
+              "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+              "schemeName": "UN Central Product Classification (CPC)"
+            }
+          ]
+        }
+      }
+    ],
+    "relatedDocument": [
+      {
+        "linkURL": "https://sustainableelectronics.org/credentials/4bc9d3e4f-5a6b-7c8d-9e0f-1a2b3c4d5e6f",
+        "linkName": "SERI R2 Certification — Rare Earth Upcycling Ltd",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dcc"
+      }
+    ],
+    "facilityAlsoKnownAs": [
+      {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://rare-earth-upcycling.com/facilities/1234567",
+        "name": "Rare Earth Upcycling Facility for EOL WEEE",
+        "registeredId": "1234567",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+          "name": "SIRENE"
+        }
+      }
+    ],
+    "locationInformation": {
+      "plusCode": "https://plus.codes/8CGRC78W+MM",
+      "geoLocation": {
+        "latitude": 43.706,
+        "longitude": 7.262
+      },
+      "geoBoundary": [
+        {
+          "latitude": 43.705,
+          "longitude": 7.261
+        },
+        {
+          "latitude": 43.707,
+          "longitude": 7.263
+        }
+      ]
+    },
+    "address": {
+      "streetAddress": "42 rue de l'Upcycling",
+      "postalCode": "4240",
+      "addressLocality": "Nice",
+      "addressRegion": "Provence-Alpes-Côte d'Azur",
+      "addressCountry": {
+        "countryCode": "FR",
+        "countryName": "France"
+      }
+    },
+    "materialUsage": {
+      "applicablePeriod": {
+        "startDate": "2024-01-01",
+        "endDate": "2024-12-31",
+        "periodInformation": "Calendar year 2024 reporting period."
+      },
+      "materialConsumed": [
+        {
+          "name": "Recycled rare earth materials (NdFeB)",
+          "originCountry": {
+            "countryCode": "FR",
+            "countryName": "France"
+          },
+          "materialType": {
+            "code": "14290",
+            "name": "Other non-ferrous metal ores and concentrates",
+            "definition": "Rare earth elements recovered from recycling operations.",
+            "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+            "schemeName": "UN Central Product Classification (CPC)"
+          },
+          "massFraction": 0.75,
+          "mass": {
+            "value": 180000,
+            "unit": "KGM"
+          },
+          "recycledMassFraction": 1.0,
+          "hazardous": false
+        },
+        {
+          "name": "Chemical processing reagents",
+          "originCountry": {
+            "countryCode": "FR",
+            "countryName": "France"
+          },
+          "materialType": {
+            "code": "34320",
+            "name": "Industrial chemical products",
+            "definition": "Chemical products used in rare earth upcycling processes.",
+            "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+            "schemeName": "UN Central Product Classification (CPC)"
+          },
+          "massFraction": 0.25,
+          "mass": {
+            "value": 60000,
+            "unit": "KGM"
+          },
+          "recycledMassFraction": 0,
+          "hazardous": true
+        }
+      ]
+    },
+    "performanceClaim": [
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://rare-earth-upcycling.com/claims/ghg-2024",
+        "name": "GHG Emissions — Facility Operations",
+        "description": "Total greenhouse gas emissions from the Rare Earth Upcycling Facility for the 2024 reporting year, covering direct and indirect emissions from upcycling operations.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+            "name": "Greenhouse Gas Emissions",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+                "name": "Greenhouse Gas Emissions",
+                "definition": "Assessment of direct and indirect greenhouse gas emissions across scopes 1, 2, and 3, including measurement, reporting, and reduction targets aligned with climate science."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2025-02-15",
+        "applicablePeriod": {
+          "startDate": "2024-01-01",
+          "endDate": "2024-12-31",
+          "periodInformation": "Calendar year 2024 reporting period."
+        },
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/total-ghg-emissions",
+              "name": "Total GHG Emissions"
+            },
+            "measure": {
+              "value": 950,
+              "unit": "TNE"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+            "name": "Greenhouse Gas Emissions",
+            "definition": "Assessment of direct and indirect greenhouse gas emissions across scopes 1, 2, and 3, including measurement, reporting, and reduction targets aligned with climate science."
+          }
+        ]
+      },
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://rare-earth-upcycling.com/claims/material-recovery-2024",
+        "name": "Material Transformation Efficiency",
+        "description": "Percentage of recycled rare earth materials successfully transformed into high-value products at the facility for 2024.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+            "name": "Recycled Content",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+                "name": "Recycled Content",
+                "definition": "Percentage of recycled or recovered materials incorporated into products, supporting circular economy principles and reducing reliance on virgin resources."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2025-02-15",
+        "applicablePeriod": {
+          "startDate": "2024-01-01",
+          "endDate": "2024-12-31",
+          "periodInformation": "Calendar year 2024 reporting period."
+        },
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/material-recovery-rate",
+              "name": "Material Recovery Rate"
+            },
+            "measure": {
+              "value": 94,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+            "name": "Recycled Content",
+            "definition": "Percentage of recycled or recovered materials incorporated into products, supporting circular economy principles and reducing reliance on virgin resources."
+          }
+        ]
+      },
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://rare-earth-upcycling.com/claims/renewable-energy-2024",
+        "name": "Renewable Energy Usage",
+        "description": "Percentage of renewable energy used in upcycling operations at the facility for 2024.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/renewable-energy-use",
+            "name": "Renewable Energy Use",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/renewable-energy-use",
+                "name": "Renewable Energy Use",
+                "definition": "Adoption and integration of renewable energy sources to reduce reliance on fossil fuels and lower the carbon footprint of operations and products."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2025-02-15",
+        "applicablePeriod": {
+          "startDate": "2024-01-01",
+          "endDate": "2024-12-31",
+          "periodInformation": "Calendar year 2024 reporting period."
+        },
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/renewable-energy-percentage",
+              "name": "Renewable Energy Percentage"
+            },
+            "measure": {
+              "value": 78,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/renewable-energy-use",
+            "name": "Renewable Energy Use",
+            "definition": "Adoption and integration of renewable energy sources to reduce reliance on fossil fuels and lower the carbon footprint of operations and products."
+          }
+        ]
+      }
+    ]
+  }
+}

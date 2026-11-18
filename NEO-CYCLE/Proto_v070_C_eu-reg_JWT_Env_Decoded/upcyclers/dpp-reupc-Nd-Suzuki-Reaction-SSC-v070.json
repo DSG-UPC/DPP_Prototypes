@@ -1,0 +1,317 @@
+{
+  "type": [
+    "DigitalProductPassport",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://biochem-synthesis.co.uk/credentials/nd-suzuki-ssc-2024-001",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:biochem-synthesis.co.uk:suzuki-001",
+    "name": "BioChem Synthesis Ltd.",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://biochem-synthesis.co.uk",
+        "name": "BioChem Synthesis Ltd.",
+        "registeredId": "GB123987456",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/GB-CRN",
+          "name": "UK Company Registration Number"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-08-15T08:00:00Z",
+  "validUntil": "2027-08-15T08:00:00Z",
+  "name": "Digital Product Passport — Nd-catalyzed Suzuki Coupling Product for API (SSC Path)",
+  "credentialSubject": {
+    "type": [
+      "Product"
+    ],
+    "id": "https://id.gs1.org/01/09520543210987/10/ND-SUZ-SSC-001",
+    "name": "Biaryl Pharmaceutical Intermediate via Nd-catalyzed Suzuki Coupling (SSC Path)",
+    "description": "High-value biaryl pharmaceutical intermediate synthesized via Suzuki-Miyaura cross-coupling using neodymium-based catalyst sourced from solid-state chlorination (SSC) of recycled rare earth materials. This sustainable approach offers an alternative to traditional palladium catalysis for select C-C bond formations.",
+    "idScheme": {
+      "type": [
+        "IdentifierScheme"
+      ],
+      "id": "https://id.gs1.org/01/",
+      "name": "Global Trade Identification Number (GTIN)"
+    },
+    "modelNumber": "API-SUZ-ND-SSC-400",
+    "batchNumber": "ND-SUZ-SSC-2024-08-015",
+    "idGranularity": "batch",
+    "productCategory": [
+      {
+        "code": "35410",
+        "name": "Pharmaceutical products",
+        "definition": "Pharmaceutical intermediates produced via cross-coupling reactions.",
+        "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+        "schemeName": "UN Central Product Classification (CPC)"
+      }
+    ],
+    "relatedDocument": [
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/ship-nd-suzuki-2024-07-26",
+        "linkName": "Digital Traceability Event — Shipment of Nd Precursors (SSC Path)",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      },
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/separation-2024-07-22",
+        "linkName": "Digital Traceability Event — Fe/Nd Separation (SSC Path)",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      },
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/chlorination-2024-07-21",
+        "linkName": "Digital Traceability Event — Solid State Chlorination",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "manufacturer",
+        "party": {
+          "type": [
+            "Party"
+          ],
+          "id": "did:web:biochem-synthesis.co.uk:suzuki-001",
+          "name": "BioChem Synthesis Ltd.",
+          "registeredId": "GB123987456",
+          "idScheme": {
+            "type": [
+              "IdentifierScheme"
+            ],
+            "id": "https://vocabulary.uncefact.org/identifierSchemes/GB-CRN",
+            "name": "UK Company Registration Number"
+          },
+          "registrationCountry": {
+            "countryCode": "GB",
+            "countryName": "United Kingdom"
+          }
+        }
+      }
+    ],
+    "producedAtFacility": {
+      "type": [
+        "Facility"
+      ],
+      "id": "https://biochem-synthesis.co.uk/facility",
+      "name": "BioChem Synthesis Ltd. - Suzuki Reaction Facility",
+      "idScheme": {
+        "type": [
+          "IdentifierScheme"
+        ],
+        "id": "https://id.gs1.org/414/",
+        "name": "GS1 Global Location Number (GLN)"
+      }
+    },
+    "productionDate": "2024-07-28",
+    "countryOfProduction": {
+      "countryCode": "GB",
+      "countryName": "United Kingdom"
+    },
+    "dimensions": {
+      "weight": {
+        "value": 0.02,
+        "unit": "KGM"
+      }
+    },
+    "materialProvenance": [
+      {
+        "name": "Neodymium Catalyst from Recycled Magnets (SSC Process)",
+        "originCountry": {
+          "countryCode": "FR",
+          "countryName": "France"
+        },
+        "materialType": {
+          "code": "41420",
+          "name": "Rare earth metals",
+          "definition": "Neodymium-based catalyst precursor from recycled NdFeB magnets via SSC process.",
+          "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+          "schemeName": "UN Central Product Classification (CPC)"
+        },
+        "massFraction": 0.006,
+        "mass": {
+          "value": 0.02,
+          "unit": "KGM"
+        },
+        "recycledMassFraction": 1.0,
+        "hazardous": false
+      },
+      {
+        "name": "Aryl Halides and Boronic Acids",
+        "originCountry": {
+          "countryCode": "GB",
+          "countryName": "United Kingdom"
+        },
+        "materialType": {
+          "code": "35100",
+          "name": "Chemical products",
+          "definition": "Organic substrates for Suzuki coupling reaction.",
+          "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+          "schemeName": "UN Central Product Classification (CPC)"
+        },
+        "massFraction": 0.994,
+        "mass": {
+          "value": 4.175,
+          "unit": "KGM"
+        },
+        "recycledMassFraction": 0.0,
+        "hazardous": false
+      }
+    ],
+    "performanceClaim": [
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://biochem-synthesis.co.uk/claims/sustainable-catalysis-ssc-2024",
+        "name": "Sustainable Catalysis — Rare Earth Recovery (SSC Path)",
+        "description": "Use of recycled neodymium catalyst from SSC process as alternative to precious metal catalysis, reducing reliance on virgin palladium.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/sustainable-chemistry",
+            "name": "Sustainable Chemistry",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/sustainable-chemistry",
+                "name": "Sustainable Chemistry",
+                "definition": "Chemical processes designed to minimize environmental impact and maximize resource efficiency."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2024-08-15",
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/recycled-catalyst",
+              "name": "Recycled Catalyst Content"
+            },
+            "measure": {
+              "value": 100,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/sustainable-chemistry",
+            "name": "Sustainable Chemistry",
+            "definition": "Chemical processes designed to minimize environmental impact and maximize resource efficiency."
+          }
+        ]
+      },
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://biochem-synthesis.co.uk/claims/coupling-yield-ssc-2024",
+        "name": "Suzuki Coupling Yield",
+        "description": "Isolated yield of biaryl product from Suzuki-Miyaura coupling reaction.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/process-efficiency",
+            "name": "Process Efficiency"
+          }
+        ],
+        "claimDate": "2024-08-15",
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://biochem-synthesis.co.uk/metrics/reaction-yield",
+              "name": "Reaction Yield"
+            },
+            "measure": {
+              "value": 87,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/process-efficiency",
+            "name": "Process Efficiency"
+          }
+        ]
+      },
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://biochem-synthesis.co.uk/claims/purity-ssc-2024",
+        "name": "Product Purity",
+        "description": "Purity of biaryl intermediate meeting pharmaceutical standards.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/product-quality",
+            "name": "Product Quality"
+          }
+        ],
+        "claimDate": "2024-08-15",
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://biochem-synthesis.co.uk/metrics/chemical-purity",
+              "name": "Chemical Purity"
+            },
+            "measure": {
+              "value": 99.3,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/product-quality",
+            "name": "Product Quality"
+          }
+        ]
+      }
+    ]
+  }
+}

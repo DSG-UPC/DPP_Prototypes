@@ -1,0 +1,17 @@
+{% load i18n %}{% autoescape off %}
+
+{% trans "Idhub" as site %}
+
+{% blocktrans %}You're receiving this email because your user account at {{site}} has been activated.{% endblocktrans %}
+
+{% trans "Your username is:" %} {{ user.username }}
+
+{% trans "Please go to the following page and choose a password:" %}
+{% block reset_link %}
+https://{{ domain }}{% url 'idhub:password_reset_confirm' uidb64=uid token=token %}
+{% endblock %}
+
+
+{% blocktrans %}Signed by {{site}} team{% endblocktrans %}
+
+{% endautoescape %}

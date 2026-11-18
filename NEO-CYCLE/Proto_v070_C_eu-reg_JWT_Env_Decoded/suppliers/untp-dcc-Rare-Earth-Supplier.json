@@ -1,0 +1,369 @@
+{
+  "type": [
+    "DigitalConformityCredential",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://sustainableelectronics.org/credentials/4bc9d3e4f-5a6b-7c8d-9e0f-1a2b3c4d5e6f",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:sustainableelectronics.org:seri-r2",
+    "name": "Sustainable Electronics Recycling International (SERI)",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://annuaire-entreprises.data.gouv.fr/entreprise/812345678",
+        "name": "Sustainable Electronics Recycling International (SERI)",
+        "registeredId": "812345678",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+          "name": "SIRENE"
+        }
+      },
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://search.gleif.org/#/record/549300SERI123456789",
+        "name": "Sustainable Electronics Recycling International (SERI)",
+        "registeredId": "549300SERI123456789",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://www.gleif.org/en/about-lei/iso-17442-the-lei-code-structure",
+          "name": "Legal Entity Identifier (LEI)"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-07-10T08:00:00Z",
+  "validUntil": "2034-07-10T08:00:00Z",
+  "name": "SERI R2 Certification — Rare Earth Recycling Ltd",
+  "credentialSubject": {
+    "type": [
+      "ConformityAttestation"
+    ],
+    "id": "https://sustainableelectronics.org/attestations/12345",
+    "name": "Rare earth extraction from EOL WEEE assessment 12345567",
+    "description": "Third-party conformity assessment of Rare Earth Recycling facility against R2:2013 Responsible Recycling Standard, covering environmental, social, and governance criteria for responsible electronics recycling and rare earth recovery.",
+    "assessorLevel": "3rdParty",
+    "assessmentLevel": "scheme-cab",
+    "attestationType": "certification",
+    "issuedToParty": {
+      "type": [
+        "Party"
+      ],
+      "id": "https://rare-earth-recycling.com",
+      "name": "Rare Earth Recycling Ltd",
+      "registeredId": "FR123456789",
+      "idScheme": {
+        "type": [
+          "IdentifierScheme"
+        ],
+        "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+        "name": "SIRENE"
+      }
+    },
+    "authorisation": [
+      {
+        "name": "Accreditation of SERI as an R2 Approved Certifier.",
+        "trustmark": {
+          "name": "R2 Approved Certifier",
+          "description": "Trust mark issued by SERI to accredited assessment firms for R2 certification.",
+          "imageData": "aVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUQ=",
+          "mediaType": "image/png"
+        },
+        "issuingAuthority": {
+          "type": [
+            "Party"
+          ],
+          "id": "https://sustainableelectronics.org",
+          "name": "Sustainable Electronics Recycling International (SERI)",
+          "registeredId": "SERI-AUTH-001",
+          "idScheme": {
+            "type": [
+              "IdentifierScheme"
+            ],
+            "id": "https://sustainableelectronics.org",
+            "name": "SERI Registry"
+          }
+        },
+        "endorsementEvidence": {
+          "linkURL": "https://sustainableelectronics.org/r2-certifiers",
+          "linkName": "SERI R2 Approved Certifiers List",
+          "mediaType": "text/html",
+          "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dcc"
+        }
+      }
+    ],
+    "referenceScheme": {
+      "type": [
+        "ConformityScheme"
+      ],
+      "id": "https://sustainableelectronics.org",
+      "name": "SERI R2 Standard"
+    },
+    "referenceProfile": {
+      "type": [
+        "ConformityProfile"
+      ],
+      "id": "https://sustainableelectronics.org/r2/v3.0",
+      "name": "R2:2013 Responsible Recycling Standard v3.0"
+    },
+    "profileScore": {
+      "code": "fully-meets",
+      "rank": 3,
+      "definition": "The facility fully meets all applicable R2 criteria with no significant non-conformances."
+    },
+    "conformityCertificate": {
+      "linkURL": "https://sustainableelectronics.org/certificates/rare-earth-recycling",
+      "linkName": "R2 Certificate — Rare Earth Recycling Ltd",
+      "mediaType": "text/html",
+      "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dcc"
+    },
+    "auditableEvidence": {
+      "linkURL": "https://files.example-certifier.com/rare-earth-assessment-report.pdf",
+      "linkName": "Full R2 Assessment Report (Restricted)",
+      "mediaType": "application/pdf",
+      "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dcc"
+    },
+    "trustMark": {
+      "name": "R2 Certified",
+      "description": "The R2 Standard — Responsible recycling for electronics and rare earth materials.",
+      "imageData": "aVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUE=",
+      "mediaType": "image/png"
+    },
+    "conformityAssessment": [
+      {
+        "type": [
+          "ConformityAssessment"
+        ],
+        "id": "https://sustainableelectronics.org/assessment/RER-2024-GHG",
+        "name": "GHG Emissions Assessment (R2 Core Practice)",
+        "description": "Assessment of greenhouse gas emissions management and reporting at Rare Earth Recycling facility against R2:2013 environmental criteria.",
+        "assessmentCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://sustainableelectronics.org/r2/v3.0/criterion/environmental",
+            "name": "Environmental Management — R2 Core Practice",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+                "name": "Greenhouse Gas Emissions",
+                "definition": "Assessment of direct and indirect greenhouse gas emissions across scopes 1, 2, and 3, including measurement, reporting, and reduction targets aligned with climate science."
+              }
+            ]
+          }
+        ],
+        "assessmentDate": "2024-03-15",
+        "assessedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/total-ghg-emissions",
+              "name": "Total GHG Emissions"
+            },
+            "measure": {
+              "value": 1850,
+              "unit": "TNE"
+            }
+          }
+        ],
+        "assessedFacility": [
+          {
+            "facility": {
+              "type": [
+                "Facility"
+              ],
+              "id": "https://id.gs1.org/414/9520123456788",
+              "name": "Rare Earth Recycling Ltd. - Main Facility",
+              "registeredId": "9520123456788"
+            },
+            "idVerifiedByCAB": true
+          }
+        ],
+        "assessedOrganisation": {
+          "type": [
+            "Party"
+          ],
+          "id": "https://rare-earth-recycling.com",
+          "name": "Rare Earth Recycling Ltd."
+        },
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+            "name": "Greenhouse Gas Emissions"
+          }
+        ],
+        "conformance": true
+      },
+      {
+        "type": [
+          "ConformityAssessment"
+        ],
+        "id": "https://sustainableelectronics.org/assessment/RER-2024-WM",
+        "name": "Waste Minimization Assessment (R2 Core Practice)",
+        "description": "Assessment of waste management and material recovery practices at Rare Earth Recycling facility against R2:2013 waste minimization criteria.",
+        "assessmentCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://sustainableelectronics.org/r2/v3.0/criterion/waste-management",
+            "name": "Waste Management — R2 Core Practice",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/waste-minimization",
+                "name": "Waste Minimization",
+                "definition": "Strategies and practices to reduce waste generation, promote reuse and recycling, and minimize the environmental impact of waste disposal across the product lifecycle."
+              }
+            ]
+          }
+        ],
+        "assessmentDate": "2024-03-15",
+        "assessedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/material-recovery-rate",
+              "name": "Material Recovery Rate"
+            },
+            "measure": {
+              "value": 87,
+              "unit": "P1"
+            }
+          }
+        ],
+        "assessedFacility": [
+          {
+            "facility": {
+              "type": [
+                "Facility"
+              ],
+              "id": "https://id.gs1.org/414/9520123456788",
+              "name": "Rare Earth Recycling Ltd. - Main Facility",
+              "registeredId": "9520123456788"
+            },
+            "idVerifiedByCAB": true
+          }
+        ],
+        "assessedOrganisation": {
+          "type": [
+            "Party"
+          ],
+          "id": "https://rare-earth-recycling.com",
+          "name": "Rare Earth Recycling Ltd."
+        },
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/waste-minimization",
+            "name": "Waste Minimization"
+          }
+        ],
+        "conformance": true
+      },
+      {
+        "type": [
+          "ConformityAssessment"
+        ],
+        "id": "https://sustainableelectronics.org/assessment/RER-2024-RER",
+        "name": "Rare Earth Recovery Assessment (R2 Core Practice)",
+        "description": "Assessment of rare earth material recovery efficiency and environmental practices in EOL WEEE processing against R2:2013 criteria.",
+        "assessmentCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://sustainableelectronics.org/r2/v3.0/criterion/material-recovery",
+            "name": "Material Recovery — R2 Core Practice",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+                "name": "Recycled Content",
+                "definition": "Percentage of recycled or recovered materials incorporated into products, supporting circular economy principles and reducing reliance on virgin resources."
+              }
+            ]
+          }
+        ],
+        "assessmentDate": "2024-03-15",
+        "assessedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/material-recovery-rate",
+              "name": "Material Recovery Rate"
+            },
+            "measure": {
+              "value": 87,
+              "unit": "P1"
+            }
+          }
+        ],
+        "assessedFacility": [
+          {
+            "facility": {
+              "type": [
+                "Facility"
+              ],
+              "id": "https://id.gs1.org/414/9520123456788",
+              "name": "Rare Earth Recycling Ltd. - Main Facility",
+              "registeredId": "9520123456788"
+            },
+            "idVerifiedByCAB": true
+          }
+        ],
+        "assessedOrganisation": {
+          "type": [
+            "Party"
+          ],
+          "id": "https://rare-earth-recycling.com",
+          "name": "Rare Earth Recycling Ltd."
+        },
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/recycled-content",
+            "name": "Recycled Content"
+          }
+        ],
+        "conformance": true
+      }
+    ]
+  }
+}

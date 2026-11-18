@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}NeoCycleHub{% endblock %}</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 1100px; margin: 0 auto; padding: 1rem 2rem; color: #222; }
+    h1, h2, h3 { color: #1a5276; }
+    nav { margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #1a5276; }
+    nav a { margin-right: 1.5rem; color: #1a5276; text-decoration: none; font-weight: 600; }
+    .messages { list-style: none; padding: 0; }
+    .messages li { padding: 0.5rem 1rem; margin-bottom: 0.5rem; border-radius: 4px; }
+    .messages li.success { background: #d5f5e3; border-left: 4px solid #27ae60; }
+    .messages li.error { background: #fadbd8; border-left: 4px solid #c0392b; }
+    .card { border: 1px solid #ddd; border-radius: 6px; padding: 1rem 1.5rem; margin-bottom: 1rem; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; font-weight: 600; }
+    .badge-dpp { background: #d6eaf8; color: #1a5276; }
+    .badge-dte { background: #d5f5e3; color: #1a4c30; }
+    .badge-dcc { background: #fdebd0; color: #784212; }
+    .badge-dfr { background: #e8daef; color: #512e5f; }
+    .badge-dia { background: #fdfefe; color: #555; border: 1px solid #ccc; }
+    table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+    th, td { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid #eee; }
+    th { background: #f4f6f7; }
+    form.inline { display: inline; }
+    button, .btn { padding: 0.3rem 0.8rem; border-radius: 4px; cursor: pointer; border: 1px solid; font-size: 0.85rem; }
+    .btn-primary { background: #1a5276; color: #fff; border-color: #1a5276; }
+    .btn-secondary { background: #f4f6f7; color: #333; border-color: #ccc; }
+    code { background: #f4f4f4; padding: 1px 5px; border-radius: 3px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/">NeoCycleHub</a>
+    <span style="color:#999; font-size:0.85rem">UNTP v0.7.0 Demonstrator</span>
+  </nav>
+
+  {% if messages %}
+  <ul class="messages">
+    {% for m in messages %}
+    <li class="{{ m.tags }}">{{ m }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% block content %}{% endblock %}
+</body>
+</html>

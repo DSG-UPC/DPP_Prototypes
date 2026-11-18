@@ -1,0 +1,275 @@
+{
+  "type": [
+    "DigitalProductPassport",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://rare-earth-upcycling.com/credentials/8bc9d3e4f-5a6b-7c8d-9e0f-1a2b3c4d5e6f",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:rare-earth-upcycling.com:up-001",
+    "name": "Rare Earth Upcycling Ltd",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://rare-earth-upcycling.com",
+        "name": "Rare Earth Upcycling Ltd",
+        "registeredId": "FR0021454321",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+          "name": "SIRENE"
+        }
+      },
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://search.gleif.org/#/record/549300UPCYCLER123456789",
+        "name": "Rare Earth Upcycling Ltd",
+        "registeredId": "549300UPCYCLER123456789",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://www.gleif.org/en/about-lei/iso-17442-the-lei-code-structure",
+          "name": "Legal Entity Identifier (LEI)"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-07-10T08:00:00Z",
+  "validUntil": "2034-07-10T08:00:00Z",
+  "name": "Digital Product Passport — Ammonia Gas (NH3) from SSC Path",
+  "credentialSubject": {
+    "type": [
+      "Product"
+    ],
+    "id": "https://id.gs1.org/01/09520123456788/66/35714",
+    "name": "Ammonia Gas (NH3) from Solid State Chlorination",
+    "description": "High-purity ammonia gas produced as a byproduct of solid state chlorination (SSC) of crushed NdFeB granulate. This ammonia is recovered from the SSC process and suitable for use in fertilizer production and industrial applications.",
+    "idScheme": {
+      "type": [
+        "IdentifierScheme"
+      ],
+      "id": "https://id.gs1.org/01/",
+      "name": "Global Trade Identification Number (GTIN)"
+    },
+    "modelNumber": "REU-NH3-01",
+    "batchNumber": "NH3-2024-07-001",
+    "idGranularity": "batch",
+    "productCategory": [
+      {
+        "code": "34220",
+        "name": "Ammonia, anhydrous or in aqueous solution",
+        "definition": "Ammonia gas produced through chemical processes, used in fertilizers and industrial applications.",
+        "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+        "schemeName": "UN Central Product Classification (CPC)"
+      }
+    ],
+    "relatedDocument": [
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/chlorination-2024-07-21",
+        "linkName": "Digital Traceability Event — Solid State Chlorination Process",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      },
+      {
+        "linkURL": "https://events.rare-earth-upcycling.com/receive/0046003",
+        "linkName": "Digital Traceability Event — Receipt of Crushed NdFeB Granulate",
+        "mediaType": "application/ld+json",
+        "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dte"
+      }
+    ],
+    "relatedParty": [
+      {
+        "role": "manufacturer",
+        "party": {
+          "type": [
+            "Party"
+          ],
+          "id": "did:web:rare-earth-upcycling.com:up-001",
+          "name": "Rare Earth Upcycling Ltd",
+          "registeredId": "FR0021454321",
+          "idScheme": {
+            "type": [
+              "IdentifierScheme"
+            ],
+            "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+            "name": "SIRENE"
+          },
+          "registrationCountry": {
+            "countryCode": "FR",
+            "countryName": "France"
+          }
+        }
+      }
+    ],
+    "producedAtFacility": {
+      "type": [
+        "Facility"
+      ],
+      "id": "https://id.gs1.org/414/9520987654321",
+      "name": "Rare Earth Upcycling Ltd. - Processing Facility",
+      "registeredId": "9520987654321",
+      "idScheme": {
+        "type": [
+          "IdentifierScheme"
+        ],
+        "id": "https://id.gs1.org/414/",
+        "name": "GS1 Global Location Number (GLN)"
+      }
+    },
+    "productionDate": "2024-07-21",
+    "countryOfProduction": {
+      "countryCode": "FR",
+      "countryName": "France"
+    },
+    "dimensions": {
+      "weight": {
+        "value": 2.5,
+        "unit": "KGM"
+      }
+    },
+    "materialProvenance": [
+      {
+        "name": "Crushed NdFeB Granulate from Rare Earth Recycler",
+        "originCountry": {
+          "countryCode": "FR",
+          "countryName": "France"
+        },
+        "materialType": {
+          "code": "36400",
+          "name": "Crushed NdFeB Granulate",
+          "definition": "Preprocessed rare earth permanent magnet material from recycling.",
+          "schemeId": "https://unstats.un.org/unsd/classifications/Econ/cpc/",
+          "schemeName": "UN Central Product Classification (CPC)"
+        },
+        "massFraction": 0.515,
+        "mass": {
+          "value": 6.7,
+          "unit": "KGM"
+        },
+        "recycledMassFraction": 1.0,
+        "hazardous": false
+      }
+    ],
+    "performanceClaim": [
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://rare-earth-upcycling.com/claims/ghg-2024",
+        "name": "Carbon Footprint — Ammonia Gas Production",
+        "description": "Cradle-to-gate carbon footprint per kilogram of ammonia gas produced as byproduct of solid state chlorination process.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+            "name": "Greenhouse Gas Emissions",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+                "name": "Greenhouse Gas Emissions",
+                "definition": "Assessment of direct and indirect greenhouse gas emissions across scopes 1, 2, and 3."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2024-07-21",
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/product-carbon-footprint",
+              "name": "Product Carbon Footprint"
+            },
+            "measure": {
+              "value": 1.8,
+              "unit": "KGM"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/greenhouse-gas-emissions",
+            "name": "Greenhouse Gas Emissions",
+            "definition": "Assessment of direct and indirect greenhouse gas emissions across scopes 1, 2, and 3."
+          }
+        ]
+      },
+      {
+        "type": [
+          "Claim"
+        ],
+        "id": "https://rare-earth-upcycling.com/claims/circular-input-2024",
+        "name": "Circular Input Material — Ammonia Production",
+        "description": "100% of input material (NdFeB granulate) is sourced from recycled end-of-life WEEE, representing a fully circular production process.",
+        "referenceCriteria": [
+          {
+            "type": [
+              "Criterion"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/circular-design",
+            "name": "Circular Design",
+            "conformityTopic": [
+              {
+                "type": [
+                  "ConformityTopic"
+                ],
+                "id": "https://vocabulary.uncefact.org/conformity-topic/circular-design",
+                "name": "Circular Design",
+                "definition": "Design for durability, repairability, recyclability, and integration of recycled or renewable materials."
+              }
+            ]
+          }
+        ],
+        "claimDate": "2024-07-21",
+        "claimedPerformance": [
+          {
+            "metric": {
+              "type": [
+                "PerformanceMetric"
+              ],
+              "id": "https://vocabulary.uncefact.org/performance-metric/recycled-content",
+              "name": "Recycled Content"
+            },
+            "measure": {
+              "value": 100,
+              "unit": "P1"
+            }
+          }
+        ],
+        "conformityTopic": [
+          {
+            "type": [
+              "ConformityTopic"
+            ],
+            "id": "https://vocabulary.uncefact.org/conformity-topic/circular-design",
+            "name": "Circular Design",
+            "definition": "Design for durability, repairability, recyclability, and integration of recycled or renewable materials."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{% extends "idhub/base.html" %}
+{% load i18n %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+<h3>
+  <i class="{{ icon }}"></i>
+  {{ subtitle }}
+</h3>
+{% render_table table %}
+<div class="form-actions-no-box">
+    <a class="btn btn-green-user" href="{% url 'idhub:user_dids_new' %}">{% translate "Add Identity" %} <i class="bi bi-plus"></i></a>
+</div>
+<!-- Modal -->
+{% for d in dids.all %}
+<div class="modal" id="confirm-delete-{{ d.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{% trans 'Delete DID' %} "{{ d.label }}"</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {% trans 'Are you sure that you want delete this DID?' %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans 'Cancel' %}</button>
+        <a href="{% url 'idhub:user_dids_del' d.id %}" type="button" class="btn btn-danger">{% trans 'Delete' %}</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

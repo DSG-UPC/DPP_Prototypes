@@ -1,0 +1,50 @@
+{% extends "idhub/base.html" %}
+{% load i18n %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+<div class="row">
+  <div class="col">
+    <h3>
+      <i class="{{ icon }}"></i>
+      {{ subtitle }}
+    </h3>
+  </div>
+  <div class="col text-center">
+    {% if lang == 'es' %}
+    <a href="https://laweb.pangea.org/es/politica-de-proteccion-de-datos/acceso-a-los-formularios-arco/" target="_blank" type="button" class="btn btn-green-user me-3">{% trans 'ARCO Forms' %}</a>
+    {% else %}
+    <a href="https://laweb.pangea.org/politica-de-proteccio-de-dades/acces-als-formularis-arco/" target="_blank" type="button" class="btn btn-green-user me-3">{% trans 'ARCO Forms' %}</a>
+    {% endif %}
+
+    <a href=
+        {% if lang == 'es' %}
+        "https://laweb.pangea.org/es/politica-de-privacidad/"
+        {% else %}
+        "https://laweb.pangea.org/politica-de-privacitat/"
+        {% endif %}
+        type="button" class="btn btn-green-user">{% trans 'Privacy Policy' %}</a>
+  </div>
+</div>
+{% load django_bootstrap5 %}
+<form role="form" method="post">
+{% csrf_token %}
+{% if form.errors %}
+<div class="alert alert-danger alert-icon alert-icon-border alert-dismissible" role="alert">
+  <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
+  <div class="message">
+    <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+    <span class="mdi mdi-close" aria-hidden="true"></span>
+    </button>
+    {% for field, error in form.errors.items %}
+      {{ error }}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% bootstrap_form form %}
+</form>
+<hr />
+{% render_table table %}
+
+{% endblock %}

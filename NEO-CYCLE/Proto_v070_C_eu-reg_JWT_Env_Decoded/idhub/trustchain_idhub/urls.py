@@ -1,0 +1,33 @@
+"""
+URL configuration for trustchain_idhub project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+
+# from django.contrib import admin
+from django.urls import path, include
+from idhub.api.api import api_v1
+
+from django.contrib.auth import views as auth_views
+
+
+urlpatterns = [
+    # path('django-admin/', admin.site.urls),
+    path('', include('idhub.urls')),
+    path('oidc4vp/', include('oidc4vp.urls')),
+    path('promotion/', include('promotion.urls')),
+    path('webhook/', include('webhook.urls')),
+    # Ninja Api endpoints
+    path("api/v1/", api_v1.urls),
+]

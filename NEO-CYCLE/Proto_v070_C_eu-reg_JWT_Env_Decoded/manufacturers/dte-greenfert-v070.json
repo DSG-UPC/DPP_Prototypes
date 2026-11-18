@@ -1,0 +1,381 @@
+{
+  "type": [
+    "DigitalTraceabilityEvent",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://greenfert-innovations.eu/credentials/05e6f708-192a-43b4-ce3f-5a6b7c8d9e0f",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:greenfert-innovations.eu:mfg-001",
+    "name": "GreenFert Innovations SAS",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://greenfert-innovations.eu",
+        "name": "GreenFert Innovations SAS",
+        "registeredId": "FR887654321",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+          "name": "SIRENE"
+        }
+      },
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://search.gleif.org/#/record/579300GREFEREU123321",
+        "name": "GreenFert Innovations SAS",
+        "registeredId": "579300GREFEREU123321",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://www.gleif.org/en/about-lei/iso-17442-the-lei-code-structure",
+          "name": "Legal Entity Identifier (LEI)"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-07-10T08:00:00Z",
+  "validUntil": "2025-07-10T08:00:00Z",
+  "name": "Green Fertilizer Production — GreenFert Innovations SAS",
+  "credentialSubject": [
+    {
+      "type": [
+        "MakeEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.greenfert-innovations.eu/prep-2024-07-25",
+      "name": "Mineral and Compost Additive Preparation",
+      "description": "Preparation of 20 kg of mineral and compost bulking additives at GreenFert Innovations, ahead of receipt of recovered ammonia (NH3) feedstock from Rare Earth Upcycling Ltd.",
+      "eventDate": "2024-07-25T08:00:00Z",
+      "activityType": {
+        "code": "commissioning",
+        "name": "Commissioning",
+        "definition": "Preparation of materials ahead of a production process.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "manufacturer",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:greenfert-innovations.eu:mfg-001",
+            "name": "GreenFert Innovations SAS",
+            "registeredId": "FR887654321",
+            "idScheme": {
+              "type": [
+                "IdentifierScheme"
+              ],
+              "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+              "name": "SIRENE"
+            }
+          }
+        }
+      ],
+      "outputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09521122334452/99/MINCOMP",
+            "name": "Mineral and Compost Fertilizer Additives",
+            "batchNumber": "MINCOMP-2024-07-001",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 20,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        }
+      ],
+      "madeAtFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9521122334455",
+        "name": "GreenFert Innovations - Production Facility",
+        "registeredId": "9521122334455"
+      }
+    },
+    {
+      "type": [
+        "MoveEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.greenfert-innovations.eu/receive/nh3-2024-07-29",
+      "name": "Receipt of Ammonia Gas (NH3) from Rare Earth Upcycling Ltd.",
+      "description": "Receipt of 2.5 kg of Ammonia Gas (NH3), recovered from the solid state chlorination (SSC) upcycling path, from Rare Earth Upcycling Ltd at the GreenFert Innovations production facility.",
+      "eventDate": "2024-07-29T10:00:00Z",
+      "activityType": {
+        "code": "receiving",
+        "name": "Receiving",
+        "definition": "The process of receiving goods from a supplier.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "consignor",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-upcycling.com:up-001",
+            "name": "Rare Earth Upcycling Ltd",
+            "registeredId": "FR0021454321"
+          }
+        },
+        {
+          "role": "consignee",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:greenfert-innovations.eu:mfg-001",
+            "name": "GreenFert Innovations SAS",
+            "registeredId": "FR887654321"
+          }
+        }
+      ],
+      "movedProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/66/35714",
+            "name": "Ammonia Gas (NH3) from Solid State Chlorination",
+            "batchNumber": "NH3-2024-07-001",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 2.5,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        }
+      ],
+      "fromFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520987654321",
+        "name": "Rare Earth Upcycling Ltd. - Processing Facility",
+        "registeredId": "9520987654321"
+      },
+      "toFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9521122334455",
+        "name": "GreenFert Innovations - Production Facility",
+        "registeredId": "9521122334455"
+      },
+      "consignmentId": "https://transaction.example.com/po/PO-2024-08-1107",
+      "relatedDocument": [
+        {
+          "linkURL": "https://credentials.rare-earth-upcycling.com/dpp/nh3-2024",
+          "linkName": "Digital Product Passport — Ammonia Gas (NH3) from SSC Path",
+          "mediaType": "application/ld+json",
+          "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dpp"
+        }
+      ]
+    },
+    {
+      "type": [
+        "MakeEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.greenfert-innovations.eu/blend/2024-07-29",
+      "name": "Fertilizer Blending Process",
+      "description": "Blending of 2.5 kg recovered Ammonia Gas (NH3) with 20 kg mineral and compost additives to produce 20 kg of Green Fertilizer, with approximately 2.5 kg mass loss from moisture off-gassing during granulation, at GreenFert Innovations.",
+      "eventDate": "2024-07-29T13:00:00Z",
+      "activityType": {
+        "code": "commissioning",
+        "name": "Commissioning",
+        "definition": "The process of blending and granulating fertilizer components.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "manufacturer",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:greenfert-innovations.eu:mfg-001",
+            "name": "GreenFert Innovations SAS",
+            "registeredId": "FR887654321",
+            "idScheme": {
+              "type": [
+                "IdentifierScheme"
+              ],
+              "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+              "name": "SIRENE"
+            }
+          }
+        }
+      ],
+      "inputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/66/35714",
+            "name": "Ammonia Gas (NH3) from Solid State Chlorination",
+            "batchNumber": "NH3-2024-07-001",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 2.5,
+            "unit": "KGM"
+          },
+          "disposition": "consumed"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09521122334452/99/MINCOMP",
+            "name": "Mineral and Compost Fertilizer Additives",
+            "batchNumber": "MINCOMP-2024-07-001",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 20,
+            "unit": "KGM"
+          },
+          "disposition": "consumed"
+        }
+      ],
+      "outputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09521122334452/66/24007",
+            "name": "Green Fertilizer (Nitrogen, NH3-derived)",
+            "batchNumber": "GRNFERT-2024-07-001",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 20,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        }
+      ],
+      "madeAtFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9521122334455",
+        "name": "GreenFert Innovations - Production Facility",
+        "registeredId": "9521122334455"
+      }
+    },
+    {
+      "type": [
+        "MoveEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.greenfert-innovations.eu/ship-fertilizer-2024-07-29",
+      "name": "Shipping of Green Fertilizer to Agricultural Distributor",
+      "description": "Shipment of 20 kg of Green Fertilizer, produced from recovered ammonia (NH3) and mineral/compost additives, from GreenFert Innovations to AgriDistrib France for retail distribution.",
+      "eventDate": "2024-07-29T16:00:00Z",
+      "activityType": {
+        "code": "shipping",
+        "name": "Shipping",
+        "definition": "The movement of goods from one location to another.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "consignor",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:greenfert-innovations.eu:mfg-001",
+            "name": "GreenFert Innovations SAS",
+            "registeredId": "FR887654321"
+          }
+        },
+        {
+          "role": "consignee",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:agridistrib.fr",
+            "name": "AgriDistrib France"
+          }
+        }
+      ],
+      "movedProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09521122334452/66/24007",
+            "name": "Green Fertilizer (Nitrogen, NH3-derived)",
+            "batchNumber": "GRNFERT-2024-07-001",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 20,
+            "unit": "KGM"
+          },
+          "disposition": "inTransit"
+        }
+      ],
+      "fromFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9521122334455",
+        "name": "GreenFert Innovations - Production Facility",
+        "registeredId": "9521122334455"
+      },
+      "toFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://agridistrib.fr/facility",
+        "name": "AgriDistrib France - Distribution Centre"
+      },
+      "consignmentId": "https://transaction.example.com/po/PO-2024-07-2201",
+      "relatedDocument": [
+        {
+          "linkURL": "https://greenfert-innovations.eu/credentials/04d5e6f7-0819-42a3-bd2e-4f5a6b7c8d9e",
+          "linkName": "Digital Product Passport — Green Fertilizer from Recovered Ammonia (SSC Path)",
+          "mediaType": "application/ld+json",
+          "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dpp"
+        }
+      ]
+    }
+  ]
+}

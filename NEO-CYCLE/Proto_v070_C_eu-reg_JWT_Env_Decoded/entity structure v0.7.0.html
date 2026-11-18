@@ -1,0 +1,2085 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>entity structure v0.7.0 compliant.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  
+<div style="background:#56beac;color:#fff;padding:1rem 1.5rem;border-radius:6px;margin:1rem 0 1.5rem 0;font-family:sans-serif;">
+  <strong>&#10003; Updated for UNTP v0.7.0</strong> — DTE event types corrected from EPCIS terminology
+  (<code style="background:rgba(0,0,0,0.2);padding:1px 5px;border-radius:3px;">AggregationEvent</code>,
+   <code style="background:rgba(0,0,0,0.2);padding:1px 5px;border-radius:3px;">TransformationEvent</code>,
+   <code style="background:rgba(0,0,0,0.2);padding:1px 5px;border-radius:3px;">TransactionEvent</code>)
+  to UNTP v0.7.0 lifecycle types
+  (<code style="background:rgba(0,0,0,0.2);padding:1px 5px;border-radius:3px;">MakeEvent</code>,
+   <code style="background:rgba(0,0,0,0.2);padding:1px 5px;border-radius:3px;">ModifyEvent</code>,
+   <code style="background:rgba(0,0,0,0.2);padding:1px 5px;border-radius:3px;">MoveEvent</code>).
+  All five credential types (DPP, DTE, DCC, DFR, DIA) otherwise unchanged.
+</div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="untp-value-chain-entity-structure">UNTP Value Chain Entity Structure <span style="font-size:0.6em;color:#56beac;font-weight:bold;vertical-align:middle;">v0.7.0 COMPLIANT</span></h1>
+<h2 id="%F0%9F%93%8B-table-of-contents">📋 Table of Contents</h2>
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#executive-summary">Executive Summary</a></li>
+<li><a href="#color-legend">Color Legend</a></li>
+<li><a href="#value-chain-flow---dual-processing-paths">Value Chain Flow - Dual Processing Paths</a>
+<ul>
+<li><a href="#simplified-overview">Simplified Overview</a></li>
+<li><a href="#detailed-dual-path-flow">Detailed Dual-Path Flow</a></li>
+<li><a href="#stage-by-stage-breakdown">Stage-by-Stage Breakdown</a></li>
+</ul>
+</li>
+<li><a href="#untp-credential-details">UNTP Credential Details</a></li>
+<li><a href="#traceability--sustainability-metrics">Traceability &amp; Sustainability Metrics</a></li>
+<li><a href="#value-chain-relationships">Value Chain Relationships</a></li>
+<li><a href="#benefits--impact">Benefits &amp; Impact</a></li>
+<li><a href="#use-case-examples">Use Case Examples</a></li>
+<li><a href="#conformity--certification">Conformity &amp; Certification</a></li>
+<li><a href="#path-comparison-summary">Path Comparison Summary</a></li>
+<li><a href="#glossary">Glossary</a></li>
+<li><a href="#standards--frameworks">Standards &amp; Frameworks</a></li>
+</ol>
+<hr>
+<h2 id="overview">Overview</h2>
+<p>This document illustrates the UNTP (United Nations Transparency Protocol) value chain for the Neocycle project, showing <strong>two parallel processing paths</strong> from rare earth supplier through upcycling to downstream manufacturing:</p>
+<ul>
+<li>🔵 <strong>SSC Path (July 2024)</strong>: Crushed NdFeB Granulate → Solid-State Chlorination</li>
+<li>🟠 <strong>ECEX Path (August 2024)</strong>: Whole NdFeB Magnets → Electrochemical Extraction</li>
+</ul>
+<blockquote>
+<p><strong>📊 Note on Realistic Values</strong>: All quantity ratios are based on current technology (2024-2026) using <strong>Nd32 grade NdFeB magnets</strong> (32% Nd, 65% Fe, 4% Dy, 1% B). SSC achieves <strong>90% recovery efficiency</strong> (established technology), while ECEX achieves <strong>85% recovery efficiency</strong> (emerging technology). Mass balances comply with conservation of mass: SSC recovers 92% total mass (6.15/6.7 KGM), ECEX recovers 87% (5.81/6.7 KGM), with losses attributed to slag, dust, and process residues.</p>
+</blockquote>
+<hr>
+<h2 id="executive-summary">Executive Summary</h2>
+<h3 id="%F0%9F%93%8A-key-performance-indicators">📊 Key Performance Indicators</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>SSC Path</th>
+<th>ECEX Path</th>
+<th>Combined</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>WEEE Input</strong></td>
+<td>1,000 KGM</td>
+<td>1,000 KGM</td>
+<td>2,000 KGM</td>
+</tr>
+<tr>
+<td><strong>Nd Recovery</strong></td>
+<td>1.93 KGM (90% eff) ✓</td>
+<td>1.82 KGM (85% eff)</td>
+<td>3.75 KGM</td>
+</tr>
+<tr>
+<td><strong>Processing Timeline</strong></td>
+<td>Jul 15-30, 2024</td>
+<td>Aug 15-30, 2024</td>
+<td>46 days</td>
+</tr>
+<tr>
+<td><strong>Downstream Products</strong></td>
+<td>5 types</td>
+<td>4 types</td>
+<td>9 unique DPPs</td>
+</tr>
+<tr>
+<td><strong>Byproduct Value</strong></td>
+<td>NH₃ (fertilizer) 🌱</td>
+<td>H₂ (clean energy) ⚡</td>
+<td>Dual revenue</td>
+</tr>
+<tr>
+<td><strong>Traceability</strong></td>
+<td>100% UNTP 0.7.0</td>
+<td>100% UNTP 0.7.0</td>
+<td>Full chain</td>
+</tr>
+<tr>
+<td><strong>Recycled Content</strong></td>
+<td>80-86%</td>
+<td>80-86%</td>
+<td>High circularity</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 <strong>Key Insight</strong>: The dual-path architecture demonstrates technology flexibility while maintaining complete supply chain transparency. SSC produces valuable ammonia for agriculture, while ECEX generates clean hydrogen energy.</p>
+</blockquote>
+<h3 id="%F0%9F%8E%AF-project-highlights">🎯 Project Highlights</h3>
+<ul>
+<li>✅ <strong>Complete UNTP Compliance</strong>: All entities maintain full DPP/DTE/DCC/DFR/DIA credentials</li>
+<li>✅ <strong>Verified Mass Balance</strong>: 100% material accounting from WEEE to final products</li>
+<li>✅ <strong>Path Differentiation</strong>: Custom <code>upstreamProcess</code> extension enables product origin tracking</li>
+<li>✅ <strong>Circular Economy</strong>: 80-86% recycled content with Material Circularity Index of 0.67</li>
+<li>✅ <strong>Scalable Model</strong>: Black box downstream receivers accept any DPP output</li>
+</ul>
+<hr>
+<h2 id="color-legend">Color Legend</h2>
+<p><strong>Understanding the Visual System:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Color</th>
+<th>Meaning</th>
+<th>Used For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔵 Blue (<code>#0288D1</code>)</td>
+<td>Supplier Stage</td>
+<td>Entity 1: Rare Earth Supplier</td>
+</tr>
+<tr>
+<td>🟣 Purple (<code>#7B1FA2</code>)</td>
+<td>SSC Upcycling</td>
+<td>Entity 2: SSC Path Processing</td>
+</tr>
+<tr>
+<td>🟪 Light Purple (<code>#9C27B0</code>)</td>
+<td>ECEX Upcycling</td>
+<td>Entity 2: ECEX Path Processing</td>
+</tr>
+<tr>
+<td>🟢 Green (<code>#388E3C</code>)</td>
+<td>Downstream</td>
+<td>Entity 3: Manufacturing Partners</td>
+</tr>
+<tr>
+<td>🔴 Red (<code>#FF6B6B</code>)</td>
+<td>Input/Receipt</td>
+<td>Material reception points</td>
+</tr>
+<tr>
+<td>🟠 Orange (<code>#FFB347</code>)</td>
+<td>Processing</td>
+<td>Transformation events</td>
+</tr>
+<tr>
+<td>🔵 Cyan (<code>#4ECDC4</code>)</td>
+<td>Separation</td>
+<td>Element extraction stages</td>
+</tr>
+<tr>
+<td>🟢 Light Green (<code>#95E1D3</code>)</td>
+<td>Output/Shipment</td>
+<td>Product outputs</td>
+</tr>
+<tr>
+<td>🟡 Yellow (<code>#FFC107</code>)</td>
+<td>Quality Control</td>
+<td>QC retention samples</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Stage Background Colors:</strong></p>
+<ul>
+<li>Stage 1 (Supplier): Light Blue (<code>#B3E5FC</code>)</li>
+<li>Stage 2A (SSC): Light Purple (<code>#E1BEE7</code>)</li>
+<li>Stage 2B (ECEX): Medium Purple (<code>#CE93D8</code>)</li>
+<li>Stage 3 (Downstream): Light Green (<code>#C8E6C9</code>)</li>
+</ul>
+<h2 id="value-chain-flow---dual-processing-paths">Value Chain Flow - Dual Processing Paths</h2>
+<h3 id="simplified-overview">Simplified Overview</h3>
+<pre><code class="language-mermaid"><div class="mermaid">graph TB
+    A["STAGE 1: RARE EARTH SUPPLIER
+    Rare Earth Recycling Ltd. (France)
+    
+    WEEE Input: 1,000 KGM per batch"]
+    
+    B1["SSC PATH (July 2024)
+    Crushed NdFeB Granulate
+    6.7 KGM + 0.05 KGM QC"]
+    
+    B2["ECEX PATH (August 2024)
+    Whole NdFeB Magnets
+    6.7 KGM + 0.05 KGM QC"]
+    
+    C1["STAGE 2A: UPCYCLER - SSC
+    Solid-State Chlorination
+    6.7 KGM Input"]
+    
+    C2["STAGE 2B: UPCYCLER - ECEX
+    Electrochemical Extraction
+    6.7 KGM Input"]
+    
+    D1["SSC OUTPUTS
+    • Nd: 1.93 KGM (90% eff)
+    • Fe: 3.92 KGM
+    • Dy: 0.24 KGM
+    • NH3: 2.5 KGM"]
+    
+    D2["ECEX OUTPUTS
+    • Nd: 1.82 KGM (85% eff)
+    • Fe: 3.70 KGM
+    • Dy: 0.23 KGM
+    • H2: 0.2 KGM"]
+    
+    E["STAGE 3: DOWNSTREAM PRODUCTS
+    • FeNd Catalysts (Ammonia Synthesis)
+    • Polymerization Catalysts
+    • API Synthesis Intermediates
+    • Suzuki Reaction Products
+    • Fertilizer Manufacturing"]
+    
+    A -->|July Processing| B1
+    A -->|August Processing| B2
+    B1 --> C1
+    B2 --> C2
+    C1 --> D1
+    C2 --> D2
+    D1 --> E
+    D2 --> E
+    
+    style A fill:#0288D1,stroke:#000000,stroke-width:5px,color:#FFFFFF
+    style B1 fill:#FF6B6B,stroke:#000000,stroke-width:3px
+    style B2 fill:#FF8C42,stroke:#000000,stroke-width:3px
+    style C1 fill:#7B1FA2,stroke:#000000,stroke-width:5px,color:#FFFFFF
+    style C2 fill:#9C27B0,stroke:#000000,stroke-width:5px,color:#FFFFFF
+    style D1 fill:#4ECDC4,stroke:#000000,stroke-width:3px
+    style D2 fill:#45B7D1,stroke:#000000,stroke-width:3px
+    style E fill:#388E3C,stroke:#000000,stroke-width:5px,color:#FFFFFF
+</div></code></pre>
+<h3 id="detailed-dual-path-flow">Detailed Dual-Path Flow</h3>
+<pre><code class="language-mermaid"><div class="mermaid">graph TB
+    subgraph S1["STAGE 1: RARE EARTH SUPPLIER (Both Paths)"]
+        direction TB
+        A["Rare Earth Recycling Ltd. - France"]
+        
+        A1["WEEE Collection
+        1,000 KGM per batch"]
+        
+        A2["Extraction & Processing
+        Output: 6.75 KGM magnets"]
+        
+        A3A["SSC Path (July)
+        Crushed: 6.7 KGM
+        QC: 0.05 KGM"]
+        
+        A3B["ECEX Path (August)
+        Whole: 6.7 KGM
+        QC: 0.05 KGM"]
+        
+        A --> A1 --> A2
+        A2 --> A3A
+        A2 --> A3B
+    end
+    
+    subgraph S2A["STAGE 2A: SSC UPCYCLING (July)"]
+        direction TB
+        B1["Rare Earth Upcycling Ltd"]
+        B1A["Receipt: 6.7 KGM Crushed"]
+        B1B["Solid-State Chlorination
+        + NH4Cl + N2"]
+        B1C["Fe/Nd/Dy Separation"]
+        B1D["Outputs:
+        Nd: 1.93 KGM (90% eff)
+        Fe: 3.92 KGM
+        Dy: 0.24 KGM
+        NH3: 2.5 KGM"]
+        
+        B1 --> B1A --> B1B --> B1C --> B1D
+    end
+    
+    subgraph S2B["STAGE 2B: ECEX UPCYCLING (August)"]
+        direction TB
+        B2["Rare Earth Upcycling Ltd"]
+        B2A["Receipt: 6.7 KGM Whole"]
+        B2B["Electrochemical Extraction
+        + H2SO4 + Energy"]
+        B2C["Fe/Nd/Dy Separation"]
+        B2D["Outputs:
+        Nd: 1.82 KGM (85% eff)
+        Fe: 3.70 KGM
+        Dy: 0.23 KGM
+        H2: 0.2 KGM"]
+        
+        B2 --> B2A --> B2B --> B2C --> B2D
+    end
+    
+    subgraph S3["STAGE 3: DOWNSTREAM MANUFACTURING"]
+        direction TB
+        C["Multiple Downstream Partners"]
+        C1["• FeNd Catalysts (Ammonia)
+        • Polymerization Catalysts
+        • API Synthesis
+        • Suzuki Reaction Products
+        • Fertilizer Production"]
+        
+        C --> C1
+    end
+    
+    A3A ==>|6.7 KGM| B1A
+    A3B ==>|6.7 KGM| B2A
+    B1D ==> C
+    B2D ==> C
+    
+    style A fill:#0288D1,stroke:#000000,stroke-width:5px,color:#FFFFFF
+    style B1 fill:#7B1FA2,stroke:#000000,stroke-width:5px,color:#FFFFFF
+    style B2 fill:#9C27B0,stroke:#000000,stroke-width:5px,color:#FFFFFF
+    style C fill:#388E3C,stroke:#000000,stroke-width:5px,color:#FFFFFF
+    
+    style S1 fill:#B3E5FC,stroke:#000000,stroke-width:3px
+    style S2A fill:#E1BEE7,stroke:#000000,stroke-width:3px
+    style S2B fill:#CE93D8,stroke:#000000,stroke-width:3px
+    style S3 fill:#C8E6C9,stroke:#000000,stroke-width:3px
+</div></code></pre>
+<h3 id="stage-by-stage-breakdown">Stage-by-Stage Breakdown</h3>
+<h4 id="%F0%9F%94%84-stage-1-rare-earth-supply-dual-path-processing">🔄 Stage 1: Rare Earth Supply (Dual-Path Processing)</h4>
+<p>🔵 <strong>STATUS</strong>: <code>VERIFIED</code> | 🟢 <strong>UNTP COMPLIANT</strong> | 📅 <strong>ACTIVE: Jul-Aug 2024</strong></p>
+<p><strong>Organization:</strong></p>
+<ul>
+<li><strong>Name:</strong> Rare Earth Recycling Ltd.</li>
+<li><strong>Location:</strong> France</li>
+<li><strong>SIRENE:</strong> FR123456789</li>
+<li><strong>LEI:</strong> 549300RERC123456789</li>
+<li><strong>DID:</strong> did:web:rare-earth-recycling.com:rec-001</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Key Insight</strong>: Single supplier processes both paths using different material preparation methods (demagnetization + crushing vs demagnetization only), enabling direct comparison of downstream efficiency. Demagnetization removes magnetic properties via Curie temperature heating.</p>
+</blockquote>
+<h5 id="path-a-ssc-processing-july-2024">Path A: SSC Processing (July 2024)</h5>
+<pre><code class="language-mermaid"><div class="mermaid">graph TB
+    INPUT1["INPUT
+WEEE (1,000 KGM)
+Collection: Jul 15"]
+    
+    EXTRACT1["EXTRACTION
+Magnets: 6.81 KGM
+Jul 17"]
+    
+    DEMAG1["DEMAGNETIZATION
+Demagnetized: 6.78 KGM
+Jul 17"]
+    
+    CRUSH["CRUSHING
+Granulate: 6.75 KGM
+Jul 17"]
+    
+    SHIP1["SHIPMENT
+To Upcycler: 6.7 KGM
+Batch: NDFEB-GRAN-2024-07-003
+Jul 19"]
+    
+    QC1["QC RETENTION
+Sample: 0.05 KGM
+Jul 19"]
+    
+    INPUT1-->EXTRACT1
+    EXTRACT1-->DEMAG1
+    DEMAG1-->CRUSH
+    CRUSH-->SHIP1
+    CRUSH-->QC1
+    
+    style INPUT1 fill:#FF6B6B
+    style EXTRACT1 fill:#FFB347
+    style DEMAG1 fill:#FFB347
+    style CRUSH fill:#4ECDC4
+    style SHIP1 fill:#95E1D3
+    style QC1 fill:#FFC107
+</div></code></pre>
+<p><strong>Output:</strong> Crushed NdFeB Granulate</p>
+<ul>
+<li><strong>Batch:</strong> NDFEB-GRAN-2024-07-003</li>
+<li><strong>Shipped:</strong> 6.7 KGM → Rare Earth Upcycling Ltd</li>
+<li><strong>Retained:</strong> 0.05 KGM (QC samples)</li>
+<li><strong>Key Process:</strong> Demagnetization at Curie temperature before crushing</li>
+</ul>
+<h5 id="path-b-ecex-processing-august-2024">Path B: ECEX Processing (August 2024)</h5>
+<pre><code class="language-mermaid"><div class="mermaid">graph TB
+    INPUT2["INPUT
+WEEE (1,000 KGM)
+Collection: Aug 15"]
+    
+    EXTRACT2["EXTRACTION
+Magnets: 6.81 KGM
+Aug 17"]
+    
+    DEMAG2["DEMAGNETIZATION
+Whole Magnets: 6.75 KGM
+Aug 17"]
+    
+    SHIP2["SHIPMENT
+To Upcycler: 6.7 KGM
+Batch: NDFEB-MAG-2024-08-004
+Aug 19"]
+    
+    QC2["QC RETENTION
+Sample: 0.05 KGM
+Aug 19"]
+    
+    INPUT2-->EXTRACT2
+    EXTRACT2-->DEMAG2
+    DEMAG2-->SHIP2
+    DEMAG2-->QC2
+    
+    style INPUT2 fill:#FF6B6B
+    style EXTRACT2 fill:#FFB347
+    style DEMAG2 fill:#FFB347
+    style SHIP2 fill:#95E1D3
+    style QC2 fill:#FFC107
+</div></code></pre>
+<p><strong>Output:</strong> Whole NdFeB Magnets (Demagnetized)</p>
+<ul>
+<li><strong>Batch:</strong> NDFEB-MAG-2024-08-004</li>
+<li><strong>Shipped:</strong> 6.7 KGM → Rare Earth Upcycling Ltd</li>
+<li><strong>Retained:</strong> 0.05 KGM (QC samples)</li>
+<li><strong>Key Process:</strong> Demagnetization at Curie temperature to remove magnetic properties</li>
+</ul>
+<h4 id="%E2%9A%99%EF%B8%8F-stage-2-rare-earth-upcycling-dual-path-processing">⚙️ Stage 2: Rare Earth Upcycling (Dual-Path Processing)</h4>
+<p>🟣 <strong>SSC STATUS</strong>: <code>VERIFIED</code> | 🟪 <strong>ECEX STATUS</strong>: <code>VERIFIED</code> | 🟢 <strong>UNTP COMPLIANT</strong></p>
+<p><strong>Organization:</strong></p>
+<ul>
+<li><strong>Name:</strong> Rare Earth Upcycling Ltd</li>
+<li><strong>Location:</strong> France</li>
+<li><strong>SIRENE:</strong> FR0021454321</li>
+<li><strong>LEI:</strong> 549300UPCYCLER123456789</li>
+<li><strong>DID:</strong> did:web:rare-earth-upcycling.com:up-001</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Technology Comparison</strong>: SSC delivers 90% recovery efficiency vs ECEX's 85%, producing 6% more Nd (1.93 vs 1.82 KGM). SSC requires thermal energy (600-800°C) while ECEX operates at ambient temperature and produces clean H₂. Both achieve &gt;85% rare earth recovery from NdFeB magnets (Nd32 grade: 32% Nd, 65% Fe, 4% Dy, 1% B).</p>
+</blockquote>
+<h5 id="path-a-ssc-upcycling-july-2024">Path A: SSC Upcycling (July 2024)</h5>
+<pre><code class="language-mermaid"><div class="mermaid">graph TB
+    RECV1["RECEIPT
+Crushed Granulate
+6.7 KGM
+Jul 20"]
+    
+    CHLOR["CHLORINATION
++ NH4Cl + N2
+Jul 21"]
+    
+    SEP1["SEPARATION
+Fe/Nd/Dy
+Jul 22"]
+    
+    OUT1A["Nd: 1.93 KGM"]
+    OUT1B["Fe: 3.92 KGM"]
+    OUT1C["Dy: 0.24 KGM"]
+    OUT1D["NH3: 2.5 KGM"]
+    
+    SHIP1["DOWNSTREAM
+SHIPMENTS
+Jul 23-30"]
+    
+    RECV1 --> CHLOR --> SEP1
+    SEP1 --> OUT1A
+    SEP1 --> OUT1B
+    SEP1 --> OUT1C
+    SEP1 --> OUT1D
+    OUT1A --> SHIP1
+    OUT1B --> SHIP1
+    OUT1C --> SHIP1
+    OUT1D --> SHIP1
+    
+    style RECV1 fill:#FF6B6B
+    style CHLOR fill:#FFB347
+    style SEP1 fill:#4ECDC4
+    style OUT1A fill:#95E1D3
+    style OUT1B fill:#95E1D3
+    style OUT1C fill:#95E1D3
+    style OUT1D fill:#95E1D3
+    style SHIP1 fill:#C8E6C9
+</div></code></pre>
+<p><strong>Downstream Distribution (SSC Path):</strong></p>
+<ul>
+<li><strong>FeNd Catalyst:</strong> 0.50 KGM Nd + 0.92 KGM Fe = 1.42 KGM total</li>
+<li><strong>Polymerization Catalyst:</strong> 0.50 KGM Nd</li>
+<li><strong>API Synthesis:</strong> 0.030 KGM Nd</li>
+<li><strong>Suzuki Reaction:</strong> 0.020 KGM Nd</li>
+<li><strong>NH₃ to Fertilizer:</strong> 2.5 KGM</li>
+<li><strong>Total Nd Distributed:</strong> 1.05 KGM (Inventory: 0.88 KGM for future orders)</li>
+</ul>
+<h5 id="path-b-ecex-upcycling-august-2024">Path B: ECEX Upcycling (August 2024)</h5>
+<pre><code class="language-mermaid"><div class="mermaid">graph TB
+    RECV2["RECEIPT
+Whole Magnets
+6.7 KGM
+Aug 20"]
+    
+    ELEC["ELECTROCHEMICAL
++ H2SO4 + Energy
+Aug 22"]
+    
+    SEP2["SEPARATION
+Fe/Nd/Dy
+Aug 23"]
+    
+    OUT2A["Nd: 1.82 KGM"]
+    OUT2B["Fe: 3.70 KGM"]
+    OUT2C["Dy: 0.23 KGM"]
+    OUT2D["H2: 0.2 KGM"]
+    
+    SHIP2["DOWNSTREAM
+SHIPMENTS
+Aug 25-30"]
+    
+    RECV2 --> ELEC --> SEP2
+    SEP2 --> OUT2A
+    SEP2 --> OUT2B
+    SEP2 --> OUT2C
+    SEP2 --> OUT2D
+    OUT2A --> SHIP2
+    OUT2B --> SHIP2
+    OUT2C --> SHIP2
+    OUT2D --> SHIP2
+    
+    style RECV2 fill:#FF6B6B
+    style ELEC fill:#FFB347
+    style SEP2 fill:#4ECDC4
+    style OUT2A fill:#95E1D3
+    style OUT2B fill:#95E1D3
+    style OUT2C fill:#95E1D3
+    style OUT2D fill:#95E1D3
+    style SHIP2 fill:#C8E6C9
+</div></code></pre>
+<p><strong>Downstream Distribution (ECEX Path):</strong></p>
+<ul>
+<li><strong>FeNd Catalyst:</strong> 0.46 KGM Nd + 0.91 KGM Fe = 1.37 KGM total</li>
+<li><strong>Polymerization Catalyst:</strong> 0.46 KGM Nd</li>
+<li><strong>API Synthesis:</strong> 0.029 KGM Nd</li>
+<li><strong>Suzuki Reaction:</strong> 0.028 KGM Nd</li>
+<li><strong>Total Nd Distributed:</strong> 0.977 KGM (Inventory: 0.84 KGM for future orders)</li>
+</ul>
+<h4 id="%F0%9F%8F%AD-stage-3-downstream-manufacturing-multiple-partners">🏭 Stage 3: Downstream Manufacturing (Multiple Partners)</h4>
+<p>🟢 <strong>STATUS</strong>: <code>OPEN ARCHITECTURE</code> | 🔓 <strong>BLACK BOX MODEL</strong> | ♻️ <strong>FLEXIBLE DPP RECEIVER</strong></p>
+<blockquote>
+<p>💡 <strong>Architectural Advantage</strong>: Open-ended black box design allows any certified manufacturer to receive upcycler DPPs without system redesign. Each product retains complete provenance via <code>upstreamProcess</code> metadata.</p>
+</blockquote>
+<p><strong>Universal Receiver:</strong> Downstream manufacturers accept DPPs from both SSC and ECEX upcycler paths</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TB
+    subgraph BLACKBOX["ENTITY 3: DOWNSTREAM MANUFACTURERS"]
+        direction TB
+        
+        HEADER["Generic Black Box Receivers
+        Accept any DPP from Upcycler"]
+        
+        SSC_IN["SSC PATH INPUTS:
+        Nd: 1.93 KGM | Fe: 3.92 KGM
+        Dy: 0.24 KGM | NH₃: 2.5 KGM"]
+        
+        ECEX_IN["ECEX PATH INPUTS:
+        Nd: 1.82 KGM | Fe: 3.70 KGM
+        Dy: 0.23 KGM | H₂: 0.2 KGM"]
+        
+        PROCESS["TRANSFORMATION PROCESSES
+        Various Manufacturing Operations"]
+        
+        OUTPUTS["FINAL PRODUCTS
+        All DPP-Tagged with Source Path"]
+        
+        HEADER --> SSC_IN
+        HEADER --> ECEX_IN
+        SSC_IN --> PROCESS
+        ECEX_IN --> PROCESS
+        PROCESS --> OUTPUTS
+    end
+    
+    style BLACKBOX fill:#C8E6C9,stroke:#000000,stroke-width:3px
+    style HEADER fill:#404040,color:#FFFFFF,stroke:#666666,stroke-width:2px
+    style SSC_IN fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px
+    style ECEX_IN fill:#FF8C42,stroke:#D97706,stroke-width:2px
+    style PROCESS fill:#4ECDC4,stroke:#0891B2,stroke-width:2px
+    style OUTPUTS fill:#95E1D3,stroke:#14B8A6,stroke-width:2px
+</div></code></pre>
+<h5 id="downstream-product-portfolio-all-dpp-tagged">Downstream Product Portfolio (All DPP-Tagged)</h5>
+<p><strong>1. Catalyst Manufacturing:</strong></p>
+<ul>
+<li>
+<p><strong>FeNd Ammonia Catalysts</strong></p>
+<ul>
+<li>SSC Path: 1.42 KGM (0.50 Nd + 0.92 Fe) - Tagged with SSC metadata</li>
+<li>ECEX Path: 1.37 KGM (0.46 Nd + 0.91 Fe) - Tagged with ECEX metadata</li>
+</ul>
+</li>
+<li>
+<p><strong>Polymerization Catalysts</strong></p>
+<ul>
+<li>SSC Path: 0.50 KGM Nd</li>
+<li>ECEX Path: 0.46 KGM Nd</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. Pharmaceutical Applications:</strong></p>
+<ul>
+<li>
+<p><strong>API Synthesis Catalysts</strong></p>
+<ul>
+<li>SSC Path: 0.030 KGM Nd</li>
+<li>ECEX Path: 0.029 KGM Nd</li>
+</ul>
+</li>
+<li>
+<p><strong>Suzuki Reaction Catalysts</strong></p>
+<ul>
+<li>SSC Path: 0.020 KGM Nd</li>
+<li>ECEX Path: 0.028 KGM Nd</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. Fertilizer Production (SSC Path Only):</strong></p>
+<ul>
+<li><strong>Manufacturer:</strong> GreenFert Innovations SAS (France)</li>
+<li><strong>Input:</strong> NH₃ 2.5 KGM from SSC chlorination</li>
+<li><strong>Output:</strong> Green Fertilizer 20 KGM</li>
+<li><strong>DPP Features:</strong> Tagged with SSC path metadata, 100% traceable to source batch</li>
+</ul>
+<h2 id="untp-credential-details">UNTP Credential Details</h2>
+<h3 id="entity-1-rare-earth-supplier-dual-path-processing">Entity 1: Rare Earth Supplier (Dual-Path Processing)</h3>
+<p><strong>Organization:</strong></p>
+<ul>
+<li><strong>Name:</strong> Rare Earth Recycling Ltd.</li>
+<li><strong>Location:</strong> France (SIRENE: FR123456789)</li>
+<li><strong>LEI:</strong> 549300RERC123456789</li>
+<li><strong>DID:</strong> did:web:rare-earth-recycling.com:rec-001</li>
+</ul>
+<p><strong>Path A - SSC Processing (July 2024):</strong></p>
+<ul>
+<li><strong>Input:</strong> EOL WEEE - 1,000 KGM</li>
+<li><strong>Output:</strong> Crushed NdFeB Granulate
+<ul>
+<li>Batch: NDFEB-GRAN-2024-07-003</li>
+<li>Shipped: 6.7 KGM</li>
+<li>QC Retained: 0.05 KGM</li>
+</ul>
+</li>
+<li><strong>Timeline:</strong> July 15-19, 2024</li>
+<li><strong>DTE Events:</strong>
+<ol>
+<li>MakeEvent: WEEE Collection (Jul 15)</li>
+<li>ModifyEvent: Extraction (Jul 17) → 6.81 KGM</li>
+<li>ModifyEvent: Demagnetization (Jul 17) → 6.78 KGM</li>
+<li>ModifyEvent: Crushing (Jul 17) → 6.75 KGM</li>
+<li>MoveEvent: Shipment (Jul 19) → 6.7 KGM + QC (0.05 KGM)</li>
+</ol>
+</li>
+</ul>
+<p><strong>Path B - ECEX Processing (August 2024):</strong></p>
+<ul>
+<li><strong>Input:</strong> EOL WEEE - 1,000 KGM</li>
+<li><strong>Output:</strong> Whole NdFeB Magnets (Demagnetized)
+<ul>
+<li>Batch: NDFEB-MAG-2024-08-004</li>
+<li>Shipped: 6.7 KGM</li>
+<li>QC Retained: 0.05 KGM</li>
+</ul>
+</li>
+<li><strong>Timeline:</strong> August 15-19, 2024</li>
+<li><strong>DTE Events:</strong>
+<ol>
+<li>MakeEvent: WEEE Collection (Aug 15)</li>
+<li>ModifyEvent: Extraction (Aug 17) → 6.81 KGM</li>
+<li>ModifyEvent: Demagnetization (Aug 17) → 6.75 KGM</li>
+<li>MoveEvent: Shipment (Aug 19) → 6.7 KGM + QC (0.05 KGM)</li>
+</ol>
+</li>
+</ul>
+<p><strong>Credentials:</strong> DPP (2 variants), DTE (2 paths), DCC, DFR, DIA conforming to UNTP 0.7.0</p>
+<hr>
+<h4 id="%F0%9F%93%8A-quick-reference-card-entity-1">📊 Quick Reference Card: Entity 1</h4>
+<pre class="hljs"><code><div>╔════════════════════════════════════════════════════════════╗
+║  🏭 ENTITY 1: RARE EARTH SUPPLIER                           ║
+╠════════════════════════════════════════════════════════════╣
+║  Rare Earth Recycling Ltd. | France                       ║
+║  LEI: 549300RERC123456789                                 ║
+║  DID: did:web:rare-earth-recycling.com:rec-001           ║
+╠════════════════════════════════════════════════════════════╣
+║  🔵 SSC PATH (July 2024)                                 ║
+║    Input:  1,000 KGM WEEE (Jul 15)                        ║
+║    Process: Extract→Demagnetize→Crush                     ║
+║    Output: 6.7 KGM Crushed Granulate (Jul 19)             ║
+║    Batch:  NDFEB-GRAN-2024-07-003                         ║
+║    QC:     0.05 KGM retention                             ║
+╠════════════════════════════════════════════════════════════╣
+║  🟠 ECEX PATH (August 2024)                              ║
+║    Input:  1,000 KGM WEEE (Aug 15)                        ║
+║    Process: Extract→Demagnetize                           ║
+║    Output: 6.7 KGM Whole Magnets Demag (Aug 19)           ║
+║    Batch:  NDFEB-MAG-2024-08-004                          ║
+║    QC:     0.05 KGM retention                             ║
+╠════════════════════════════════════════════════════════════╣
+║  📊 KEY METRICS                                          ║
+║    Extraction Efficiency: 0.681% (6.81/1000 KGM)          ║
+║    Demagnetization: Curie temp heating (both paths)       ║
+║    Recovery Rate: 98.4% (6.7/6.81 KGM shipped)            ║
+║    Dual-Path Capacity: 2 batches/month                    ║
+║    UNTP Credentials: DPP(2) + DTE(2) + DCC/DFR/DIA        ║
+╚════════════════════════════════════════════════════════════╝
+</div></code></pre>
+<h3 id="entity-2-rare-earth-upcycler-dual-path-processing">Entity 2: Rare Earth Upcycler (Dual-Path Processing)</h3>
+<p><strong>Organization:</strong></p>
+<ul>
+<li><strong>Name:</strong> Rare Earth Upcycling Ltd</li>
+<li><strong>Location:</strong> France (SIRENE: FR0021454321)</li>
+<li><strong>LEI:</strong> 549300UPCYCLER123456789</li>
+<li><strong>DID:</strong> did:web:rare-earth-upcycling.com:up-001</li>
+</ul>
+<p><strong>Path A - SSC Processing (July 2024):</strong></p>
+<ul>
+<li><strong>Input:</strong> Crushed NdFeB Granulate - 6.7 KGM (Batch: NDFEB-GRAN-2024-07-003)</li>
+<li><strong>Process:</strong> Solid-State Chlorination + Fe/Nd/Dy Separation</li>
+<li><strong>Outputs:</strong>
+<ul>
+<li>Neodymium (Nd): 1.93 KGM (90% efficiency from 2.14 KGM theoretical)</li>
+<li>Iron (Fe): 3.92 KGM (90% efficiency from 4.36 KGM theoretical)</li>
+<li>Dysprosium (Dy): 0.24 KGM (90% efficiency from 0.27 KGM theoretical)</li>
+<li>Ammonia (NH₃): 2.5 KGM (from chlorination reagents)</li>
+<li>Boron: 0.06 KGM (90% efficiency from 0.07 KGM theoretical)</li>
+</ul>
+</li>
+<li><strong>Timeline:</strong> July 20-30, 2024</li>
+<li><strong>DTE Events:</strong>
+<ol>
+<li>MoveEvent: Receipt (Jul 20)</li>
+<li>ModifyEvent: Chlorination (Jul 21)</li>
+<li>ModifyEvent: Separation (Jul 22)</li>
+<li>MoveEvent: Downstream shipments (Jul 23-30)</li>
+</ol>
+</li>
+</ul>
+<p><strong>Path B - ECEX Processing (August 2024):</strong></p>
+<ul>
+<li><strong>Input:</strong> Whole NdFeB Magnets - 6.7 KGM (Batch: NDFEB-MAG-2024-08-004)</li>
+<li><strong>Process:</strong> Electrochemical Extraction + Fe/Nd/Dy Separation</li>
+<li><strong>Outputs:</strong>
+<ul>
+<li>Neodymium (Nd): 1.82 KGM (85% efficiency from 2.14 KGM theoretical)</li>
+<li>Iron (Fe): 3.70 KGM (85% efficiency from 4.36 KGM theoretical)</li>
+<li>Dysprosium (Dy): 0.23 KGM (85% efficiency from 0.27 KGM theoretical)</li>
+<li>Hydrogen (H₂): 0.2 KGM (from electrochemical process)</li>
+<li>Boron: 0.06 KGM (85% efficiency from 0.07 KGM theoretical)</li>
+</ul>
+</li>
+<li><strong>Timeline:</strong> August 20-30, 2024</li>
+<li><strong>DTE Events:</strong>
+<ol>
+<li>MoveEvent: Receipt (Aug 20)</li>
+<li>ModifyEvent: Electrochemical Extraction (Aug 22)</li>
+<li>ModifyEvent: Separation (Aug 23)</li>
+<li>MoveEvent: Downstream shipments (Aug 25-30)</li>
+</ol>
+</li>
+</ul>
+<p><strong>Downstream Products (Both Paths):</strong></p>
+<ul>
+<li>FeNd Catalysts for Ammonia Synthesis</li>
+<li>Nd Catalysts for Polymerization</li>
+<li>Nd Catalysts for API Synthesis</li>
+<li>Nd Catalysts for Suzuki Reactions</li>
+</ul>
+<p><strong>Credentials:</strong> DPP (9 variants - 1 NH₃ + 4 products × 2 paths), DTE (2 paths), DCC, DFR, DIA conforming to UNTP 0.7.0</p>
+<hr>
+<h4 id="%F0%9F%93%8A-quick-reference-card-entity-2">📊 Quick Reference Card: Entity 2</h4>
+<pre class="hljs"><code><div>╔════════════════════════════════════════════════════════════╗
+║  ⚙️  ENTITY 2: RARE EARTH UPCYCLER                          ║
+╠════════════════════════════════════════════════════════════╣
+║  Rare Earth Upcycling Ltd | France                       ║
+║  LEI: 549300UPCYCLER123456789                            ║
+║  DID: did:web:rare-earth-upcycling.com:up-001            ║
+╠════════════════════════════════════════════════════════════╣
+║  🟪 SSC PATH (July 20-30, 2024)                         ║
+║    Input:      6.7 KGM Crushed (NDFEB-GRAN-2024-07-003)   ║
+║    Process:    Solid-State Chlorination (600-800°C)      ║
+║    Nd Output:  1.93 KGM (90% efficiency)                  ║
+║    Composition: Nd32 (32% Nd, 65% Fe, 4% Dy, 1% B)        ║
+║    Byproduct:  2.5 KGM NH₃ (fertilizer) + 0.06 KGM B      ║
+║    Products:   5 DPPs (4 catalysts + 1 fertilizer)        ║
+╠════════════════════════════════════════════════════════════╣
+║  🟠 ECEX PATH (August 20-30, 2024)                      ║
+║    Input:      6.7 KGM Whole (NDFEB-MAG-2024-08-004)      ║
+║    Process:    Electrochemical (Ambient temp)             ║
+║    Nd Output:  1.82 KGM (85% efficiency)                  ║
+║    Composition: Nd32 (32% Nd, 65% Fe, 4% Dy, 1% B)        ║
+║    Byproduct:  0.2 KGM H₂ (clean energy) + 0.06 KGM B     ║
+║    Products:   4 DPPs (4 catalysts)                       ║
+╠════════════════════════════════════════════════════════════╣
+║  📊 COMPARATIVE PERFORMANCE                              ║
+║    Total Nd Recovery: 3.75 KGM (from 13.4 KGM input)      ║
+║    SSC Advantage: +6% Nd output, +NH₃ production          ║
+║    ECEX Advantage: -47% CO₂, ambient temp, +H₂ output    ║
+║    Theoretical Max: 2.14 KGM Nd per batch (32% of 6.7)    ║
+║    UNTP Credentials: DPP(9) + DTE(2) + DCC/DFR/DIA        ║
+╚════════════════════════════════════════════════════════════╝
+</div></code></pre>
+<h3 id="entity-3-downstream-manufacturers-universal-dpp-receivers">Entity 3: Downstream Manufacturers (Universal DPP Receivers)</h3>
+<p><strong>Concept:</strong> Generic &quot;black box&quot; partners that accept any DPP outputs from Rare Earth Upcycler</p>
+<p><strong>Accepted DPP Types:</strong></p>
+<ul>
+<li>All Nd-based catalyst products (SSC and ECEX variants)</li>
+<li>All Fe-based products (SSC and ECEX variants)</li>
+<li>Dy-based specialty materials</li>
+<li>NH₃ for fertilizer/chemical production (SSC path)</li>
+<li>H₂ for clean energy applications (ECEX path)</li>
+<li>Boron compounds</li>
+</ul>
+<p><strong>Example Organizations:</strong></p>
+<p><strong>A. GreenFert Innovations SAS (Fertilizer)</strong></p>
+<ul>
+<li><strong>Location:</strong> France (SIRENE: FR887654321)</li>
+<li><strong>LEI:</strong> 579300GREFEREU123321</li>
+<li><strong>DID:</strong> did:web:greenfert-innovations.eu:mfg-001</li>
+<li><strong>Accepts:</strong> NH₃ DPP from SSC path (2.5 KGM)</li>
+<li><strong>Produces:</strong> Green Fertilizer (20 KGM)</li>
+<li><strong>Timeline:</strong> July 25-29, 2024</li>
+</ul>
+<p><strong>B. Generic Catalyst Manufacturers</strong></p>
+<ul>
+<li><strong>Accept:</strong> Nd/Fe catalyst DPPs from both paths</li>
+<li><strong>Types:</strong> FeNd catalysts, polymerization catalysts, pharma intermediates</li>
+<li><strong>Path Awareness:</strong> Each DPP contains <code>upstreamProcess</code> metadata</li>
+</ul>
+<p><strong>C. Specialty Chemical Producers</strong></p>
+<ul>
+<li><strong>Accept:</strong> Dy, Boron, H₂ DPPs</li>
+<li><strong>Applications:</strong> Advanced materials, clean energy</li>
+</ul>
+<p><strong>Processing Model:</strong></p>
+<pre class="hljs"><code><div>Upcycler DPP Output → Entity 3 Receipt → Transformation → New DPP Creation
+                   ↓
+            Metadata Preservation:
+            - upstreamProcess.type (SSC/ECEX)
+            - sourceBatch tracking
+            - recycledContent calculation
+            - Complete provenance chain
+</div></code></pre>
+<p><strong>Credentials:</strong> Each downstream manufacturer maintains:</p>
+<ul>
+<li>DPP for each accepted input and produced output</li>
+<li>DTE for transformation processes</li>
+<li>DCC, DFR, DIA for organizational verification</li>
+<li>All conforming to UNTP 0.7.0</li>
+</ul>
+<hr>
+<h4 id="%F0%9F%93%8A-quick-reference-card-entity-3">📊 Quick Reference Card: Entity 3</h4>
+<pre class="hljs"><code><div>╔════════════════════════════════════════════════════════════╗
+║  🏭 ENTITY 3: DOWNSTREAM MANUFACTURERS (BLACK BOX)         ║
+╠════════════════════════════════════════════════════════════╣
+║  Multiple Partners | Universal DPP Receivers              ║
+║  Architecture: Open-ended, Flexible Integration          ║
+╠════════════════════════════════════════════════════════════╣
+║  📥 ACCEPTED INPUTS (from Entity 2)                      ║
+║    SSC Path:  Nd (1.93) + Fe (3.92) + Dy (0.24) + NH₃ (2.5)║
+║    ECEX Path: Nd (1.82) + Fe (3.70) + Dy (0.23) + H₂ (0.2)║
+║    All DPPs: Path-tagged with upstreamProcess metadata    ║
+╠════════════════════════════════════════════════════════════╣
+║  🏭 EXAMPLE PARTNERS                                      ║
+║    • GreenFert (Fertilizer from NH₃)                    ║
+║    • Catalyst Manufacturers (FeNd, Polymerization)       ║
+║    • Pharma Intermediates (API Synthesis, Suzuki)        ║
+║    • Specialty Chemicals (Dy, B compounds)               ║
+║    • Clean Energy (H₂ applications)                      ║
+╠════════════════════════════════════════════════════════════╣
+║  🔑 KEY FEATURE: BLACK BOX MODEL                         ║
+║    ✓ No predefined constraints on DPP acceptance        ║
+║    ✓ Each partner creates derivative DPPs               ║
+║    ✓ Complete provenance chain maintained               ║
+║    ✓ Flexible integration for new manufacturers         ║
+║    UNTP Credentials: Variable DPP count + DTE + DCC/DFR/DIA║
+╚════════════════════════════════════════════════════════════╝
+</div></code></pre>
+<hr>
+<h2 id="traceability--sustainability-metrics">Traceability &amp; Sustainability Metrics</h2>
+<h3 id="mass-balance-summary">Mass Balance Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Entity/Path</th>
+<th>Input (KGM)</th>
+<th>Primary Output (KGM)</th>
+<th>Byproducts (KGM)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Supplier - SSC Path</strong></td>
+<td>1,000 (WEEE)</td>
+<td>6.7 (Crushed)</td>
+<td>0.05 (QC)</td>
+</tr>
+<tr>
+<td><strong>Supplier - ECEX Path</strong></td>
+<td>1,000 (WEEE)</td>
+<td>6.7 (Whole)</td>
+<td>0.05 (QC)</td>
+</tr>
+<tr>
+<td><strong>Upcycler - SSC Path</strong></td>
+<td>6.7 (Crushed)</td>
+<td>1.93 (Nd) + 3.92 (Fe) + 0.24 (Dy)</td>
+<td>2.5 (NH₃) + 0.06 (B)</td>
+</tr>
+<tr>
+<td><strong>Upcycler - ECEX Path</strong></td>
+<td>6.7 (Whole)</td>
+<td>1.82 (Nd) + 3.70 (Fe) + 0.23 (Dy)</td>
+<td>0.2 (H₂) + 0.06 (B)</td>
+</tr>
+<tr>
+<td><strong>Fertilizer Mfg</strong></td>
+<td>2.5 (NH₃) + 20 (comp)</td>
+<td>20 (Fertilizer)</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%F0%9F%93%8A-material-flow-visualization">📊 Material Flow Visualization</h3>
+<p><strong>From WEEE to Final Products - Mass Flow Analysis</strong></p>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR
+    subgraph INPUT["🗑️ WASTE INPUT"]
+        WEEE1["WEEE Batch 1<br/>1,000 KGM<br/>Jul 15"]
+        WEEE2["WEEE Batch 2<br/>1,000 KGM<br/>Aug 15"]
+    end
+    
+    subgraph EXTRACT["⚙️ EXTRACTION"]
+        MAG1["NdFeB Magnets<br/>6.81 KGM<br/>(0.681% recovery)"]
+        MAG2["NdFeB Magnets<br/>6.81 KGM<br/>(0.681% recovery)"]
+    end
+    
+    subgraph PREP["🔧 PREPARATION"]
+        CRUSH["Crushed<br/>6.75 KGM<br/>(-0.06 loss)"]
+        CLEAN["Whole<br/>6.75 KGM<br/>(-0.06 loss)"]
+    end
+    
+    subgraph SHIP["📦 SHIPMENT"]
+        SHIP1["To Upcycler<br/>6.7 KGM"]
+        QC1["QC Sample<br/>0.05 KGM"]
+        SHIP2["To Upcycler<br/>6.7 KGM"]
+        QC2["QC Sample<br/>0.05 KGM"]
+    end
+    
+    subgraph PROCESS["⚗️ UPCYCLING"]
+        SSC["SSC Process<br/>90% efficiency"]
+        ECEX["ECEX Process<br/>85% efficiency"]
+    end
+    
+    subgraph OUTPUT["✅ PRODUCTS"]
+        ND1["Nd: 1.93 KGM"]
+        FE1["Fe: 3.92 KGM"]
+        NH3["NH₃: 2.5 KGM"]
+        
+        ND2["Nd: 1.82 KGM"]
+        FE2["Fe: 3.70 KGM"]
+        H2["H₂: 0.2 KGM"]
+    end
+    
+    subgraph DOWNSTREAM["🏭 FINAL PRODUCTS"]
+        CAT["Catalysts<br/>9 DPPs"]
+        FERT["Fertilizer<br/>20 KGM"]
+        ENERGY["Clean Energy<br/>H₂"]
+    end
+    
+    WEEE1 -->|0.681%| MAG1
+    WEEE2 -->|0.681%| MAG2
+    MAG1 --> CRUSH
+    MAG2 --> CLEAN
+    CRUSH --> SHIP1
+    CRUSH --> QC1
+    CLEAN --> SHIP2
+    CLEAN --> QC2
+    SHIP1 --> SSC
+    SHIP2 --> ECEX
+    
+    SSC --> ND1
+    SSC --> FE1
+    SSC --> NH3
+    
+    ECEX --> ND2
+    ECEX --> FE2
+    ECEX --> H2
+    
+    ND1 --> CAT
+    ND2 --> CAT
+    FE1 --> CAT
+    FE2 --> CAT
+    NH3 --> FERT
+    H2 --> ENERGY
+    
+    style WEEE1 fill:#FF6B6B
+    style WEEE2 fill:#FF8C42
+    style MAG1 fill:#FFB347
+    style MAG2 fill:#FFB347
+    style CRUSH fill:#4ECDC4
+    style CLEAN fill:#4ECDC4
+    style SSC fill:#7B1FA2,color:#FFFFFF
+    style ECEX fill:#9C27B0,color:#FFFFFF
+    style ND1 fill:#95E1D3
+    style ND2 fill:#95E1D3
+    style CAT fill:#388E3C,color:#FFFFFF
+    style FERT fill:#388E3C,color:#FFFFFF
+    style ENERGY fill:#388E3C,color:#FFFFFF
+</div></code></pre>
+<p><strong>Key Flow Statistics:</strong></p>
+<ul>
+<li>📉 <strong>Concentration Factor</strong>: 1,000 KGM → 6.7 KGM = 149:1 concentration</li>
+<li>♻️ <strong>Nd Recovery</strong>: 3.75 KGM from 2,000 KGM WEEE (0.188% overall)</li>
+<li>🎯 <strong>Process Efficiency</strong>: SSC 90%, ECEX 85% (industry competitive)</li>
+<li>💧 <strong>Loss Points</strong>: Extraction loss (0.06 KGM), QC retention (0.05 KGM per batch)</li>
+<li>🔄 <strong>Total Products</strong>: 9 path-tagged DPPs + 1 fertilizer + H₂ energy</li>
+<li>📏 <strong>Mass Balance</strong>: SSC 92% recovery (6.15/6.7), ECEX 87% recovery (5.81/6.7)</li>
+</ul>
+<h3 id="circularity-metrics-both-paths">Circularity Metrics (Both Paths)</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Recycled Content</strong></td>
+<td>80-86%</td>
+<td>Varies by downstream product</td>
+</tr>
+<tr>
+<td><strong>Material Circularity Index</strong></td>
+<td>0.67</td>
+<td>Both paths maintain high circularity</td>
+</tr>
+<tr>
+<td><strong>Utility Factor</strong></td>
+<td>1.2</td>
+<td>Extended product lifetime</td>
+</tr>
+<tr>
+<td><strong>GHG Emissions Intensity</strong></td>
+<td>Path-dependent</td>
+<td>ECEX lower energy than SSC</td>
+</tr>
+<tr>
+<td><strong>Verified Traceability</strong></td>
+<td>100%</td>
+<td>Full chain for both paths</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="%F0%9F%93%85-processing-timeline-visualization">📅 Processing Timeline Visualization</h3>
+<pre><code class="language-mermaid"><div class="mermaid">gantt
+    title Dual-Path Rare Earth Recycling Timeline (2024)
+    dateFormat YYYY-MM-DD
+    section SSC Path
+    WEEE Collection        :ssc1, 2024-07-15, 1d
+    Extraction & Demagnetization :ssc2, 2024-07-17, 1d
+    Crushing              :ssc3, 2024-07-17, 1d
+    Shipment to Upcycler   :ssc3, 2024-07-19, 1d
+    Receipt & QC           :ssc4, 2024-07-20, 1d
+    Chlorination Process   :ssc5, 2024-07-21, 1d
+    Fe/Nd/Dy Separation    :ssc6, 2024-07-22, 1d
+    Downstream Shipments   :ssc7, 2024-07-23, 8d
+    
+    section ECEX Path
+    WEEE Collection        :ecex1, 2024-08-15, 1d
+    Extraction & Demagnetization :ecex2, 2024-08-17, 1d
+    Shipment to Upcycler   :ecex3, 2024-08-19, 1d
+    Receipt & QC           :ecex4, 2024-08-20, 1d
+    Electrochemical Extraction :ecex5, 2024-08-22, 1d
+    Fe/Nd/Dy Separation    :ecex6, 2024-08-23, 1d
+    Downstream Shipments   :ecex7, 2024-08-25, 6d
+</div></code></pre>
+<p><strong>Timeline Insights:</strong></p>
+<ul>
+<li>⏱️ <strong>Total Duration</strong>: SSC = 16 days (Jul 15-30), ECEX = 16 days (Aug 15-30)</li>
+<li>📆 <strong>Offset Strategy</strong>: One-month separation prevents production bottlenecks</li>
+<li>⚡ <strong>Critical Path</strong>: Upcycling stage (3-4 days) is the transformation bottleneck</li>
+<li>🚚 <strong>Logistics</strong>: 1-day transit time between supplier and upcycler</li>
+<li>📦 <strong>Distribution</strong>: 6-8 days for downstream shipments to multiple partners</li>
+</ul>
+<h2 id="value-chain-relationships">Value Chain Relationships</h2>
+<h3 id="ssc-path-flow-july-2024">SSC Path Flow (July 2024)</h3>
+<pre><code class="language-mermaid"><div class="mermaid">sequenceDiagram
+    participant RES as Rare Earth Supplier<br/>(France)
+    participant REU as Rare Earth Upcycler<br/>(France)
+    participant DS as Downstream<br/>(Multiple)
+    
+    Note over RES: WEEE Collection: 1,000 KGM<br/>Jul 15
+    RES->>RES: Extraction → 6.81 KGM<br/>Jul 17
+    RES->>RES: Demagnetization → 6.78 KGM<br/>Jul 17
+    RES->>RES: Crushing → 6.75 KGM<br/>Jul 17
+    Note over RES: Batch: NDFEB-GRAN-2024-07-003
+    
+    RES->>REU: Ship Crushed Granulate<br/>6.7 KGM | Jul 19
+    Note over RES: QC Retention: 0.05 KGM
+    
+    REU->>REU: Receipt<br/>Jul 20
+    REU->>REU: Chlorination<br/>Jul 21
+    REU->>REU: Separation<br/>Jul 22
+    
+    Note over REU: Outputs:<br/>Nd: 1.93 KGM<br/>Fe: 3.92 KGM<br/>Dy: 0.24 KGM<br/>NH₃: 2.5 KGM
+    
+    REU->>DS: FeNd Catalyst<br/>1.42 KGM | Jul 23
+    REU->>DS: Polymerization<br/>0.50 KGM Nd | Jul 25
+    REU->>DS: API Synthesis<br/>0.030 KGM Nd | Jul 27
+    REU->>DS: Suzuki Reaction<br/>0.020 KGM Nd | Jul 28
+    REU->>DS: NH₃ to Fertilizer<br/>2.5 KGM | Jul 24
+</div></code></pre>
+<h3 id="ecex-path-flow-august-2024">ECEX Path Flow (August 2024)</h3>
+<pre><code class="language-mermaid"><div class="mermaid">sequenceDiagram
+    participant RES as Rare Earth Supplier<br/>(France)
+    participant REU as Rare Earth Upcycler<br/>(France)
+    participant DS as Downstream<br/>(Multiple)
+    
+    Note over RES: WEEE Collection: 1,000 KGM<br/>Aug 15
+    RES->>RES: Extraction → 6.81 KGM<br/>Aug 17
+    RES->>RES: Demagnetization → 6.75 KGM<br/>Aug 17
+    Note over RES: Batch: NDFEB-MAG-2024-08-004
+    
+    RES->>REU: Ship Whole Magnets<br/>6.7 KGM | Aug 19
+    Note over RES: QC Retention: 0.05 KGM
+    
+    REU->>REU: Receipt<br/>Aug 20
+    REU->>REU: Electrochemical<br/>Aug 22
+    REU->>REU: Separation<br/>Aug 23
+    
+    Note over REU: Outputs:<br/>Nd: 1.82 KGM<br/>Fe: 3.70 KGM<br/>Dy: 0.23 KGM<br/>H₂: 0.2 KGM
+    
+    REU->>DS: FeNd Catalyst<br/>1.37 KGM | Aug 25
+    REU->>DS: Polymerization<br/>0.46 KGM Nd | Aug 27
+    REU->>DS: API Synthesis<br/>0.029 KGM Nd | Aug 28
+    REU->>DS: Suzuki Reaction<br/>0.028 KGM Nd | Aug 30
+</div></code></pre>
+<h2 id="conformity--certification">Conformity &amp; Certification</h2>
+<p>All entities maintain a complete set of UNTP v0.7.0 credentials:</p>
+<ul>
+<li><strong>Digital Product Passport (DPP)</strong> - Product information and traceability with path-specific metadata</li>
+<li><strong>Digital Traceability Event (DTE)</strong> - Event records for production/collection (MakeEvent), transformation (ModifyEvent), and movement/shipment (MoveEvent)</li>
+<li><strong>Digital Conformity Credential (DCC)</strong> - Certification and standards compliance</li>
+<li><strong>Digital Facility Record (DFR)</strong> - Facility information and operational details</li>
+<li><strong>Digital Identity Anchor (DIA)</strong> - Verified organizational identity and registration</li>
+</ul>
+<h3 id="credential-coverage">Credential Coverage</h3>
+<p><strong>Rare Earth Supplier:</strong></p>
+<ul>
+<li>DPP: 2 variants (Crushed Granulate SSC, Whole Magnets ECEX)</li>
+<li>DTE: 2 paths (SSC July, ECEX August)</li>
+<li>DCC, DFR, DIA: Complete</li>
+</ul>
+<p><strong>Rare Earth Upcycler:</strong></p>
+<ul>
+<li>DPP: 9 variants
+<ul>
+<li>1 Ammonia product (SSC only)</li>
+<li>4 downstream products × 2 paths (SSC + ECEX)</li>
+</ul>
+</li>
+<li>DTE: 2 paths with complete process flows</li>
+<li>DCC, DFR, DIA: Complete</li>
+</ul>
+<p><strong>Downstream Manufacturers (Entity 3 - Multiple Partners):</strong></p>
+<ul>
+<li>DPP: Variable count depending on accepted upcycler outputs
+<ul>
+<li>Each received DPP from upcycler triggers new DPP creation</li>
+<li>Example: GreenFert has 1 DPP (Green Fertilizer from SSC NH₃)</li>
+<li>Catalyst manufacturers have 8+ DPPs (4 products × 2 paths)</li>
+</ul>
+</li>
+<li>DTE: Complete for each transformation process</li>
+<li>DCC, DFR, DIA: Complete per organization</li>
+<li><strong>Black Box Model:</strong> Can accept any DPP output from upcycler without predefined constraints</li>
+</ul>
+<h3 id="path-differentiation-features">Path Differentiation Features</h3>
+<p><strong>Custom UNTP Extension:</strong> <code>upstreamProcess</code></p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"SSC"</span> | <span class="hljs-string">"ECEX"</span>,
+  <span class="hljs-attr">"sourceMaterial"</span>: <span class="hljs-string">"Crushed NdFeB Granulate"</span> | <span class="hljs-string">"Whole NdFeB Magnets"</span>,
+  <span class="hljs-attr">"sourceBatch"</span>: <span class="hljs-string">"NDFEB-GRAN-2024-07-003"</span> | <span class="hljs-string">"NDFEB-MAG-2024-08-004"</span>,
+  <span class="hljs-attr">"processDate"</span>: <span class="hljs-string">"2024-07-22"</span> | <span class="hljs-string">"2024-08-23"</span>
+}
+</div></code></pre>
+<h3 id="traceability-features">Traceability Features</h3>
+<ul>
+<li><strong>Event Records</strong>: MakeEvent (collect/produce), ModifyEvent (transform), MoveEvent (ship/receive)</li>
+<li><strong>Sensor Data</strong>: Weight measurements, composition analysis, quality control metrics</li>
+<li><strong>Batch Tracking</strong>: Complete lineage from WEEE to downstream products</li>
+<li><strong>Path Attribution</strong>: All products tagged with extraction method (SSC vs ECEX)</li>
+<li><strong>Mass Balance</strong>: Verified at each transformation step</li>
+<li><strong>Timeline Integrity</strong>: One-month separation between parallel paths for clarity</li>
+<li><strong>Hash Verification</strong>: SHA-256 integrity proofs for sensor data</li>
+</ul>
+<h2 id="benefits--impact">Benefits &amp; Impact</h2>
+<h3 id="%F0%9F%8C%8D-environmental-benefits">🌍 Environmental Benefits</h3>
+<p><strong>Circular Economy Impact:</strong></p>
+<ul>
+<li><strong>WEEE Diversion</strong>: 2,000 KGM of electronic waste diverted from landfill per cycle</li>
+<li><strong>Virgin Material Offset</strong>: 4.45 KGM rare earth elements recovered vs. mining</li>
+<li><strong>CO₂ Reduction</strong>: Recycling reduces GHG emissions by 75-85% vs. primary production</li>
+<li><strong>Resource Efficiency</strong>: 99.3% extraction efficiency (6.81 KGM from 1,000 KGM WEEE)</li>
+</ul>
+<p><strong>Dual Byproduct Value:</strong></p>
+<ul>
+<li><strong>SSC Path</strong>: 2.5 KGM NH₃ → 20 KGM sustainable fertilizer</li>
+<li><strong>ECEX Path</strong>: 0.2 KGM H₂ for clean energy applications</li>
+</ul>
+<h3 id="%F0%9F%92%BC-business-benefits">💼 Business Benefits</h3>
+<p><strong>Supply Chain Transparency:</strong></p>
+<ul>
+<li>Complete product provenance from WEEE to final application</li>
+<li>Real-time DPP verification for compliance and auditing</li>
+<li>Reduced risk through verified supplier credentials</li>
+</ul>
+<p><strong>Technology Flexibility:</strong></p>
+<ul>
+<li>Dual-path architecture enables production optimization</li>
+<li>Path selection based on market demand (fertilizer vs. hydrogen)</li>
+<li>Scalable model for additional processing technologies</li>
+</ul>
+<p><strong>Market Access:</strong></p>
+<ul>
+<li>UNTP compliance enables EU critical raw materials certification</li>
+<li>Recycled content claims verified via blockchain-anchored DPPs</li>
+<li>Premium pricing for high-circularity products (80-86% recycled)</li>
+</ul>
+<h3 id="%F0%9F%94%AC-innovation-highlights">🔬 Innovation Highlights</h3>
+<ol>
+<li><strong>Custom UNTP Extension</strong>: <code>upstreamProcess</code> metadata enables path differentiation</li>
+<li><strong>Black Box Architecture</strong>: Downstream manufacturers flexibly accept any DPP</li>
+<li><strong>One-Month Stagger</strong>: July/August timeline separation aids production planning</li>
+<li><strong>QC Retention Strategy</strong>: 0.05 KGM samples per batch enable continuous improvement</li>
+</ol>
+<hr>
+<h2 id="use-case-examples">Use Case Examples</h2>
+<h3 id="%F0%9F%93%8B-use-case-1-downstream-manufacturer-receives-dpp">📋 Use Case 1: Downstream Manufacturer Receives DPP</h3>
+<p><strong>Scenario</strong>: Catalyst manufacturer receives Nd polymerization catalyst DPP from upcycler</p>
+<p><strong>Step-by-Step Process:</strong></p>
+<ol>
+<li>
+<p><strong>DPP Receipt</strong> (Digital Handshake)</p>
+<ul>
+<li>Manufacturer scans QR code on shipment</li>
+<li>DPP credential downloaded from UNTP network</li>
+<li>W3C Verifiable Credential validation performed</li>
+</ul>
+</li>
+<li>
+<p><strong>Provenance Verification</strong></p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"upstreamProcess"</span>: {
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"ECEX"</span>,
+    <span class="hljs-attr">"sourceMaterial"</span>: <span class="hljs-string">"Whole NdFeB Magnets"</span>,
+    <span class="hljs-attr">"sourceBatch"</span>: <span class="hljs-string">"NDFEB-MAG-2024-08-004"</span>,
+    <span class="hljs-attr">"processDate"</span>: <span class="hljs-string">"2024-08-23"</span>
+  },
+  <span class="hljs-attr">"product"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Neodymium Polymerization Catalyst"</span>,
+    <span class="hljs-attr">"mass"</span>: {<span class="hljs-attr">"value"</span>: <span class="hljs-number">0.46</span>, <span class="hljs-attr">"unit"</span>: <span class="hljs-string">"KGM"</span>},
+    <span class="hljs-attr">"recycledContent"</span>: <span class="hljs-number">0.86</span>
+  }
+}
+</div></code></pre>
+</li>
+<li>
+<p><strong>Traceability Chain Validation</strong></p>
+<ul>
+<li>Trace back to NDFEB-MAG-2024-08-004 batch</li>
+<li>Verify Aug 15 WEEE collection event</li>
+<li>Confirm Aug 23 electrochemical separation</li>
+<li>Validate mass balance: 0.46 KGM ≤ 1.82 KGM total Nd ✓</li>
+</ul>
+</li>
+<li>
+<p><strong>Downstream DPP Creation</strong></p>
+<ul>
+<li>Manufacturer creates new DPP for final product</li>
+<li>Links to received DPP via <code>manufacturedUsing</code> reference</li>
+<li>Inherits 86% recycled content claim</li>
+<li>Adds transformation event to DTE</li>
+</ul>
+</li>
+<li>
+<p><strong>Sustainability Reporting</strong></p>
+<ul>
+<li>Export verified data for ESG reporting</li>
+<li>Claim &quot;86% recycled rare earth&quot; in marketing</li>
+<li>Qualify for EU Critical Raw Materials Act benefits</li>
+</ul>
+</li>
+</ol>
+<h3 id="%F0%9F%93%8B-use-case-2-consumer-scans-final-product">📋 Use Case 2: Consumer Scans Final Product</h3>
+<p><strong>Scenario</strong>: End consumer scans QR code on pharmaceutical product containing Nd catalyst</p>
+<p><strong>Consumer View:</strong></p>
+<pre class="hljs"><code><div>🔍 Product Story
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📱 API Synthesis Intermediate
+♻️ 86% Recycled Content
+🌍 Verified Sustainable Supply Chain
+
+🔗 Supply Chain Journey:
+  Stage 1: Rare Earth Recycling Ltd (France)
+    ↓ WEEE Collection: Aug 15, 2024
+    ↓ 1,000 KGM → 6.7 KGM magnets
+  
+  Stage 2: Rare Earth Upcycling Ltd (France)
+    ↓ ECEX Processing: Aug 20-23, 2024
+    ↓ Nd Extraction: 0.029 KGM
+  
+  Stage 3: [Your Company]
+    ✓ Received: Aug 28, 2024
+    ✓ Verified: 100% traceable
+
+🏆 Certifications:
+  ✅ UNTP v0.7.0 Compliant
+  ✅ EU Critical Raw Materials Act
+  ✅ Circular Economy Verified
+  ✅ GHG Emissions: -78% vs. virgin
+</div></code></pre>
+<h3 id="%F0%9F%93%8B-use-case-3-auditor-verifies-mass-balance">📋 Use Case 3: Auditor Verifies Mass Balance</h3>
+<p><strong>Scenario</strong>: Third-party auditor validates ECEX path mass balance</p>
+<p><strong>Verification Process:</strong></p>
+<ol>
+<li>
+<p><strong>Input Verification</strong></p>
+<ul>
+<li>WEEE Collection: 1,000 KGM (Aug 15) ✓</li>
+<li>Extraction Output: 6.81 KGM (Aug 17) ✓</li>
+<li>Demagnetization Output: 6.75 KGM (Aug 17) ✓</li>
+<li>Shipment: 6.7 KGM + 0.05 KGM QC = 6.75 KGM ✓</li>
+</ul>
+</li>
+<li>
+<p><strong>Transformation Verification (NdFeB Nd32 Composition)</strong></p>
+<ul>
+<li>Upcycler Input: 6.7 KGM (Aug 20) ✓</li>
+<li>Theoretical content: 2.14 Nd + 4.36 Fe + 0.27 Dy + 0.07 B = 6.84 KGM</li>
+<li>Electrochemical Output: 6.3 KGM concentrate + 0.2 KGM H₂ + 0.06 KGM B ✓</li>
+<li>Separation Output: 1.82 Nd + 3.70 Fe + 0.23 Dy = 5.75 KGM (85% efficiency) ✓</li>
+</ul>
+</li>
+<li>
+<p><strong>Distribution Verification</strong></p>
+<ul>
+<li>FeNd Catalyst: 0.46 + 0.91 = 1.37 KGM</li>
+<li>Polymerization: 0.46 KGM</li>
+<li>API Synthesis: 0.029 KGM</li>
+<li>Suzuki Reaction: 0.028 KGM</li>
+<li><strong>Total Nd Distributed</strong>: 0.977 KGM</li>
+<li><strong>Remaining Inventory</strong>: 0.84 KGM (for future orders) ✓</li>
+<li><strong>Verification</strong>: 0.977 + 0.84 = 1.817 ≈ 1.82 KGM ✓</li>
+</ul>
+</li>
+<li>
+<p><strong>DTE Chain Validation</strong></p>
+<ul>
+<li>All events cryptographically signed ✓</li>
+<li>Timestamps sequential and logical ✓</li>
+<li>No gaps in custody chain ✓</li>
+<li>SHA-256 hashes match sensor data ✓</li>
+</ul>
+</li>
+</ol>
+<p><strong>Audit Result</strong>: ✅ <strong>PASSED</strong> - Complete traceability with verified mass balance</p>
+<hr>
+<h2 id="standards--frameworks">Standards &amp; Frameworks</h2>
+<ul>
+<li><strong>UNTP</strong>: United Nations Transparency Protocol v0.7.0</li>
+<li><strong>W3C</strong>: Verifiable Credentials v2</li>
+<li><strong>UNCEFACT</strong>: UN Centre for Trade Facilitation and Electronic Business</li>
+<li><strong>GS1</strong>: Global Trade Item Number (GTIN) identification</li>
+<li><strong>GLEIF</strong>: Legal Entity Identifier (LEI) system</li>
+<li><strong>UN CPC</strong>: Central Product Classification scheme</li>
+</ul>
+<hr>
+<h2 id="path-comparison-summary">Path Comparison Summary</h2>
+<h3 id="ssc-path-solid-state-chlorination---july-2024">SSC Path (Solid-State Chlorination) - July 2024</h3>
+<p><strong>Material Form:</strong> Crushed NdFeB Granulate<br>
+<strong>Batch ID:</strong> NDFEB-GRAN-2024-07-003<br>
+<strong>Timeline:</strong> July 15-30, 2024</p>
+<p><strong>Process Flow:</strong></p>
+<ol>
+<li>WEEE Collection (1,000 KGM) → Extraction (6.81 KGM) → Demagnetization (6.78 KGM) → Crushing (6.75 KGM)</li>
+<li>Shipment to Upcycler: 6.7 KGM + QC: 0.05 KGM</li>
+<li>Chlorination with NH₄Cl + N₂ → RE Chlorides + NH₃ byproduct</li>
+<li>Separation → Nd: 1.93 KGM, Fe: 3.92 KGM, Dy: 0.24 KGM (90% efficiency)</li>
+</ol>
+<p><strong>Key Outputs:</strong></p>
+<ul>
+<li>Neodymium: 1.93 KGM (distributed to 4 downstream products)</li>
+<li>Ammonia: 2.5 KGM (to fertilizer manufacturing)</li>
+<li>Boron: 0.06 KGM</li>
+</ul>
+<p><strong>Characteristics:</strong></p>
+<ul>
+<li>Traditional thermal process (600-800°C)</li>
+<li>Produces valuable NH₃ byproduct</li>
+<li>90% recovery efficiency (highest for established tech)</li>
+<li>Input composition: Nd32 grade (32% Nd, 65% Fe, 4% Dy, 1% B)</li>
+<li>Theoretical yield: 2.14 KGM Nd, actual: 1.93 KGM (90% efficiency)</li>
+</ul>
+<h3 id="ecex-path-electrochemical-extraction---august-2024">ECEX Path (Electrochemical Extraction) - August 2024</h3>
+<p><strong>Material Form:</strong> Whole NdFeB Magnets<br>
+<strong>Batch ID:</strong> NDFEB-MAG-2024-08-004<br>
+<strong>Timeline:</strong> August 15-30, 2024</p>
+<p><strong>Process Flow:</strong></p>
+<ol>
+<li>WEEE Collection (1,000 KGM) → Extraction (6.81 KGM) → Demagnetization (6.75 KGM)</li>
+<li>Shipment to Upcycler: 6.7 KGM + QC: 0.05 KGM</li>
+<li>Electrochemical extraction with H₂SO₄ + Energy → RE Concentrate + H₂</li>
+<li>Separation → Nd: 1.82 KGM, Fe: 3.70 KGM, Dy: 0.23 KGM (85% efficiency)</li>
+</ol>
+<p><strong>Key Outputs:</strong></p>
+<ul>
+<li>Neodymium: 1.82 KGM (distributed to 4 downstream products)</li>
+<li>Hydrogen: 0.2 KGM (clean energy byproduct)</li>
+<li>Boron: 0.06 KGM</li>
+</ul>
+<p><strong>Characteristics:</strong></p>
+<ul>
+<li>Modern electrochemical process</li>
+<li>Produces H₂ as clean energy byproduct</li>
+<li>85% recovery efficiency (competitive for emerging tech)</li>
+<li>Input composition: Nd32 grade (32% Nd, 65% Fe, 4% Dy, 1% B)</li>
+<li>Theoretical yield: 2.14 KGM Nd, actual: 1.82 KGM (85% efficiency)</li>
+<li>Room temperature operation (ambient vs 600-800°C)</li>
+</ul>
+<h3 id="key-differences">Key Differences</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>SSC Path</th>
+<th>ECEX Path</th>
+<th>Winner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Material Form</strong></td>
+<td>Crushed granulate</td>
+<td>Whole magnets</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>Processing</strong></td>
+<td>Thermal chlorination</td>
+<td>Electrochemical</td>
+<td>🏆 ECEX (lower temp)</td>
+</tr>
+<tr>
+<td><strong>Temperature</strong></td>
+<td>High (600-800°C)</td>
+<td>Ambient</td>
+<td>🏆 ECEX</td>
+</tr>
+<tr>
+<td><strong>Nd Recovery</strong></td>
+<td>1.93 KGM (90% eff)</td>
+<td>1.82 KGM (85% eff)</td>
+<td>🏆 SSC (+6%)</td>
+</tr>
+<tr>
+<td><strong>Nd Content</strong></td>
+<td>28.8% of input</td>
+<td>27.2% of input</td>
+<td>🏆 SSC</td>
+</tr>
+<tr>
+<td><strong>Main Byproduct</strong></td>
+<td>NH₃ (fertilizer)</td>
+<td>H₂ (clean energy)</td>
+<td>🏆 Tie (both valuable)</td>
+</tr>
+<tr>
+<td><strong>Timeline</strong></td>
+<td>July 2024</td>
+<td>August 2024</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>Energy Type</strong></td>
+<td>Thermal</td>
+<td>Electrical</td>
+<td>🏆 ECEX (flexible source)</td>
+</tr>
+<tr>
+<td><strong>Reagents</strong></td>
+<td>NH₄Cl, N₂</td>
+<td>H₂SO₄</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>GHG Impact</strong></td>
+<td>Higher (thermal)</td>
+<td>Lower (ambient)</td>
+<td>🏆 ECEX</td>
+</tr>
+<tr>
+<td><strong>Byproduct Mass</strong></td>
+<td>2.5 KGM NH₃</td>
+<td>0.2 KGM H₂</td>
+<td>🏆 SSC (+1150%)</td>
+</tr>
+<tr>
+<td><strong>Capital Cost</strong></td>
+<td>Lower (established)</td>
+<td>Higher (novel tech)</td>
+<td>🏆 SSC</td>
+</tr>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Proven</td>
+<td>Emerging</td>
+<td>🏆 SSC</td>
+</tr>
+<tr>
+<td><strong>Mass Recovery</strong></td>
+<td>92% (6.15/6.7)</td>
+<td>87% (5.81/6.7)</td>
+<td>🏆 SSC</td>
+</tr>
+</tbody>
+</table>
+<h3 id="environmental-comparison">Environmental Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>SSC Path</th>
+<th>ECEX Path</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CO₂ Emissions</strong></td>
+<td>~15 kg CO₂/kg Nd</td>
+<td>~8 kg CO₂/kg Nd</td>
+<td>ECEX 47% lower</td>
+</tr>
+<tr>
+<td><strong>Energy Intensity</strong></td>
+<td>85 MJ/kg</td>
+<td>52 MJ/kg</td>
+<td>ECEX 39% lower</td>
+</tr>
+<tr>
+<td><strong>Water Usage</strong></td>
+<td>Low</td>
+<td>Medium</td>
+<td>Electrolyte preparation</td>
+</tr>
+<tr>
+<td><strong>Waste Streams</strong></td>
+<td>H₂O, HCl</td>
+<td>H₂SO₄ residue</td>
+<td>Both recyclable</td>
+</tr>
+<tr>
+<td><strong>Circularity Score</strong></td>
+<td>0.67</td>
+<td>0.67</td>
+<td>Equal performance</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>SSC Path</th>
+<th>ECEX Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Material Form</strong></td>
+<td>Crushed granulate</td>
+<td>Whole magnets</td>
+</tr>
+<tr>
+<td><strong>Processing</strong></td>
+<td>Thermal chlorination</td>
+<td>Electrochemical</td>
+</tr>
+<tr>
+<td><strong>Temperature</strong></td>
+<td>High (600-800°C)</td>
+<td>Ambient</td>
+</tr>
+<tr>
+<td><strong>Nd Recovery Mass</strong></td>
+<td>1.93 KGM</td>
+<td>1.82 KGM</td>
+</tr>
+<tr>
+<td><strong>Recovery Efficiency</strong></td>
+<td>90% (from 2.14 theoretical)</td>
+<td>85% (from 2.14 theoretical)</td>
+</tr>
+<tr>
+<td><strong>Main Byproduct</strong></td>
+<td>NH₃ (fertilizer)</td>
+<td>H₂ (clean energy)</td>
+</tr>
+<tr>
+<td><strong>Timeline</strong></td>
+<td>July 2024</td>
+<td>August 2024</td>
+</tr>
+<tr>
+<td><strong>Energy Type</strong></td>
+<td>Thermal</td>
+<td>Electrical</td>
+</tr>
+<tr>
+<td><strong>Reagents</strong></td>
+<td>NH₄Cl, N₂</td>
+<td>H₂SO₄</td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-features">Common Features</h3>
+<ul>
+<li><strong>Same Input Mass:</strong> 6.7 KGM to upcycler</li>
+<li><strong>Same QC Retention:</strong> 0.05 KGM per batch</li>
+<li><strong>Same WEEE Source:</strong> 1,000 KGM per collection</li>
+<li><strong>Same Downstream Products:</strong> 4 Nd-based catalyst applications per path</li>
+<li><strong>Full UNTP Traceability:</strong> Both paths 100% traceable</li>
+<li><strong>Complete Mass Balance:</strong> Verified at each transformation</li>
+<li><strong>Path-Tagged DPPs:</strong> Custom <code>upstreamProcess</code> metadata for differentiation</li>
+</ul>
+<hr>
+<h2 id="glossary">Glossary</h2>
+<h3 id="%F0%9F%93%9A-acronyms--terminology">📚 Acronyms &amp; Terminology</h3>
+<p><strong>Supply Chain Terms:</strong></p>
+<ul>
+<li><strong>WEEE</strong>: Waste Electrical and Electronic Equipment - End-of-life electronics containing valuable materials</li>
+<li><strong>EOL</strong>: End-of-Life - Products that have reached the end of their useful service period</li>
+<li><strong>QC</strong>: Quality Control - Samples retained for testing and verification (0.05 KGM per batch)</li>
+<li><strong>KGM</strong>: Kilogram - Standard mass unit (1 KGM = 1,000 grams)</li>
+<li><strong>Batch</strong>: Discrete production lot with unique identifier (e.g., NDFEB-GRAN-2024-07-003)</li>
+</ul>
+<p><strong>Processing Technologies:</strong></p>
+<ul>
+<li><strong>SSC</strong>: Solid-State Chlorination - Thermal process using NH₄Cl + N₂ to extract rare earths</li>
+<li><strong>ECEX</strong>: Electrochemical Extraction - Ambient temperature electrolytic separation process</li>
+<li><strong>NdFeB</strong>: Neodymium-Iron-Boron - Permanent magnet alloy used in electronics</li>
+</ul>
+<p><strong>Chemical Elements:</strong></p>
+<ul>
+<li><strong>Nd</strong>: Neodymium - Rare earth element used in catalysts and magnets (atomic #60)</li>
+<li><strong>Fe</strong>: Iron - Ferrous metal, majority component of NdFeB magnets</li>
+<li><strong>Dy</strong>: Dysprosium - Heavy rare earth element for high-temperature applications</li>
+<li><strong>NH₃</strong>: Ammonia - Alkaline gas used in fertilizers and chemical synthesis</li>
+<li><strong>H₂</strong>: Hydrogen - Clean energy carrier and industrial feedstock</li>
+<li><strong>B</strong>: Boron - Metalloid element, minor component in NdFeB alloys</li>
+</ul>
+<p><strong>UNTP Credentials:</strong></p>
+<ul>
+<li><strong>UNTP</strong>: United Nations Transparency Protocol - Global standard for supply chain traceability (v0.7.0)</li>
+<li><strong>DPP</strong>: Digital Product Passport - W3C Verifiable Credential containing product data and provenance</li>
+<li><strong>DTE</strong>: Digital Traceability Event - Record of transformation, transaction, or observation events</li>
+<li><strong>DCC</strong>: Digital Conformity Credential - Certification of standards compliance (ISO, industry specs)</li>
+<li><strong>DFR</strong>: Digital Facility Record - Verified information about production facilities</li>
+<li><strong>DIA</strong>: Digital Identity Anchor - Organizational identity verification (LEI, business registration)</li>
+</ul>
+<p><strong>Technical Standards:</strong></p>
+<ul>
+<li><strong>W3C</strong>: World Wide Web Consortium - Standards body for Verifiable Credentials v2</li>
+<li><strong>UNCEFACT</strong>: UN Centre for Trade Facilitation and Electronic Business - Data vocabulary provider</li>
+<li><strong>GS1</strong>: Global Standards 1 - GTIN product identification system</li>
+<li><strong>GLEIF</strong>: Global Legal Entity Identifier Foundation - LEI registry operator</li>
+<li><strong>LEI</strong>: Legal Entity Identifier - 20-character unique organization identifier</li>
+<li><strong>SIRENE</strong>: French business registration system</li>
+<li><strong>DID</strong>: Decentralized Identifier - W3C standard for verifiable digital identity</li>
+</ul>
+<p><strong>Circular Economy Metrics:</strong></p>
+<ul>
+<li><strong>MCI</strong>: Material Circularity Index - Ellen MacArthur Foundation metric (0-1 scale, 0.67 = high)</li>
+<li><strong>Recycled Content</strong>: Percentage of material from post-consumer/post-industrial waste (80-86%)</li>
+<li><strong>Utility Factor</strong>: Product lifetime extension vs. industry average (1.2 = 20% longer)</li>
+<li><strong>GHG Intensity</strong>: Greenhouse gas emissions per kg of product (kg CO₂-eq/kg)</li>
+</ul>
+<p><strong>Downstream Products:</strong></p>
+<ul>
+<li><strong>FeNd Catalyst</strong>: Iron-Neodymium catalyst for ammonia synthesis (Haber-Bosch process)</li>
+<li><strong>Polymerization Catalyst</strong>: Nd-based catalyst for polymer chain growth reactions</li>
+<li><strong>API</strong>: Active Pharmaceutical Ingredient - Drug synthesis intermediate requiring Nd catalysts</li>
+<li><strong>Suzuki Reaction</strong>: Carbon-carbon bond forming reaction using Nd catalysts (pharma/materials)</li>
+</ul>
+<p><strong>Traceability Concepts:</strong></p>
+<ul>
+<li><strong>Batch Tracking</strong>: Following material lot from origin through transformation to final product</li>
+<li><strong>Provenance</strong>: Complete history of product origin, custody, and transformation</li>
+<li><strong>Mass Balance</strong>: Verification that inputs = outputs at each process stage</li>
+<li><strong>upstreamProcess</strong>: Custom UNTP extension for recording SSC vs ECEX path attribution</li>
+<li><strong>Verifiable Credential</strong>: Cryptographically signed digital certificate (W3C VC standard)</li>
+<li><strong>SHA-256</strong>: Cryptographic hash function for data integrity verification</li>
+</ul>
+<p><strong>Organizational Identifiers:</strong></p>
+<ul>
+<li><strong>NDFEB-GRAN-2024-07-003</strong>: SSC path batch - Crushed granulate, July 2024, batch #3</li>
+<li><strong>NDFEB-MAG-2024-08-004</strong>: ECEX path batch - Whole magnets, August 2024, batch #4</li>
+<li><strong>549300RERC123456789</strong>: Example LEI format for Rare Earth Recycling Ltd</li>
+<li><strong>FR123456789</strong>: Example SIRENE number for French organizations</li>
+</ul>
+
+</body>
+</html>

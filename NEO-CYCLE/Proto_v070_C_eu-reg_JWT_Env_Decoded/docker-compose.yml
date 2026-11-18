@@ -1,0 +1,132 @@
+services:
+
+  idhub:
+    container_name: idhub
+    build:
+      context: ./idhub
+      dockerfile: docker/idhub.Dockerfile
+    environment:
+      - DOMAIN=localhost
+      - ALLOWED_HOSTS=localhost,idhub
+      - DEBUG=true
+      - DEMO=true
+      - DEMO_AUTODECRYPT=true
+      - DEMO_CREATE_SCHEMAS=false
+      - REMOVE_DATA=false
+      - DB_TYPE=sqlite
+      - CREATE_TEST_USERS=true
+      - INIT_ADMIN_EMAIL=admin@neocycle.local
+      - INIT_ADMIN_PASSWORD=admin1234
+      - INIT_ORG=NeoCycle IdHub
+      - ENABLE_EMAIL=false
+      - ENABLE_2FACTOR_AUTH=false
+      - ENABLE_DOMAIN_CHECKER=false
+      - SECRET_KEY=idhub-dev-secret-change-me
+      - PORT=8000
+      - DPP=false
+      - MEDIA_ROOT=/opt/idhub/media/
+      - STATIC_ROOT=/opt/idhub/static/
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./idhub:/opt/idhub
+      - idhub-media:/opt/idhub/media
+      - idhub-static:/opt/idhub/static
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/login/"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  eu-registry:
+    container_name: eu-registry
+    build:
+      context: ./eu-registry
+      dockerfile: Dockerfile
+    environment:
+      - DJANGO_SETTINGS_MODULE=eu_registry.settings
+      - DEBUG=true
+      - ALLOWED_HOSTS=localhost,eu-registry
+      - CSRF_TRUSTED_ORIGINS=http://localhost:9100
+    ports:
+      - "9100:9100"
+    volumes:
+      - ./eu-registry:/app
+      - eu-registry-db:/app/db
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9100/')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:9100"
+
+  neocyclehub:
+    container_name: neocyclehub
+    build:
+      context: ./neocyclehub
+      dockerfile: Dockerfile
+    environment:
+      - DJANGO_SETTINGS_MODULE=neocyclehub.settings
+      - DEBUG=true
+      - NEOCYCLEHUB_PUBLIC_URL=http://localhost:9000
+      - EU_REGISTRY_URL=http://eu-registry:9100
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_PASSWORD=admin1234
+      - DJANGO_SUPERUSER_EMAIL=admin@neocycle.local
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./neocyclehub:/app
+      - neocyclehub-db:/app/db
+    depends_on:
+      idhub:
+        condition: service_healthy
+      eu-registry:
+        condition: service_healthy
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py createsuperuser --noinput --username $$DJANGO_SUPERUSER_USERNAME --email $$DJANGO_SUPERUSER_EMAIL 2>/dev/null || true &&
+             python manage.py shell -c \"from supply_chain.models import Actor; exit(0 if Actor.objects.exists() else 1)\" ||
+             python manage.py loaddata supply_chain/fixtures/neocycle_initial.json ;
+             python manage.py runserver 0.0.0.0:9000"
+
+  neocyclehub-bootstrap:
+    container_name: neocyclehub-bootstrap
+    build:
+      context: ./neocyclehub-bootstrap
+      dockerfile: Dockerfile
+    environment:
+      - DJANGO_SETTINGS_MODULE=neocyclehub.settings
+      - DEBUG=true
+      - NEOCYCLEHUB_PUBLIC_URL=http://localhost:9001
+      - EU_REGISTRY_URL=http://eu-registry:9100
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_PASSWORD=admin1234
+      - DJANGO_SUPERUSER_EMAIL=admin@neocycle.local
+    ports:
+      - "9001:9001"
+    volumes:
+      - ./neocyclehub-bootstrap:/app
+      - neocyclehub-bootstrap-db:/app/db
+    depends_on:
+      idhub:
+        condition: service_healthy
+      eu-registry:
+        condition: service_healthy
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py createsuperuser --noinput --username $$DJANGO_SUPERUSER_USERNAME --email $$DJANGO_SUPERUSER_EMAIL 2>/dev/null || true &&
+             python manage.py shell -c \"from supply_chain.models import Actor; exit(0 if Actor.objects.exists() else 1)\" ||
+             python manage.py loaddata supply_chain/fixtures/neocycle_initial.json ;
+             python manage.py runserver 0.0.0.0:9001"
+
+volumes:
+  idhub-media:
+  idhub-static:
+  neocyclehub-db:
+  neocyclehub-bootstrap-db:
+  eu-registry-db:

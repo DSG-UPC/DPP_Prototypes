@@ -1,0 +1,910 @@
+{
+  "type": [
+    "DigitalTraceabilityEvent",
+    "VerifiableCredential"
+  ],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://vocabulary.uncefact.org/untp/0.7.0/context/"
+  ],
+  "id": "https://rare-earth-upcycling.com/credentials/7bc8d2e3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
+  "issuer": {
+    "type": [
+      "CredentialIssuer"
+    ],
+    "id": "did:web:rare-earth-upcycling.com:up-001",
+    "name": "Rare Earth Upcycling Ltd",
+    "issuerAlsoKnownAs": [
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://rare-earth-upcycling.com",
+        "name": "Rare Earth Upcycling Ltd",
+        "registeredId": "FR0021454321",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+          "name": "SIRENE"
+        }
+      },
+      {
+        "type": [
+          "Party"
+        ],
+        "id": "https://search.gleif.org/#/record/549300UPCYCLER123456789",
+        "name": "Rare Earth Upcycling Ltd",
+        "registeredId": "549300UPCYCLER123456789",
+        "idScheme": {
+          "type": [
+            "IdentifierScheme"
+          ],
+          "id": "https://www.gleif.org/en/about-lei/iso-17442-the-lei-code-structure",
+          "name": "Legal Entity Identifier (LEI)"
+        }
+      }
+    ]
+  },
+  "validFrom": "2024-07-10T08:00:00Z",
+  "validUntil": "2025-07-10T08:00:00Z",
+  "name": "Rare Earth Metal Extraction via Electrochemical Process — Rare Earth Upcycling Ltd",
+  "credentialSubject": [
+    {
+      "type": [
+        "MoveEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-upcycling.com/receive/0046004",
+      "name": "Receipt of Whole NdFeB Magnets from Rare Earth Recycling Ltd.",
+      "description": "Receipt of 6.7 kg of Whole NdFeB Magnets from Rare Earth Recycling Ltd. at Rare Earth Upcycling facility.",
+      "eventDate": "2024-08-20T10:00:00Z",
+      "activityType": {
+        "code": "receiving",
+        "name": "Receiving",
+        "definition": "The process of receiving goods from a supplier.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "consignor",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-recycling.com:rec-001",
+            "name": "Rare Earth Recycling Ltd.",
+            "registeredId": "FR123456789"
+          }
+        },
+        {
+          "role": "consignee",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-upcycling.com:up-001",
+            "name": "Rare Earth Upcycling Ltd",
+            "registeredId": "FR0021454321"
+          }
+        }
+      ],
+      "movedProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/42/0046004",
+            "name": "Whole NdFeB Magnets",
+            "batchNumber": "NDFEB-MAG-2024-08-004",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 6.7,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        }
+      ],
+      "fromFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520123456788",
+        "name": "Rare Earth Recycling Ltd. - Main Facility",
+        "registeredId": "9520123456788"
+      },
+      "toFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520987654321",
+        "name": "Rare Earth Upcycling Ltd. - Processing Facility",
+        "registeredId": "9520987654321"
+      },
+      "consignmentId": "https://transaction.example.com/po/PO-2024-07-0790"
+    },
+    {
+      "type": [
+        "MakeEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-upcycling.com/electrochemical-2024-08-22",
+      "name": "Electrochemical Extraction of Metals from Whole NdFeB Magnets",
+      "description": "Processing of 6.7 kg of Whole NdFeB Magnets through electrochemical extraction to produce 6.3 kg of Mixed Fe/Nd/Dy Concentrate, 0.2 kg of Hydrogen Gas, and residual Boron compounds at Rare Earth Upcycling Ltd.",
+      "eventDate": "2024-08-22T09:00:00Z",
+      "activityType": {
+        "code": "commissioning",
+        "name": "Commissioning",
+        "definition": "The process of electrochemical extraction and separation of metals.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "manufacturer",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-upcycling.com:up-001",
+            "name": "Rare Earth Upcycling Ltd",
+            "registeredId": "FR0021454321",
+            "idScheme": {
+              "type": [
+                "IdentifierScheme"
+              ],
+              "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+              "name": "SIRENE"
+            }
+          }
+        }
+      ],
+      "inputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/42/0046004",
+            "name": "Whole NdFeB Magnets",
+            "batchNumber": "NDFEB-MAG-2024-08-004",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 6.7,
+            "unit": "KGM"
+          },
+          "disposition": "consumed"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/H2SO4",
+            "name": "Sulfuric Acid Electrolyte Solution (H2SO4)",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 8.5,
+            "unit": "LTR"
+          },
+          "disposition": "consumed"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/H2O",
+            "name": "Deionized Water",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 15.0,
+            "unit": "LTR"
+          },
+          "disposition": "consumed"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/ELEC",
+            "name": "Electrical Energy",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 125.0,
+            "unit": "KWH"
+          },
+          "disposition": "consumed"
+        }
+      ],
+      "outputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/FENDCONC",
+            "name": "Mixed Fe/Nd/Dy Concentrate",
+            "batchNumber": "FEND-CONC-2024-07-002",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 6.3,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/H2GAS",
+            "name": "Hydrogen Gas (H2)",
+            "batchNumber": "H2-2024-07-002",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 0.2,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/BORON",
+            "name": "Boron Compounds Residue",
+            "batchNumber": "B-RES-2024-07-002",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 0.2,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        }
+      ],
+      "madeAtFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520987654321",
+        "name": "Rare Earth Upcycling Ltd. - Processing Facility",
+        "registeredId": "9520987654321"
+      }
+    },
+    {
+      "type": [
+        "MakeEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-upcycling.com/separation-2024-08-23",
+      "name": "Fe/Nd Separation Process",
+      "description": "Separation of 6.3 kg Mixed Fe/Nd/Dy Concentrate into 1.82 kg Neodymium Concentrate (85% efficiency), 3.70 kg Iron Concentrate, and 0.23 kg Dysprosium Concentrate at Rare Earth Upcycling Ltd.",
+      "eventDate": "2024-08-23T10:00:00Z",
+      "activityType": {
+        "code": "commissioning",
+        "name": "Commissioning",
+        "definition": "The process of separating mixed metal concentrates into individual components.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "manufacturer",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-upcycling.com:up-001",
+            "name": "Rare Earth Upcycling Ltd",
+            "registeredId": "FR0021454321",
+            "idScheme": {
+              "type": [
+                "IdentifierScheme"
+              ],
+              "id": "https://vocabulary.uncefact.org/identifierSchemes/SIRENE",
+              "name": "SIRENE"
+            }
+          }
+        }
+      ],
+      "inputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/FENDCONC",
+            "name": "Mixed Fe/Nd/Dy Concentrate",
+            "batchNumber": "FEND-CONC-2024-07-002",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 6.3,
+            "unit": "KGM"
+          },
+          "disposition": "consumed"
+        }
+      ],
+      "outputProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/NDCONC",
+            "name": "Neodymium Concentrate (Nd)",
+            "batchNumber": "ND-CONC-2024-07-003",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 1.82,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/FECONC",
+            "name": "Iron Concentrate (Fe)",
+            "batchNumber": "FE-CONC-2024-07-003",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 3.7,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/DYCONC",
+            "name": "Dysprosium Concentrate (Dy)",
+            "batchNumber": "DY-CONC-2024-07-003",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 0.23,
+            "unit": "KGM"
+          },
+          "disposition": "active"
+        }
+      ],
+      "madeAtFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520987654321",
+        "name": "Rare Earth Upcycling Ltd. - Processing Facility",
+        "registeredId": "9520987654321"
+      }
+    },
+    {
+      "type": [
+        "MoveEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-upcycling.com/ship-fend-catalyst-2024-08-25",
+      "name": "Shipping of FeNd Material for Ammonia Catalyst Production",
+      "description": "Shipment of 0.54 kg Neodymium Concentrate and 1.08 kg Iron Concentrate from Rare Earth Upcycling Ltd. to Catalyst Innovations Inc. for FeNd catalyst production for ammonia synthesis.",
+      "eventDate": "2024-08-25T09:00:00Z",
+      "activityType": {
+        "code": "shipping",
+        "name": "Shipping",
+        "definition": "The movement of goods from one location to another.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "consignor",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-upcycling.com:up-001",
+            "name": "Rare Earth Upcycling Ltd",
+            "registeredId": "FR0021454321"
+          }
+        },
+        {
+          "role": "consignee",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:catalyst-innovations.com",
+            "name": "Catalyst Innovations Inc."
+          }
+        }
+      ],
+      "movedProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/NDCONC",
+            "name": "Neodymium Concentrate (Nd)",
+            "batchNumber": "ND-CONC-2024-07-003",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 0.54,
+            "unit": "KGM"
+          },
+          "disposition": "inTransit"
+        },
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/FECONC",
+            "name": "Iron Concentrate (Fe)",
+            "batchNumber": "FE-CONC-2024-07-003",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 1.08,
+            "unit": "KGM"
+          },
+          "disposition": "inTransit"
+        }
+      ],
+      "fromFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520987654321",
+        "name": "Rare Earth Upcycling Ltd. - Processing Facility",
+        "registeredId": "9520987654321"
+      },
+      "toFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://catalyst-innovations.com/facility",
+        "name": "Catalyst Innovations Inc. - Catalyst Production Facility"
+      },
+      "consignmentId": "https://transaction.example.com/po/PO-2024-07-1201",
+      "relatedDocument": [
+        {
+          "linkURL": "https://credentials.rare-earth-upcycling.com/dpp/fend-catalyst-2024",
+          "linkName": "Digital Product Passport — FeNd Catalyst Materials",
+          "mediaType": "application/ld+json",
+          "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dpp"
+        }
+      ]
+    },
+    {
+      "type": [
+        "MoveEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-upcycling.com/ship-nd-polymerization-2024-08-26",
+      "name": "Shipping of Nd Precursors for Polymerization",
+      "description": "Shipment of 0.54 kg Neodymium Concentrate from Rare Earth Upcycling Ltd. to Polymer Solutions GmbH for use as Nd precursors in polymerization processes.",
+      "eventDate": "2024-08-26T10:00:00Z",
+      "activityType": {
+        "code": "shipping",
+        "name": "Shipping",
+        "definition": "The movement of goods from one location to another.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "consignor",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-upcycling.com:up-001",
+            "name": "Rare Earth Upcycling Ltd",
+            "registeredId": "FR0021454321"
+          }
+        },
+        {
+          "role": "consignee",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:polymer-solutions.de",
+            "name": "Polymer Solutions GmbH"
+          }
+        }
+      ],
+      "movedProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/NDCONC",
+            "name": "Neodymium Concentrate (Nd)",
+            "batchNumber": "ND-CONC-2024-07-003",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 0.54,
+            "unit": "KGM"
+          },
+          "disposition": "inTransit"
+        }
+      ],
+      "fromFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520987654321",
+        "name": "Rare Earth Upcycling Ltd. - Processing Facility",
+        "registeredId": "9520987654321"
+      },
+      "toFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://polymer-solutions.de/facility",
+        "name": "Polymer Solutions GmbH - Polymerization Facility"
+      },
+      "consignmentId": "https://transaction.example.com/po/PO-2024-07-1202",
+      "relatedDocument": [
+        {
+          "linkURL": "https://credentials.rare-earth-upcycling.com/dpp/nd-precursor-polymer-2024",
+          "linkName": "Digital Product Passport — Nd Precursors for Polymerization",
+          "mediaType": "application/ld+json",
+          "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dpp"
+        }
+      ]
+    },
+    {
+      "type": [
+        "MoveEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-upcycling.com/ship-nd-api-2024-08-27",
+      "name": "Shipping of Nd Precursors for API Synthesis",
+      "description": "Shipment of 0.54 kg Neodymium Concentrate from Rare Earth Upcycling Ltd. to PharmaTech Industries for use as Nd precursors in Active Pharmaceutical Ingredient (API) synthesis.",
+      "eventDate": "2024-08-27T11:00:00Z",
+      "activityType": {
+        "code": "shipping",
+        "name": "Shipping",
+        "definition": "The movement of goods from one location to another.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "consignor",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-upcycling.com:up-001",
+            "name": "Rare Earth Upcycling Ltd",
+            "registeredId": "FR0021454321"
+          }
+        },
+        {
+          "role": "consignee",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:pharmatech-industries.com",
+            "name": "PharmaTech Industries"
+          }
+        }
+      ],
+      "movedProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/NDCONC",
+            "name": "Neodymium Concentrate (Nd)",
+            "batchNumber": "ND-CONC-2024-07-003",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 0.54,
+            "unit": "KGM"
+          },
+          "disposition": "inTransit"
+        }
+      ],
+      "fromFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520987654321",
+        "name": "Rare Earth Upcycling Ltd. - Processing Facility",
+        "registeredId": "9520987654321"
+      },
+      "toFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://pharmatech-industries.com/facility",
+        "name": "PharmaTech Industries - API Synthesis Facility"
+      },
+      "consignmentId": "https://transaction.example.com/po/PO-2024-07-1203",
+      "relatedDocument": [
+        {
+          "linkURL": "https://credentials.rare-earth-upcycling.com/dpp/nd-precursor-api-2024",
+          "linkName": "Digital Product Passport — Nd Precursors for API Synthesis",
+          "mediaType": "application/ld+json",
+          "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dpp"
+        }
+      ]
+    },
+    {
+      "type": [
+        "MoveEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-upcycling.com/ship-nd-suzuki-2024-08-28",
+      "name": "Shipping of Nd Precursors for Suzuki Reaction in API Production",
+      "description": "Shipment of 0.53 kg Neodymium Concentrate from Rare Earth Upcycling Ltd. to BioChem Synthesis Ltd. for use as Nd precursors in Suzuki coupling reactions for API production.",
+      "eventDate": "2024-08-28T09:30:00Z",
+      "activityType": {
+        "code": "shipping",
+        "name": "Shipping",
+        "definition": "The movement of goods from one location to another.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "consignor",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-upcycling.com:up-001",
+            "name": "Rare Earth Upcycling Ltd",
+            "registeredId": "FR0021454321"
+          }
+        },
+        {
+          "role": "consignee",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:biochem-synthesis.co.uk",
+            "name": "BioChem Synthesis Ltd."
+          }
+        }
+      ],
+      "movedProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/NDCONC",
+            "name": "Neodymium Concentrate (Nd)",
+            "batchNumber": "ND-CONC-2024-07-003",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 0.53,
+            "unit": "KGM"
+          },
+          "disposition": "inTransit"
+        }
+      ],
+      "fromFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520987654321",
+        "name": "Rare Earth Upcycling Ltd. - Processing Facility",
+        "registeredId": "9520987654321"
+      },
+      "toFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://biochem-synthesis.co.uk/facility",
+        "name": "BioChem Synthesis Ltd. - Suzuki Reaction Facility"
+      },
+      "consignmentId": "https://transaction.example.com/po/PO-2024-07-1204",
+      "relatedDocument": [
+        {
+          "linkURL": "https://credentials.rare-earth-upcycling.com/dpp/nd-precursor-suzuki-2024",
+          "linkName": "Digital Product Passport — Nd Precursors for Suzuki Reaction",
+          "mediaType": "application/ld+json",
+          "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dpp"
+        }
+      ]
+    },
+    {
+      "type": [
+        "MoveEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-upcycling.com/ship-fe-steel-2024-07-29",
+      "name": "Shipping of Iron Concentrate for Steel Production",
+      "description": "Shipment of 2.1 kg Iron Concentrate from Rare Earth Upcycling Ltd. to GreenSteel Manufacturing for use in sustainable steel production.",
+      "eventDate": "2024-08-29T10:00:00Z",
+      "activityType": {
+        "code": "shipping",
+        "name": "Shipping",
+        "definition": "The movement of goods from one location to another.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "consignor",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-upcycling.com:up-001",
+            "name": "Rare Earth Upcycling Ltd",
+            "registeredId": "FR0021454321"
+          }
+        },
+        {
+          "role": "consignee",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:greensteel-manufacturing.eu",
+            "name": "GreenSteel Manufacturing"
+          }
+        }
+      ],
+      "movedProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/FECONC",
+            "name": "Iron Concentrate (Fe)",
+            "batchNumber": "FE-CONC-2024-07-003",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 2.1,
+            "unit": "KGM"
+          },
+          "disposition": "inTransit"
+        }
+      ],
+      "fromFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520987654321",
+        "name": "Rare Earth Upcycling Ltd. - Processing Facility",
+        "registeredId": "9520987654321"
+      },
+      "toFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://greensteel-manufacturing.eu/facility",
+        "name": "GreenSteel Manufacturing - Production Facility"
+      },
+      "consignmentId": "https://transaction.example.com/po/PO-2024-07-1205",
+      "relatedDocument": [
+        {
+          "linkURL": "https://credentials.rare-earth-upcycling.com/dpp/fe-concentrate-steel-2024",
+          "linkName": "Digital Product Passport — Iron Concentrate for Steel",
+          "mediaType": "application/ld+json",
+          "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dpp"
+        }
+      ]
+    },
+    {
+      "type": [
+        "MoveEvent",
+        "LifecycleEvent"
+      ],
+      "id": "https://events.rare-earth-upcycling.com/ship-dy-magnet-2024-07-30",
+      "name": "Shipping of Dysprosium Concentrate for High-Performance Magnet Production",
+      "description": "Shipment of 0.2 kg Dysprosium Concentrate from Rare Earth Upcycling Ltd. to Advanced Magnetics Inc. for use in high-performance permanent magnet production.",
+      "eventDate": "2024-08-30T11:00:00Z",
+      "activityType": {
+        "code": "shipping",
+        "name": "Shipping",
+        "definition": "The movement of goods from one location to another.",
+        "schemeId": "https://ref.gs1.org/cbv/BizStep",
+        "schemeName": "GS1 CBV Business Step"
+      },
+      "relatedParty": [
+        {
+          "role": "consignor",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:rare-earth-upcycling.com:up-001",
+            "name": "Rare Earth Upcycling Ltd",
+            "registeredId": "FR0021454321"
+          }
+        },
+        {
+          "role": "consignee",
+          "party": {
+            "type": [
+              "Party"
+            ],
+            "id": "did:web:advanced-magnetics.com",
+            "name": "Advanced Magnetics Inc."
+          }
+        }
+      ],
+      "movedProduct": [
+        {
+          "product": {
+            "type": [
+              "Product"
+            ],
+            "id": "https://id.gs1.org/01/09520123456788/99/DYCONC",
+            "name": "Dysprosium Concentrate (Dy)",
+            "batchNumber": "DY-CONC-2024-07-003",
+            "idGranularity": "batch"
+          },
+          "quantity": {
+            "value": 0.2,
+            "unit": "KGM"
+          },
+          "disposition": "inTransit"
+        }
+      ],
+      "fromFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://id.gs1.org/414/9520987654321",
+        "name": "Rare Earth Upcycling Ltd. - Processing Facility",
+        "registeredId": "9520987654321"
+      },
+      "toFacility": {
+        "type": [
+          "Facility"
+        ],
+        "id": "https://advanced-magnetics.com/facility",
+        "name": "Advanced Magnetics Inc. - Magnet Production Facility"
+      },
+      "consignmentId": "https://transaction.example.com/po/PO-2024-07-1206",
+      "relatedDocument": [
+        {
+          "linkURL": "https://credentials.rare-earth-upcycling.com/dpp/dy-concentrate-magnet-2024",
+          "linkName": "Digital Product Passport — Dysprosium Concentrate for Magnets",
+          "mediaType": "application/ld+json",
+          "linkType": "https://test.uncefact.org/vocabulary/linkTypes/dpp"
+        }
+      ]
+    }
+  ]
+}

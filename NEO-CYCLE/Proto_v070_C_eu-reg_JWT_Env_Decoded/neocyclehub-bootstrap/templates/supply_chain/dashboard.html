@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — NeoCycleHub{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2"><i class="bi bi-diagram-3 me-2"></i>Supply Chain Dashboard</h1>
+  <span class="text-muted">Rare earth recycling value chain</span>
+</div>
+
+<div class="row g-3 mb-4">
+{% for actor in actors %}
+<div class="col-md-6">
+  <div class="card h-100 shadow-sm">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">
+        <i class="bi bi-building me-2"></i>{{ actor.name }}
+      </h5>
+      <span class="badge {% if actor.role == 'supplier' %}bg-primary{% else %}bg-success{% endif %}">
+        {{ actor.get_role_display }}
+      </span>
+    </div>
+    <div class="card-body">
+      <p class="text-muted small mb-2"><code>{{ actor.did|default:"DID not configured" }}</code></p>
+      <div class="mb-3">
+        {% with creds=actor.credentials.all %}
+        <strong>{{ creds.count }}</strong> credential{{ creds.count|pluralize }} issued
+        {% regroup creds by cred_type as by_type %}
+        {% for grp in by_type %}
+          <span class="badge badge-{{ grp.grouper|lower }} ms-1">{{ grp.grouper }} ×{{ grp.list|length }}</span>
+        {% endfor %}
+        {% endwith %}
+      </div>
+      <a href="{% url 'actor_detail' actor.pk %}" class="btn btn-sm btn-green-admin">
+        <i class="bi bi-arrow-right-circle me-1"></i>Manage credentials
+      </a>
+    </div>
+  </div>
+</div>
+{% empty %}
+<div class="col-12">
+  <div class="alert alert-info">
+    No actors configured yet. <a href="/admin/supply_chain/actor/add/">Add one in the admin</a>.
+  </div>
+</div>
+{% endfor %}
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-header">
+    <h5 class="mb-0"><i class="bi bi-link-45deg me-2"></i>Cross-actor credential links</h5>
+  </div>
+  <div class="card-body">
+    <p class="text-muted small">Supplier credentials referenced in Upcycler DPPs.</p>
+    <table class="table table-sm table-hover">
+      <thead class="table-light">
+        <tr><th>Credential</th><th>Type</th><th>URL</th></tr>
+      </thead>
+      <tbody>
+      {% for actor in actors %}
+        {% if actor.role == 'supplier' %}
+          {% for cred in actor.credentials.all %}
+          <tr>
+            <td>{{ cred.label }}</td>
+            <td><span class="badge badge-{{ cred.cred_type|lower }}">{{ cred.cred_type }}</span></td>
+            <td>
+              <a href="/credentials/{{ cred.uuid }}/" target="_blank" class="font-monospace small">
+                /credentials/{{ cred.uuid }}/
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
