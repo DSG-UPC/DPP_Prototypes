@@ -202,11 +202,17 @@ def figures(s, fig_dir):
                 pts.append((d, r["median"], r["p5"], r["p95"]))
         if pts:
             x = [p[0] for p in pts]
-            ax.plot(x, [p[1] for p in pts], marker=mk, ms=3, lw=1, label=f"block {bp} s")
+            line, = ax.plot(x, [p[1] for p in pts], marker=mk, ms=3, lw=1, label=f"$P$ = {bp} s")
             ax.fill_between(x, [p[2] for p in pts], [p[3] for p in pts], alpha=0.15)
-    ax.set_xlabel("one-way delay (ms)")
-    ax.set_ylabel("latency (s)")
-    ax.legend(frameon=False, fontsize=6.5)
+            # model from the paper: P/2 + 0.1 s + 4d (dotted, same color)
+            ax.plot([0, 200], [bp / 2 + 0.1, bp / 2 + 0.1 + 0.8], ls=":", lw=0.9, color=line.get_color())
+    ax.plot([], [], ls=":", lw=1.2, color="black", label="model")
+    ax.set_xlabel("one-way delay between\nvalidators (ms)")
+    ax.set_ylabel("anchoring latency (s)")
+    ax.set_xticks([0, 50, 100, 150, 200])
+    ax.set_ylim(0, 7.8)
+    ax.set_yticks(range(0, 8))
+    ax.legend(frameon=False, fontsize=6, loc="upper left", ncol=2, handlelength=1.8, columnspacing=0.8)
     ax.grid(alpha=0.3)
     fig.tight_layout()
     fig.savefig(os.path.join(fig_dir, "latency_delay.pdf"))
@@ -222,9 +228,12 @@ def figures(s, fig_dir):
         if pts:
             ax.plot([p[0] for p in pts], [p[1] for p in pts], marker=mk, ms=3, lw=1, label=f"{n} validators")
     if gas:
-        ceil = GAS_LIMIT / gas / 2
+        # label with the measured maximum per block (gas per anchor varies slightly,
+        # so GAS_LIMIT / median gas overstates it: 172 vs. 170 measured)
+        per_block = max((r.get("max_tx_per_block") or 0) for r in s["throughput"].values()) or int(GAS_LIMIT // gas)
+        ceil = per_block / 2
         ax.axhline(ceil, ls="--", lw=0.8, color="gray")
-        ax.text(22, ceil - 2, f"gas limit\n({int(GAS_LIMIT // gas)}/block)", fontsize=6, color="gray", va="top")
+        ax.text(22, ceil - 2, f"gas limit\n({per_block}/block)", fontsize=6, color="gray", va="top")
     ax.set_xlabel("offered (anchors/s)")
     ax.set_ylabel("achieved (1/s)")
     ax.legend(frameon=False, fontsize=6.5)
@@ -260,7 +269,7 @@ def fault_figure(fig_dir):
     ax.axvspan(30, 90, color="gray", alpha=0.15, lw=0)
     # (grey band = validators stopped; explained in the paper caption)
     ax.set_xlim(0, 280)
-    ax.set_xlabel("time (s)")
+    ax.set_xlabel("time since start (s)")
     ax.set_ylabel("blocks")
     ax.legend(frameon=False, fontsize=6, loc="upper left")
     ax.grid(alpha=0.3)
